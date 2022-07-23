@@ -1,0 +1,24 @@
+{
+"type": "FeatureCollection",
+"name": "poi",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"features": [
+{ "type": "Feature", "properties": { "nom": "Armenelos", "type": "capitale" }, "geometry": { "type": "Point", "coordinates": [ 586.122623734963781, -399.559971491427802 ] } },
+{ "type": "Feature", "properties": { "nom": "Andunië", "type": "ville" }, "geometry": { "type": "Point", "coordinates": [ 292.238602129334481, -265.471918839394277 ] } },
+{ "type": "Feature", "properties": { "nom": "Eldalondë", "type": "ville" }, "geometry": { "type": "Point", "coordinates": [ 369.752739234652836, -411.535835739316497 ] } },
+{ "type": "Feature", "properties": { "nom": "Nindamas", "type": "ville" }, "geometry": { "type": "Point", "coordinates": [ 557.685470819270563, -560.874547602009443 ] } },
+{ "type": "Feature", "properties": { "nom": "Rómenna", "type": "ville" }, "geometry": { "type": "Point", "coordinates": [ 659.189433995144555, -401.276329057534042 ] } },
+{ "type": "Feature", "properties": { "nom": "Ondosto", "type": "ville" }, "geometry": { "type": "Point", "coordinates": [ 453.191581251892899, -262.616780654035836 ] } },
+{ "type": "Feature", "properties": { "nom": "Almaida", "type": "ville" }, "geometry": { "type": "Point", "coordinates": [ 255.556133038678411, -281.908874611300917 ] } },
+{ "type": "Feature", "properties": { "nom": "Maison blanche de Erendis", "type": "construction" }, "geometry": { "type": "Point", "coordinates": [ 483.135970202174235, -464.051572240155508 ] } },
+{ "type": "Feature", "properties": { "nom": "Meneltarma", "type": "montagne" }, "geometry": { "type": "Point", "coordinates": [ 553.886402001350461, -383.023378791581194 ] } },
+{ "type": "Feature", "properties": { "nom": "Sorontil", "type": "montagne" }, "geometry": { "type": "Point", "coordinates": [ 593.426383111254154, -143.944923507986402 ] } },
+{ "type": "Feature", "properties": { "nom": "Cap du Nord", "type": "cap" }, "geometry": { "type": "Point", "coordinates": [ 660.867346228816473, -108.106565085594468 ] } },
+{ "type": "Feature", "properties": { "nom": "Noirinan", "type": "vallée" }, "geometry": { "type": "Point", "coordinates": [ 548.107685312071794, -399.188855148149059 ] } },
+{ "type": "Feature", "properties": { "nom": "Oromet", "type": "montagne" }, "geometry": { "type": "Point", "coordinates": [ 274.469120941340293, -293.32524094076166 ] } },
+{ "type": "Feature", "properties": { "nom": "Tour de Tar-Minastir", "type": "construction" }, "geometry": { "type": "Point", "coordinates": [ 281.063210971761691, -281.895484888031319 ] } },
+{ "type": "Feature", "properties": { "nom": "Tour sur le Sorontil", "type": "construction" }, "geometry": { "type": "Point", "coordinates": [ 616.029595860430618, -123.350885225403417 ] } },
+{ "type": "Feature", "properties": { "nom": "Tol Uinen", "type": "île" }, "geometry": { "type": "Point", "coordinates": [ 662.196658954451209, -393.109658086657589 ] } },
+{ "type": "Feature", "properties": { "nom": "Calmindon", "type": "construction" }, "geometry": { "type": "Point", "coordinates": [ 662.196658954451209, -393.109658086657589 ] } }
+]
+}

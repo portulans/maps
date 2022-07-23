@@ -1,0 +1,88 @@
+#map{
+    width: 90vw;
+    height: 780px;
+    background: white;
+}
+
+.leaflet-container {
+    background: #ddd;
+    outline: 0;
+}
+
+#panel{
+    color: white;
+    font-weight: bold;
+}
+
+
+/* ICONS */
+.icon {
+	display: inline-block;
+	margin: 2px;
+	height: 16px;
+	width: 16px;
+	background-color: #ccc;
+}
+
+.icon-capitale {
+	background: url('icons/capitale.png') center center no-repeat;
+}
+.icon-ville {
+	background: url('icons/ville.png') center center no-repeat;
+}
+.icon-construction {
+	background: url('icons/construction.png') center center no-repeat;
+}
+.icon-route {
+	background: url('icons/route.png') center center no-repeat;
+}
+.icon-royaume {
+	background: url('icons/royaume.png') center center no-repeat;
+}
+.icon-vallée {
+	background: url('icons/vallée.png') center center no-repeat;
+}
+.icon-fleuve {
+	background: url('icons/fleuve.png') center center no-repeat;
+}
+.icon-montagne {
+	background: url('icons/montagne.png') center center no-repeat;
+}
+.icon-ilecap {
+	background: url('icons/île2.png') center center no-repeat;
+}
+.icon-lacbaie {
+	background: url('icons/baie.png') center center no-repeat;
+}
+.icon-mer {
+	background: url('icons/mer.png') center center no-repeat;
+}
+.icon-region {
+	background: url('icons/region.png') center center no-repeat;
+}
+/* MARKERS */
+.leaflet-marker-icon {
+	padding: 2px;
+	text-align: center;
+}
+.marker-capitale {
+	background: url('markers/capitale.png') center center no-repeat;
+}
+.marker-ville {
+	background: url('markers/ville.png') center center no-repeat;
+}
+.marker-construction {
+	background: url('markers/construction.png') center center no-repeat;
+}
+.marker-vallée {
+	background: url('markers/vallée.png') center center no-repeat;
+}
+.marker-montagne {
+	background: url('markers/montagne.png') center center no-repeat;
+}
+.marker-ile {
+	background: url('markers/île2.png') center center no-repeat;
+}
+.marker-cap {
+	background: url('markers/île2.png') center center no-repeat;
+}

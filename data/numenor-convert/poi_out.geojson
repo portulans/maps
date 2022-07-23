@@ -1,0 +1,244 @@
+{
+    "type": "FeatureCollection",
+    "name": "poi",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    586.122624,
+                    350.440029
+                ]
+            },
+            "properties": {
+                "nom": "Armenelos",
+                "type": "capitale"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    292.238602,
+                    484.528081
+                ]
+            },
+            "properties": {
+                "nom": "Andunië",
+                "type": "ville"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    369.752739,
+                    338.464164
+                ]
+            },
+            "properties": {
+                "nom": "Eldalondë",
+                "type": "ville"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    557.685471,
+                    189.125452
+                ]
+            },
+            "properties": {
+                "nom": "Nindamas",
+                "type": "ville"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    659.189434,
+                    348.723671
+                ]
+            },
+            "properties": {
+                "nom": "Rómenna",
+                "type": "ville"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    453.191581,
+                    487.383219
+                ]
+            },
+            "properties": {
+                "nom": "Ondosto",
+                "type": "ville"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    255.556133,
+                    468.091125
+                ]
+            },
+            "properties": {
+                "nom": "Almaida",
+                "type": "ville"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    483.13597,
+                    285.948428
+                ]
+            },
+            "properties": {
+                "nom": "Maison blanche de Erendis",
+                "type": "construction"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    553.886402,
+                    366.976621
+                ]
+            },
+            "properties": {
+                "nom": "Meneltarma",
+                "type": "montagne"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    593.426383,
+                    606.055076
+                ]
+            },
+            "properties": {
+                "nom": "Sorontil",
+                "type": "montagne"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    660.867346,
+                    641.893435
+                ]
+            },
+            "properties": {
+                "nom": "Cap du Nord",
+                "type": "cap"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    548.107685,
+                    350.811145
+                ]
+            },
+            "properties": {
+                "nom": "Noirinan",
+                "type": "vallée"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    274.469121,
+                    456.674759
+                ]
+            },
+            "properties": {
+                "nom": "Oromet",
+                "type": "montagne"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    281.063211,
+                    468.104515
+                ]
+            },
+            "properties": {
+                "nom": "Tour de Tar-Minastir",
+                "type": "construction"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    616.029596,
+                    626.6491149999999
+                ]
+            },
+            "properties": {
+                "nom": "Tour sur le Sorontil",
+                "type": "construction"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    662.196659,
+                    356.890342
+                ]
+            },
+            "properties": {
+                "nom": "Tol Uinen",
+                "type": "île"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    662.196659,
+                    356.890342
+                ]
+            },
+            "properties": {
+                "nom": "Calmindon",
+                "type": "construction"
+            }
+        }
+    ]
+}
