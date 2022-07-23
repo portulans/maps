@@ -57,8 +57,16 @@ function onEachFeature(feature, layer) {
     // does this feature have a property named popupContent?
     if (feature.properties && feature.properties.nom) {
         layer.bindPopup(
-            '<h2>'+feature.properties.nom+'</h2>' +
-            '<p><b>Type : </b><i>'+ feature.properties.type+'</p>');
+            '<h3>'+feature.properties.nom+'</h3>' +
+            '<p><b>Type : </b><i>'+ feature.properties.type+'</i><br>'+
+            '<b>Langue : </b><i>'+ feature.properties.langue+'</i><br>'+
+            '<b>Signification</b> : </b><i>'+ feature.properties.trad_fr+'</i></p>'+
+            '<h4>En savoir plus :</h4>'+
+            '<ul>'+
+                '<li><a href="' + feature.properties.tolkiendil + '">Tolkiendil</a></li>'+
+                '<li><a href="' + feature.properties.tolkiengat + '">(en) Tolkiend Gatway</a></li>'+
+                '<li><a href="' + feature.properties.fandom + '">Fandom FR</a></li>'+
+            '</ul>');
     }
 };
 

@@ -530,7 +530,13 @@
                 ]
             },
             "properties": {
-                "nom": "Andustar"
+                "nom": "Andustar",
+                "fandom": "https://lotr.fandom.com/fr/wiki/Andustar",
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/regions/numenor/andustar",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Andustar",
+                "trad_fr": "Terres de l'Ouest",
+                "type": "région",
+                "langue": "Quenya"
             }
         },
         {
@@ -813,7 +819,13 @@
                 ]
             },
             "properties": {
-                "nom": "Forostar"
+                "nom": "Forostar",
+                "fandom": "https://lotr.fandom.com/fr/wiki/Forostar",
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/regions/numenor/forostar",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Forostar",
+                "trad_fr": "Terres du Nord",
+                "type": "région",
+                "langue": "Quenya"
             }
         },
         {
@@ -972,7 +984,13 @@
                 ]
             },
             "properties": {
-                "nom": "Arandor"
+                "nom": "Arandor",
+                "fandom": null,
+                "tolkiendil": null,
+                "tolkiengat": "http://tolkiengateway.net/wiki/Arandor",
+                "trad_fr": "Pays du Roi",
+                "type": "région",
+                "langue": "Quenya"
             }
         },
         {
@@ -1239,7 +1257,13 @@
                 ]
             },
             "properties": {
-                "nom": "Orostar"
+                "nom": "Orrostar",
+                "fandom": "https://lotr.fandom.com/fr/wiki/Orrostar",
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/regions/numenor/orrostar",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Orrostar",
+                "trad_fr": "Terres-de-l'Est",
+                "type": "région",
+                "langue": "Quenya"
             }
         },
         {
@@ -1354,7 +1378,13 @@
                 ]
             },
             "properties": {
-                "nom": "N\u00c3\u00adsimaldar"
+                "nom": "NÃ­simaldar",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/regions/numenor/nisimaldar",
+                "tolkiengat": "http://tolkiengateway.net/wiki/N%C3%ADsimaldar",
+                "trad_fr": "Arbres Odoriférants",
+                "type": "région",
+                "langue": "Quenya"
             }
         },
         {
@@ -1705,7 +1735,13 @@
                 ]
             },
             "properties": {
-                "nom": "Mittalmar"
+                "nom": "Mittalmar",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/regions/numenor/mittalmar",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Mittalmar",
+                "trad_fr": "Terre de l'Intérieur",
+                "type": "région",
+                "langue": "Quenya"
             }
         },
         {
@@ -2236,7 +2272,13 @@
                 ]
             },
             "properties": {
-                "nom": "Hyarnustar"
+                "nom": "Hyarnustar",
+                "fandom": "https://lotr.fandom.com/fr/wiki/Hyarnustar",
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/regions/numenor/hyarnustar",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Hyarnustar",
+                "trad_fr": "Terres du Sud-Ouest",
+                "type": "région",
+                "langue": "Quenya"
             }
         },
         {
@@ -2715,7 +2757,13 @@
                 ]
             },
             "properties": {
-                "nom": "Hyarrostar"
+                "nom": "Hyarrostar",
+                "fandom": "https://lotr.fandom.com/fr/wiki/Hyarrostar",
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/regions/numenor/hyarrostar",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Hyarrostar",
+                "trad_fr": "Terres du Sud-Est",
+                "type": "région",
+                "langue": "Quenya"
             }
         },
         {
@@ -2842,7 +2890,13 @@
                 ]
             },
             "properties": {
-                "nom": "Emeri\u00c3\u00ab"
+                "nom": "Emerië",
+                "fandom": null,
+                "tolkiendil": null,
+                "tolkiengat": "http://tolkiengateway.net/wiki/Emeri%C3%AB",
+                "trad_fr": null,
+                "type": "région",
+                "langue": null
             }
         }
     ]

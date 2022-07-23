@@ -108,7 +108,8 @@
                 ]
             },
             "properties": {
-                "nom": "route"
+                "nom": "Route principale",
+                "type": "route"
             }
         }
     ]

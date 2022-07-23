@@ -108,7 +108,13 @@
                 ]
             },
             "properties": {
-                "nom": "Siril"
+                "nom": "Siril",
+                "fandom": "https://lotr.fandom.com/fr/wiki/Siril",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Siril",
+                "tolkiendil": null,
+                "type": "fleuve",
+                "langue": "Quenya",
+                "trad_fr": "Petite rivière"
             }
         },
         {
@@ -241,7 +247,13 @@
                 ]
             },
             "properties": {
-                "nom": "Nunduin\u00c3\u00ab"
+                "nom": "Nunduinë",
+                "fandom": "https://lotr.fandom.com/fr/wiki/Nunduin%C3%AB",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Nunduin%C3%AB",
+                "tolkiendil": null,
+                "type": "fleuve",
+                "langue": "Quenya",
+                "trad_fr": "RiviÃ¨re de l'Ouest"
             }
         }
     ]

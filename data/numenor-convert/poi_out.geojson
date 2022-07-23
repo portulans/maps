@@ -13,7 +13,14 @@
             },
             "properties": {
                 "nom": "Armenelos",
-                "type": "capitale"
+                "type": "capitale",
+                "fandom": "https://lotr.fandom.com/fr/wiki/Armenelos",
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/villes_tours_et_forteresses/numenor/armenelos?s[]=armenelos",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Armenelos",
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": "Arminalêth"
             }
         },
         {
@@ -26,8 +33,15 @@
                 ]
             },
             "properties": {
-                "nom": "Andunië",
-                "type": "ville"
+                "nom": "Andúnië",
+                "type": "ville",
+                "fandom": "https://lotr.fandom.com/fr/wiki/And%C3%BAni%C3%AB",
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/villes_tours_et_forteresses/numenor/andunie",
+                "tolkiengat": "http://tolkiengateway.net/wiki/And%C3%BAni%C3%AB",
+                "img": "numenor/Andunie_Ted_Nasmith.jpg",
+                "trad_fr": "Coucher de Soleil",
+                "langue": "Quenya",
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -41,7 +55,14 @@
             },
             "properties": {
                 "nom": "Eldalondë",
-                "type": "ville"
+                "type": "ville",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/villes_tours_et_forteresses/numenor/eldalonde",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Eldalond%C3%AB",
+                "img": null,
+                "trad_fr": "Havre des Eldar",
+                "langue": "Quenya",
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -54,8 +75,15 @@
                 ]
             },
             "properties": {
-                "nom": "Nindamas",
-                "type": "ville"
+                "nom": "Nindamos",
+                "type": "ville",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/villes_tours_et_forteresses/numenor/nindamos",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Nindamos",
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -69,7 +97,14 @@
             },
             "properties": {
                 "nom": "Rómenna",
-                "type": "ville"
+                "type": "ville",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/villes_tours_et_forteresses/numenor/romenna",
+                "tolkiengat": "http://tolkiengateway.net/wiki/R%C3%B3menna",
+                "img": null,
+                "trad_fr": "Vers l'est",
+                "langue": "Quenya",
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -77,13 +112,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    453.191581,
-                    487.383219
+                    449.01067,
+                    480.722546
                 ]
             },
             "properties": {
                 "nom": "Ondosto",
-                "type": "ville"
+                "type": "ville",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/villes_tours_et_forteresses/numenor/ondosto",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Ondosto",
+                "img": null,
+                "trad_fr": "Forteresse de Pierre",
+                "langue": "Quenya",
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -91,13 +133,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    255.556133,
-                    468.091125
+                    259.150458,
+                    501.51617
                 ]
             },
             "properties": {
                 "nom": "Almaida",
-                "type": "ville"
+                "type": "ville",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/essais/geographie/cartes_de_tolkien?s[]=almaida",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Almaida",
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -110,8 +159,15 @@
                 ]
             },
             "properties": {
-                "nom": "Maison blanche de Erendis",
-                "type": "construction"
+                "nom": "Maison blanche d'Erendis",
+                "type": "construction",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/personnages/hommes/2a/numenoreens/erendis",
+                "tolkiengat": "http://tolkiengateway.net/wiki/White_House_of_Erendis",
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -119,13 +175,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    553.886402,
-                    366.976621
+                    554.872187,
+                    382.683309
                 ]
             },
             "properties": {
                 "nom": "Meneltarma",
-                "type": "montagne"
+                "type": "montagne",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/reliefs/numenor/meneltarma",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Meneltarma",
+                "img": null,
+                "trad_fr": "Pilier du ciel",
+                "langue": "Quenya",
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -139,7 +202,14 @@
             },
             "properties": {
                 "nom": "Sorontil",
-                "type": "montagne"
+                "type": "montagne",
+                "fandom": null,
+                "tolkiendil": null,
+                "tolkiengat": "http://tolkiengateway.net/wiki/Sorontil",
+                "img": null,
+                "trad_fr": "Pic de l'Aigle",
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -153,7 +223,14 @@
             },
             "properties": {
                 "nom": "Cap du Nord",
-                "type": "cap"
+                "type": "cap",
+                "fandom": null,
+                "tolkiendil": null,
+                "tolkiengat": "http://tolkiengateway.net/wiki/North_Cape",
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -167,7 +244,14 @@
             },
             "properties": {
                 "nom": "Noirinan",
-                "type": "vallée"
+                "type": "vallée",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/reliefs/numenor/noirinan",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Noirinan",
+                "img": null,
+                "trad_fr": "Vallée des Tombeaux",
+                "langue": "Quenya",
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -181,7 +265,14 @@
             },
             "properties": {
                 "nom": "Oromet",
-                "type": "montagne"
+                "type": "montagne",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/reliefs/numenor/oromet",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Oromet",
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -189,13 +280,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    281.063211,
-                    468.104515
+                    291.000623,
+                    471.857296
                 ]
             },
             "properties": {
                 "nom": "Tour de Tar-Minastir",
-                "type": "construction"
+                "type": "construction",
+                "fandom": null,
+                "tolkiendil": null,
+                "tolkiengat": null,
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -209,7 +307,14 @@
             },
             "properties": {
                 "nom": "Tour sur le Sorontil",
-                "type": "construction"
+                "type": "construction",
+                "fandom": null,
+                "tolkiendil": null,
+                "tolkiengat": "http://tolkiengateway.net/wiki/Sorontil",
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -217,13 +322,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    662.196659,
-                    356.890342
+                    668.686355,
+                    357.652014
                 ]
             },
             "properties": {
                 "nom": "Tol Uinen",
-                "type": "île"
+                "type": "île",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/eaux/iles/tol_uinen",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Tol_Uinen",
+                "img": null,
+                "trad_fr": null,
+                "langue": null,
+                "adÃ»naÃ¯que": null
             }
         },
         {
@@ -231,13 +343,20 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    662.196659,
-                    356.890342
+                    668.686355,
+                    357.652014
                 ]
             },
             "properties": {
                 "nom": "Calmindon",
-                "type": "construction"
+                "type": "construction",
+                "fandom": null,
+                "tolkiendil": "https://www.tolkiendil.com/encyclo/geographie/villes_tours_et_forteresses/numenor/calmindon",
+                "tolkiengat": "http://tolkiengateway.net/wiki/Calmindon",
+                "img": null,
+                "trad_fr": "Tour de lumière",
+                "langue": "Sindarin",
+                "adÃ»naÃ¯que": null
             }
         }
     ]
