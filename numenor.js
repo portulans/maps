@@ -2,28 +2,43 @@
 var bounds = [[0,0], [751,1000]];
 var image = L.imageOverlay('img/Numenor-by-Christopher-Tolkien.jpg', bounds);
 
-//////////// Style des points
-var montagneMarker = {
-    radius:4,
-    fillColor: "#ff7800",
-    color: "#000",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8
-};
+//////////// Fonctions
 
-var constructionMarker = {
-    radius:4,
-    fillColor: "F4D4B1",
-    color: "#000",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8
-};
+function getColor(type) {
+    return type == 'route' ? '#923C0E' :
+                    'fleuve' ? '#1CBCEB':
+                    'région' ? '#B8DF50':
+}
 
-//////////// Function
+function getDash(type) {
+    //Couleur des objets en fonction du type
+    return type == 'route' ? '10,15':
+        '0.0';
+}
+
+function styleLines(feature) {
+    //Style des lignes en fonction des types d'objets
+    return {
+                color: getColor(feature.properties.type),
+                weight: 5,
+                dashArray: getDash(feature.properties.type),
+                lineJoin: 'round'
+            };
+}
+
+function styleAreas(feature){
+	return {
+  	fillColor: getColor(feature.properties.type),
+    weight: 2,
+    opacity: 1,
+    color: 'white',
+    dashArray: '3',
+    fillOpacity: 0.5
+  }
+};
 
 function iconByName(name) {
+    // Accède aux îcones
 	return '<i class="icon icon-'+name+'"></i>';
 }
 
@@ -120,6 +135,7 @@ var url2 = "./data/numenor-convert/hydrologie-lignes_out.geojson"
 
 var fleuves = L.geoJSON(null, {
     onEachFeature: onEachFeature, 
+    style:styleLines
     });
    
     $.getJSON(url2, function(data) {
@@ -131,6 +147,7 @@ var url3 = "./data/numenor-convert/regions_out.geojson"
 
 var regions = L.geoJSON(null, {
     onEachFeature: onEachFeature, 
+    style:styleAreas
     });
    
     $.getJSON(url3, function(data) {
@@ -177,7 +194,8 @@ var numenor = L.geoJSON(null, {
 var url6 = "./data/numenor-convert/routes_out.geojson"
 
 var routes = L.geoJSON(null, {
-    onEachFeature: onEachFeature
+    onEachFeature: onEachFeature,
+    style:styleLines
     });
    
     $.getJSON(url6, function(data) {
