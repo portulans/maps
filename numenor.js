@@ -7,7 +7,7 @@ var image = L.imageOverlay('img/Numenor-by-Christopher-Tolkien.jpg', bounds);
 function getColor(type) {
     return type == 'route' ? '#923C0E' :
                     'fleuve' ? '#1CBCEB':
-                    'région' ? '#B8DF50':
+                    '#B8DF50';
 }
 
 function getDash(type) {
