@@ -56,17 +56,25 @@ function featureToMarker(feature, latlng) {
 function onEachFeature(feature, layer) {
     // does this feature have a property named popupContent?
     if (feature.properties && feature.properties.nom) {
-        layer.bindPopup(
-            '<h3>'+feature.properties.nom+'</h3>' +
-            '<p><b>Type : </b><i>'+ feature.properties.type+'</i><br>'+
-            '<b>Langue : </b><i>'+ feature.properties.langue+'</i><br>'+
-            '<b>Signification</b> : </b><i>'+ feature.properties.trad_fr+'</i></p>'+
+        
+           texte = '<h3>'+feature.properties.nom+'</h3>' +
+            '<p><b>Type : </b><i>'+ feature.properties.type+'</i><br>'
+            if (feature.properties.langue) {
+                texte = texte + '<b>Langue : </b><i>'+ feature.properties.langue+'</i><br>'}
+            if (feature.properties.trad_fr) {
+                texte = texte + '<b>Signification</b> : </b><i>'+ feature.properties.trad_fr+'</i></p>'}
+            
+            if (feature.properties.tolkiendil | feature.properties.tolkiengat | feature.properties.fandom) {
             '<h4>En savoir plus :</h4>'+
-            '<ul>'+
-                '<li><a href="' + feature.properties.tolkiendil + '">Tolkiendil</a></li>'+
-                '<li><a href="' + feature.properties.tolkiengat + '">(en) Tolkiend Gatway</a></li>'+
-                '<li><a href="' + feature.properties.fandom + '">Fandom FR</a></li>'+
-            '</ul>');
+            '<ul>'
+            if (feature.properties.tolkiendil) {
+                texte = texte + '<li><a href="' + feature.properties.tolkiendil + '">Tolkiendil</a></li>'}
+            if (feature.properties.tolkiengat) {
+                texte = texte + '<li><a href="' + feature.properties.tolkiengat + '">(en) Tolkien Gatway</a></li>'}
+            if (feature.properties.fandom) {
+                texte = texte + '<li><a href="' + feature.properties.fandom + '">Fandom FR</a></li>'}
+            texte = texte + '</ul>'}
+            layer.bindPopup(texte);
     }
 };
 
