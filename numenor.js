@@ -64,16 +64,16 @@ function onEachFeature(feature, layer) {
             if (feature.properties.trad_fr) {
                 texte = texte + '<b>Signification</b> : </b><i>'+ feature.properties.trad_fr+'</i></p>'}
             
-            if (feature.properties.tolkiendil | feature.properties.tolkiengat | feature.properties.fandom) {
-            '<h4>En savoir plus :</h4>'+
-            '<ul>'
-            if (feature.properties.tolkiendil) {
-                texte = texte + '<li><a href="' + feature.properties.tolkiendil + '">Tolkiendil</a></li>'}
-            if (feature.properties.tolkiengat) {
-                texte = texte + '<li><a href="' + feature.properties.tolkiengat + '">(en) Tolkien Gatway</a></li>'}
-            if (feature.properties.fandom) {
-                texte = texte + '<li><a href="' + feature.properties.fandom + '">Fandom FR</a></li>'}
-            texte = texte + '</ul>'}
+            if (feature.properties.hasOwnProperty('tolkiendil') === true || feature.properties.hasOwnProperty('tolkiengat') === true || feature.properties.hasOwnProperty('fandom') === true ) {
+                texte = texte + '<b>En savoir plus</b>'+
+                '<ul>'
+                if (feature.properties.tolkiendil) {
+                    texte = texte + '<li><a href="' + feature.properties.tolkiendil + '">Tolkiendil</a></li>'}
+                if (feature.properties.tolkiengat) {
+                    texte = texte + '<li><a href="' + feature.properties.tolkiengat + '">(en) Tolkien Gatway</a></li>'}
+                if (feature.properties.fandom) {
+                    texte = texte + '<li><a href="' + feature.properties.fandom + '">Fandom FR</a></li>'}
+                texte = texte + '</ul>'};
             layer.bindPopup(texte);
     }
 };
