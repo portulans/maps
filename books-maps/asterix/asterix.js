@@ -48,6 +48,14 @@ function pointToLayer(feature,latlng) {
 }
 
 ////////////////////
+
+//Emplacement fictif du village
+var loupeIcon = L.icon({
+    iconUrl: 'img/loupe.png',
+    iconSize:     [50, 50], // size of the icon
+});
+L.marker([48.8, -3.2], {icon: loupeIcon}).addTo(map);
+
 var url = "data/villes.geojson";	
 var villes;
 
