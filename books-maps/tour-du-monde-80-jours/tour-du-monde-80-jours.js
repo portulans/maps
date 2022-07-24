@@ -24,9 +24,73 @@ var Esri_NatGeoWorldMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/re
 	maxZoom: 16
 });
 
+//Fonctions
+
+function getColor(transport) {
+    return transport == 'train' ? '#C70039' :
+            transport == 'paquebot' ? '#1471BE':
+            transport == 'goélette' ? '#1471BE':
+            transport == 'éléphant' ? '#6BA553':
+            transport == 'Traîneau à voiles' ? '#84DBED':
+                    '#D60FCA';
+}
+
+var geojsonMarkerOptions = {
+    radius:5,
+    fillColor: "#0FB7D9",
+    color: "#ffffff",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 1
+};
+
+function pointToLayer(feature,latlng) {
+    return L.circleMarker(latlng, geojsonMarkerOptions);
+}
+
+function styleLines(feature) {
+    //Style des lignes en fonction des types d'objets
+    return {
+                color: getColor(feature.properties.transport),
+                weight: 3,
+                lineJoin: 'round'
+            };
+}
+
+function onEachFeature(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties && feature.properties.name) {
+        texte = '<h4>'+feature.properties.name+'</h4>'+
+        '<p><b>Départ</b> : ' + feature.properties.depart + '<br>' + 
+        '<b>Arrivée</b> : ' + feature.properties.arrivee + '<br>'+ 
+        '<b>Moyen de transport</b> : ' + feature.properties.transport
+
+        if (feature.properties.details_transports | feature.properties.compagnie){
+            if (feature.properties.transport === 'paquebot') { 
+                texte = texte + ' (<i>' + feature.properties.details_transports + '</i>)<br>'};
+
+            if (feature.properties.compagnie){
+                texte = texte + '<b>Armement : </b>' + feature.properties.compagnie + '<br>'};
+        } else {
+            texte = texte + '<br>'}
+
+        if (feature.properties.distance){
+            texte = texte + '<b>Distance parcourue</b> : ' + feature.properties.distance
+        }
+        texte = texte + '</p>'
+        if (feature.properties.description){
+            texte = texte + '<p>' + feature.properties.description + '<br></p>';
+        }
+        
+        layer.bindPopup(texte);
+    }
+};
+
 //Layers
 var url1 = "data//etapes.geojson"
-var etapes = L.geoJSON(null);
+var etapes = L.geoJSON(null,{
+    pointToLayer:pointToLayer
+});
 
    // Get GeoJSON data et création
    $.getJSON(url1, function(data) {
@@ -34,7 +98,10 @@ var etapes = L.geoJSON(null);
    });
 
 var url2 = "data//troncons.geojson"
-var troncons = L.geoJSON(null);
+var troncons = L.geoJSON(null,{
+    onEachFeature: onEachFeature,
+    style:styleLines
+});
 
     // Get GeoJSON data et création
     $.getJSON(url2, function(data) {
@@ -46,7 +113,55 @@ var map = L.map('map',{
     fullscreenControlOptions: {
         position: 'topleft'
     },
-    layers:[Thunderforest_Pioneer,etapes,troncons]
-}).setView([44.703020, 16.707032],2);
+    layers:[Thunderforest_Pioneer]
+}).setView([45, 45],2);
 
 L.control.scale().addTo(map);
+
+//////////////////////////////////////////////////////////
+
+var baseLayers = [{
+    group:'Cartes',
+    collapsed: false,
+    layers: [
+        {
+            active: true,
+            name: "Thunderforest Pioneer",
+            layer: Thunderforest_Pioneer
+        },
+        {
+            active: false,
+            name: "Stamen Watercolor",
+            layer: Stamen_Watercolor
+        },
+        {
+            active: false,
+            name: "Esri NatGeoWorldMap",
+            layer: Esri_NatGeoWorldMap
+        },
+        {
+            active: false,
+            name: "Esri WorldPhysical",
+            layer: Esri_WorldPhysical
+        },
+    ]
+}
+];
+var overLayers = [
+    {
+        active: false,
+        name: "Etapes",
+        layer: etapes
+    },
+    {
+        active: true,
+        name: "Trajets",
+        layer: troncons
+    }
+];
+
+map.addControl( new L.Control.PanelLayers(baseLayers, overLayers,
+    {title:'<h3 id="panel">Le Tour du Monde<br> en 80 jours</h3>'+
+    '<p>Jules Verne</p>'}));
+
+///////////////////////////////////////////////////

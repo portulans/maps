@@ -2,3 +2,13 @@
     width: 100%;
     height: 600px;
   }
+
+.leaflet-container {
+    background: #ddd;
+    outline: 0;
+}
+
+#panel{
+    color: white;
+    text-align: center;
+}

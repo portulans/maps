@@ -396,6 +396,7 @@
         "name": "De Douvres à Calais",
         "depart": "Douvres",
         "arrivee": "Calais",
+        "transport": "paquebot",
         "POI": "02"
       },
       "geometry": {
@@ -1632,7 +1633,7 @@
         "name": "De Kohti à Allahabad",
         "depart": "Kohti",
         "arrivee": "Allahabad",
-        "transport": "Elephant",
+        "transport": "éléphant",
         "details_transports": "Elephant nommé Kiouni, acheté 50 000 F par Mr Fogg.",
         "distance": "50 milles",
         "POI": "10"
