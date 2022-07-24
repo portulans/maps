@@ -1,0 +1,2205 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          4.3140021,
+          50.9139045,
+          4.4370711,
+          50.7964079
+        ],
+        "country": "Belgique",
+        "countrycode": "BE",
+        "name": "*Bruxelles*",
+        "county": "Bruxelles-Capitale",
+        "state": "Bruxelles-Capitale",
+        "album": "Astérix chez les Belges",
+        "num_album": "24",
+        "statut": "Apparait",
+        "city": "Bruxelles"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.351697,
+          50.846557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Agedincum",
+        "country": "France",
+        "countrycode": "FR",
+        "state": "Bourgogne-Franche-Comté",
+        "county": "Yonne",
+        "album": "La Serpe d'or",
+        "num_album": "02",
+        "city": "Sens",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.282986,
+          48.197705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          0.6026662,
+          44.2237801,
+          0.6576922,
+          44.1782874
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Aginum",
+        "county": "Lot-et-Garonne",
+        "state": "Nouvelle-Aquitaine",
+        "city": "Agen",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "05",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.617611,
+          44.201583
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          9.4378614,
+          42.1500778,
+          9.5565946,
+          42.0486351
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Aléria",
+        "county": "Haute-Corse",
+        "state": "Corse",
+        "album": "Astérix en Corse",
+        "city": "Aléria",
+        "num_album": "20",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.514473,
+          42.113572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          4.4635015,
+          47.5366273,
+          4.4712527,
+          47.5330646
+        ],
+        "country": "France",
+        "city": "Alise-Sainte-Reine",
+        "countrycode": "FR",
+        "county": "Côte-d'Or",
+        "name": "Alésia",
+        "state": "Bourgogne-Franche-Comté",
+        "album": "Le Bouclier Arverne",
+        "num_album": "11",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.467564,
+          47.53555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Égypte",
+        "countrycode": "EG",
+        "name": "Alexandrie",
+        "state": "Gouvernorat d'Alexandrie",
+        "album": "Astérix et Cléopâtre",
+        "num_album": "06",
+        "city": "Alexandrie",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.894378,
+          31.199004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Anicium",
+        "album": "Le Bouclier Arverne",
+        "city": "Le-Puy-en-Velay",
+        "country": "France",
+        "countrycode": "FR",
+        "county": "Haute-Loire",
+        "num_album": "11",
+        "state": "Auvergne-Rhône-Alpes",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.884383,
+          45.042223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          3.4054253,
+          46.1529929,
+          3.4455616,
+          46.1105517
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Aquae Calidae",
+        "county": "Allier",
+        "state": "Auvergne-Rhône-Alpes",
+        "album": "Le Bouclier Averne",
+        "city": "Vichy",
+        "num_album": "11",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.420371,
+          46.123927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          5.2694745,
+          43.6259224,
+          5.5063013,
+          43.4461058
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "county": "Bouches-du-Rhône",
+        "state": "Provence-Alpes-Côte d'Azur",
+        "album": "Le Cadeau de César",
+        "city": "Aix-en-Provence",
+        "name": "Aquae Sextiae",
+        "num_album": "21",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.447474,
+          43.529842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          35.1101141,
+          31.3251815,
+          35.3481596,
+          31.1946246
+        ],
+        "country": "Israël",
+        "city": "Arad",
+        "countrycode": "IL",
+        "name": "Arad",
+        "state": "District sud",
+        "album": "L'Odyssée d'Astérix",
+        "num_album": "26",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.214581,
+          31.26122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          4.7278251,
+          44.187834,
+          4.87866,
+          44.0647104
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Arausio",
+        "county": "Vaucluse",
+        "state": "Provence-Alpes-Côte d'Azur",
+        "city": "Orange",
+        "statut": "Mentionné",
+        "album": "Astérix et le Chaudron",
+        "num_album": "13"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.807878,
+          44.137131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          4.4260793,
+          43.7604071,
+          4.8763523,
+          43.3276716
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Arelate",
+        "county": "Bouches-du-Rhône",
+        "state": "Provence-Alpes-Côte d'Azur",
+        "city": "Arles",
+        "album": "Astérix et le Chaudron, Le Cadeau de César",
+        "statut": "Mentionné,Mentionné",
+        "num_album": "13,21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.630965,
+          43.677622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Grèce",
+        "countrycode": "GR",
+        "name": "Athènes",
+        "county": "Περιφερειακή Ενότητα Κεντρικού Τομέα Αθηνών",
+        "state": "Attique",
+        "album": "Astérix aux Jeux olympiques,Astérix chez Rahàzade",
+        "num_album": "12,28",
+        "statut": "Apparait",
+        "city": "Athènes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.728305,
+          37.983941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Atlantide",
+        "country": "Espagne",
+        "countrycode": "ES",
+        "state": "Iles Canaries",
+        "album": "La Galère d'Obélix",
+        "num_album": "30",
+        "statut": "Apparait",
+        "city": "Iles Canaries"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -14.473183,
+          28.450585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Suisse",
+        "city": "Augst",
+        "countrycode": "CH",
+        "county": "Bezirk Liestal",
+        "name": "Augusta Raurica",
+        "state": "Bâle-Campagne",
+        "album": "Astérix chez les Helvètes",
+        "num_album": "16",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.721396,
+          47.533866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          6.9938005,
+          46.9109277,
+          7.0798335,
+          46.845534
+        ],
+        "country": "Suisse",
+        "countrycode": "CH",
+        "name": "Aventicum",
+        "county": "District de la Broye-Vully",
+        "state": "Vaud",
+        "city": "Avenches",
+        "album": "Astérix chez les Helvètes",
+        "num_album": "16",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.040941,
+          46.879575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Irak",
+        "city": "Qaryat Sinjar",
+        "countrycode": "IQ",
+        "county": "Irak",
+        "name": "Babylone",
+        "state": "Babil",
+        "album": "L'Odyssée d'Astérix",
+        "num_album": "26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.424156,
+          32.539594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          35.1823598,
+          31.7236093,
+          35.2234568,
+          31.6907232
+        ],
+        "country": "Palestinian Territory",
+        "countrycode": "PS",
+        "name": "Bethléem",
+        "county": "Zone A",
+        "state": "Cisjordanie",
+        "album": "L'Odyssée d'Astérix",
+        "num_album": "26",
+        "city": "Bethléem",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.206188,
+          31.704356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          2.7113314,
+          45.5969424,
+          2.7820846,
+          45.5601916
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Borvo",
+        "county": "Puy-de-Dôme",
+        "state": "Auvergne-Rhône-Alpes",
+        "city": "La Bourboule",
+        "album": "Le Bouclier arverne",
+        "num_album": "11"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.740161,
+          45.589248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -4.5689169,
+          48.4595521,
+          -4.4278311,
+          48.3572972
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Brivates Portus / Gesobrivate",
+        "county": "Finistère",
+        "state": "Bretagne",
+        "city": "Brest",
+        "album": "Le Fils d'Astérix,La Galère d'Obélix",
+        "num_album": "27,30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.486009,
+          48.390528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -0.6386987,
+          44.9161806,
+          -0.5336838,
+          44.8107826
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Burdigala",
+        "county": "Gironde",
+        "state": "Nouvelle-Aquitaine",
+        "city": "Bordeaux",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "5",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.580036,
+          44.841225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Byblos",
+        "country": "Liban",
+        "countrycode": "LB",
+        "album": "L'Odyssée d'Astérix",
+        "num_album": "26",
+        "city": "Byblos",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.643599,
+          34.12182
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          2.948148,
+          44.895208,
+          3.0637817,
+          44.7896768
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Calentes Baiae",
+        "county": "Cantal",
+        "state": "Auvergne-Rhône-Alpes",
+        "city": "Chaudes-Aigues",
+        "album": "Le Bouclier arverne",
+        "num_album": "11",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.00443,
+          44.853448
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          3.2014632,
+          50.2036584,
+          3.2808727,
+          50.1427829
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Camaracum",
+        "county": "Nord",
+        "state": "Hauts-de-France",
+        "city": "Cambrai",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "5",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.235661,
+          50.17596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          0.875316,
+          51.866767,
+          0.8777313,
+          51.8631221
+        ],
+        "country": "Royaume-Uni",
+        "city": "Colchester",
+        "countrycode": "GB",
+        "county": "Essex",
+        "name": "Camulodunum",
+        "state": "Angleterre",
+        "num_album": "08",
+        "album": "Astérix chez les Bretons",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.876698,
+          51.865058
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -3.1074591,
+          47.643228,
+          -3.025975,
+          47.5635475
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Carnac",
+        "county": "Morbihan",
+        "state": "Bretagne",
+        "city": "Carnac",
+        "album": "Astérix en Hispanie",
+        "num_album": "14",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.079443,
+          47.583663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -4.6096155,
+          41.2811777,
+          -4.4437804,
+          41.161699
+        ],
+        "country": "Espagne",
+        "countrycode": "ES",
+        "county": "Ségovie",
+        "state": "Castille-et-León",
+        "city": "Coca",
+        "name": "Cauca",
+        "album": "Astérix en Hispanie",
+        "num_album": "14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.522836,
+          41.217667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -1.7525876,
+          48.1549705,
+          -1.6244045,
+          48.0769155
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Condate",
+        "county": "Ille-et-Vilaine",
+        "state": "Bretagne",
+        "city": "Rennes",
+        "album": "Astérix légionnaire, Astérix et le Chaudron, Astérix chez les Helvètes, Astérix et Latraviata",
+        "num_album": "10,13,16,31",
+        "statut": "Apparait,,,"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.68002,
+          48.111339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -4.9985994,
+          38.0315171,
+          -4.3514283,
+          37.6658228
+        ],
+        "country": "Espagne",
+        "countrycode": "ES",
+        "name": "Corduba",
+        "county": "Cordoue",
+        "state": "Andalousie",
+        "city": "Cordoue",
+        "album": "Astérix en Hispanie",
+        "num_album": "14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.776014,
+          37.884581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -2.8155453,
+          47.6945599,
+          -2.6816645,
+          47.6208466
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Dariorigum / Darioritum",
+        "county": "Morbihan",
+        "state": "Bretagne",
+        "city": "Vannes",
+        "album": "Astérix et les Goths,Astérix et la Transitalique",
+        "num_album": "03,37",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.759908,
+          47.658677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          6.1360042,
+          49.1487955,
+          6.256451,
+          49.0608244
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Divodurum",
+        "county": "Moselle",
+        "state": "Grand Est",
+        "city": "Metz",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "05",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.176355,
+          49.119696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          1.1427455,
+          51.3323814,
+          1.406207,
+          51.0971868
+        ],
+        "country": "Royaume-Uni",
+        "countrycode": "GB",
+        "name": "Dubrae",
+        "county": "Kent",
+        "state": "Angleterre",
+        "album": "Astérix chez les Bretons",
+        "num_album": "08",
+        "city": "Douvres",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.313423,
+          51.125128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          3.9858212,
+          49.303187,
+          4.1296955,
+          49.2039352
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Durocorturum",
+        "county": "Marne",
+        "state": "Grand Est",
+        "city": "Reims",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "05",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.031926,
+          49.257789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          0.9372021,
+          51.3825395,
+          1.2500695,
+          51.1771875
+        ],
+        "country": "Royaume-Uni",
+        "countrycode": "GB",
+        "name": "Durovernum",
+        "county": "Kent",
+        "state": "Angleterre",
+        "album": "Astérix chez les Bretons",
+        "num_album": "08",
+        "city": "Canterbury",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.080253,
+          51.280028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          11.1497598,
+          43.8354631,
+          11.3389044,
+          43.7258716
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Florentia",
+        "county": "Firenze",
+        "state": "Toscane",
+        "city": "Florence",
+        "album": "Astérix et la Transitalique",
+        "num_album": "37",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.255576,
+          43.769871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          6.1102411,
+          46.231885,
+          6.1758527,
+          46.1777724
+        ],
+        "country": "Suisse",
+        "countrycode": "CH",
+        "name": "Geneva",
+        "state": "Genève",
+        "city": "Genève",
+        "album": "Astérix chez les Helvètes",
+        "statut": "Apparait",
+        "num_album": "16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.146601,
+          46.201756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          3.1061562,
+          45.7303193,
+          3.1706584,
+          45.6963782
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Gergovie",
+        "county": "Puy-de-Dôme",
+        "state": "Auvergne-Rhône-Alpes",
+        "city": "La Roche-Blanche",
+        "album": "Le Bouclier arverne",
+        "num_album": "11"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.127602,
+          45.708535
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -5.0258075,
+          48.4376023,
+          -4.7426241,
+          48.3031733
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Gesocribate",
+        "county": "Finistère",
+        "state": "Bretagne",
+        "city": "Le Conquet",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "05",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.770906,
+          48.36053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Égypte",
+        "city": "Gizeh",
+        "countrycode": "EG",
+        "name": "Gizeh",
+        "album": "Astérix et Cléopâtre",
+        "num_album": "06",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.211806,
+          29.987075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -5.735802,
+          40.9931932,
+          -5.6226215,
+          40.9146276
+        ],
+        "country": "Espagne",
+        "countrycode": "ES",
+        "name": "Helmantica",
+        "county": "Salamanque",
+        "state": "Castille-et-León",
+        "city": "Salamanque",
+        "album": "Astérix en Hispanie",
+        "num_album": "14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.664018,
+          40.965157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -6.0329183,
+          37.4529579,
+          -5.8191571,
+          37.3002036
+        ],
+        "country": "Espagne",
+        "countrycode": "ES",
+        "name": "Hispalis",
+        "county": "Séville",
+        "state": "Andalousie",
+        "city": "Séville",
+        "album": "Astérix en Hispanie",
+        "num_album": "14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.99534,
+          37.38863
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -4.9978084,
+          48.0501784,
+          -4.8297136,
+          48.0303736
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Île-de-Sein",
+        "county": "Finistère",
+        "state": "Bretagne",
+        "album": "La Galère d'Obélix",
+        "num_album": "30",
+        "statut": "Mentionné",
+        "city": "Île-de-Sein"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.85214,
+          48.037969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          35.1523819,
+          31.8597262,
+          35.261221,
+          31.7170441
+        ],
+        "country": "Israël",
+        "countrycode": "IL",
+        "name": "Jérusalem",
+        "state": "District de Jérusalem",
+        "album": "L'Odyssée d'Astérix",
+        "num_album": "26",
+        "city": "Jérusalem"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.225763,
+          31.778824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          23.7198712,
+          37.9946772,
+          23.7207714,
+          37.9908006
+        ],
+        "country": "Grèce",
+        "city": "Athènes",
+        "countrycode": "GR",
+        "county": "Περιφερειακή Ενότητα Κεντρικού Τομέα Αθηνών",
+        "name": "Le Pirée",
+        "state": "Attique",
+        "album": "Astérix aux Jeux olympiques",
+        "num_album": "12",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.663395,
+          37.939911
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -0.5103751,
+          51.6918741,
+          0.3340155,
+          51.2867601
+        ],
+        "country": "Royaume-Uni",
+        "countrycode": "GB",
+        "name": "Londinium",
+        "county": "Grand Londres",
+        "state": "Angleterre",
+        "city": "Londres",
+        "album": "Astérix chez les Bretons",
+        "num_album": "08",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.127647,
+          51.507322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Égypte",
+        "countrycode": "EG",
+        "name": "Louxor",
+        "state": "Gouvernorat de Louxor",
+        "album": "Astérix et Cléopâtre",
+        "num_album": "06",
+        "city": "Louxor",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.647186,
+          25.702096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          4.7718134,
+          45.8082628,
+          4.8983774,
+          45.7073666
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Lugdunum",
+        "county": "Métropole de Lyon",
+        "state": "Auvergne-Rhône-Alpes",
+        "city": "Lyon",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "05",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.832011,
+          45.757814
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          2.224122,
+          48.902156,
+          2.4697602,
+          48.8155755
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "county": "Paris",
+        "state": "Île-de-France",
+        "city": "Paris",
+        "name": "Lutèce",
+        "album": "La Serpe d'or, Le Tour de Gaule d'Astérix, Les Lauriers de César",
+        "num_album": "02,05,18",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.346846,
+          48.855065
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          9.3956728,
+          42.5647961,
+          9.53442,
+          42.5137117
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Mariana",
+        "county": "Haute-Corse",
+        "state": "Corse",
+        "city": "Lucciana",
+        "album": "Astérix en Corse",
+        "num_album": "20",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.41756,
+          42.545939
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          5.2286312,
+          43.3910329,
+          5.5324758,
+          43.1696228
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Massilia",
+        "county": "Bouches-du-Rhône",
+        "state": "Provence-Alpes-Côte d'Azur",
+        "city": "Marseille",
+        "album": "Le Tour de Gaule d'Astérix, Astérix légionnaire, Astérix en Corse)",
+        "num_album": "05,10,20",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.369953,
+          43.296174
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          9.0408867,
+          45.5358482,
+          9.2781103,
+          45.3867381
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Mediolanum",
+        "county": "Milan",
+        "state": "Lombardie",
+        "city": "Milan",
+        "album": "Astérix et les Normands,Astérix et la Transitalique",
+        "num_album": "09,37",
+        "statut": "Mentionné, Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1905,
+          45.4668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          9.0505698,
+          45.7424391,
+          9.4974636,
+          45.5367099
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Modicia",
+        "state": "Lombardie",
+        "city": "Monza-et-la-Brianzz",
+        "album": "Astérix et la Transitalique",
+        "num_album": "37",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.274406,
+          45.580977
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -5.2562546,
+          37.3872221,
+          -5.186909,
+          37.3394897
+        ],
+        "country": "Espagne",
+        "countrycode": "ES",
+        "name": "Munda",
+        "county": "Séville",
+        "state": "Andalousie",
+        "city": "Ville d'Espagne au temps de l'Empire Romain",
+        "album": "(Astérix en Hispanie",
+        "num_album": "14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.222605,
+          37.353666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          14.1320999,
+          40.916123,
+          14.3537121,
+          40.791193
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Néapolis",
+        "county": "Napoli",
+        "state": "Campanie",
+        "city": "Naples",
+        "album": "Astérix et la Transitalique",
+        "num_album": "37",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.248783,
+          40.835934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          4.2356708,
+          43.9230177,
+          4.4496605,
+          43.7412659
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Nemausus",
+        "county": "Gard",
+        "state": "Occitanie",
+        "city": "Nîmes",
+        "album": "Le Cadeau de César",
+        "num_album": "21",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.360069,
+          43.837425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          3.0532561,
+          45.8183838,
+          3.1721761,
+          45.7556941
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Nemessos",
+        "county": "Puy-de-Dôme",
+        "state": "Auvergne-Rhône-Alpes",
+        "city": "Clermont-Ferrand",
+        "album": "Le Bouclier arverne",
+        "num_album": "11"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.081943,
+          45.777455
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          2.6289229,
+          46.3346065,
+          2.73277,
+          46.2708445
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Neriomagus",
+        "county": "Allier",
+        "state": "Auvergne-Rhône-Alpes",
+        "city": "Néris-les-Bains",
+        "album": "Le Bouclier arverne",
+        "num_album": "11",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.658303,
+          46.289806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          7.1819535,
+          43.7607635,
+          7.323912,
+          43.6454189
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Nicae",
+        "county": "Alpes-Maritimes",
+        "state": "Provence-Alpes-Côte d'Azur",
+        "album": "Le Tour de Gaule d'Astérix",
+        "city": "Nice",
+        "num_album": "05",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.268391,
+          43.700936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          7.0284588,
+          46.1406726,
+          7.157263,
+          46.073387
+        ],
+        "country": "Suisse",
+        "countrycode": "CH",
+        "name": "Octodurum",
+        "county": "Martigny",
+        "state": "Valais",
+        "city": "Martigny",
+        "album": "Astérix chez les Helvètes",
+        "num_album": "16",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.072735,
+          46.103115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          21.6276382,
+          37.6404846,
+          21.6351747,
+          37.6360124
+        ],
+        "country": "Grèce",
+        "city": "Ancienne-Olympie",
+        "countrycode": "GR",
+        "county": "Élide",
+        "name": "Olympie",
+        "state": "Péloponnèse, Grèce occidentale et Îles Ioniennes",
+        "album": "Astérix aux Jeux olympiques",
+        "num_album": "12",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.630538,
+          37.63819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Italie",
+        "city": "Lido di Ostia",
+        "countrycode": "IT",
+        "name": "Ostia",
+        "county": "Roma Capitale",
+        "state": "Latium",
+        "album": "Astérix gladiateur",
+        "num_album": "04",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.278759,
+          41.732567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          10.214813,
+          44.9007443,
+          10.4436365,
+          44.662402
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Parma",
+        "county": "Parma",
+        "state": "Émilie-Romagne",
+        "city": "Parme",
+        "statut": "Apparait",
+        "album": "Astérix et la Transitalique",
+        "num_album": "37"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.328083,
+          44.801368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          10.2684553,
+          43.7509347,
+          10.4562831,
+          43.5807231
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Pisae",
+        "county": "Pisa",
+        "state": "Toscane",
+        "city": "Pise",
+        "statut": "Mentionné",
+        "num_album": "24",
+        "album": "Astérix chez les Belges"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.401862,
+          43.71594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          10.2684553,
+          43.7509347,
+          10.4562831,
+          43.5807231
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Pisae",
+        "county": "Pisa",
+        "state": "Toscane",
+        "city": "Pise",
+        "statut": "Mentionné",
+        "album": "Astérix chez les Belges",
+        "num_album": "24"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.401862,
+          43.71594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -1.6953841,
+          42.8424401,
+          -1.6044942,
+          42.7888466
+        ],
+        "country": "Espagne",
+        "countrycode": "ES",
+        "name": "Pompaelo",
+        "state": "Navarre",
+        "city": "Pampelune",
+        "album": "Astérix en Hispanie",
+        "num_album": "14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -1.644256,
+          42.818454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          14.4733693,
+          40.7700297,
+          14.5204162,
+          40.7223245
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Pompei",
+        "county": "Napoli",
+        "state": "Campanie",
+        "album": "Astérix et la Transitalique",
+        "num_album": "37",
+        "statut": "Mentionnée",
+        "city": "Pompéi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.500642,
+          40.749127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          1.6342208,
+          50.9156981,
+          1.7154928,
+          50.8595934
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "county": "Pas-de-Calais",
+        "name": "Portus Itius",
+        "state": "Hauts-de-France",
+        "album": "Astérix chez les Bretons",
+        "num_album": "08",
+        "statut": "Apparait",
+        "description": "Emplacement précis inconnu",
+        "city": "Wissant ???"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.662902,
+          50.885383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          12.2344669,
+          42.1410285,
+          12.8557603,
+          41.6556417
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Rome",
+        "county": "Roma Capitale",
+        "state": "Latium",
+        "album": "Astérix gladiateur, Les Lauriers de César, Astérix chez Rahàzade",
+        "num_album": "04,18,28",
+        "statut": "Apparait",
+        "city": "Rome"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.482932,
+          41.89332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          1.0300648,
+          49.4652601,
+          1.1521157,
+          49.4172001
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Rotomagus",
+        "county": "Seine-Maritime",
+        "state": "Normandie",
+        "city": "Rouen",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "05",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.093966,
+          49.440459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ruspina",
+        "statut": "Mentionné",
+        "album": "Astérix légionnaire",
+        "country": "Tunisie",
+        "num_album": "10",
+        "countrycode": "TU"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.905691,
+          35.635382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          2.2235574,
+          49.9505487,
+          2.3457767,
+          49.846837
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Samarobriva",
+        "county": "Somme",
+        "state": "Hauts-de-France",
+        "city": "Amiens",
+        "album": "Obélix et Compagnie,Astérix chez les Belges",
+        "num_album": "23,24",
+        "statut": "Mentionné,Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.295695,
+          49.894171
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          2.5333486,
+          44.3776341,
+          2.6064197,
+          44.340533
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Segodunum",
+        "county": "Aveyron",
+        "state": "Occitanie",
+        "city": "Rodez",
+        "album": "Le Bouclier arverne",
+        "num_album": "11",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.572788,
+          44.351306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -4.3358152,
+          40.9890492,
+          -4.0527199,
+          40.8346645
+        ],
+        "country": "Espagne",
+        "countrycode": "ES",
+        "name": "Segovia",
+        "county": "Ségovie",
+        "state": "Castille-et-León",
+        "city": "Ségovie",
+        "album": "Astérix en Hispanie",
+        "num_album": "14"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.124149,
+          40.950216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          11.2300025,
+          43.3663312,
+          11.4285563,
+          43.249901
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Sena Julia",
+        "county": "Siena",
+        "state": "Toscane",
+        "city": "Sienne",
+        "album": "Astérix et la Transitalique",
+        "num_album": "37",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.331653,
+          43.318554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Liban",
+        "countrycode": "LB",
+        "name": "Sidon",
+        "county": "District de Sidon",
+        "state": "Gouvernorat du Liban Sud",
+        "city": "Saïda",
+        "album": "L'Odyssée d'Astérix",
+        "statut": "Mentionné",
+        "num_album": "26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.378034,
+          33.561835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          7.5093082,
+          47.2202206,
+          7.5523051,
+          47.1959413
+        ],
+        "country": "Suisse",
+        "countrycode": "CH",
+        "name": "Solodurum",
+        "county": "Amtei Solothurn-Lebern",
+        "state": "Soleure",
+        "city": "Soleure",
+        "num_album": "16",
+        "statut": "Mentionné",
+        "album": "Astérix chez les Helvètes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.538405,
+          47.208136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          0.1362825,
+          48.0358733,
+          0.2550938,
+          47.927977
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Suindinum",
+        "county": "Sarthe",
+        "state": "Pays de la Loire",
+        "city": "Le Mans",
+        "album": "La Serpe d'or",
+        "num_album": "02",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.196785,
+          48.007385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thapsus",
+        "statut": "Apparait",
+        "country": "Tunisie",
+        "album": "Astérix légionnaire",
+        "num_album": "10",
+        "countrycode": "TU"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.988378,
+          35.537337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          12.6899187,
+          42.0063159,
+          12.8477635,
+          41.9166792
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Tibur",
+        "county": "Roma Capitale",
+        "state": "Latium",
+        "num_album": "37",
+        "album": "Astérix et la Transitalique",
+        "city": "Tivoli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.798884,
+          41.960922
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          1.3503956,
+          43.668708,
+          1.5153795,
+          43.532654
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Tolosa",
+        "county": "Haute-Garonne",
+        "state": "Occitanie",
+        "album": "Le Tour de Gaule d'Astérix",
+        "num_album": "5",
+        "statut": "Apparait",
+        "city": "Toulouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.444247,
+          43.604462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          35.1905419,
+          33.2771935,
+          35.2298069,
+          33.2199129
+        ],
+        "country": "Liban",
+        "countrycode": "LB",
+        "name": "Tyr",
+        "county": "District de Tyr",
+        "state": "Gouvernorat du Liban Sud",
+        "album": "L'Odyssée d'Astérix, Astérix chez Rahàzade",
+        "num_album": "26,28",
+        "statut": "Apparait",
+        "city": "Tyr"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.196402,
+          33.272121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          12.1668349,
+          45.5779981,
+          12.5965709,
+          45.2312466
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Venexia",
+        "county": "Venise",
+        "state": "Vénétie",
+        "city": "Venise",
+        "album": "Astérix et la Transitalique",
+        "num_album": "37",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.33459,
+          45.437191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          5.9409668,
+          47.3200746,
+          6.0835059,
+          47.2006872
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Vesontio",
+        "county": "Doubs",
+        "state": "Bourgogne-Franche-Comté",
+        "city": "Besançon",
+        "album": "Obélix et Compagnie",
+        "num_album": "13"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.024362,
+          47.238022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          4.8358868,
+          45.5574883,
+          4.9233427,
+          45.4867243
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Vienna",
+        "county": "Isère",
+        "state": "Auvergne-Rhône-Alpes",
+        "city": "Vienne",
+        "album": "Astérix et le chaudron",
+        "num_album": "13",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.87477,
+          45.52524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Suisse",
+        "city": "Windisch",
+        "countrycode": "CH",
+        "county": "Bezirk Brugg",
+        "name": "Vindonissa",
+        "state": "Argovie",
+        "album": "Astérix chez les Helvètes",
+        "num_album": "16",
+        "statut": "Mentionné"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.220026,
+          47.48101
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          4.8233292,
+          51.1736404,
+          4.8233662,
+          51.1735801
+        ],
+        "country": "Belgique",
+        "city": "Waterloo",
+        "countrycode": "BE",
+        "county": "Turnhout",
+        "name": "Waterloo",
+        "state": "Anvers",
+        "album": "Astérix chez les Belges",
+        "num_album": "24",
+        "statut": "Apparait"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.823366,
+          51.17358
+        ]
+      }
+    }
+  ]
+}

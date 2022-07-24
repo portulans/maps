@@ -1,0 +1,36 @@
+
+.container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "Carte Carte Albums"
+      "Carte Carte Albums"
+      "Carte Carte Albums"; 
+}
+
+#asterixmap {
+  grid-area: Carte; 
+  width: 100%;
+  height: 600px;
+}
+.albums {
+  grid-area: Albums; 
+  width:100%;
+  height:600px;
+  overflow-y: scroll;
+}
+
+.couvertures {
+  width:140px;
+  height:175px
+}
+
+.center {
+  text-align: center;
+}
+
+.smallinterligne{
+  line-height : 1;
+}
