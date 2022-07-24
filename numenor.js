@@ -46,9 +46,9 @@ function featureToMarker(feature, latlng) {
 	return L.marker(latlng, {
 		icon: L.divIcon({
 			className: 'marker-'+feature.properties.type,
-			html: iconByName(feature.properties.type),
+			//html: iconByName(feature.properties.type),
 			iconUrl: 'markers/'+feature.properties.type+'.png',
-			iconSize: [24, 24]
+			iconSize: [36, 36]
 		})
 	}).bindTooltip(feature.properties.nom)
 }
@@ -64,17 +64,17 @@ function onEachFeature(feature, layer) {
             if (feature.properties.trad_fr) {
                 texte = texte + '<b>Signification</b> : </b><i>'+ feature.properties.trad_fr+'</i></p>'}
             
-            if (feature.properties.hasOwnProperty('tolkiendil') === true || feature.properties.hasOwnProperty('tolkiengat') === true || feature.properties.hasOwnProperty('fandom') === true ) {
+            if (feature.properties.hasOwnProperty('tolkiendil') === true | feature.properties.hasOwnProperty('tolkiengat') === true | feature.properties.hasOwnProperty('fandom') === true ) {
                 texte = texte + '<b>En savoir plus</b>'+
                 '<ul>'
                 if (feature.properties.tolkiendil) {
-                    texte = texte + '<li><a href="' + feature.properties.tolkiendil + '">Tolkiendil</a></li>'}
+                    texte = texte + '<li><a href="' + feature.properties.tolkiendil + '" target="_blank">Tolkiendil</a></li>'}
                 if (feature.properties.tolkiengat) {
-                    texte = texte + '<li><a href="' + feature.properties.tolkiengat + '">(en) Tolkien Gatway</a></li>'}
+                    texte = texte + '<li><a href="' + feature.properties.tolkiengat + '" target="_blank">(en) Tolkien Gatway</a></li>'}
                 if (feature.properties.fandom) {
-                    texte = texte + '<li><a href="' + feature.properties.fandom + '">Fandom FR</a></li>'}
+                    texte = texte + '<li><a href="' + feature.properties.fandom + '" target="_blank">Fandom FR</a></li>'}
                 texte = texte + '</ul>'};
-            layer.bindPopup(texte);
+            layer.bindPopup(texte).bindTooltip(feature.properties.nom);
     }
 };
 
@@ -130,7 +130,7 @@ var ilecap = L.geoJSON(null, {
     onEachFeature: onEachFeature, 
     pointToLayer: featureToMarker,
     filter:function (feature) {
-        if (feature.properties.type === "île" || feature.properties.type === "cap") return true
+        if (feature.properties.type === "cap" | feature.properties.type === "île") return true
         }
     });
     
@@ -229,7 +229,7 @@ var map = L.map('map', {
 });
 map.fitBounds(bounds);
 
-var searchLayer = L.layerGroup([ville,capitale,regions,construction,vallee,fleuves,numenor]);
+var searchLayer = L.layerGroup([ville,capitale,regions,construction,vallee,fleuves,numenor,ilecap]);
 //... adding data in searchLayer ...
 map.addControl( new L.Control.Search({
     layer: searchLayer,
@@ -243,7 +243,7 @@ map.removeLayer(fleuves)
 map.removeLayer(construction)
 map.removeLayer(vallee)
 map.removeLayer(numenor)
-
+map.removeLayer(ilecap)
 //////////////////////////////////////////////////////////
 
 var baseLayers = [{
@@ -264,6 +264,12 @@ var overLayers = [
         name: "Numénor",
         icon: iconByName('royaume'),
         layer: numenor
+    },
+    {
+        active: false,
+        name: "Régions",
+        icon: iconByName('region'),
+        layer: regions
     },
 	{
 		group: "Villes et constructions",
@@ -329,7 +335,7 @@ var overLayers = [
             },
             {
                 active:false,
-                name:"Îles et cap",
+                name:"Îles et caps",
                 icon:iconByName('ilecap'),
                 layer:ilecap
             }
@@ -341,13 +347,7 @@ var overLayers = [
                 layer:mer
             }
 		]
-	},
-    {
-        active: false,
-        name: "Régions",
-        icon: iconByName('region'),
-        layer: regions
-    }
+	}
 ];
 
 map.addControl( new L.Control.PanelLayers(baseLayers, overLayers,

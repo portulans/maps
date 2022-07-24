@@ -49,7 +49,7 @@
 	background: url('icons/montagne.png') center center no-repeat;
 }
 .icon-ilecap {
-	background: url('icons/île2.png') center center no-repeat;
+	background: url('icons/île.png') center center no-repeat;
 }
 .icon-lacbaie {
 	background: url('icons/baie.png') center center no-repeat;
@@ -81,8 +81,8 @@
 	background: url('markers/montagne.png') center center no-repeat;
 }
 .marker-île {
-	background: url('markers/île2.png') center center no-repeat;
+	background: url('markers/île.png') center center no-repeat;
 }
 .marker-cap {
-	background: url('markers/île2.png') center center no-repeat;
+	background: url('markers/cap.png') center center no-repeat;
 }
