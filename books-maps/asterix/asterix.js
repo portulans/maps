@@ -1,4 +1,11 @@
-var map = L.map('asterixmap').setView([44.703020, 11.707032], 4);
+var map = L.map('asterixmap',{
+    fullscreenControl: true,
+    fullscreenControlOptions: {
+        position: 'topleft'
+    }
+}).setView([44.703020, 11.707032], 4);
+
+L.control.scale().addTo(map);
 
 var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -7,17 +14,17 @@ var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var DARE_map = L.tileLayer('https://dh.gu.se/tiles/imperium/{z}/{x}/{y}.png', {
 	minZoom:4,
     maxZoom: 11,
-	attribution: '© Johan Åhlfeldt, Centre for Digital Humanities, University of Gothenburg 2019 | <a href="https://dh.gu.se/dare/" target="_blank">DARE Project</a> | Creative Commons Attribution 4.0 International license (CC BY 4.0)'
+	attribution: '© Johan Åhlfeldt, Centre for Digital Humanities, University of Gothenburg 2019 | <a href="https://dh.gu.se/dare/" target="_blank">DARE Project</a> | CC BY 4.0'
 }).addTo(map);
 
 //////////// Style des points
 var geojsonMarkerOptions = {
-    radius:4,
-    fillColor: "#ff7800",
-    color: "#000",
+    radius:5,
+    fillColor: "#0FB7D9",
+    color: "#ffffff",
     weight: 1,
     opacity: 1,
-    fillOpacity: 0.8
+    fillOpacity: 1
 };
 
 //////////// Function
@@ -25,14 +32,14 @@ var geojsonMarkerOptions = {
 function onEachFeature(feature, layer) {
     // does this feature have a property named popupContent?
     if (feature.properties && feature.properties.name) {
-        layer.bindPopup(
-            '<h2>'+feature.properties.name+'</h2>' +
+        texte = '<h2>'+feature.properties.name+'</h2>' +
             '<p><b>Apparitions : </b><i>'+ feature.properties.album +
             '</i></p>'+'<p class="center">-------------</p>'+
             '<p><b>Nom actuel : </b>' + feature.properties.city+'</br>'+
             '<b>Département : </b>' + feature.properties.county+'</br>'+
             '<b>Région : </b>' + feature.properties.state+'</br>'+
-            '<b>Pays : </b>' + feature.properties.country+'</p>');
+            '<b>Pays : </b>' + feature.properties.country+'</p>';
+            layer.bindPopup(texte).bindTooltip(feature.properties.name);
     }
 };
 
