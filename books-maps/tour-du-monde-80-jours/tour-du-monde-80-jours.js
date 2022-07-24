@@ -57,7 +57,7 @@ function styleLines(feature) {
             };
 }
 
-function onEachFeature(feature, layer) {
+function onEachLineFeature(feature, layer) {
     // does this feature have a property named popupContent?
     if (feature.properties && feature.properties.name) {
         texte = '<h4>'+feature.properties.name+'</h4>'+
@@ -86,9 +86,62 @@ function onEachFeature(feature, layer) {
     }
 };
 
+function onEachPointFeature(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties && feature.properties.name) {
+        texte = '<h4>'+feature.properties.name+'</h4><p>'
+        if (feature.properties.city) {
+            texte = texte + '<b>Ville</b> : ' + feature.properties.city + '<br>'
+        }
+        if (feature.properties.state) {
+            texte = texte + '<b>Région</b> : ' + feature.properties.state + '<br>'
+        }
+        texte = texte + '<b>Pays</b> : ' + feature.properties.country + '<br>'
+
+        if (feature.properties.city != 'Londres'){
+            if (feature.properties.date_arrivee){
+                texte = texte + '<b>Arrivée</b> : ' + feature.properties.date_arrivee
+                if (feature.properties.heure_arrivee){
+                        texte = texte + ' (' + feature.properties.heure_arrivee + ') <br>'
+                } else {
+                    texte = texte + '<br>'
+                }
+            }
+            if (feature.properties.date_depart){
+                texte = texte + '<b>Départ</b> : ' + feature.properties.date_depart
+                if (feature.properties.heure_depart){
+                        texte = texte + ' (' + feature.properties.heure_depart + ') <br>'
+                } else {
+                    texte = texte + '<br>'
+                }
+            }
+            
+        } else {
+            if (feature.properties.date_depart){
+                texte = texte + '<b>Départ</b> : ' + feature.properties.date_depart
+                if (feature.properties.heure_depart){
+                        texte = texte + ' (' + feature.properties.heure_depart + ') <br>'
+                } else {
+                    texte = texte + '<br>'
+                }
+            }
+            if (feature.properties.date_arrivee){
+                texte = texte + '<b>Arrivée</b> : ' + feature.properties.date_arrivee
+                if (feature.properties.heure_arrivee){
+                        texte = texte + ' (' + feature.properties.heure_arrivee + ') <br>'
+                } else {
+                    texte = texte + '<br>'
+                }
+        }
+    }
+        layer.bindPopup(texte).bindTooltip(feature.properties.name);
+    }
+};
+
 //Layers
 var url1 = "data//etapes.geojson"
 var etapes = L.geoJSON(null,{
+    onEachFeature: onEachPointFeature,
     pointToLayer:pointToLayer
 });
 
@@ -99,7 +152,7 @@ var etapes = L.geoJSON(null,{
 
 var url2 = "data//troncons.geojson"
 var troncons = L.geoJSON(null,{
-    onEachFeature: onEachFeature,
+    onEachFeature: onEachLineFeature,
     style:styleLines
 });
 
@@ -155,13 +208,14 @@ var overLayers = [
     },
     {
         active: true,
-        name: "Trajets",
+        name: "Trajet",
         layer: troncons
     }
 ];
 
 map.addControl( new L.Control.PanelLayers(baseLayers, overLayers,
     {title:'<h3 id="panel">Le Tour du Monde<br> en 80 jours</h3>'+
-    '<p>Jules Verne</p>'}));
+    '<p>Jules Verne</p>'+
+    '<p><i>Les dates correspondent<br>aux notes de Philéas Fogg<br> dans le roman</i></p>'}));
 
 ///////////////////////////////////////////////////
