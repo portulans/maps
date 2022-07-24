@@ -3,7 +3,7 @@ var map = L.map('asterixmap',{
     fullscreenControlOptions: {
         position: 'topleft'
     }
-}).setView([44.703020, 11.707032], 4);
+}).setView([44.703020, 16.707032], 4);
 
 L.control.scale().addTo(map);
 
@@ -52,10 +52,15 @@ function pointToLayer(feature,latlng) {
 //Emplacement fictif du village
 var loupeIcon = L.icon({
     iconUrl: 'img/loupe.png',
-    iconSize:     [50, 50], // size of the icon
+    iconSize:     [45, 45], // size of the icon
 });
-L.marker([48.8, -3.2], {icon: loupeIcon}).addTo(map);
 
+L.marker([48.8, -3.2], {icon: loupeIcon}).bindTooltip("Village des Irréductibles gaulois", {
+        direction: 'right'
+        }).addTo(map);
+
+
+// Villes visités
 var url = "data/villes.geojson";	
 var villes;
 

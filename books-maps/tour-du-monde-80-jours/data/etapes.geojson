@@ -1,0 +1,588 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -0.1337856,
+          51.5067339,
+          -0.1330856,
+          51.5063085
+        ],
+        "country": "Royaume-Uni",
+        "city": "Londres",
+        "countrycode": "GB",
+        "name": "The Reform Club - Londres",
+        "state": "Angleterre",
+        "heure_depart": "8h45 PM",
+        "date_depart": "mercredi 2 octobre",
+        "POI": "00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.133436,
+          51.506521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          1.1427455,
+          51.3323814,
+          1.406207,
+          51.0971868
+        ],
+        "country": "Royaume-Uni",
+        "countrycode": "GB",
+        "name": "Douvres",
+        "state": "Angleterre",
+        "POI": "01"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.313423,
+          51.125128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "France",
+        "city": "Calais",
+        "countrycode": "FR",
+        "name": "Calais",
+        "state": "Hauts-de-France",
+        "POI": "02.1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.853845,
+          50.952477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          2.224122,
+          48.902156,
+          2.4697602,
+          48.8155755
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Paris",
+        "heure_depart": "8h40 PM",
+        "date_arrivee": "jeudi 3 octobre",
+        "heure_arrivee": "7h20 AM",
+        "date_depart": "jeudi 3 octobre",
+        "POI": "02.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.351462,
+          48.856697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          7.5778348,
+          45.1402175,
+          7.7733388,
+          45.0067924
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Turin",
+        "heure_depart": "7h20 AM",
+        "date_arrivee": "vendredi 4 octobre",
+        "heure_arrivee": "6h35 AM",
+        "date_depart": "vendredi 4 octobre",
+        "POI": "04"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.682489,
+          45.067755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          17.731663,
+          40.708478,
+          18.0452809,
+          40.4784222
+        ],
+        "country": "Italie",
+        "countrycode": "IT",
+        "name": "Brindisi",
+        "heure_depart": "5h00 PM",
+        "date_arrivee": "samedi 5 octobre",
+        "heure_arrivee": "4h00 PM",
+        "date_depart": "samedi 5 octobre",
+        "POI": "05"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          17.945526,
+          40.63953
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Égypte",
+        "countrycode": "EG",
+        "name": "Suez",
+        "date_arrivee": "mercredi 9 octobre",
+        "heure_arrivee": "11h00 AM",
+        "POI": "06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.537086,
+          29.974498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          44.9090399,
+          12.9412176,
+          45.0981259,
+          12.7508947
+        ],
+        "country": "Yémen",
+        "countrycode": "YE",
+        "description": "Le 14 octobre, le Mongolia fit escale à Steamer-Point, ancien nom d'un port situé au nord-ouest d'Aden alors très fréquenté par les navires des compagnies occidentales.\nL'escale intervient avec 15 heures d'avance.",
+        "name": "Steamer Point",
+        "date_arrivee": "14 octobre",
+        "heure_arrivee": "soir",
+        "date_depart": "15 octobre",
+        "heure_depart": "6h00 PM",
+        "POI": "07",
+        "city": "Aden"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.028504,
+          12.789585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          72.776333,
+          19.2694771,
+          72.9817485,
+          18.8939566
+        ],
+        "country": "Inde",
+        "countrycode": "IN",
+        "name": "Bombay",
+        "heure_depart": "8h00 PM",
+        "date_arrivee": "Dimanche 20 octobre",
+        "heure_arrivee": "4h30 PM",
+        "date_depart": "Dimanche 20 octobre",
+        "POI": "08",
+        "description": "Phileas Fogg arrive avec 2 jours d'avance à Bombay.\n\nOù se trouve un des gouverneurs britanniques de l'Inde.",
+        "city": "Mumbaï"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.823469,
+          18.952871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Inde",
+        "countrycode": "IN",
+        "name": "Kothi",
+        "description": "Probable correspondance avec la ville de Kholby du roman.\nSource : https://nwhyte.livejournal.com/1013784.html",
+        "date_arrivee": "Mardi 22 octobre",
+        "date_depart": "Mardi 22 octobre",
+        "heure_arrivee": "8h00 AM",
+        "heure_depart": "9h00 AM",
+        "POI": "09"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7739,
+          24.7558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Inde",
+        "countrycode": "IN",
+        "description": "Où reprend la voie de chemin de fer.\n\nLe nom actuel est Prayagraj.",
+        "name": "Allahabad",
+        "POI": "10"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.833801,
+          25.43813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          88.2406237,
+          22.6325362,
+          88.4589549,
+          22.4503235
+        ],
+        "country": "Inde",
+        "countrycode": "IN",
+        "name": "Calcutta",
+        "heure_depart": "12h00 AM",
+        "date_arrivee": "25 octobre",
+        "heure_arrivee": "7h00 AM",
+        "date_depart": "25 octobre",
+        "description": "Mr Fogg et Passepartout sont arrêtés pour l'incident du pagode à Bombay. Fogg paye la caution ce qui leur permet de poursuivre leur chemin.\n\nLe gouverneur général de l'Inde se trouvait à Calcutta.",
+        "POI": "11",
+        "city": "Calcutta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.363882,
+          22.572672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          113.8172427,
+          22.5683333,
+          114.5024867,
+          22.1367246
+        ],
+        "country": "Chine",
+        "countrycode": "CN",
+        "name": "Hong Kong",
+        "heure_depart": "03h10 PM",
+        "date_arrivee": "6 novembre",
+        "heure_arrivee": "01h00 PM",
+        "date_depart": "7 novembre",
+        "POI": "12"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.181978,
+          22.252454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          120.8508584,
+          31.8746166,
+          123.3342088,
+          30.6614383
+        ],
+        "country": "Chine",
+        "countrycode": "CN",
+        "name": "Shanghai",
+        "POI": "13",
+        "city": "Shanghai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.48905,
+          31.225299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          139.464781,
+          35.5927382,
+          139.7769348,
+          35.312501
+        ],
+        "country": "Japon",
+        "countrycode": "JP",
+        "name": "Yokohama",
+        "POI": "14",
+        "heure_depart": "6h30 PM",
+        "date_depart": "14 novembre",
+        "date_arrivee": "14 novembre",
+        "heure_arrivee": "matin",
+        "city": "Yokohama"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.636768,
+          35.444991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "San Francisco",
+        "country": "Etats-Unis",
+        "countrycode": "US",
+        "POI": "15",
+        "date_arrivee": "3 décembre",
+        "heure_arrivee": "7h00 AM",
+        "heure_depart": "6h00 PM",
+        "date_depart": "3 décembre",
+        "description": "Départ de la station d'Oakland"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.403059,
+          37.785067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "États-Unis d'Amérique",
+        "city": "Ogden",
+        "countrycode": "US",
+        "name": "Ogden",
+        "state": "Utah",
+        "date_arrivee": "6 décembre",
+        "heure_arrivee": "2h00 PM",
+        "date_depart": "6h00 PM",
+        "heure_depart": "6 décembre",
+        "POI": "16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.990172,
+          41.22313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -98.263781,
+          40.950485,
+          -98.244633,
+          40.941755
+        ],
+        "country": "États-Unis d'Amérique",
+        "countrycode": "US",
+        "name": "Fort Kearney",
+        "state": "Nebraska",
+        "_umap_options": {
+          "iconUrl": "/uploads/pictogram/rail-24-white.png"
+        },
+        "description": "Où s'arrêta le train après l'attaque des Sioux et où Philéas Fogg compte 20 heures de retard. ",
+        "date_depart": "9 décembre",
+        "POI": "17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.254231,
+          40.945666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -96.2682,
+          41.3930618,
+          -95.871141,
+          41.190585
+        ],
+        "country": "États-Unis d'Amérique",
+        "countrycode": "US",
+        "name": "Omaha",
+        "state": "Nebraska",
+        "heure_arrivee": "1h00 PM",
+        "date_depart": "9 décembre",
+        "POI": "18"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.938376,
+          41.258746
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -87.6322263,
+          41.8843471,
+          -87.6316256,
+          41.8833259
+        ],
+        "country": "États-Unis d'Amérique",
+        "city": "Chicago",
+        "countrycode": "US",
+        "name": "Chicago",
+        "state": "Ilinois",
+        "heure_arrivee": "4h00 PM",
+        "date_arrivee": "10 décembre",
+        "POI": "19"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.63194,
+          41.88382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -74.25909,
+          40.9161785,
+          -73.7001809,
+          40.477399
+        ],
+        "country": "États-Unis d'Amérique",
+        "countrycode": "US",
+        "name": "New York",
+        "state": "New York",
+        "date_arrivee": "11 décembre",
+        "date_depart": "12 décembre",
+        "heure_depart": "9h00 AM",
+        "heure_arrivee": "11h15 PM",
+        "POI": "20"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.006015,
+          40.712728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Irlande",
+        "city": "Cobh Municipal District",
+        "countrycode": "IE",
+        "description": "Aujourd'hui appelé Cobh.",
+        "name": "Queenstown",
+        "date_arrivee": "21 décembre",
+        "heure_arrivee": "01h00 AM",
+        "date_depart": "21 décembre",
+        "heure_depart": "01h30 AM",
+        "POI": "21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.294279,
+          51.850095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -6.3870259,
+          53.4105416,
+          -6.1148829,
+          53.2987342
+        ],
+        "country": "Irlande",
+        "countrycode": "IE",
+        "name": "Dublin",
+        "date_arrivee": "21 décembre",
+        "heure_arrivee": "matin",
+        "POI": "22"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.260273,
+          53.349765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -3.0191726,
+          53.4749885,
+          -2.8180003,
+          53.3115427
+        ],
+        "country": "Royaume-Uni",
+        "countrycode": "GB",
+        "name": "Liverpool",
+        "state": "Angleterre",
+        "date_arrivee": "21 décembre",
+        "heure_arrivee": "11h40 AM",
+        "date_depart": "21 décembre",
+        "heure_depart": "03h00 PM",
+        "POI": "23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -2.99168,
+          53.407199
+        ]
+      }
+    }
+  ]
+}
