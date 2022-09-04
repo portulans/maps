@@ -73,6 +73,7 @@ var villes;
      $.getJSON(url, function(data) {
 	   villes.addData(data);
     });
+
 /*Layers*/
 
 //Using a Layer Group to add/ remove data from the map.
@@ -123,6 +124,8 @@ var myData =  L.layerGroup([]);
         }
     );
 
+
+
         document.getElementById("02").addEventListener('click', function (event) {
             theExpression = 'feature.properties.num_album.indexOf("02") !== -1;' ;	
             console.log(theExpression);
@@ -151,7 +154,6 @@ var myData =  L.layerGroup([]);
             console.log(theExpression);
                 map.removeLayer(myData);
                 myData.clearLayers();
-                
                 villes = L.geoJson(null, {
                     pointToLayer: pointToLayer,
                     onEachFeature: onEachFeature,
@@ -1015,3 +1017,13 @@ document.getElementById("35").addEventListener('click', function (event) {
                     myData.addTo(map);
                 }
             );
+
+
+var searchLayer = L.layerGroup([villes]);
+//... adding data in searchLayer ...
+map.addControl( new L.Control.Search({
+    layer: searchLayer,
+    propertyName: 'name',
+    initial:false,
+    textPlaceholder:"Chercher un lieu..."
+}) );

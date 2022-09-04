@@ -1,6 +1,8 @@
 //Fond de carte
 var bounds = [[0,0], [751,1000]];
-var image = L.imageOverlay('img/numenor/Numenor-by-Christopher-Tolkien.jpg', bounds);
+var image = L.imageOverlay('img/numenor/Numenor-by-Christopher-Tolkien.jpg', bounds, {
+    attribution : "Númenor par Christopher Tolkien d'après J.R.R. Tolkien"
+});
 
 //////////// Fonctions
 
@@ -64,7 +66,7 @@ function onEachFeature(feature, layer) {
             if (feature.properties.trad_fr) {
                 texte = texte + '<b>Signification</b> : </b><i>'+ feature.properties.trad_fr+'</i></p>'}
             
-            if (feature.properties.hasOwnProperty('tolkiendil') === true | feature.properties.hasOwnProperty('tolkiengat') === true | feature.properties.hasOwnProperty('fandom') === true ) {
+            if (feature.properties.hasOwnProperty('tolkiendil') === true || feature.properties.hasOwnProperty('tolkiengat') === true || feature.properties.hasOwnProperty('fandom') === true ) {
                 texte = texte + '<b>En savoir plus</b>'+
                 '<ul>'
                 if (feature.properties.tolkiendil) {
