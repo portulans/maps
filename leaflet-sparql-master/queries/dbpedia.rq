@@ -1,0 +1,11 @@
+################################################
+# This query gets all triples with a geometry
+################################################
+
+PREFIX geo: <http://www.opengis.net/ont/geosparql#> 
+
+SELECT  ?subject ?geom
+WHERE   {
+        ?subject geo:geometry ?geom .
+}
+LIMIT 1000

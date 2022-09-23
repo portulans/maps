@@ -1,3 +1,6 @@
+.body{
+	height: 100vh;
+}
 #map{
     width: 90vw;
     height: 780px;
