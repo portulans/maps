@@ -23,11 +23,7 @@ var wmsCassiniOverlay = L.WMS.overlay('https://ws.sogefi-web.com/wms?', {
     'transparent': true,
 });
 
-var Rade1816 = L.tileLayer('https://warper.wmflabs.org/maps/tile/4044/{z}/{x}/{y}.png', {
-	attribution: 'Admiralty Chart No 65 Brest and the Ushant Islands RMG B8780, 1816',
-});
-
-var Brest1700 = L.tileLayer('https://warper.wmflabs.org/maps/tile/2905/{z}/{x}/{y}.png', {
+var RadeBrest1724 = L.tileLayer('https://warper.wmflabs.org/maps/tile/5362/{z}/{x}/{y}.png', {
 	attribution: '© Bibliothèque Nationale de France',
 });
 
@@ -35,11 +31,7 @@ var Brest1724 = L.tileLayer('https://warper.wmflabs.org/maps/tile/2909/{z}/{x}/{
 	attribution: '© Bibliothèque Nationale de France',
 });
 
-var Brest1762 = L.tileLayer('https://warper.wmflabs.org/maps/tile/2907/{z}/{x}/{y}.png', {
-	attribution: '© Bibliothèque Nationale de France',
-});
-
-var Recouvrance1682 = L.tileLayer('https://warper.wmflabs.org/maps/tile/2908/{z}/{x}/{y}.png', {
+var LaRochelle = L.tileLayer('https://warper.wmflabs.org/maps/tile/2909/{z}/{x}/{y}.png', {
 	attribution: '© Bibliothèque Nationale de France',
 });
 
@@ -153,7 +145,7 @@ var map = L.map('map',{
 L.control.scale().addTo(map);
 
 var baseLayers = [{
-    group:'Cartes',
+    group:'Cartes modernes',
     collapsed: false,
     layers: [
         {
@@ -175,35 +167,16 @@ var overLayers = [
     collapsed: true,
     layers: [
     {
-        active:false,
-        name:"Recouvrance, 1682",
-        layer:Recouvrance1682
-    },
-        {
-            active:false,
-            name:"Brest, 1700",
-            layer:Brest1700
-        },
-        {
-            active:false,
-            name:"Brest, 1724",
-            layer:Brest1724
-        },
-        {
-            active:false,
-            name:"Brest, 1762",
-            layer:Brest1762
-        },
-    {
-        active:false,
-        name:"Rade de Brest, 1816",
-        layer:Rade1816
+        active:true,
+        name:"Rade de Brest, 1724",
+        layer:RadeBrest1724
     },
     {
         active:false,
-        name:"Cassini",
-        layer:wmsCassiniOverlay
-    }]
+        name:"Brest, 1723",
+        layer:Brest1724
+    }
+    ]
     },
     {
         active: true,
@@ -222,3 +195,49 @@ map.addControl( new L.Control.PanelLayers(baseLayers, overLayers,
     '<p>Patrice Pellerin</p>'}));
 
 ///////////////////////////////////////////////////
+
+function zoomOn(zone) {
+    if (zone == "Atlantique") {
+        var lat = 30;
+        var lng = -5;
+        var zoom_level = 3
+    } else if (zone == 'Brest') {
+        var lat = 48.387517
+        var lng = -4.497356
+        var zoom_level = 14
+    } else if (zone == "Rade") {
+        var lat = 48.350226
+        var lng = -4.491898
+        var zoom_level = 11
+    } else if (zone == "Finistere") {
+        var lat = 48.350226
+        var lng = -4.491898
+        var zoom_level = 9
+    } else if (zone == "Canaries") {
+        var lat = 28.261328
+        var lng = -16.171875
+        var zoom_level = 9
+    } else if (zone == "Guyane") {
+        var lat = 4.741711
+        var lng = -52.211498
+        var zoom_level = 9
+    } else if (zone == "Cayenne") {
+        var lat = 4.920350
+        var lng = -52.305203 
+        var zoom_level = 13
+    } else if (zone == "Saint-Laurent") {
+        var lat = 46.510492
+        var lng = -69.323730
+        var zoom_level = 6
+    }
+    map.setView([lat,lng], zoom_level, {animate: true});
+}
+
+document.getElementById("Brest").addEventListener("click", e => zoomOn("Brest"));
+document.getElementById("Rade").addEventListener("click", e => zoomOn("Rade"));
+document.getElementById("Finistere").addEventListener("click", e => zoomOn("Finistere"));
+document.getElementById("Atlantique").addEventListener("click", e => zoomOn("Atlantique"));
+document.getElementById("Canaries").addEventListener("click", e => zoomOn("Canaries"));
+document.getElementById("Cayenne").addEventListener("click", e => zoomOn("Cayenne"));
+document.getElementById("Guyane").addEventListener("click", e => zoomOn("Guyane"));
+document.getElementById("Saint-Laurent").addEventListener("click", e => zoomOn("Saint-Laurent"));

@@ -10,50 +10,57 @@
         "trajet": "De Kermellec au port de Brest",
         "personnage": "Yann",
         "depart": "Kermellec",
-        "arrivee": "Port de Brest"
+        "arrivee": "Port de Brest",
+        "type": "terrestre",
+        "T_d": "1",
+        "T_a": "1"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -4.605775,
-            48.339916
+            -4.598025,
+            48.348518
           ],
           [
-            -4.602013,
-            48.343206
+            -4.596213,
+            48.349184
           ],
           [
-            -4.596958,
-            48.345285
+            -4.594716,
+            48.349202
           ],
           [
-            -4.588715,
-            48.347425
+            -4.592267,
+            48.349335
           ],
           [
-            -4.585281,
-            48.349023
+            -4.587307,
+            48.351896
           ],
           [
-            -4.581676,
-            48.349822
+            -4.581413,
+            48.35239
           ],
           [
-            -4.575497,
-            48.35085
+            -4.575004,
+            48.351591
           ],
           [
             -4.568802,
             48.354959
           ],
           [
-            -4.565369,
-            48.357698
+            -4.567166,
+            48.357726
           ],
           [
-            -4.558674,
-            48.360323
+            -4.566441,
+            48.35976
+          ],
+          [
+            -4.561921,
+            48.362377
           ],
           [
             -4.552837,
@@ -68,52 +75,52 @@
             48.363519
           ],
           [
-            -4.528976,
-            48.364546
+            -4.531537,
+            48.365938
           ],
           [
-            -4.52108,
-            48.370822
+            -4.52303,
+            48.370949
           ],
           [
-            -4.517647,
-            48.372876
+            -4.518986,
+            48.373458
           ],
           [
-            -4.511982,
-            48.377097
+            -4.516679,
+            48.378539
           ],
           [
-            -4.507004,
-            48.379949
+            -4.511824,
+            48.381147
           ],
           [
-            -4.506671,
-            48.382402
+            -4.508062,
+            48.383319
           ],
           [
-            -4.506018,
-            48.383191
+            -4.505682,
+            48.382291
           ],
           [
-            -4.504934,
-            48.383009
+            -4.504168,
+            48.38208
           ],
           [
-            -4.502566,
-            48.382782
+            -4.502151,
+            48.382042
           ],
           [
-            -4.500787,
-            48.38226
+            -4.501457,
+            48.382746
           ],
           [
-            -4.498982,
-            48.382211
+            -4.499197,
+            48.382448
           ],
           [
-            -4.498086,
-            48.382236
+            -4.498258,
+            48.382477
           ],
           [
             -4.497171,
@@ -131,7 +138,8 @@
         "trajet": "De Bertheaume à la Rochelle",
         "personnage": "Yann",
         "depart": "Bertheaume",
-        "arrivee": "La Rochelle"
+        "arrivee": "La Rochelle",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
@@ -312,7 +320,8 @@
         "trajet": "De la Rochelle aux Canaries",
         "personnage": "Yann",
         "depart": "La Rochelle",
-        "arrivee": "Îles Canaries"
+        "arrivee": "Îles Canaries",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
@@ -541,7 +550,8 @@
         "arrivee": "Guyane",
         "personnage": "Yann",
         "ordre": "12",
-        "trajet": "Des Canaries à la Guyane"
+        "trajet": "Des Canaries à la Guyane",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
@@ -738,7 +748,8 @@
         "trajet": "De Cayenne à Brest",
         "personnage": "Yann",
         "depart": "Cayenne",
-        "arrivee": "Brest"
+        "arrivee": "Brest",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
@@ -951,7 +962,10 @@
         "trajet": "Du port de Brest à Roc'h An Ankou",
         "personnage": "Yann",
         "depart": "Roc'h An Ankou",
-        "arrivee": "Port de Brest"
+        "arrivee": "Port de Brest",
+        "type": "maritime",
+        "T_d": "1",
+        "T_a": "1"
       },
       "geometry": {
         "type": "LineString",
@@ -1061,85 +1075,118 @@
         "name": "Yann #3 De Roc'h An Ankou au Fort Vauban",
         "description": "Yann se rend au fort Vauban pour neutraliser les canons et permettre la sortie de l'Hirondelle de Roc'h An Ankou",
         "ordre": "3",
-        "trajet": "De Roc'h An Ankou au Fort Vauban",
+        "trajet": "De Roc'h An Ankou à la Tour Vauban",
         "personnage": "Yann",
         "depart": "Fort Vauban",
-        "arrivee": "Roc'h An Ankou"
+        "arrivee": "Roc'h An Ankou",
+        "type": "terrestre"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -4.573574,
-            48.235505
+            -4.573555,
+            48.235524
           ],
           [
-            -4.572814,
-            48.235513
+            -4.572795,
+            48.235532
           ],
           [
-            -4.57233,
-            48.235067
+            -4.572311,
+            48.235086
           ],
           [
-            -4.570128,
-            48.23423
+            -4.570109,
+            48.234249
           ],
           [
-            -4.568398,
-            48.233815
+            -4.568379,
+            48.233834
           ],
           [
-            -4.566811,
-            48.233239
+            -4.566792,
+            48.233258
           ],
           [
-            -4.551361,
-            48.235299
+            -4.551342,
+            48.235318
           ],
           [
-            -4.539345,
-            48.244679
+            -4.539326,
+            48.244698
           ],
           [
-            -4.539001,
-            48.249254
+            -4.538982,
+            48.249273
           ],
           [
-            -4.545181,
-            48.255888
+            -4.542744,
+            48.25321
           ],
           [
-            -4.559258,
-            48.262063
+            -4.551227,
+            48.258178
           ],
           [
-            -4.575737,
-            48.26435
+            -4.557793,
+            48.260285
           ],
           [
-            -4.584663,
-            48.270981
+            -4.571248,
+            48.261392
           ],
           [
-            -4.594465,
-            48.274671
+            -4.575057,
+            48.263645
           ],
           [
-            -4.598997,
-            48.276956
+            -4.577341,
+            48.266215
           ],
           [
-            -4.601194,
-            48.28004
+            -4.579803,
+            48.270316
           ],
           [
-            -4.598396,
-            48.281727
+            -4.586053,
+            48.271459
           ],
           [
-            -4.592216,
-            48.279898
+            -4.592127,
+            48.273277
+          ],
+          [
+            -4.598563,
+            48.276197
+          ],
+          [
+            -4.600885,
+            48.278418
+          ],
+          [
+            -4.600792,
+            48.281191
+          ],
+          [
+            -4.599509,
+            48.281967
+          ],
+          [
+            -4.598382,
+            48.282224
+          ],
+          [
+            -4.596727,
+            48.28212
+          ],
+          [
+            -4.594023,
+            48.281697
+          ],
+          [
+            -4.591687,
+            48.280713
           ]
         ]
       }
@@ -1152,7 +1199,8 @@
         "trajet": "De la Tour Vauban à Roc'h An Ankou",
         "personnage": "Yann",
         "depart": "Roc'h An Ankou",
-        "arrivee": "Tour Vauban"
+        "arrivee": "Tour Vauban",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
@@ -1162,16 +1210,20 @@
             48.279262
           ],
           [
-            -4.591358,
-            48.277892
+            -4.589913,
+            48.278911
           ],
           [
-            -4.587238,
-            48.278805
+            -4.588532,
+            48.279182
           ],
           [
-            -4.587753,
-            48.282459
+            -4.58791,
+            48.279952
+          ],
+          [
+            -4.589398,
+            48.28249
           ],
           [
             -4.592903,
@@ -1252,7 +1304,8 @@
         "trajet": "De Roc'h An Ankou au fort de Berthaume",
         "personnage": "Yann",
         "arrivee": "Fort de Berthaume",
-        "depart": "Roc'h An Ankou"
+        "depart": "Roc'h An Ankou",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
@@ -1336,7 +1389,8 @@
         "trajet": "Du fort de Berthaume à Kermellec",
         "personnage": "Yann",
         "depart": "Fort de Berthaume",
-        "arrivee": "Kermellec"
+        "arrivee": "Kermellec",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
@@ -1400,7 +1454,8 @@
         "trajet": "De Kermellec au port de Brest",
         "personnage": "Yann",
         "depart": "Port de Brest",
-        "arrivee": "Kermellec"
+        "arrivee": "Kermellec",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
@@ -1489,7 +1544,8 @@
         "trajet": "De Recouvrance au château de Brest",
         "personnage": "Yann",
         "depart": "Château de Brest",
-        "arrivee": "Recouvrance"
+        "arrivee": "Recouvrance",
+        "type": "terrestre"
       },
       "geometry": {
         "type": "LineString",
@@ -1566,7 +1622,8 @@
         "trajet": "Du château de Brest à Berthaume",
         "personnage": "Yann",
         "depart": "Berthaume",
-        "arrivee": "Château de Brest"
+        "arrivee": "Château de Brest",
+        "type": "maritime"
       },
       "geometry": {
         "type": "LineString",
