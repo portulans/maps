@@ -71,7 +71,7 @@ function onEachFeature(feature, layer) {
 
 function pointToLayer(feature,latlng) {
     return L.circleMarker(latlng, {
-        radius:5,
+        radius:6,
         fillColor: getColor(feature.properties.type),
         color: "#ffffff",
         weight: 1,
