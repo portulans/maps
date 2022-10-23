@@ -20,7 +20,7 @@ var map = L.map('asterixmap',{
     },
     maxZoom:9,
     layers:[Stamen_Watercolor]
-}).setView([44.703020, 16.707032], 4);
+}).setView([44.703020, 2.381834], 4);
 
 L.control.scale().addTo(map);
 
