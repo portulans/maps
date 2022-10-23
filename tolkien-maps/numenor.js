@@ -1,6 +1,6 @@
 //Fond de carte
 var bounds = [[0,0], [751,1000]];
-var image = L.imageOverlay('img/numenor/Numenor-by-Christopher-Tolkien.jpg', bounds, {
+var image = L.imageOverlay('img/numenor/numenor.png', bounds, {
     attribution : "Númenor par Christopher Tolkien d'après J.R.R. Tolkien"
 });
 
