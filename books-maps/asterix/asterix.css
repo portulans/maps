@@ -26,7 +26,7 @@
 .albums {
   grid-area: Albums; 
   width:auto;
-  height:375px;
+  height:425px;
   overflow-y: scroll;
 }
 
