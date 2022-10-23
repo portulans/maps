@@ -1,7 +1,7 @@
 //Fond de carte
 var bounds = [[0,0], [751,1000]];
 var image = L.imageOverlay('img/numenor/numenor.png', bounds, {
-    attribution : "Númenor, d'après les cartes J.R.R. Tolkien, Christopher Tolkien et Karin Wynn Fonstad"
+    attribution : "Númenor, d'après les cartes J.R.R. Tolkien, Christopher Tolkien et Karen Wynn Fonstad"
 });
 
 //////////// Fonctions

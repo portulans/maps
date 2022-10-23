@@ -213,9 +213,11 @@ var overLayers = [
     }
 ];
 
-map.addControl( new L.Control.PanelLayers(baseLayers, overLayers,
+map.addControl( new L.Control.PanelLayers(baseLayers, overLayers
+    /*,
     {title:'<h3 id="panel">Le Tour du Monde<br> en 80 jours</h3>'+
     '<p>Jules Verne</p>'+
-    '<p><i>Les dates correspondent<br>aux notes de Philéas Fogg<br> dans le roman</i></p>'}));
+    '<p><i>Les dates correspondent<br>aux notes de Philéas Fogg<br> dans le roman</i></p>'}*/
+    ));
 
 ///////////////////////////////////////////////////
