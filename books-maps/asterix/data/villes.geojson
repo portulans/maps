@@ -4,6 +4,137 @@
     {
       "type": "Feature",
       "properties": {
+        "_umap_options": {
+          "color": "ForestGreen"
+        },
+        "name": "Forêt des Carnutes",
+        "album": "Astérix et la Serpe d'or, Astérix et les Goths, Le Papyrus de César",
+        "num_album": "02,03,36",
+        "statut": "Mentionné,Apparait",
+        "country": "France",
+        "countrycode": "FR",
+        "county": "Beauce",
+        "type": "forêt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.227007,
+          48.411783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          6.1480088,
+          46.5184341,
+          6.930928,
+          46.2042839
+        ],
+        "country": "France",
+        "countrycode": "FR",
+        "name": "Lacus Lemanus",
+        "album": "Astérix chez les Helvètes",
+        "nom_actuel": "Lac Léman",
+        "num_album": "16",
+        "sous_type": "lac",
+        "type": "hydrographie"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.552765,
+          46.45134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mer d'Iroise",
+        "album": "L'Odyssée d'Astérix",
+        "num_album": "26",
+        "country": "France",
+        "countrycode": "FR",
+        "nom_actuel": "Mer d'Iroise",
+        "sous_type": "mer",
+        "type": "hydrographie"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.947622,
+          48.328662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mer Morte",
+        "album": "L'Odyssée d'Astérix",
+        "nom_actuel": "Mer Morte",
+        "num_album": "26",
+        "sous_type": "mer intérieure",
+        "type": "hydrographie"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.479977,
+          31.519414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Vallée du Gange",
+        "album": "Astérix chez Rahàzade",
+        "num_album": "28",
+        "country": "India",
+        "countrycode": "IN",
+        "nom_actuel": "Gange",
+        "sous_type": "fleuve",
+        "type": "hydrographie"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.199988,
+          28.68954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Atlantide",
+        "country": "Espagne",
+        "countrycode": "ES",
+        "state": "Iles Canaries",
+        "album": "La Galère d'Obélix",
+        "num_album": "30",
+        "statut": "Apparait",
+        "city": "Iles Canaries",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "autres",
+        "justification": "L'histoire laisse entendre que l'emplacement de l'Atlantde se situerai près des îles Canaries"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -14.473183,
+          28.450585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "extent": [
           4.3140021,
           50.9139045,
@@ -12,19 +143,96 @@
         ],
         "country": "Belgique",
         "countrycode": "BE",
-        "name": "*Bruxelles*",
+        "name": "Bruxelles",
         "county": "Bruxelles-Capitale",
         "state": "Bruxelles-Capitale",
         "album": "Astérix chez les Belges",
         "num_album": "24",
         "statut": "Apparait",
-        "city": "Bruxelles"
+        "city": "Bruxelles",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville",
+        "justification": "Bruxelles n'existait pas encore mais plusieurs allusions à la ville sont faites dans l'histoire (choux de Bruxelle, dentelles, Manneken-Pis)"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           4.351697,
           50.846557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "extent": [
+          -74.0451069,
+          40.6896741,
+          -74.0439637,
+          40.6888049
+        ],
+        "country": "États-Unis d'Amérique",
+        "countrycode": "US",
+        "name": "Liberty Island",
+        "state": "New York",
+        "city": "New York",
+        "num_album": "22",
+        "album": "La Grande Traversée",
+        "reel": "T",
+        "statut": "Apparait",
+        "nom_mentionne": "F",
+        "type": "autres",
+        "justification": "Pour attirer l'attention d'un navire, Astérix monte sur un monticule de pierre avec une torche allumée dans la main (parodie de la statue de la Liberté). La remontée du fleuve en canoe fait penser au fleuve Hudson."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.044548,
+          40.689253
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Village d'Øbsen",
+        "reel": "F",
+        "country": "Scandinavie",
+        "album": "La Grande Traversée",
+        "num_album": "22",
+        "statut": "Apparait",
+        "nom_mentionne": "T",
+        "type": "autres",
+        "justification": "Carte publiée dans \"Astérix Bon voyage\""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.620843,
+          59.436064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Village indien",
+        "album": "La Grande Traversée",
+        "country": "Etats-Unis",
+        "countrycode": "US",
+        "nom_mentionne": "F",
+        "num_album": "22",
+        "reel": "F",
+        "statut": "Apparait",
+        "type": "autres",
+        "justification": "Situé près de New York, en amont de Liberty Island (cf justification de Liberty Island)."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.005056,
+          40.750959
         ]
       }
     },
@@ -39,7 +247,10 @@
         "album": "La Serpe d'or",
         "num_album": "02",
         "city": "Sens",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -66,7 +277,10 @@
         "city": "Agen",
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "05",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -93,7 +307,10 @@
         "album": "Astérix en Corse",
         "city": "Aléria",
         "num_album": "20",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -120,7 +337,10 @@
         "state": "Bourgogne-Franche-Comté",
         "album": "Le Bouclier Arverne",
         "num_album": "11",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -140,7 +360,10 @@
         "album": "Astérix et Cléopâtre",
         "num_album": "06",
         "city": "Alexandrie",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -161,7 +384,10 @@
         "county": "Haute-Loire",
         "num_album": "11",
         "state": "Auvergne-Rhône-Alpes",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -188,7 +414,10 @@
         "album": "Le Bouclier Averne",
         "city": "Vichy",
         "num_album": "11",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -215,7 +444,10 @@
         "city": "Aix-en-Provence",
         "name": "Aquae Sextiae",
         "num_album": "21",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -241,7 +473,10 @@
         "state": "District sud",
         "album": "L'Odyssée d'Astérix",
         "num_album": "26",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -268,7 +503,10 @@
         "city": "Orange",
         "statut": "Mentionné",
         "album": "Astérix et le Chaudron",
-        "num_album": "13"
+        "num_album": "13",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -295,7 +533,10 @@
         "city": "Arles",
         "album": "Astérix et le Chaudron, Le Cadeau de César",
         "statut": "Mentionné,Mentionné",
-        "num_album": "13,21"
+        "num_album": "13,21",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -316,33 +557,16 @@
         "album": "Astérix aux Jeux olympiques,Astérix chez Rahàzade",
         "num_album": "12,28",
         "statut": "Apparait",
-        "city": "Athènes"
+        "city": "Athènes",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           23.728305,
           37.983941
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "Atlantide",
-        "country": "Espagne",
-        "countrycode": "ES",
-        "state": "Iles Canaries",
-        "album": "La Galère d'Obélix",
-        "num_album": "30",
-        "statut": "Apparait",
-        "city": "Iles Canaries"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -14.473183,
-          28.450585
         ]
       }
     },
@@ -357,7 +581,10 @@
         "state": "Bâle-Campagne",
         "album": "Astérix chez les Helvètes",
         "num_album": "16",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -384,7 +611,10 @@
         "city": "Avenches",
         "album": "Astérix chez les Helvètes",
         "num_album": "16",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -404,7 +634,10 @@
         "name": "Babylone",
         "state": "Babil",
         "album": "L'Odyssée d'Astérix",
-        "num_album": "26"
+        "num_album": "26",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -431,7 +664,10 @@
         "album": "L'Odyssée d'Astérix",
         "num_album": "26",
         "city": "Bethléem",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -457,7 +693,10 @@
         "state": "Auvergne-Rhône-Alpes",
         "city": "La Bourboule",
         "album": "Le Bouclier arverne",
-        "num_album": "11"
+        "num_album": "11",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -483,7 +722,10 @@
         "state": "Bretagne",
         "city": "Brest",
         "album": "Le Fils d'Astérix,La Galère d'Obélix",
-        "num_album": "27,30"
+        "num_album": "27,30",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -510,7 +752,10 @@
         "city": "Bordeaux",
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "5",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -529,7 +774,10 @@
         "album": "L'Odyssée d'Astérix",
         "num_album": "26",
         "city": "Byblos",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -556,7 +804,10 @@
         "city": "Chaudes-Aigues",
         "album": "Le Bouclier arverne",
         "num_album": "11",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -583,7 +834,11 @@
         "city": "Cambrai",
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "5",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "image": "0503_camaracum.JPG",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -610,7 +865,10 @@
         "state": "Angleterre",
         "num_album": "08",
         "album": "Astérix chez les Bretons",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -637,7 +895,10 @@
         "city": "Carnac",
         "album": "Astérix en Hispanie",
         "num_album": "14",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -663,7 +924,10 @@
         "city": "Coca",
         "name": "Cauca",
         "album": "Astérix en Hispanie",
-        "num_album": "14"
+        "num_album": "14",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -690,7 +954,10 @@
         "city": "Rennes",
         "album": "Astérix légionnaire, Astérix et le Chaudron, Astérix chez les Helvètes, Astérix et Latraviata",
         "num_album": "10,13,16,31",
-        "statut": "Apparait,,,"
+        "statut": "Apparait,,,",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -716,7 +983,10 @@
         "state": "Andalousie",
         "city": "Cordoue",
         "album": "Astérix en Hispanie",
-        "num_album": "14"
+        "num_album": "14",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -743,7 +1013,10 @@
         "city": "Vannes",
         "album": "Astérix et les Goths,Astérix et la Transitalique",
         "num_album": "03,37",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -770,7 +1043,10 @@
         "city": "Metz",
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "05",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -797,7 +1073,10 @@
         "album": "Astérix chez les Bretons",
         "num_album": "08",
         "city": "Douvres",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -824,7 +1103,10 @@
         "city": "Reims",
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "05",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -851,7 +1133,10 @@
         "album": "Astérix chez les Bretons",
         "num_album": "08",
         "city": "Canterbury",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -878,7 +1163,10 @@
         "city": "Florence",
         "album": "Astérix et la Transitalique",
         "num_album": "37",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -904,7 +1192,10 @@
         "city": "Genève",
         "album": "Astérix chez les Helvètes",
         "statut": "Apparait",
-        "num_album": "16"
+        "num_album": "16",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -930,7 +1221,10 @@
         "state": "Auvergne-Rhône-Alpes",
         "city": "La Roche-Blanche",
         "album": "Le Bouclier arverne",
-        "num_album": "11"
+        "num_album": "11",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -957,7 +1251,10 @@
         "city": "Le Conquet",
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "05",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -976,7 +1273,10 @@
         "name": "Gizeh",
         "album": "Astérix et Cléopâtre",
         "num_album": "06",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1002,7 +1302,10 @@
         "state": "Castille-et-León",
         "city": "Salamanque",
         "album": "Astérix en Hispanie",
-        "num_album": "14"
+        "num_album": "14",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1028,7 +1331,10 @@
         "state": "Andalousie",
         "city": "Séville",
         "album": "Astérix en Hispanie",
-        "num_album": "14"
+        "num_album": "14",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1055,7 +1361,10 @@
         "album": "La Galère d'Obélix",
         "num_album": "30",
         "statut": "Mentionné",
-        "city": "Île-de-Sein"
+        "city": "Île-de-Sein",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1080,7 +1389,10 @@
         "state": "District de Jérusalem",
         "album": "L'Odyssée d'Astérix",
         "num_album": "26",
-        "city": "Jérusalem"
+        "city": "Jérusalem",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1107,7 +1419,10 @@
         "state": "Attique",
         "album": "Astérix aux Jeux olympiques",
         "num_album": "12",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1134,7 +1449,10 @@
         "city": "Londres",
         "album": "Astérix chez les Bretons",
         "num_album": "08",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1154,7 +1472,10 @@
         "album": "Astérix et Cléopâtre",
         "num_album": "06",
         "city": "Louxor",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1181,7 +1502,10 @@
         "city": "Lyon",
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "05",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1208,7 +1532,12 @@
         "name": "Lutèce",
         "album": "La Serpe d'or, Le Tour de Gaule d'Astérix, Les Lauriers de César",
         "num_album": "02,05,18",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "description": "Seconde étape du tour de Gaule d'Astérix et Obélix. Il y achètent du jambon.",
+        "image": "0502_lutece.JPG",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1235,7 +1564,10 @@
         "city": "Lucciana",
         "album": "Astérix en Corse",
         "num_album": "20",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1262,7 +1594,10 @@
         "city": "Marseille",
         "album": "Le Tour de Gaule d'Astérix, Astérix légionnaire, Astérix en Corse)",
         "num_album": "05,10,20",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1289,7 +1624,10 @@
         "city": "Milan",
         "album": "Astérix et les Normands,Astérix et la Transitalique",
         "num_album": "09,37",
-        "statut": "Mentionné, Apparait"
+        "statut": "Mentionné, Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1315,7 +1653,10 @@
         "city": "Monza-et-la-Brianzz",
         "album": "Astérix et la Transitalique",
         "num_album": "37",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1341,7 +1682,10 @@
         "state": "Andalousie",
         "city": "Ville d'Espagne au temps de l'Empire Romain",
         "album": "(Astérix en Hispanie",
-        "num_album": "14"
+        "num_album": "14",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1368,7 +1712,10 @@
         "city": "Naples",
         "album": "Astérix et la Transitalique",
         "num_album": "37",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1395,7 +1742,10 @@
         "city": "Nîmes",
         "album": "Le Cadeau de César",
         "num_album": "21",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1421,7 +1771,10 @@
         "state": "Auvergne-Rhône-Alpes",
         "city": "Clermont-Ferrand",
         "album": "Le Bouclier arverne",
-        "num_album": "11"
+        "num_album": "11",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1448,7 +1801,10 @@
         "city": "Néris-les-Bains",
         "album": "Le Bouclier arverne",
         "num_album": "11",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1475,7 +1831,10 @@
         "album": "Le Tour de Gaule d'Astérix",
         "city": "Nice",
         "num_album": "05",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1502,7 +1861,10 @@
         "city": "Martigny",
         "album": "Astérix chez les Helvètes",
         "num_album": "16",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1529,7 +1891,10 @@
         "state": "Péloponnèse, Grèce occidentale et Îles Ioniennes",
         "album": "Astérix aux Jeux olympiques",
         "num_album": "12",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1550,7 +1915,10 @@
         "state": "Latium",
         "album": "Astérix gladiateur",
         "num_album": "04",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1577,7 +1945,10 @@
         "city": "Parme",
         "statut": "Apparait",
         "album": "Astérix et la Transitalique",
-        "num_album": "37"
+        "num_album": "37",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1604,7 +1975,10 @@
         "city": "Pise",
         "statut": "Mentionné",
         "num_album": "24",
-        "album": "Astérix chez les Belges"
+        "album": "Astérix chez les Belges",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1631,7 +2005,10 @@
         "city": "Pise",
         "statut": "Mentionné",
         "album": "Astérix chez les Belges",
-        "num_album": "24"
+        "num_album": "24",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1656,7 +2033,10 @@
         "state": "Navarre",
         "city": "Pampelune",
         "album": "Astérix en Hispanie",
-        "num_album": "14"
+        "num_album": "14",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1682,8 +2062,11 @@
         "state": "Campanie",
         "album": "Astérix et la Transitalique",
         "num_album": "37",
-        "statut": "Mentionnée",
-        "city": "Pompéi"
+        "statut": "Mentionné",
+        "city": "Pompéi",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1711,7 +2094,10 @@
         "num_album": "08",
         "statut": "Apparait",
         "description": "Emplacement précis inconnu",
-        "city": "Wissant ???"
+        "city": "Wissant ???",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1738,7 +2124,10 @@
         "album": "Astérix gladiateur, Les Lauriers de César, Astérix chez Rahàzade",
         "num_album": "04,18,28",
         "statut": "Apparait",
-        "city": "Rome"
+        "city": "Rome",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1765,7 +2154,12 @@
         "city": "Rouen",
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "05",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "description": "Première étape du tour de Gaule d'Astérix et Obélix.",
+        "image": "0501_rotomagus.JPG",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1783,7 +2177,10 @@
         "album": "Astérix légionnaire",
         "country": "Tunisie",
         "num_album": "10",
-        "countrycode": "TU"
+        "countrycode": "TU",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1810,7 +2207,10 @@
         "city": "Amiens",
         "album": "Obélix et Compagnie,Astérix chez les Belges",
         "num_album": "23,24",
-        "statut": "Mentionné,Apparait"
+        "statut": "Mentionné,Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1837,7 +2237,10 @@
         "city": "Rodez",
         "album": "Le Bouclier arverne",
         "num_album": "11",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1863,7 +2266,10 @@
         "state": "Castille-et-León",
         "city": "Ségovie",
         "album": "Astérix en Hispanie",
-        "num_album": "14"
+        "num_album": "14",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1890,7 +2296,10 @@
         "city": "Sienne",
         "album": "Astérix et la Transitalique",
         "num_album": "37",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1911,7 +2320,10 @@
         "city": "Saïda",
         "album": "L'Odyssée d'Astérix",
         "statut": "Mentionné",
-        "num_album": "26"
+        "num_album": "26",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1938,7 +2350,10 @@
         "city": "Soleure",
         "num_album": "16",
         "statut": "Mentionné",
-        "album": "Astérix chez les Helvètes"
+        "album": "Astérix chez les Helvètes",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1965,7 +2380,10 @@
         "city": "Le Mans",
         "album": "La Serpe d'or",
         "num_album": "02",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -1983,7 +2401,10 @@
         "country": "Tunisie",
         "album": "Astérix légionnaire",
         "num_album": "10",
-        "countrycode": "TU"
+        "countrycode": "TU",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -2009,7 +2430,10 @@
         "state": "Latium",
         "num_album": "37",
         "album": "Astérix et la Transitalique",
-        "city": "Tivoli"
+        "city": "Tivoli",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -2036,7 +2460,10 @@
         "album": "Le Tour de Gaule d'Astérix",
         "num_album": "5",
         "statut": "Apparait",
-        "city": "Toulouse"
+        "city": "Toulouse",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -2063,7 +2490,10 @@
         "album": "L'Odyssée d'Astérix, Astérix chez Rahàzade",
         "num_album": "26,28",
         "statut": "Apparait",
-        "city": "Tyr"
+        "city": "Tyr",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -2090,7 +2520,10 @@
         "city": "Venise",
         "album": "Astérix et la Transitalique",
         "num_album": "37",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -2116,7 +2549,10 @@
         "state": "Bourgogne-Franche-Comté",
         "city": "Besançon",
         "album": "Obélix et Compagnie",
-        "num_album": "13"
+        "num_album": "13",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -2143,7 +2579,10 @@
         "city": "Vienne",
         "album": "Astérix et le chaudron",
         "num_album": "13",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -2164,7 +2603,10 @@
         "state": "Argovie",
         "album": "Astérix chez les Helvètes",
         "num_album": "16",
-        "statut": "Mentionné"
+        "statut": "Mentionné",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
@@ -2191,13 +2633,122 @@
         "state": "Anvers",
         "album": "Astérix chez les Belges",
         "num_album": "24",
-        "statut": "Apparait"
+        "statut": "Apparait",
+        "reel": "T",
+        "nom_mentionne": "T",
+        "type": "ville"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           4.823366,
           51.17358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Calédonie",
+        "country": "Ecosse",
+        "album": "Astérix chez les Pictes",
+        "num_album": "35",
+        "country_code": "GB",
+        "type": "région"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.080527,
+          56.129805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cantium",
+        "description": "Village de Zebigbos",
+        "country": "Angleterre",
+        "album": "Astérix chez les Bretons",
+        "num_album": "08",
+        "country_code": "GB",
+        "type": "région"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.674394,
+          51.207992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cyrénaïque",
+        "country": "Libye",
+        "album": "Astérix et la Transitalique",
+        "num_album": "37",
+        "country_code": "LY",
+        "type": "région"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.775006,
+          31.31609
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Territoire des Sarmates",
+        "album": "Astérix et le Griffon",
+        "num_album": "39",
+        "type": "région"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.987417,
+          47.960947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Germanie",
+        "album": "Astérix chez les Goths",
+        "country": "Allemagne",
+        "country_code": "DE",
+        "num_album": "03",
+        "type": "région",
+        "description": "En réalité, le territoire des Goths se trouvaient plus à l'est, à l'emplacement de la Pologne."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.234017,
+          50.704383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Village emplacement fictif",
+        "num_album": "01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39",
+        "state": "Bretagne",
+        "type": "village"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.224857,
+          48.806916
         ]
       }
     }

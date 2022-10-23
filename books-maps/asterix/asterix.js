@@ -1,31 +1,45 @@
-var map = L.map('asterixmap',{
-    fullscreenControl: true,
-    fullscreenControlOptions: {
-        position: 'topleft'
-    }
-}).setView([44.703020, 16.707032], 4);
-
-L.control.scale().addTo(map);
+/////////// Tiles
 
 var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
+var Stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 1,
+	maxZoom: 16,
+	ext: 'jpg'
+});
+
+/////////// Map
+var map = L.map('asterixmap',{
+    fullscreenControl: true,
+    fullscreenControlOptions: {
+        position: 'topleft'
+    },
+    maxZoom:8,
+    layers:[Stamen_Watercolor]
+}).setView([44.703020, 16.707032], 4);
+
+L.control.scale().addTo(map);
+
 var DARE_map = L.tileLayer('https://dh.gu.se/tiles/imperium/{z}/{x}/{y}.png', {
-	minZoom:4,
+	//minZoom:4,
     maxZoom: 11,
 	attribution: '© Johan Åhlfeldt, Centre for Digital Humanities, University of Gothenburg 2019 | <a href="https://dh.gu.se/dare/" target="_blank">DARE Project</a> | CC BY 4.0'
 }).addTo(map);
 
 //////////// Style des points
-var geojsonMarkerOptions = {
-    radius:5,
-    fillColor: "#0FB7D9",
-    color: "#ffffff",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 1
-};
+
+function getColor(type) {
+    return type == 'ville' ? '#0FB7D9' :
+            type == 'région' ? '#FFC300':
+            type == 'forêt' ? '#08C70E':
+            type == 'hydrologie' ? '#6CD3D1':
+            type == 'autre' ? '#A16CD3':
+                '#A16CD3';
+}
 
 //////////// Function
 
@@ -44,7 +58,28 @@ function onEachFeature(feature, layer) {
 };
 
 function pointToLayer(feature,latlng) {
-    return L.circleMarker(latlng, geojsonMarkerOptions);
+    return L.circleMarker(latlng, {
+        radius:5,
+        fillColor: getColor(feature.properties.type),
+        color: "#ffffff",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 1
+    }
+    );
+}
+
+function zoomOn(zone) {
+    if (zone == "Village") {
+        var lat = 48.523881;
+        var lng = -3.254151;
+        var zoom_level = 7
+    } else if (zone == "Gaule") {
+        var lat = 47.454837
+        var lng = 2.307129
+        var zoom_level = 6
+    }
+    map.setView([lat,lng], zoom_level, {animate: true});
 }
 
 ////////////////////
@@ -77,9 +112,11 @@ var villes;
 /*Layers*/
 
 //Using a Layer Group to add/ remove data from the map.
-var myData =  L.layerGroup([]);
-	myData.addLayer(villes);
+//var myData =  L.layerGroup([]);
+var myData = L.featureGroup([villes])
+	//myData.addLayer(villes);
 	myData.addTo(map); 
+var number='00';
     
     document.getElementById("tous").addEventListener('click', function(event) {
         theExpression = 'feature.properties.num_album != "10000"' ;	
@@ -94,15 +131,17 @@ var myData =  L.layerGroup([]);
             
             $.getJSON(url, function(data) {
                    villes.addData(data);
+                   myData = L.featureGroup([villes])
+                   myData.addTo(map)
+                   console.log(myData.getBounds())
+                   map.fitBounds(myData.getBounds());
             });
-    
-            myData.addLayer(villes);
-            myData.addTo(map);
         }
     );
 
-    document.getElementById("01").addEventListener('click', function (event) {
-        theExpression = 'feature.properties.num_album.indexOf("01") !== -1;' ;	
+    
+    function filterData(number) {
+        theExpression = 'feature.properties.num_album.indexOf("' + number + '") !== -1;' ;	
         console.log(theExpression);
             map.removeLayer(myData);
             myData.clearLayers();
@@ -111,914 +150,60 @@ var myData =  L.layerGroup([]);
                 pointToLayer: pointToLayer,
                 onEachFeature: onEachFeature,
                 filter: function(feature, layer) {   
-                    return (feature.properties.num_album.indexOf("01") !== -1);
+                    return (feature.properties.num_album.indexOf(number) !== -1);
                 },
             });
             
             $.getJSON(url, function(data) {
                 villes.addData(data);
-            });
-    
-            myData.addLayer(villes);
-            myData.addTo(map);
+                myData = L.featureGroup([villes])
+                myData.addTo(map)
+                console.log(myData.getBounds())
+                map.fitBounds(myData.getBounds());
+         });
         }
-    );
-
-
-
-        document.getElementById("02").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("02") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("02") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("03").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("03") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("03") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("04").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("04") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("04") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("05").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("05") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("05") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("06").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("06") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("06") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("07").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("07") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("07") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("08").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("08") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("08") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("09").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("09") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("09") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("10").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("10") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("10") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("11").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("11") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("11") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("12").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("12") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("12") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("13").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("13") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("13") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("14").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("14") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("14") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("15").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("15") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("15") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("16").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("16") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("16") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("16").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("16") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("16") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("17").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("17") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("17") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("18").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("18") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("18") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("19").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("19") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("19") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("20").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("20") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("20") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("21").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("21") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("21") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("22").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("22") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("22") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("23").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("23") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("23") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("24").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("24") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("24") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("25").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("25") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("25") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("26").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("26") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("26") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("27").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("27") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("27") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("28").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("28") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("28") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("29").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("29") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("29") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("30").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("30") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("30") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("31").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("31") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("31") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("32").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("32") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("32") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-
-        document.getElementById("33").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("33") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("33") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-document.getElementById("34").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("34") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("34") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-document.getElementById("35").addEventListener('click', function (event) {
-            theExpression = 'feature.properties.num_album.indexOf("35") !== -1;' ;	
-            console.log(theExpression);
-                map.removeLayer(myData);
-                myData.clearLayers();
-                
-                villes = L.geoJson(null, {
-                    pointToLayer: pointToLayer,
-                    onEachFeature: onEachFeature,
-                    filter: function(feature, layer) {   
-                        return (feature.properties.num_album.indexOf("35") !== -1);
-                    },
-                });
-                
-                $.getJSON(url, function(data) {
-                    villes.addData(data);
-                });
-        
-                myData.addLayer(villes);
-                myData.addTo(map);
-            }
-        );
-    document.getElementById("36").addEventListener('click', function (event) {
-                theExpression = 'feature.properties.num_album.indexOf("36") !== -1;' ;	
-                console.log(theExpression);
-                    map.removeLayer(myData);
-                    myData.clearLayers();
-                    
-                    villes = L.geoJson(null, {
-                        pointToLayer: pointToLayer,
-                        onEachFeature: onEachFeature,
-                        filter: function(feature, layer) {   
-                            return (feature.properties.num_album.indexOf("36") !== -1);
-                        },
-                    });
-                    
-                    $.getJSON(url, function(data) {
-                        villes.addData(data);
-                    });
-            
-                    myData.addLayer(villes);
-                    myData.addTo(map);
-                }
-            );
-    document.getElementById("37").addEventListener('click', function (event) {
-                theExpression = 'feature.properties.num_album.indexOf("37") !== -1;' ;	
-                console.log(theExpression);
-                    map.removeLayer(myData);
-                    myData.clearLayers();
-                    
-                    villes = L.geoJson(null, {
-                        pointToLayer: pointToLayer,
-                        onEachFeature: onEachFeature,
-                        filter: function(feature, layer) {   
-                            return (feature.properties.num_album.indexOf("37") !== -1);
-                        },
-                    });
-                    
-                    $.getJSON(url, function(data) {
-                        villes.addData(data);
-                    });
-            
-                    myData.addLayer(villes);
-                    myData.addTo(map);
-                }
-            );
-
-            document.getElementById("38").addEventListener('click', function (event) {
-                theExpression = 'feature.properties.num_album.indexOf("38") !== -1;' ;	
-                console.log(theExpression);
-                    map.removeLayer(myData);
-                    myData.clearLayers();
-                    
-                    villes = L.geoJson(null, {
-                        pointToLayer: pointToLayer,
-                        onEachFeature: onEachFeature,
-                        filter: function(feature, layer) {   
-                            return (feature.properties.num_album.indexOf("38") !== -1);
-                        },
-                    });
-                    
-                    $.getJSON(url, function(data) {
-                        villes.addData(data);
-                    });
-            
-                    myData.addLayer(villes);
-                    myData.addTo(map);
-                }
-            );
-
-            document.getElementById("39").addEventListener('click', function (event) {
-                theExpression = 'feature.properties.num_album.indexOf("39") !== -1;' ;	
-                console.log(theExpression);
-                    map.removeLayer(myData);
-                    myData.clearLayers();
-                    
-                    villes = L.geoJson(null, {
-                        pointToLayer: pointToLayer,
-                        onEachFeature: onEachFeature,
-                        filter: function(feature, layer) {   
-                            return (feature.properties.num_album.indexOf("39") !== -1);
-                        },
-                    });
-                    
-                    $.getJSON(url, function(data) {
-                        villes.addData(data);
-                    });
-            
-                    myData.addLayer(villes);
-                    myData.addTo(map);
-                }
-            );
-
-
+    
+    //Event listeners Albums
+    document.getElementById("01").addEventListener("click", function () {filterData("01")});
+    document.getElementById("02").addEventListener("click", function () {filterData("02")});
+    document.getElementById("03").addEventListener("click", function () {filterData("03")});
+    document.getElementById("04").addEventListener("click", function () {filterData("04")});
+    document.getElementById("05").addEventListener("click", function () {filterData("05")});
+    document.getElementById("06").addEventListener("click", function () {filterData("06")});
+    document.getElementById("07").addEventListener("click", function () {filterData("07")});
+    document.getElementById("08").addEventListener("click", function () {filterData("08")});
+    document.getElementById("09").addEventListener("click", function () {filterData("09")});
+    document.getElementById("10").addEventListener("click", function () {filterData("10")});
+    document.getElementById("11").addEventListener("click", function () {filterData("11")});
+    document.getElementById("12").addEventListener("click", function () {filterData("12")});
+    document.getElementById("13").addEventListener("click", function () {filterData("13")});
+    document.getElementById("14").addEventListener("click", function () {filterData("14")});
+    document.getElementById("15").addEventListener("click", function () {filterData("15")});
+    document.getElementById("16").addEventListener("click", function () {filterData("16")});
+    document.getElementById("17").addEventListener("click", function () {filterData("17")});
+    document.getElementById("18").addEventListener("click", function () {filterData("18")});
+    document.getElementById("19").addEventListener("click", function () {filterData("19")});
+    document.getElementById("20").addEventListener("click", function () {filterData("20")});
+    document.getElementById("21").addEventListener("click", function () {filterData("21")});
+    document.getElementById("22").addEventListener("click", function () {filterData("22")});
+    document.getElementById("23").addEventListener("click", function () {filterData("23")});
+    document.getElementById("24").addEventListener("click", function () {filterData("24")});
+    document.getElementById("25").addEventListener("click", function () {filterData("25")});
+    document.getElementById("26").addEventListener("click", function () {filterData("26")});
+    document.getElementById("27").addEventListener("click", function () {filterData("27")});
+    document.getElementById("28").addEventListener("click", function () {filterData("28")});
+    document.getElementById("29").addEventListener("click", function () {filterData("29")});
+    document.getElementById("30").addEventListener("click", function () {filterData("30")});
+    document.getElementById("31").addEventListener("click", function () {filterData("31")});
+    document.getElementById("32").addEventListener("click", function () {filterData("32")});
+    document.getElementById("33").addEventListener("click", function () {filterData("33")});
+    document.getElementById("34").addEventListener("click", function () {filterData("34")});
+    document.getElementById("35").addEventListener("click", function () {filterData("35")});
+    document.getElementById("36").addEventListener("click", function () {filterData("36")});
+    document.getElementById("37").addEventListener("click", function () {filterData("37")});
+    document.getElementById("38").addEventListener("click", function () {filterData("38")});
+    document.getElementById("39").addEventListener("click", function () {filterData("39")});
+     
 var searchLayer = L.layerGroup([villes]);
 //... adding data in searchLayer ...
 map.addControl( new L.Control.Search({

@@ -12,13 +12,13 @@
 
 #asterixmap {
   grid-area: Carte; 
-  width: 100%;
-  height: 600px;
+  width: auto;
+  height: 650px;
 }
 .albums {
   grid-area: Albums; 
-  width:100%;
-  height:600px;
+  width:auto;
+  height:650px;
   overflow-y: scroll;
 }
 
@@ -33,4 +33,33 @@
 
 .smallinterligne{
   line-height : 1;
+}
+
+@media all and (orientation: portrait) {
+  .container {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "Carte"
+      "Albums"; 
+  }
+
+  #asterixmap {
+    grid-area: Carte; 
+    width: auto;
+    height: 400px;
+  }
+  .albums {
+    grid-area: Albums; 
+    width:auto;
+    height:400px;
+    overflow-y: scroll;
+  }
+  
+  .couvertures {
+    width:70px;
+    height:95px
+  }
 }
