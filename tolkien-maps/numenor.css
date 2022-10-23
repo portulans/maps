@@ -1,20 +1,36 @@
 .body{
 	height: 100vh;
 }
+
+.container {
+    display: grid; 
+    grid-template-columns: 1fr 0.97fr 1.03fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "Carte Carte Controls"
+      "Carte Carte Controls"
+      "Carte Carte Controls"; 
+}
+
 #map{
-    width: 90vw;
+	grid-area: Carte;
+    width: auto;
     height: 625px;
     background: white;
 }
 
+#controls{
+	grid-area: Controls; 
+	width:auto;
+	height:625px;
+	padding-left: 10px;
+	padding-right: 10px;
+  }
+
 .leaflet-container {
     background: #ddd;
     outline: 0;
-}
-
-#panel{
-    color: white;
-    font-weight: bold;
 }
 
 
@@ -89,3 +105,28 @@
 .marker-cap {
 	background: url('markers/cap.png') center center no-repeat;
 }
+
+@media all and (orientation: portrait) {
+	.container {
+	  display: grid; 
+	  grid-template-columns: 1fr; 
+	  grid-template-rows: 1fr; 
+	  gap: 0px 0px; 
+	  grid-template-areas: 
+		"Carte"
+		"Controls"; 
+	}
+  
+	#map {
+	  grid-area: Carte; 
+	  width: auto;
+	  height: 500px;
+	}
+	#controls{
+	  grid-area: Controls; 
+	  width:auto;
+	  height:400px;
+	  padding-left: 10px;
+	  padding-right: 10px;
+	}
+  }

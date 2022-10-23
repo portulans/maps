@@ -231,6 +231,18 @@ var map = L.map('map', {
 });
 map.fitBounds(bounds);
 
+//Control panel out of map div
+$(document).ready(function () {
+
+    var newParent = document.getElementById('controls');
+        var oldParent = document.getElementsByClassName("leaflet-panel-layers")
+    
+        while (oldParent[0].childNodes.length > 0) {
+            newParent.appendChild(oldParent[0].childNodes[0]);
+        }
+     });
+
+//Search layer
 var searchLayer = L.layerGroup([ville,capitale,regions,construction,vallee,fleuves,numenor,ilecap]);
 //... adding data in searchLayer ...
 map.addControl( new L.Control.Search({
@@ -250,11 +262,11 @@ map.removeLayer(ilecap)
 
 var baseLayers = [{
     group:'Cartes',
-    collapsed: false,
+    collapsed: true,
     layers: [
         {
             active: true,
-            name: "Tolkien",
+            name: "Numénor | Portulans",
             layer: image
         }
     ]
