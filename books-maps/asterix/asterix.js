@@ -33,10 +33,10 @@ var DARE_map = L.tileLayer('https://dh.gu.se/tiles/imperium/{z}/{x}/{y}.png', {
 //////////// Style des points
 
 function getColor(type) {
-    return type == 'ville' ? '#0FB7D9' :
+    return type == 'ville' ? '#0F87F1' :
             type == 'région' ? '#FFC300':
             type == 'forêt' ? '#08C70E':
-            type == 'hydrologie' ? '#6CD3D1':
+            type == 'hydrographie' ? '#6CD3D1':
             type == 'autre' ? '#A16CD3':
                 '#A16CD3';
 }
@@ -48,12 +48,21 @@ function onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.name) {
         texte = '<h2>'+feature.properties.name+'</h2>' +
             '<p><b>Apparitions : </b><i>'+ feature.properties.album +
-            '</i></p>'+'<p class="center">-------------</p>'+
-            '<p><b>Nom actuel : </b>' + feature.properties.city+'</br>'+
-            '<b>Département : </b>' + feature.properties.county+'</br>'+
-            '<b>Région : </b>' + feature.properties.state+'</br>'+
-            '<b>Pays : </b>' + feature.properties.country+'</p>';
-            layer.bindPopup(texte).bindTooltip(feature.properties.name);
+            '</i></p>'+'<p class="center">-------------</p><p>'
+        if (feature.properties.city) {
+            texte += '<b>Nom actuel : </b>' + feature.properties.city+'</br>'
+        }
+        if (feature.properties.county) {
+            texte += '<b>Département : </b>' + feature.properties.county+'</br>'
+        }
+        if (feature.properties.state) {
+            texte += '<b>Région : </b>' + feature.properties.state+'</br>'
+        }
+        if (feature.properties.country) {
+            texte += '<b>Pays : </b>' + feature.properties.country+'</p>';
+        }
+        texte += '</p>';
+        layer.bindPopup(texte).bindTooltip(feature.properties.name);
     }
 };
 
