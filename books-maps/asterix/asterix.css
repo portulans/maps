@@ -77,12 +77,12 @@
   .albums {
     grid-area: Albums; 
     width:auto;
-    height:200px;
+    height:350px;
     overflow-y: scroll;
   }
   
   .couvertures {
     width:75px;
-    height:102px
+    height:110px
   }
 }
