@@ -46,9 +46,12 @@ function getColor(type) {
 function onEachFeature(feature, layer) {
     // does this feature have a property named popupContent?
     if (feature.properties && feature.properties.name) {
-        texte = '<h2>'+feature.properties.name+'</h2>' +
-            '<p><b>Apparitions : </b><i>'+ feature.properties.album +
-            '</i></p>'+'<p class="center">-------------</p><p>'
+        texte = '<h4>'+feature.properties.name+'</h4>' +
+            '<p><b>Apparitions : </b><i>'+ feature.properties.album + '</i><br/>'
+        if (feature.properties.description){
+            texte += feature.properties.description + '<br/>'
+        }
+        texte += '</p><p>'
         if (feature.properties.city) {
             texte += '<b>Nom actuel : </b>' + feature.properties.city+'</br>'
         }
