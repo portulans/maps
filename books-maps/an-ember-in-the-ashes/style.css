@@ -1,0 +1,10 @@
+h1, h2 {
+    font-family: 'Kiwi Maru', serif;
+    text-align: center;
+  }
+
+.map {
+    width: 800px;
+    height: 600px;
+    text-align: center;
+  }
