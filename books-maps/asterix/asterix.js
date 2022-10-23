@@ -27,7 +27,7 @@ L.control.scale().addTo(map);
 var DARE_map = L.tileLayer('https://dh.gu.se/tiles/imperium/{z}/{x}/{y}.png', {
 	//minZoom:4,
     maxZoom: 11,
-	attribution: '© Johan Åhlfeldt, Centre for Digital Humanities, University of Gothenburg 2019 | <a href="https://dh.gu.se/dare/" target="_blank">DARE Project</a> | CC BY 4.0'
+	attribution: '© Johan Åhlfeldt, CfDH, University of Gothenburg 2019 | <a href="https://dh.gu.se/dare/" target="_blank">DARE Project</a> | CC BY 4.0'
 }).addTo(map);
 
 //////////// Style des points

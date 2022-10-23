@@ -4,7 +4,7 @@
 
 .container {
     display: grid; 
-    grid-template-columns: 1fr 0.97fr 1.03fr; 
+    grid-template-columns: 1fr 1.3fr 0.7fr; 
     grid-template-rows: 1fr 1fr 1fr; 
     gap: 0px 0px; 
     grid-template-areas: 
@@ -125,7 +125,8 @@
 	#controls{
 	  grid-area: Controls; 
 	  width:auto;
-	  height:400px;
+	  height:350px;
+	  overflow-y: scroll;
 	  padding-left: 10px;
 	  padding-right: 10px;
 	}

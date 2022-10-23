@@ -1,7 +1,7 @@
 //Fond de carte
 var bounds = [[0,0], [751,1000]];
 var image = L.imageOverlay('img/numenor/numenor.png', bounds, {
-    attribution : "Númenor par Christopher Tolkien d'après J.R.R. Tolkien"
+    attribution : "Númenor, d'après les cartes J.R.R. Tolkien, Christopher Tolkien et Karin Wynn Fonstad"
 });
 
 //////////// Fonctions
@@ -232,10 +232,11 @@ var map = L.map('map', {
 map.fitBounds(bounds);
 
 //Control panel out of map div
+//https://gis.stackexchange.com/questions/186131/placing-controls-outside-map-container-with-leaflet
 $(document).ready(function () {
 
     var newParent = document.getElementById('controls');
-        var oldParent = document.getElementsByClassName("leaflet-panel-layers")
+        var oldParent = document.getElementsByClassName("leaflet-panel-layers expanded leaflet-control leaflet-control-layers-expanded")
     
         while (oldParent[0].childNodes.length > 0) {
             newParent.appendChild(oldParent[0].childNodes[0]);
