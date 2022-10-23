@@ -33,20 +33,28 @@
         Retour
       </button>
       <div class="container">
+        <!--START : Map div-->
         <div id="asterixmap"></div>
-          <div class="albums">
+        <!--END : Map div-->
+
+        <!--START : Controls div-->
+        <div class="controls">
+          <!--START : Legend div-->
+          <div class="legend">
             <h3>Légende</h3>
-            <div>
               <p><span class="dot" style="background-color:#0F87F1"></span> Ville réelle<br/>
                 <span class="dot" style="background-color:#A16CD3"></span> Lieu imprécis ou imaginaire<br/>
                 <span class="dot" style="background-color:#FFC300"></span> Région<br/>
                 <span class="dot" style="background-color:#08C70E"></span> Forêt<br/>
                 <span class="dot" style="background-color:#6CD3D1"></span> Hydrographie<br/>
               </p>
-            </div>
+          </div>
+          <!--END : Legend div-->
+          <!--START : Album filter div-->
+          <h3>Filtrer les lieux</h3>
+          <button type="button" id="tous" class="btn_actif w3-button w3-black">Tous les lieux</button><br>
+          <div class="albums">
             <div class="btn-group">
-              <button type="button" id="tous" class="btn_actif w3-button w3-black">Tous les lieux</button><br>
-              <h3>Par album</h3>
               <p>Cliquez sur la couverture d'un album pour voir les lieux qui y apparaissent ou qui y sont mentionnés.</p>
               <button type="button" id="01" class="btn_inactif"><img src="img/01fr.gif" class="couvertures"/></button>
               <button type="button" id="02" class="btn_inactif"><img src="img/02fr.gif" class="couvertures"/></button>
@@ -88,6 +96,8 @@
               <button type="button" id="38" class="btn_inactif"><img src="img/38fr.gif" class="couvertures"/></button>
               <button type="button" id="39" class="btn_inactif"><img src="img/39fr.gif" class="couvertures"/></button>
             </div>
+          </div>
+          <!--END : Album filter div-->
         </div>
       </div>
     </article>
