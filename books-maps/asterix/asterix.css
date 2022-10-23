@@ -35,6 +35,13 @@
   line-height : 1;
 }
 
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 @media all and (orientation: portrait) {
   .container {
     display: grid; 

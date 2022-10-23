@@ -18,7 +18,7 @@ var map = L.map('asterixmap',{
     fullscreenControlOptions: {
         position: 'topleft'
     },
-    maxZoom:8,
+    maxZoom:9,
     layers:[Stamen_Watercolor]
 }).setView([44.703020, 16.707032], 4);
 
