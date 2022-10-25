@@ -1,4 +1,8 @@
 
+.body{
+  width: 100vw;
+  height: 100vh;
+}
 .container {
     display: grid; 
     grid-template-columns: 1fr 0.9fr 1.1fr; 
@@ -13,12 +17,12 @@
 #asterixmap {
   grid-area: Carte; 
   width: auto;
-  height: 650px;
+  height: 90vh;
 }
 .controls{
   grid-area: Controls; 
   width:auto;
-  height:650px;
+  height:90vh;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -26,7 +30,7 @@
 .albums {
   grid-area: Albums; 
   width:auto;
-  height:425px;
+  height:65vh;
   overflow-y: scroll;
 }
 
