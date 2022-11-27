@@ -30,7 +30,7 @@
 .albums {
   grid-area: Albums; 
   width:auto;
-  height:65vh;
+  height:55vh;
   overflow-y: scroll;
 }
 
