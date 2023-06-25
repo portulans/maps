@@ -5,7 +5,7 @@ var map = L.map('map',{
         position: 'topleft'
     },
     minZoom:4,
-    maxZoom:6
+    maxZoom:5
 }).setView([40.420189,-97.075195], 4);
 
 L.control.scale().addTo(map);
