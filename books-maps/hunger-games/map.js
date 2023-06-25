@@ -1,16 +1,3 @@
-var map = L.map('map',{
-    crs:L.CRS.EPSG3857,
-    fullscreenControl: true,
-    fullscreenControlOptions: {
-        position: 'topleft'
-    },
-    minZoom:4,
-    maxZoom:5
-}).setView([37.244322,-99.580078], 4);
-
-L.control.scale().addTo(map);
-map.attributionControl.addAttribution('Map of Panem (Hunger Games world, created by Suzanne Collins) produced using Lionsgate map from The Hunger Games Exhibition (Las Vegas)');
-
 /********** Functions *************/
 
 function getColor(districtid) {
@@ -90,7 +77,7 @@ function onEachFeature(feature, layer) {
     }
     if (feature.properties.num != 'I'){
         layer.bindPopup(texte);
-        layer.bindTooltip(feature.properties.name,{permanent: true, direction:"center"});
+        layer.bindTooltip(feature.properties.num,{permanent: true, direction:"center"});
         layer.on({
             mouseover: highlightFeature,
             mouseout: resetHighlight,
@@ -159,8 +146,55 @@ var limits;
         limits.addData(data);
     });
 
+var url = "./data/us-states.geojson";	
+var usstates;
+//Initial Setup  with layer Verified No
+    usstates = L.geoJson(null, {
+
+    }); 
+        
+        $.getJSON(url, function(data) {
+        usstates.addData(data);
+    });
 
 /////////////
+
+var Stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 1,
+	maxZoom: 16,
+	ext: 'jpg'
+});
+
+var map = L.map('map',{
+    crs:L.CRS.EPSG3857,
+    fullscreenControl: true,
+    fullscreenControlOptions: {
+        position: 'topleft'
+    },
+    minZoom:4,
+    maxZoom:5
+}).setView([37.244322,-99.580078], 4);
+
+var baseMaps = {
+    
+};
+
+var overlayMaps = {
+    "Monde réel": Stamen_Watercolor,
+    "Panem":districts,
+    "Ancien trait de côte":limits,
+    "Anciens états américains":usstates,
+};
+L.control.scale().addTo(map);
+map.attributionControl.addAttribution('Map of Panem (Hunger Games world, created by Suzanne Collins) produced using Lionsgate map from The Hunger Games Exhibition (Las Vegas)');
+
+L.control.layers(baseMaps, overlayMaps, {
+	collapsed:false,
+	//sortLayers:false
+	}).addTo(map);
+
 
 districts.addTo(map)
 limits.addTo(map).bringToFront();
