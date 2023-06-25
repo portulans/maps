@@ -28,6 +28,7 @@ function getColor(districtid) {
     districtid == '12' ? '#423e3b':
     districtid == '13' ? '#4f4f4f':
     districtid == 'C' ? '#4f4f4f':
+    districtid == 'I' ? '#black':
                 '#000000';
 }
 
@@ -50,6 +51,7 @@ function highlightFeature(e) {
     });
 
     layer.bringToFront();
+    limits.bringToFront();
 }
 
 function resetHighlight(e) {
@@ -70,6 +72,7 @@ function onEachFeature(feature, layer) {
     // does this feature have a property named popupContent?
     if (feature.properties) {
         texte = '<h3 style="text-align:center;"> <img src="./img/logos/' + feature.properties.logo + '" width="70" style="padding-right:10px;"/>'+feature.properties.name+'</h3>'
+        
         if (feature.properties.num == '13') {
             texte += '<p><b>Activité : </b>'+ feature.properties.activity + '<br/>'
             texte += '<i>Les Hunger Games ont été créés après la destruction du 13.</i>'
@@ -84,47 +87,20 @@ function onEachFeature(feature, layer) {
         }
         texte += '<p>'
     }
-    layer.bindPopup(texte).bindTooltip(feature.properties.name);
-    layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-    })
+    if (feature.properties.num != 'I'){
+        layer.bindPopup(texte).bindTooltip(feature.properties.name);
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+        })
+    }
 };
 
 /************ Data ***********/
 
-/////// INFO
-
-var info = L.control();
-
-info.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-    this.update();
-    return this._div;
-};
-
-// method that we will use to update the control based on feature properties passed
-info.update = function (props) {
-    this._div.innerHTML = '';
-    this._div.innerHTML = '<h3>'+props.name+'</h3>'
-        if (props.num == '13') {
-            this._div.innerHTML += '<p><b>Activité : </b>'+ props.activity + '<br/>'
-            this._div.innerHTML += '<i>Les Hunger Games ont été créés après la destruction du 13.</i>'
-        } else if (props.num == 'C') {
-            this._div.innerHTML += '<p><b>Activité : </b>Centre du pouvoir<br/>'
-        } else {
-            this._div.innerHTML += '<p><b>Activité : </b>'+ props.activity + '<br/>'
-            this._div.innerHTML += '<b>Tributs :</b><br/>'
-            this._div.innerHTML += '<b>- 10èmes Hunger Games</b> : ' + printTributs(props.M_HG10) + ' et ' + printTributs(props.W_HG10) + ' (mentors : ' + printTributs(props.Men_M_HG10) + ' et ' + printTributs(props.Men_W_HG10) + ')<br/>'
-            this._div.innerHTML += '<b>- 74èmes Hunger Games</b> : ' + printTributs(props.M_HG74) + ' et ' + printTributs(props.W_HG74) + '<br/>'
-            this._div.innerHTML += '<b>- 75èmes Hunger Games</b> : ' + printTributs(props.M_HG75) + ' et ' + printTributs(props.W_HG75)
-        }
-        this._div.innerHTML += '<p>'
-};
-
 function styleOldCoastline(feature) {
     return {
-        fillColor: '#000000',
+        fillColor: '#0C5176',
         color: '#9f9f9f',
         fillOpacity: 1,
         dashArray: '3',
@@ -150,10 +126,11 @@ var districts;
 //Initial Setup  with layer Verified No
     districts = L.geoJson(null, {
         style:style,
-		onEachFeature: onEachFeature,
+		onEachFeature: onEachFeature
+        /*,
         filter:function(feature, layer) {
             return feature.properties.name != "Interstice";
-        }
+        }*/
     }); 
     	
      $.getJSON(url, function(data) {
@@ -183,8 +160,6 @@ var limits;
 
 /////////////
 
-
 districts.addTo(map)
-limits.addTo(map)
+limits.addTo(map).bringToFront();
 formercoastline.addTo(map)
-info.addTo(map);
