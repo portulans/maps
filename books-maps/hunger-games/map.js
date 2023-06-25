@@ -9,6 +9,7 @@ var map = L.map('map',{
 }).setView([40.420189,-97.075195], 4);
 
 L.control.scale().addTo(map);
+map.attributionControl.addAttribution('Map of Panem produced using Lionsgate map from The Hunger Games Exhibition (Las Vegas)');
 
 /********** Functions *************/
 
@@ -36,6 +37,23 @@ function style(feature) {
         color: getColor(feature.properties.num),
         fillOpacity: 1
     };
+}
+
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: 'white',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    layer.bringToFront();
+}
+
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
 }
 
 function printTributs(trib) {
@@ -67,10 +85,39 @@ function onEachFeature(feature, layer) {
         }
         texte += '<p>'
     }
-    layer.bindPopup(texte);
+    layer.bindPopup(texte).bindTooltip(feature.properties.name);
 };
 
 /************ Data ***********/
+
+/////// INFO
+
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '';
+    this._div.innerHTML = '<h3>'+props.name+'</h3>'
+        if (props.num == '13') {
+            this._div.innerHTML += '<p><b>Activité : </b>'+ props.activity + '<br/>'
+            this._div.innerHTML += '<i>Les Hunger Games ont été créés après la destruction du 13.</i>'
+        } else if (props.num == 'C') {
+            this._div.innerHTML += '<p><b>Activité : </b>Centre du pouvoir<br/>'
+        } else {
+            this._div.innerHTML += '<p><b>Activité : </b>'+ props.activity + '<br/>'
+            this._div.innerHTML += '<b>Tributs :</b><br/>'
+            this._div.innerHTML += '<b>- 10èmes Hunger Games</b> : ' + printTributs(props.M_HG10) + ' et ' + printTributs(props.W_HG10) + ' (mentors : ' + printTributs(props.Men_M_HG10) + ' et ' + printTributs(props.Men_W_HG10) + ')<br/>'
+            this._div.innerHTML += '<b>- 74èmes Hunger Games</b> : ' + printTributs(props.M_HG74) + ' et ' + printTributs(props.W_HG74) + '<br/>'
+            this._div.innerHTML += '<b>- 75èmes Hunger Games</b> : ' + printTributs(props.M_HG75) + ' et ' + printTributs(props.W_HG75)
+        }
+        this._div.innerHTML += '<p>'
+};
 
 function styleOldCoastline(feature) {
     return {
@@ -99,6 +146,8 @@ var url = "./data/panem.geojson";
 var districts;
 //Initial Setup  with layer Verified No
     districts = L.geoJson(null, {
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
         style:style,
 		onEachFeature: onEachFeature,
         filter:function(feature, layer) {
@@ -133,6 +182,8 @@ var limits;
 
 /////////////
 
-districts.addTo(map)
 limits.addTo(map)
+districts.addTo(map)
 formercoastline.addTo(map)
+
+info.addTo(map);
