@@ -6,7 +6,7 @@ var map = L.map('map',{
     },
     minZoom:4,
     maxZoom:5
-}).setView([40.420189,-97.075195], 4);
+}).setView([37.244322,-99.580078], 4);
 
 L.control.scale().addTo(map);
 map.attributionControl.addAttribution('Map of Panem produced using Lionsgate map from The Hunger Games Exhibition (Las Vegas)');
