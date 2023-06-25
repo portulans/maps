@@ -167,7 +167,7 @@ var map = L.map('map',{
         position: 'topleft'
     },
     layers:[Thunderforest_Pioneer]
-}).setView([45, 45],2);
+}).setView([30.107390, 130.059717 ],2);
 
 L.control.scale().addTo(map);
 

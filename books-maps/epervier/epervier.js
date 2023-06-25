@@ -106,6 +106,18 @@ function onEachPointFeature(feature, layer) {
     layer.bindPopup(texte).bindTooltip(feature.properties.name);
 };
 
+
+function getChecked(){
+    var array = []
+    var checkboxes = document.querySelectorAll('input[checkalbum=checkbox]:checked')
+
+    for (var i = 0; i < checkboxes.length; i++) {
+    array.push(checkboxes[i].id)
+    }
+    console.log(array)
+    return array
+}
+
 /* Layers */
 var url2 = "data//trajets.geojson"
 var trajets = L.geoJSON(null,{
@@ -128,6 +140,21 @@ var lieux = L.geoJSON(null,{
     $.getJSON(url1, function(data) {
             lieux.addData(data);
     });
+
+document.querySelectorAll('input[checkalbum=checkbox]').addEventListener('change', function () {
+    map.removeLayer(lieux);
+    lieux.clearLayers();
+    array = getChecked()
+    lieux = L.geoJson(null, {
+        pointToLayer: pointToLayer,
+        onEachFeature: onEachFeature,
+        filter:function () {
+            for (i = 0; i<array.length; i++) {
+                return xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxfeature.properties.array[i].value == 1
+            }
+        }
+    });
+});
 //////////////////////////////////////////////////////////
 
 /* Map */
@@ -190,9 +217,7 @@ var overLayers = [
     }
 ];
 
-map.addControl( new L.Control.PanelLayers(baseLayers, overLayers,
-    {title:"<h3 id='panel'>L'Epervier</h3>"+
-    '<p>Patrice Pellerin</p>'}));
+map.addControl( new L.Control.PanelLayers(baseLayers, overLayers));
 
 ///////////////////////////////////////////////////
 
@@ -229,6 +254,10 @@ function zoomOn(zone) {
         var lat = 46.510492
         var lng = -69.323730
         var zoom_level = 6
+    } else if (zone == "VersaillesParis") {
+        var lat = 48.828972
+        var lng = 2.235031
+        var zoom_level = 12
     }
     map.setView([lat,lng], zoom_level, {animate: true});
 }
@@ -241,3 +270,4 @@ document.getElementById("Canaries").addEventListener("click", e => zoomOn("Canar
 document.getElementById("Cayenne").addEventListener("click", e => zoomOn("Cayenne"));
 document.getElementById("Guyane").addEventListener("click", e => zoomOn("Guyane"));
 document.getElementById("Saint-Laurent").addEventListener("click", e => zoomOn("Saint-Laurent"));
+document.getElementById("VersaillesParis").addEventListener("click", e => zoomOn("VersaillesParis"));

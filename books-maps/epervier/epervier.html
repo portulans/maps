@@ -36,92 +36,103 @@
       <div class="container">
         <div id="map"></div>
         <div class="controls">
-          <h3>Vues</h3>
-          <div class="btn-views">
-            <button id="Atlantique">Océan Atlantique</button>
-            <button id="Brest">Brest</button>
-            <button id="Rade">Rade de Brest</button>
-            <button id="Finistere">Nord Finistère</button>
-            <button id="Canaries">Archipel des Canaries</button>
-            <button id="Cayenne">Cayenne</button>
-            <button id="Guyane">Guyane</button>
-            <button id="Saint-Laurent">Fleuve Saint-Laurent</button>
+
+          <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'BD') " id="defaultOpen">Bandes dessinées</button>
+            <button class="tablinks" onclick="openTab(event, 'Serie')">Série</button>
           </div>
-          <h3>Cartes</h3>
-          <p>Gérer l'affichage des fonds selon le zoom</p>
-          <h3>Trajets</h3>
-          <p>Filter par personnage</p>
-          <p>Filter par navire</p>
-          <p>Filter par album / cycle</p>
-          <div id="albums">
-            <h4>Premier cycle</h4>
-            <!--Albums du premier cycle-->
-            <div class="albums-ligne">
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 01 - Le Trépassé de Kermellec.jpg" /> 
-                <input type="checkbox" class="checkbox" id="tome1" />
-                <span class="tooltiptext">Tome 01 - Le Trépassé de Kermellec</span>
-              </div>
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 02 - Le Rocher du crâne.jpg" />
-                <input type="checkbox"  class="checkbox" id="tome2" />
-                <span class="tooltiptext">Tome 02 - Le Rocher du crâne</span>
-              </div>
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 03 - Tempête sur Brest.jpg" /> 
-                <input type="checkbox" class="checkbox" id="tome3" />
-                <span class="tooltiptext">Tome 03 - Tempête sur Brest</span>
-              </div>
+
+          <div id="BD" class="tabcontent">
+            <h3>Vues</h3>
+            <div class="btn-views">
+              <button id="Atlantique" class="w3-button w3-blue button-margin">Océan Atlantique</button>
+              <button id="Brest" class="w3-button w3-blue button-margin">Brest</button>
+              <button id="Rade" class="w3-button w3-blue button-margin">Rade de Brest</button>
+              <button id="Finistere" class="w3-button w3-blue button-margin">Nord Finistère</button>
+              <button id="Canaries" class="w3-button w3-green button-margin">Archipel des Canaries</button>
+              <button id="Cayenne" class="w3-button w3-green button-margin">Cayenne</button>
+              <button id="Guyane" class="w3-button w3-green button-margin">Guyane</button>
+              <button id="Saint-Laurent" class="w3-button w3-teal button-margin">Fleuve Saint-Laurent</button>
+              <button id="VersaillesParis" class="w3-button w3-teal button-margin">Versailles et Paris</button>
             </div>
+            
+            <h3>Album / cycle</h3>
+            <div id="albums">
+              <h4><center>Premier cycle</center></h4>
+              <!--Albums du premier cycle-->
               <div class="albums-ligne">
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 04 - Captives à bord.jpg" />
-                <input type="checkbox"  class="checkbox" id="tome4" />
-                <span class="tooltiptext">Tome 04 - Captives à bord</span>
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 01 - Le Trépassé de Kermellec.jpg" /> 
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome1" />
+                  <span class="tooltiptext">Tome 01 - Le Trépassé de Kermellec</span>
+                </div>
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 02 - Le Rocher du crâne.jpg" />
+                  <input type="checkbox"  name="checkalbum" class="checkbox" id="tome2" />
+                  <span class="tooltiptext">Tome 02 - Le Rocher du crâne</span>
+                </div>
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 03 - Tempête sur Brest.jpg" /> 
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome3" />
+                  <span class="tooltiptext">Tome 03 - Tempête sur Brest</span>
+                </div>
               </div>
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 05 - Le Trésor du Mahury.jpg" /> 
-                <input type="checkbox" class="checkbox" id="tome5" />
-                <span class="tooltiptext">Tome 05 - Le Trésor du Mahury</span>
+                <div class="albums-ligne">
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 04 - Captives à bord.jpg" />
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome4" />
+                  <span class="tooltiptext">Tome 04 - Captives à bord</span>
+                </div>
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 05 - Le Trésor du Mahury.jpg" /> 
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome5" />
+                  <span class="tooltiptext">Tome 05 - Le Trésor du Mahury</span>
+                </div>
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 06 - Les Larmes de Tlaloc.jpg" />
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome6" />
+                  <span class="tooltiptext">Tome 06 - Les Larmes de Tlaloc</span>
+                </div>
               </div>
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 06 - Les Larmes de Tlaloc.jpg" />
-                <input type="checkbox"  class="checkbox" id="tome6" />
-                <span class="tooltiptext">Tome 06 - Les Larmes de Tlaloc</span>
+              <h4><center>Second cycle</center></h4>
+              <!--Albums du second cycle-->
+              <div class="albums-ligne">
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 07 - La Mission.jpg" /> 
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome7" />
+                  <span class="tooltiptext">Tome 07 - La Mission</span>
+                </div>
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 08 - Corsaire du Roy.jpg" />
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome8" />
+                  <span class="tooltiptext">Tome 08 - Corsaire du Roy</span>
+                </div>
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 09 - Coulez la Méduse.jpg" /> 
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome9" />
+                  <span class="tooltiptext">Tome 09 - Coulez la Méduse !</span>
+                </div>
               </div>
+              <div class="albums-ligne">
+                <div class="album">
+                  <img class="tooltip couv" src="./img/couvertures/Tome 10 - La Princesse indienne.jpg" />
+                  <input type="checkbox" name="checkalbum" class="checkbox" id="tome10" />
+                  <span class="tooltiptext">Tome 10 - La Princesse indienne</span>
+                </div>
+              </div>
+              <h4><center>Hors-séries</center></h4>
+              <!--Hors-série-->
             </div>
-            <p>Second cycle</p>
-            <!--Albums du second cycle-->
-            <div class="albums-ligne">
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 07 - La Mission.jpg" /> 
-                <input type="checkbox" class="checkbox" id="tome7" />
-                <span class="tooltiptext">Tome 07 - La Mission</span>
-              </div>
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 08 - Corsaire du Roy.jpg" />
-                <input type="checkbox"  class="checkbox" id="tome8" />
-                <span class="tooltiptext">Tome 08 - Corsaire du Roy</span>
-              </div>
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 09 - Coulez la Méduse.jpg" /> 
-                <input type="checkbox" class="checkbox" id="tome9" />
-                <span class="tooltiptext">Tome 09 - Coulez la Méduse !</span>
-              </div>
-            </div>
-            <div class="albums-ligne">
-              <div class="album">
-                <img class="tooltip couv" src="./img/couvertures/Tome 10 - La Princesse indienne.jpg" />
-                <input type="checkbox"  class="checkbox" id="tome10" />
-                <span class="tooltiptext">Tome 10 - La Princesse indienne</span>
-              </div>
-            </div>
-            <p>Hors-séries</p>
-            <!--Hors-série-->
+          </div>
+
+          <div id="Serie" class="tabcontent">
+            <h3>Lieux de tournage</h3>
+            <p>TBA</p>
           </div>
         </div>
       </div>
     </article>
   </body>
+  <script src="functions.js"></script>
   <script src="epervier.js"></script>
 </html>

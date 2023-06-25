@@ -1,0 +1,9 @@
+.leaflet-container {
+    background: black;
+    outline: 0;
+}
+
+#map {
+    width: auto;
+    height: 92vh;
+  }

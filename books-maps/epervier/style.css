@@ -1,5 +1,8 @@
 
-@media screen and (min-width: 800px) {
+.body{
+  width: 100vw;
+  height: 100vh;
+}
 
 .container {
     display: grid; 
@@ -23,6 +26,8 @@
   width:100%;
   height:600px;
   overflow-y: scroll;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .albums-ligne{
@@ -49,13 +54,16 @@
     width: 140px; 
   }
 
-  .checkbox { position: absolute; 
-    width:20px;
-    height:20px;
-    top: 0px; 
-    right: 0px; 
-  }
+.checkbox { position: absolute; 
+  width:20px;
+  height:20px;
+  top: 0px; 
+  right: 0px; 
+}
 
+.button-margin{
+  margin: 2px;
+  margin-bottom: 4px;
 }
 
 /*Map content*/
@@ -70,7 +78,7 @@
     text-align: center;
 }
 
-/*Tool tip*/
+/********************** Tool tip ************************/
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_tooltip*/
 .tooltip {
     position: relative;
@@ -110,3 +118,40 @@
     visibility: visible;
     opacity: 1;
   }
+
+/************************* TABBER **********************/
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
