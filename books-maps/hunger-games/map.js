@@ -9,7 +9,7 @@ var map = L.map('map',{
 }).setView([37.244322,-99.580078], 4);
 
 L.control.scale().addTo(map);
-map.attributionControl.addAttribution('Map of Panem produced using Lionsgate map from The Hunger Games Exhibition (Las Vegas)');
+map.attributionControl.addAttribution('Map of Panem (Hunger Games world, created by Suzanne Collins) produced using Lionsgate map from The Hunger Games Exhibition (Las Vegas)');
 
 /********** Functions *************/
 
@@ -85,10 +85,12 @@ function onEachFeature(feature, layer) {
             texte += '<b>- 74èmes Hunger Games</b> : ' + printTributs(feature.properties.M_HG74) + ' et ' + printTributs(feature.properties.W_HG74) + '<br/>'
             texte += '<b>- 75èmes Hunger Games</b> : ' + printTributs(feature.properties.M_HG75) + ' et ' + printTributs(feature.properties.W_HG75)
         }
-        texte += '<p>'
+        texte += '</p>'
+        texte += '<p><i>Logo : © Lionsgate</i></p>'
     }
     if (feature.properties.num != 'I'){
-        layer.bindPopup(texte).bindTooltip(feature.properties.name);
+        layer.bindPopup(texte);
+        layer.bindTooltip(feature.properties.name,{permanent: true, direction:"center"});
         layer.on({
             mouseover: highlightFeature,
             mouseout: resetHighlight,
