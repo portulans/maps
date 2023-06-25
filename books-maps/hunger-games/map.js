@@ -85,6 +85,10 @@ function onEachFeature(feature, layer) {
     }
 };
 
+function onEachFeatureUS(feature,layer){
+    layer.bindTooltip(feature.properties.name,{direction:"top-center"});
+}
+
 /************ Data ***********/
 
 function styleOldCoastline(feature) {
@@ -146,11 +150,22 @@ var limits;
         limits.addData(data);
     });
 
+function styleUS(feature) {
+    return {
+        color: 'red',
+        fillOpacity: 0,
+        dashArray: '6',
+        weight: 2
+
+    };
+}
+
 var url = "./data/us-states.geojson";	
 var usstates;
 //Initial Setup  with layer Verified No
     usstates = L.geoJson(null, {
-
+        style:styleUS,
+        onEachFeature:onEachFeatureUS
     }); 
         
         $.getJSON(url, function(data) {
@@ -182,10 +197,11 @@ var baseMaps = {
 };
 
 var overlayMaps = {
+    "Districts":districts,
+    "Trait de côte et frontières":limits,
     "Monde réel": Stamen_Watercolor,
-    "Panem":districts,
-    "Ancien trait de côte":limits,
     "Anciens états américains":usstates,
+    "Ancien trait de côte":formercoastline
 };
 L.control.scale().addTo(map);
 map.attributionControl.addAttribution('Map of Panem (Hunger Games world, created by Suzanne Collins) produced using Lionsgate map from The Hunger Games Exhibition (Las Vegas)');
