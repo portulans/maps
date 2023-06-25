@@ -43,7 +43,7 @@ function highlightFeature(e) {
     var layer = e.target;
 
     layer.setStyle({
-        weight: 5,
+        weight: 4,
         color: 'white',
         dashArray: '',
         fillOpacity: 0.7
@@ -53,7 +53,7 @@ function highlightFeature(e) {
 }
 
 function resetHighlight(e) {
-    geojson.resetStyle(e.target);
+    districts.resetStyle(e.target);
 }
 
 function printTributs(trib) {
@@ -63,14 +63,13 @@ function printTributs(trib) {
     } else {
         texte = trib
     }
-    console.log(texte)
     return texte
 }
 
 function onEachFeature(feature, layer) {
     // does this feature have a property named popupContent?
     if (feature.properties) {
-        texte = '<h3>'+feature.properties.name+'</h3>'
+        texte = '<h3 style="text-align:center;"> <img src="./img/logos/' + feature.properties.logo + '" width="70" style="padding-right:10px;"/>'+feature.properties.name+'</h3>'
         if (feature.properties.num == '13') {
             texte += '<p><b>Activité : </b>'+ feature.properties.activity + '<br/>'
             texte += '<i>Les Hunger Games ont été créés après la destruction du 13.</i>'
@@ -86,6 +85,10 @@ function onEachFeature(feature, layer) {
         texte += '<p>'
     }
     layer.bindPopup(texte).bindTooltip(feature.properties.name);
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+    })
 };
 
 /************ Data ***********/
@@ -146,8 +149,6 @@ var url = "./data/panem.geojson";
 var districts;
 //Initial Setup  with layer Verified No
     districts = L.geoJson(null, {
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
         style:style,
 		onEachFeature: onEachFeature,
         filter:function(feature, layer) {
@@ -182,8 +183,8 @@ var limits;
 
 /////////////
 
-limits.addTo(map)
-districts.addTo(map)
-formercoastline.addTo(map)
 
+districts.addTo(map)
+limits.addTo(map)
+formercoastline.addTo(map)
 info.addTo(map);
