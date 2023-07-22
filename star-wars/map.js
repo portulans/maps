@@ -183,7 +183,8 @@ function zoomOn(){
         map.fitBounds(select.getBounds());
     });
   };
-  document.getElementById("gridsearchbut").addEventListener("click", e => zoomOn());
+
+document.getElementById("gridsearchbut").addEventListener("click", e => zoomOn());
 
 /******** VECTEUR *********/
 var url1 = "./data-convert/zones.geojson"
@@ -238,12 +239,6 @@ $.getJSON(url5, function(data) {
 
 var completegrid = L.layerGroup([grid,gridids]);
 
-/******** ADD LAYERS *********/
-zones.addTo(map)
-planets.addTo(map)
-roads.addTo(map)
-completegrid.addTo(map)
-
 /****** SEARCH ********/
 
 var searchLayer = L.layerGroup([planets]);
@@ -254,3 +249,24 @@ map.addControl( new L.Control.Search({
     initial:false,
     textPlaceholder:"Chercher une planète..."
 }) );
+
+/******** ADD LAYERS *********/
+zones.addTo(map)
+planets.addTo(map)
+roads.addTo(map)
+completegrid.addTo(map)
+
+var baseMaps = {
+    
+};
+
+var overlayMaps = {
+    "Planètes":planets,
+    "Routes":roads,
+    "Grille":completegrid
+};
+
+L.control.layers(baseMaps, overlayMaps, {
+	collapsed:false
+	}).addTo(map);
+map.removeLayer(completegrid);
