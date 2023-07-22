@@ -1,12 +1,13 @@
 /******** MAPS *********/
 var map = L.map('map', {
     crs: L.CRS.Simple,
-    minZoom:-10,
+    minZoom:-3,
+    maxZoom:8,
     fullscreenControl: true,
     fullscreenControlOptions: {
         position: 'topleft'
     },
-}).setView([900, 900], -10);
+}).setView([900, 900], -3);
 
 var bounds = [[0,0], [2488,2000]];
 /*var image = L.imageOverlay('img/Map_of_the_galaxy-Background.png', bounds, {
