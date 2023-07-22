@@ -14,6 +14,10 @@
     "Carte Carte Controls"
     "Carte Carte Controls"; 
 }
+
+.title{
+  text-align: center;
+}
   
   #map {
     grid-area: Carte; 
