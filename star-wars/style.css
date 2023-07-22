@@ -1,0 +1,48 @@
+
+.body{
+    width: 100vw;
+    height: 100vh;
+  }
+
+.container {
+    display: grid; 
+    grid-template-columns: 1fr 0.9fr 1.1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "Carte Carte Controls"
+    "Carte Carte Controls"
+    "Carte Carte Controls"; 
+}
+  
+  #map {
+    grid-area: Carte; 
+    width: auto;
+    height: 90vh;
+  }
+  .leaflet-container {
+    background: black;
+    outline: 0;
+  }
+
+  .controls{
+    grid-area: Controls; 
+    width:auto;
+    height:90vh;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .rect {
+    height: 15px;
+    width: 25px;
+    border-radius: 0%;
+    display: inline-block;
+  }
+  

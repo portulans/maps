@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!--Encodage-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../libs/w3.css">
+    <!--Leaflet-->
+    <link rel="stylesheet" href="../libs/leaflet/dist/leaflet.css" />
+    <script src="../libs/leaflet/dist/leaflet.js"></script>
+    <!--Leaflet Compléments-->
+    <link rel="stylesheet" href="../libs/leaflet-panel-layers.css"/>
+    <script src="../libs/leaflet-panel-layers.min.js"></script> <!--Controls-->
+    <script src="../libs/leaflet.ajax.min.js"></script> <!--AJAX-->
+    <link rel="stylesheet" href="../libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.css" /> <!--FullScreen-->
+    <script src="../libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.js"></script>
+    <link rel="stylesheet" href="../libs/leaflet-search.css" /> <!--FullScreen-->
+    <script src="../libs/leaflet-search.js"></script>
+    <!--Style du site-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap" rel="stylesheet">	
+    <!--Jquery-->
+    <script src="../libs/jquery/dist/jquery.min.js"></script>
+    <!--Librairie d'icones-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Star Wars</title>
+  </head>
+  <body>
+    <!--Corps-->
+    <article>
+      <button class="w3-button w3-black" onclick="window.location.href='../../index.html'">
+        Retour
+      </button>
+      <div class="title"><h2>Galaxie (Star Wars)</h2></div>
+      <div class="container">
+        <!--START : Map div-->
+        <div id="map"></div>
+        <!--END : Map div-->
+
+        <!--START : Controls div-->
+        <div class="controls">
+          <!--START : Legend div-->
+          <div class="legend">
+            <h4>Planètes</h4>
+              <p><span class="dot" style="background-color:#0F87F1"></span> Planète<br/>
+                <span class="dot" style="background-color:#A16CD3"></span> Nébuleuse<br/>
+              </p>
+              <h4>Régions galactiques</h4>
+              <p><span class="rect" style="background-color:#747373"></span> Noyau profond<br/>
+                <span class="rect" style="background-color:#806100"></span> Mondes du Noyau<br/>
+                <span class="rect" style="background-color:#74427D"></span> Colonie<br/>
+                <span class="rect" style="background-color:#783B23"></span> Bordure intérieure<br/>
+                <span class="rect" style="background-color:#2C626E"></span> Zone d'expansion<br/>
+                <span class="rect" style="background-color:#7D427B"></span> Bordure médiane<br/>
+                <span class="rect" style="background-color:#2D3872"></span> Bordure extérieure<br/>
+                <span class="rect" style="background-color:#000000"></span> Régions inconnues<br/>
+              </p>
+              <h4>Super-secteurs</h4>
+              <span class="rect" style="background-color:#6F0B46"></span> Espace Hutt<br/>
+              <span class="rect" style="background-color:#6F0B46"></span> Espace Bothan<br/>
+              <span class="rect" style="background-color:#6F0B46"></span> Secteur corporatif<br/>
+          </div>
+          <div class="popup">
+            
+        </div>
+          <!--END : Legend div-->
+          <!--START : Album filter div-->
+          <h3></h3>
+          <!--END : Album filter div-->
+        
+      </div>
+    </article>
+  </body>
+  <script src="map.js"></script>
+</html>
