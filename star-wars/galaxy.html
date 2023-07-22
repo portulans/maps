@@ -16,6 +16,7 @@
     <script src="../libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.js"></script>
     <link rel="stylesheet" href="../libs/leaflet-search.css" /> <!--FullScreen-->
     <script src="../libs/leaflet-search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
     <!--Style du site-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap" rel="stylesheet">	
@@ -60,6 +61,20 @@
               <span class="rect" style="background-color:#6F0B46"></span> Espace Hutt<br/>
               <span class="rect" style="background-color:#6F0B46"></span> Espace Bothan<br/>
               <span class="rect" style="background-color:#6F0B46"></span> Secteur corporatif<br/>
+          </div>
+          <h3>Localisation (coordonnées standards)</h3>
+          <div class="gridsearch">
+            <form action="" method="get" class="form-grid">
+              <div class="form-grid">
+                <label for="col">Colonne</label>
+                <input type="text" name="col_letter" id="col_letter" placeholder="Lettre entre F et U" required>
+              </div>
+              <div class="form-grid">
+                <label for="line">Ligne</label>
+                <input type="text" name="line_num" id="line_num" placeholder="Chiffre entre 2 et 21" required>
+              </div>
+            </form>
+            <button id="gridsearchbut" class="w3-button w3-blue button-margin">Accéder à la zone</button>
           </div>
           <div class="popup">
             

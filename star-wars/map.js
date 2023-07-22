@@ -146,6 +146,45 @@ function pointToLayerGridPoints(feature,latlng) {
     );
 }
 
+function getGeom(feature){
+    return feature.geometry.coordinates
+}
+
+var select = L.geoJSON()
+function zoomOn(){
+    
+    var num = document.getElementById("line_num").value
+    console.log(num)
+    var letter = document.getElementById("col_letter").value
+    console.log(letter)
+
+    var url4 = "./data-convert/grid.geojson"
+    select.clearLayers()
+    select = L.geoJSON(null, {
+        pane:'grid',
+        style:{
+            fillColor: 'white',
+            fillOpacity: 0,
+            weight: 4,
+            opacity: 0.8,
+            color: '#4BF5DE'
+        },
+        filter: function(feature, layer) {
+            return (feature.properties.line_num == num && feature.properties.col_letter == letter);
+
+        }
+    });
+    $.getJSON(url4, function(data) {
+        select.addData(data);
+    });
+    select.addTo(map)
+
+    map.on('click', function() {
+        map.fitBounds(select.getBounds());
+    });
+  };
+  document.getElementById("gridsearchbut").addEventListener("click", e => zoomOn());
+
 /******** VECTEUR *********/
 var url1 = "./data-convert/zones.geojson"
 
