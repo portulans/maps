@@ -14,6 +14,10 @@ var bounds = [[0,0], [2488,2000]];
 });*/
 map.fitBounds(bounds);
 /*********** PANE ***********/
+map.createPane("grid");
+map.getPane("grid").style.zIndex = "597";
+map.createPane("gridids");
+map.getPane("gridids").style.zIndex = "597";
 
 map.createPane("zones");
 map.getPane("zones").style.zIndex = "598";
@@ -108,6 +112,34 @@ function zoneStyle(feature){
   }
 };
 
+function gridStyle(feature){
+    return {
+        fillColor: 'white',
+        fillOpacity: 0,
+        weight: 1,
+        opacity: 0.8,
+        color: 'red'
+  }
+}
+
+function loadGridColLine(feature,layer){
+    if (feature.properties){
+        layer.bindTooltip(feature.properties.id,{
+            permanent: true, 
+            direction:"center",
+            className: 'leaflet-tooltip-grid' 
+        })
+    }
+}
+
+function pointToLayerGridPoints(feature,latlng) {
+    return L.circleMarker(latlng, {
+        radius:0,
+        opacity: 0,
+    }
+    );
+}
+
 /******** VECTEUR *********/
 var url1 = "./data-convert/zones.geojson"
 
@@ -140,10 +172,32 @@ $.getJSON(url2, function(data) {
     roads.addData(data);
 });
 
+var url4 = "./data-convert/grid.geojson"
+var grid = L.geoJSON(null, {
+    style:gridStyle,
+    pane:'grid'
+});
+$.getJSON(url4, function(data) {
+    grid.addData(data);
+});
+
+var url5 = "./data-convert/gridids.geojson"
+var gridids = L.geoJSON(null, {
+    gridids:'gridids',
+    onEachFeature:loadGridColLine,
+    pointToLayer:pointToLayerGridPoints
+});
+$.getJSON(url5, function(data) {
+    gridids.addData(data);
+});
+
+var completegrid = L.layerGroup([grid,gridids]);
+
 /******** ADD LAYERS *********/
 zones.addTo(map)
 planets.addTo(map)
 roads.addTo(map)
+completegrid.addTo(map)
 
 /****** SEARCH ********/
 

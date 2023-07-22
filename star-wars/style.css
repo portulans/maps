@@ -6,13 +6,38 @@
 
 .container {
     display: grid; 
-    grid-template-columns: 1fr 0.9fr 1.1fr; 
+    grid-template-columns: 1fr 0.2fr 1.8fr; 
     grid-template-rows: 1fr 1fr 1fr; 
     gap: 0px 0px; 
     grid-template-areas: 
     "Carte Carte Controls"
     "Carte Carte Controls"
     "Carte Carte Controls"; 
+}
+
+.leaflet-tooltip-grid {
+  color: red;
+  font-size:14px;
+  font-weight: 700;
+  fillColor: none;
+  fillOpacity: 0;
+  background-color: none;
+  border-color: none;
+  background: none;
+  border: none;
+  box-shadow: none;
+  margin: 0px;
+  cursor: none;
+  direction: 'center';
+  interactive: false;
+  fill: false;
+}
+
+.container-text {
+  display: grid; 
+  margin-right: 50px;
+  margin-left: 50px;
+  width: 900px;
 }
 
 .title{
