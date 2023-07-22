@@ -1,3 +1,13 @@
+var map = L.map('map',{
+    crs:L.CRS.EPSG3857,
+    fullscreenControl: true,
+    fullscreenControlOptions: {
+        position: 'topleft'
+    },
+    minZoom:4,
+    maxZoom:5
+}).setView([37.244322,-99.580078], 4);
+
 /********** Functions *************/
 
 function getColor(districtid) {
@@ -89,8 +99,6 @@ function onEachFeatureUS(feature,layer){
     layer.bindTooltip(feature.properties.name,{direction:"top-center"});
 }
 
-/************ Data ***********/
-
 function styleOldCoastline(feature) {
     return {
         fillColor: '#0C5176',
@@ -101,10 +109,25 @@ function styleOldCoastline(feature) {
     };
 }
 
+/******** PANE *********/
+map.createPane("20thcentury");
+map.getPane("20thcentury").style.zIndex = "597";
+
+map.createPane("districts");
+map.getPane("districts").style.zIndex = "598";
+
+map.createPane("districts-limits");
+map.getPane("districts-limits").style.zIndex = "599";
+
+map.createPane("usstates");
+map.getPane("usstates").style.zIndex = "600";
+
+/************ Data ***********/
 var url = "./data/20thcentury.geojson";	
 var formercoastline;
 //Initial Setup  with layer Verified No
     formercoastline = L.geoJson(null, {
+        pane:'20thcentury',
         style:styleOldCoastline
     }); 
     	
@@ -118,12 +141,9 @@ var url = "./data/panem.geojson";
 var districts;
 //Initial Setup  with layer Verified No
     districts = L.geoJson(null, {
+        pane:'districts',
         style:style,
 		onEachFeature: onEachFeature
-        /*,
-        filter:function(feature, layer) {
-            return feature.properties.name != "Interstice";
-        }*/
     }); 
     	
      $.getJSON(url, function(data) {
@@ -143,6 +163,7 @@ var url = "./data/districts-limits.geojson";
 var limits;
 //Initial Setup  with layer Verified No
     limits = L.geoJson(null, {
+        pane:'districts-limits',
         style:styleLimits
     }); 
         
@@ -164,6 +185,7 @@ var url = "./data/us-states.geojson";
 var usstates;
 //Initial Setup  with layer Verified No
     usstates = L.geoJson(null, {
+        pane:'usstates',
         style:styleUS,
         onEachFeature:onEachFeatureUS
     }); 
@@ -181,16 +203,6 @@ var Stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/w
 	maxZoom: 16,
 	ext: 'jpg'
 });
-
-var map = L.map('map',{
-    crs:L.CRS.EPSG3857,
-    fullscreenControl: true,
-    fullscreenControlOptions: {
-        position: 'topleft'
-    },
-    minZoom:4,
-    maxZoom:5
-}).setView([37.244322,-99.580078], 4);
 
 var baseMaps = {
     
