@@ -36,6 +36,12 @@ function getColor(type) {
                 '#A16CD3';
 }
 
+function getBorderColor(type) {
+    return type == 'planet' ? '#094F8D' :
+            type == 'neb' ? '#5C3F78':
+                '#5C3F78';
+}
+
 function getColorLines(type) {
     return type == 'main' ? '#BEC3C3' :
         type == 'secondary' ? '#FDFEFE':
@@ -84,7 +90,7 @@ function pointToLayer(feature,latlng) {
     return L.circleMarker(latlng, {
         radius:3,
         fillColor: getColor(feature.properties.type),
-        color: '#ffffff',
+        color: getBorderColor(feature.properties.type),
         weight: 1,
         opacity: 1,
         fillOpacity: 1,
@@ -118,7 +124,7 @@ function gridStyle(feature){
         fillOpacity: 0,
         weight: 1,
         opacity: 0.8,
-        color: 'red'
+        color: '#4BF5DE'
   }
 }
 
