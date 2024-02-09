@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastre napoléonien d'Ouessant</title>
+        
+        <link rel="stylesheet" href="./libs/leaflet.css">
+        <script type="text/javascript" src="./libs/leaflet.js"></script>
+        <link rel="stylesheet" href="./libs/leaflet-panel-layers.css">
+        <script type="text/javascript" src="./libs/leaflet-panel-layers.min.js"></script>
+        <link rel="stylesheet" href="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.css" /> <!--FullScreen-->
+        <script src="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.js"></script>
+        <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="header">
+            <a href="#default" class="logo">Atlas Ouessant</a>
+            <div class="header-right">
+              <a href="index.html">Accueil</a>
+              <a class="active" href="cadastrenap.html">Cadastre napoléonien</a>
+              <a href="pilotes.html">Pilote français</a>
+            </div>
+          </div>
+
+        <article>
+            <h2>Cadastre napoléonien d'Ouessant</h2>
+            <h3>Quelques repères chronologiques</h3>
+            <p>Le premier cadastre d'Ouessant, dit cadastre napoléonien, a été réalisé à partir de 1842.<br>
+            Les plans parcellaires ont été levés au cours de l'année 1842 et validés en novembre de la même année.<br>
+            Les registres d'états de sections, qui associent à chaque parcelle une nature et un propriétaire à date de mise en service du cadastre, ont été achevés en avril 1844.</p>
+            
+            <h3>Mémo sur la documentation cadastrale et accès aux registres</h3>
+            <button class="accordion">Les documents du cadastre</button>
+            <div class="panel">
+            <p>La documentation cadastrale est composée de 4 principaux documents :
+                <ul><li>le tableau d'assemblage : carte qui représente la commune dans son intégralité et matérialise les limites de sections.</li>
+                <li>les plans parcellaires : plans qui représentent une section entière/portion de section et matérialisent en détaillent les parcelles qui sont numérotées.</li>
+                <li>l'état de section : registre initial du cadastre qui constitue la légende du plan (propriétaire, nature de la parcelle). Il n'indique que le premier propriétaire recensé.</li>
+                <li>la matrice des propriétaires : registre qui regroupe les parcelles par propriétaire et indique toutes les mutations apportées aux parcelles (propritaires, nature) jusqu'à la rénovation (1974).</li></ul>
+            Le tableau d'assemblage, les plans parcellaires et l'état de sections ont été numérisés par les archives départementales du Finistère. Les matrices des propriétaires n'ont pas été numérisées.
+            </p>
+            </div>
+            
+            <button class="accordion">Voir les registres numérisés par section</button>
+            <div class="panel">
+                <table>
+                    <tr>
+                        <th>Lettre</th>
+                        <th>Intitulé de la section</th>
+                        <th>Lien vers le registre numérisé</th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td>Section A dite de Loqueltas</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_02_001.jpg&e=FRAD029_3P156_02_436.jpg&img=FRAD029_3P156_02_001.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>Section B dite du Niou</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_02_001.jpg&e=FRAD029_3P156_02_436.jpg&img=FRAD029_3P156_02_104.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>Section C dite de Kergadou</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_02_001.jpg&e=FRAD029_3P156_02_436.jpg&img=FRAD029_3P156_02_196.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>Section D dite du Bourg</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_02_001.jpg&e=FRAD029_3P156_02_436.jpg&img=FRAD029_3P156_02_277.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td>Section E dite de Poulbrac</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_02_001.jpg&e=FRAD029_3P156_02_436.jpg&img=FRAD029_3P156_02_349.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>Section F dite de Keller</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_03_001.jpg&e=FRAD029_3P156_03_384.jpg&img=FRAD029_3P156_03_001.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>G</td>
+                        <td>Section G dite de Cadoran</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_03_001.jpg&e=FRAD029_3P156_03_384.jpg&img=FRAD029_3P156_03_060.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td>Section H dite du Phare</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_03_001.jpg&e=FRAD029_3P156_03_384.jpg&img=FRAD029_3P156_03_134.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>J</td>
+                        <td>Section J dite de Kerlaouen</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_03_001.jpg&e=FRAD029_3P156_03_384.jpg&img=FRAD029_3P156_03_178.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>K</td>
+                        <td>Section K dite de Penarlan</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_03_001.jpg&e=FRAD029_3P156_03_384.jpg&img=FRAD029_3P156_03_264.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>Section L de Kergoff</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_03_001.jpg&e=FRAD029_3P156_03_384.jpg&img=FRAD029_3P156_03_296.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>M</td>
+                        <td>Section M dite de Toul Al Lan</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_04_001.jpg&e=FRAD029_3P156_04_366.jpg&img=FRAD029_3P156_04_001.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>N</td>
+                        <td>Section N dite de Feunten Vélen</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_04_001.jpg&e=FRAD029_3P156_04_366.jpg&img=FRAD029_3P156_04_084.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>O</td>
+                        <td>Section O dite de Porsguen</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_04_001.jpg&e=FRAD029_3P156_04_366.jpg&img=FRAD029_3P156_04_152.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>P</td>
+                        <td>Section P dite de Frugullou</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_04_001.jpg&e=FRAD029_3P156_04_366.jpg&img=FRAD029_3P156_04_233.jpg">Voir le registre</a></td>
+                    </tr>
+                    <tr>
+                        <td>Q</td>
+                        <td>Section Q dite du Merdy</td>
+                        <td><a target="_blank" href="https://recherche.archives.finistere.fr/viewer/series/medias/collections/P/03P/3P156?s=FRAD029_3P156_04_001.jpg&e=FRAD029_3P156_04_366.jpg&img=FRAD029_3P156_04_294.jpg">Voir le registre</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>Comment chercher des informations dans le cadastre napoléonien ?</h3>
+            Il y a plusieurs possibilités :<br>
+            <button class="accordion">Cas 1 : On connait la localisation de la propriété à étudier</button>
+            <div class="panel">
+            <p>
+                Si on souhaite connaitre l'histoire d'une maison ou d'un terrain, il faut  :
+            <ul>
+                <li>Chercher l'emplacement de cette maison ou de ce terrain sur le plan</li>
+                <li>Noter le nom de la section et les numéros des parcelles correspondantes</li>
+                <li>Se rendre dans le chapitre du registre d'états de sections de la section idenfiée précédement</li>
+                <li>Chercher les numéros de parcelles notés précédement</li>
+                <li>Noter les informations recueillies (nom du propriétaire, numéro de folio dans la matrice, nature de la parcelle etc). </li>
+            </ul>
+            </div>
+            <button class="accordion">Cas 2 : On ne connait pas la localisation de la propriété à étudier</button>
+            <div class="panel">
+            Si on souhaite identifier le lieu de vie d'une personne :
+            <ul>
+                <li>Choisir un ancêtre vivant en 1842/43/44 pour lequel on dispose de précisions sur le(s) lieu(x) de vie (ex : nom du lieu-dit comme <i>Kerlan</i>)</li>
+                <li>Chercher le lieu-dit sur la carte</li>
+                <li>Identifier les maisons du lieu-dit et noter la section dans laquelle elles se trouvent ainsi que leurs numéros</li>
+                <li>Se rendre dans le chapitre du registre d'états de sections de la section identifiée précédement</li>
+                <li>Chercher les numéros de parcelles notés précédement</li>
+                <li>Noter les informations recueillies (nom du propriétaire, numéro de folio dans la matrice, nature de la parcelle etc). Le numéro de folio nous permettra de remonter le fil des propriétaires en consultant les archives localisées à Quimper.</li>
+            </ul>
+            </p>
+            </div>
+            <div id="map"></div>
+        </article>
+
+        <footer>
+            <p>&copy; 2024. Portulans. Licence Create Commons CC.BY.SA</p>
+        </footer>
+    </body>
+    <script src="cadastre.js"></script>
+    <script src="pagejs.js"></script>
+</html>
