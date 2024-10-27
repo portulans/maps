@@ -169,17 +169,22 @@ function zoomOn(){
             weight: 4,
             opacity: 0.8,
             color: '#4BF5DE'
-        },
-        filter: function(feature, layer) {
+        }
+        /*,filter: function(feature, layer) {
             return (feature.properties.line_num == num && feature.properties.col_letter == letter);
 
-        }
+        }*/
     });
     $.getJSON(url4, function(data) {
-        select.addData(data);
+        var items = data;
+		items = data.features.filter(function(feature) {
+		    // return the filtered value
+		    return (feature.properties.line_num == num && feature.properties.col_letter == letter);
+		});
+        select.addData(items);
     });
     select.addTo(map)
-
+    
     map.on('click', function() {
         map.fitBounds(select.getBounds());
     });

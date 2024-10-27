@@ -4,7 +4,7 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-body {
+article {
     margin-right:5em;
     margin-left:5em;
 }
@@ -15,13 +15,13 @@ body {
 }
 
 .leaflet-tooltip-custom {
-    padding: 6px;
-    font-size: large;
-    font-weight: 1000;
+  padding: 6px;
+  font-size: large;
+  font-weight: 1000;
 	background-color: transparent;
 	border: transparent;
-    box-shadow:none;
-    -webkit-text-stroke: 0.5px #fff;
+  box-shadow:none;
+  -webkit-text-stroke: 0.5px #fff;
 	}
 
 /* Style the buttons that are used to open and close the accordion panel */
@@ -113,6 +113,93 @@ body {
     text-align: center;
 }
   
+/* Catalogue */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px;
+}
+.map-item {
+  width: 24%;
+  border: 1px solid #000;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+.map-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  background-color: #eee;
+  overflow: hidden;
+}
+.map-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.map-details {
+  padding: 5px;
+}
+.map-title {
+  font-weight: bold;
+}
+.map-author {
+  color: gray;
+}
+.tags {
+  margin-top: 5px;
+}
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  margin: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size: small;
+}
+/* Tag colors */
+.tag-type { background-color: #4CAF50; } /* Green */
+.tag-emprise { background-color: #2196F3; } /* Blue */
+.tag-siècle { background-color: #FF9800; } /* Orange */
+
+/* Filter Section */
+.filter-section {
+  padding: 10px;
+  background-color: #f4f4f4;
+  margin: 20px 0;
+}
+.filter-section .filter-tag, .filter-section .reset-filter {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.reset-filter {
+  background-color: #f08080; /* Distinct color for reset button */
+  font-weight: bold;
+}
+
+/* Tag columns */
+.tag-column {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+  width: 30%;
+}
+
+div.map-title {
+  text-decoration: none;
+  color: black;
+}
+
   /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
   @media screen and (max-width: 500px) {
     .header a {
@@ -124,3 +211,4 @@ body {
       float: none;
     }
   }
+

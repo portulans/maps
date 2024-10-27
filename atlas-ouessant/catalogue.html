@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Atlas historique d'Ouessant</title>
+        <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="header">
+    <a href="#default" class="logo">Atlas historique d'Ouessant</a>
+    <div class="header-right">
+      <a href="index.html">Accueil</a>
+      <a class="active" href="catalogue.html">Cartes anciennes</a>
+      <a href="cadastrenap.html">Cadastre napoléonien</a>
+    </div>
+  </div>
+  <article>
+    <h2>Cartes anciennes</h1>
+      <!-- Filter Section -->
+      <div class="filter-section">
+        <span><b>Filtres:</b></span>
+        <div id="filterTagsContainer"></div>
+        <span class="reset-filter" id="resetFilter">Supprimer les filtres</span>
+      </div>
+      <!-- Catalogue Section -->
+      <div class="container" id="mapContainer"></div>
+  </article>
+  <footer>
+    <p>&copy; 2024. Portulans. Licence Create Commons CC.BY.SA</p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="catalogue.js"></script>
+</body>
+</html>

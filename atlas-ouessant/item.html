@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas historique d'Ouessant</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="libs/leaflet-iiif.js"></script>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Atlas historique d'Ouessant</a>
+        <div class="header-right">
+          <a href="index.html">Accueil</a>
+          <a href="catalogue.html">Cartes anciennes</a>
+          <a href="cadastrenap.html">Cadastre napoléonien</a>
+        </div>
+      </div>
+    <article>
+    <div id="retour-catalogue">
+        <a href="catalogue.html">⬅ Retour au catalogue</a>
+    </div>
+    <div id="map-details">
+        <h1 id="map-name">Map Name</h1>
+        <p id="map-author">Auteur: <span id="author"></span></p>
+        <p id="map-siecle">Siècle: <span id="siecle"></span></p>
+        <p id="map-type">Type: <span id="type"></span></p>
+        <p id="map-emprise">Emprise: <span id="emprise"></span></p>
+    </div>
+
+    <div id="image-viewer-container">
+        <div id="leaflet-viewer" style="display: none; height: 600px;"></div>
+        <div id="leaflet-image-viewer" style="display: none; height: 600px;"></div>
+    </div>
+    </article>
+    <footer>
+        <p>&copy; 2024. Portulans. Licence Create Commons CC.BY.SA</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="item-details.js"></script>
+</body>
+</html>

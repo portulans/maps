@@ -5,6 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Atlas historique d'Ouessant</title>
 
+        <link rel="stylesheet" href="./libs/leaflet.css">
+        <script type="text/javascript" src="./libs/leaflet.js"></script>
+        <link rel="stylesheet" href="./libs/leaflet-panel-layers.css">
+        <script type="text/javascript" src="./libs/leaflet-panel-layers.min.js"></script>
+        <link rel="stylesheet" href="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.css" /> <!--FullScreen-->
+        <script src="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.js"></script>
+        <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
+        <script rel="stylesheet" src="./libs/allmaps-leaflet-1.9.umd.js"></script>
+
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
@@ -13,10 +22,12 @@
             <div class="header-right">
               <a href="index.html">Accueil</a>
               <a href="cadastrenap.html">Cadastre napoléonien</a>
-              <a class="active" href="pilotes.html">Pilote français</a>
+              <a href="pilotes.html">Pilote français</a>
             </div>
           </div>
-
+          <article>
+            <div id="map"></div>
+          </article>
         <footer>
             <p>&copy; 2024. Portulans. Licence Create Commons CC.BY.SA</p>
         </footer>

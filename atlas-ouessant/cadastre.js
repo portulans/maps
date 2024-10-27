@@ -51,21 +51,21 @@ var ignaerial2023 = L.tileLayer.wms('https://wxs.ign.fr/ortho/geoportail/r/wms?'
  * BASE Layers
  */
 
-var assemblage = L.tileLayer('https://www.laurentgontier.com/OuessantLayers/PlanAssemblageCadastre/{z}/{x}/{y}.png', {
-  minZoom: 9,
-  maxZoom: 20,
-  tms: false,
-  attribution: '&copy; L. Gontier - @AD29'
-});
-
-var sections;
-var url = "data/sections_v2.geojson";	
-
-function sectionStyle(feature) {
+function sectionStyle(feature,color) {
     return {
     weight: 2,
-    opacity: 0.7,
+    opacity: 1,
     color: 'green',
+    dashArray: 2,
+    fillOpacity: 0
+};
+}
+
+function feuilleStyle(feature,color) {
+    return {
+    weight: 2,
+    opacity: 0.5,
+    color: 'grey',
     dashArray: 2,
     fillOpacity: 0
 };
@@ -80,14 +80,34 @@ function onEachFeature(feature,layer){
    })
 }
 
-//Initial Setup  with layer Verified No
+var assemblage = L.tileLayer('https://www.laurentgontier.com/OuessantLayers/PlanAssemblageCadastre/{z}/{x}/{y}.png', {
+  minZoom: 9,
+  maxZoom: 20,
+  tms: false,
+  attribution: '&copy; L. Gontier - @AD29'
+});
+
+var sections;
+var url = "data/sections_v2.geojson";	
+
 	sections = L.geoJson(null, {
-        style:sectionStyle,
+        style:sectionStyle('green'),
         onEachFeature:onEachFeature
     }); 
     	
      $.getJSON(url, function(data) {
 	   sections.addData(data);
+    });
+
+var feuilles;
+var url = "data-old/feuilles_nap_ouessant.geojson";	
+
+    feuilles = L.geoJson(null, {
+        style:feuilleStyle
+    }); 
+        
+        $.getJSON(url, function(data) {
+        feuilles.addData(data);
     });
 
 var planparcellaire = L.tileLayer('https://www.laurentgontier.com/CadasOuessant/{z}/{x}/{y}.png', {
@@ -167,8 +187,13 @@ var overLayers = [
             },
             {
                 active: true,
-                name: "Sections (approximatives)",
+                name: "Sections",
                 layer: sections
+            },
+            {
+                active: false,
+                name: "Feuilles",
+                layer: feuilles
             },
             {
                 active: true,
