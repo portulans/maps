@@ -9,7 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
         download: true,
         header: true,
         complete: function(results) {
-            const data = results.data;
+
+            const data = results.data.filter(row => row.Display_on_catalogue == 'TRUE');
+
+            //Count the number of item and display it in a div nae "count-item"
+            const countItem = document.getElementById("count-items");
+            countItem.textContent = data.length + " cartes sont listées sur cette page.";
 
             // Display maps and collect all unique tags
             data.forEach(row => {
@@ -44,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 } else if (row.Wiki_Commons_Name) {
                     let wikiImage = row.Wiki_Commons_Name;
-                    wikiImage = wikiImage.replace(/[,() ]/g, match => ({',': '%2C', '(': '%28', ')': '%29', ' ': '_'}[match]));
+                    wikiImage = wikiImage.replace(/[,() ]/g, match => ({',': '%2C', '(': '%28', ')': '%29', ' ': '_',"'":"%27"}[match]));
                     imageUrl = `https://upload.wikimedia.org/wikipedia/commons/thumb/${row.Wiki_Commons_Prefix}/${wikiImage}/400px-${wikiImage}`;
                 } else {
                     imageUrl = ""; // Placeholder or no image

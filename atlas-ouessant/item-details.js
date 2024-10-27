@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (institution == "BNF" || institution == "SHD") {
             const iiifBaseUrl = manifestUrl.replace("manifest.json", "");
             imageUrl = `${iiifBaseUrl}f${item}/info.json`;
-        } else if (institution == "Université d'Utretch" ) {
+        } else {
             imageUrl = manifestUrl
         }
         L.tileLayer.iiif(imageUrl).addTo(map);
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         leafletImageViewer.style.display = "block";
 
         // Encode special characters in the file name;
-        fileName = fileName.replace(/[,() ]/g, match => ({',': '%2C', '(': '%28', ')': '%29', ' ': '_'}[match]));
+        fileName = fileName.replace(/[,() ]/g, match => ({',': '%2C', '(': '%28', ')': '%29', ' ': '_',"'":"%27"}[match]));
         imageUrl = `https://upload.wikimedia.org/wikipedia/commons/${prefix}/${fileName}`;
 
         // Create a new Image object to get its dimensions

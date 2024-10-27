@@ -210,5 +210,8 @@ div.map-title {
     .header-right {
       float: none;
     }
+    .filter-section {
+      width: 100%;
+    }
   }
 

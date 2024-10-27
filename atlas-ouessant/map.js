@@ -15,35 +15,35 @@ var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
-var etatmajor = L.tileLayer.wms('https://wxs.ign.fr/cartes/geoportail/r/wms?', {
+var etatmajor = L.tileLayer.wms('https://data.geopf.fr/wmts?', {
     layers: 'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',
     attribution:'&copy; IGN',
     version: '1.3.0',
     crs: L.CRS.EPSG3857
 });
 
-var ign1950 = L.tileLayer.wms('https://wxs.ign.fr/cartes/geoportail/r/wms?', {
+var ign1950 = L.tileLayer.wms('https://data.geopf.fr/wmts?', {
     layers: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950',
     attribution:'&copy; IGN',
     version: '1.3.0',
     crs: L.CRS.EPSG3857
 });
 
-var ign2023 = L.tileLayer.wms('https://wxs.ign.fr/cartes/geoportail/r/wms?', {
+var ign2023 = L.tileLayer.wms('https://data.geopf.fr/wmts?', {
     layers: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.BDUNI.J1',
     attribution:'&copy; IGN',
     version: '1.3.0',
     crs: L.CRS.EPSG3857
 });
 
-var ignaerial1950 = L.tileLayer.wms('https://wxs.ign.fr/orthohisto/geoportail/r/wms?', {
+var ignaerial1950 = L.tileLayer.wms('https://data.geopf.fr/wmts?', {
     layers: 'ORTHOIMAGERY.ORTHOPHOTOS.1950-1965',
     attribution:'&copy; IGN',
     version: '1.3.0',
     crs: L.CRS.EPSG3857
 });
 
-var ignaerial2023 = L.tileLayer.wms('https://wxs.ign.fr/ortho/geoportail/r/wms?', {
+var ignaerial2023 = L.tileLayer.wms('https://data.geopf.fr/wmts?', {
     layers: 'ORTHOIMAGERY.ORTHOPHOTOS.BDORTHO',
     attribution:'&copy; IGN',
     version: '1.3.0',
@@ -90,7 +90,7 @@ var sections = L.tileLayer('https://www.laurentgontier.com/CadasOuessant/{z}/{x}
   attribution: '&copy; L. Gontier - @AD29'
 });
 
-var parcellaireExpress = L.tileLayer.wms('https://wxs.ign.fr/parcellaire/geoportail/r/wms?', {
+var parcellaireExpress = L.tileLayer.wms('https://data.geopf.fr/wmts?', {
     layers: 'CADASTRALPARCELS.PARCELLAIRE_EXPRESS',
     format: 'image/png',
     transparent: true,
