@@ -147,6 +147,7 @@ article {
 }
 .map-title {
   font-weight: bold;
+  padding:5px;
 }
 .map-author {
   color: gray;
@@ -167,6 +168,7 @@ article {
 .tag-type { background-color: #4CAF50; } /* Green */
 .tag-emprise { background-color: #2196F3; } /* Blue */
 .tag-siècle { background-color: #FF9800; } /* Orange */
+.tag-georef { background-color: #dbc93d; } /* Yellow */
 
 /* Filter Section */
 .filter-section {
@@ -199,6 +201,7 @@ div.map-title {
   text-decoration: none;
   color: black;
 }
+
 
   /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
   @media screen and (max-width: 500px) {

@@ -33,17 +33,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 const mapImageContainer = document.createElement("div");
                 mapImageContainer.className = "map-image-container";
                 let imageUrl;
-                if (row.IIIF_Manifest && (row.Institution == "BNF" || row.Institution == "SHD")) {
+                if (row.IIIF_Manifest && (row.Institution == "BNF" || row.Institution == "SHD" || row.Institution == "ENPC")) {
                     const iiifBaseUrl = row.IIIF_Manifest.replace("manifest.json", "");
-                    if (row.IIIF_region) {
+                    if (row.IIIF_region || row.IIIF_size) {
                         imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/${row.IIIF_region}/!400,/${row.IIIF_rotation}/native.jpg`;
                     } else {
                         imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/full/!400,/0/native.jpg`;
                     }
-                } else if (row.IIIF_Manifest && row.Institution == "Université d'Utretch" ) {
+                } else if (row.IIIF_Manifest) {
                     const iiifBaseUrl = row.IIIF_Manifest.replace("info.json", "");
-                    if (row.IIIF_region) {
-                        imageUrl = `${iiifBaseUrl}${row.IIIF_region}/!400,/${row.IIIF_rotation}/default.jpg`;
+                    if (row.IIIF_region || row.IIIF_size) {
+                        imageUrl = `${iiifBaseUrl}${row.IIIF_region}/${row.IIIF_size}/${row.IIIF_rotation}/default.jpg`;
                     } else {
                         imageUrl = `${iiifBaseUrl}full/!400,/0/default.jpg`;
                     }
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     img.className = "map-image";
                     mapImageContainer.appendChild(img);
                 } else {
-                    mapImageContainer.textContent = "IMAGE of the map";
+                    mapImageContainer.textContent = "Image non disponible";
                 }
 
                 // Create map details
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const mapAuthor = document.createElement("div");
                 mapAuthor.className = "map-author";
-                mapAuthor.textContent = `${row.Auteur || "Auteur inconnu"}`;
+                mapAuthor.textContent = `${row.Auteur || ""}`;
 
                 mapDetails.appendChild(mapTitle);
                 mapDetails.appendChild(mapAuthor);
@@ -94,6 +94,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         tagsContainer.appendChild(tagElement);
                         allTags[key].add(value); // Add to allTags
                     }
+                }
+
+                // Add special tag if Georeferencing is done
+                if (row.Georeferencing === "done") {
+                    const geoTag = document.createElement("span");
+                    geoTag.className = "tag tag-georef"; // Custom class for styling
+                    geoTag.textContent = "Carte géoréférencée";
+                    tagsContainer.appendChild(geoTag);
                 }
 
                 mapDetails.appendChild(tagsContainer);

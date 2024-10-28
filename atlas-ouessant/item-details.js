@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         console.log(manifestUrl);
         
-        if (institution == "BNF" || institution == "SHD") {
+        if (institution == "BNF" || institution == "SHD" || row.Institution == "ENPC") {
             const iiifBaseUrl = manifestUrl.replace("manifest.json", "");
             imageUrl = `${iiifBaseUrl}f${item}/info.json`;
         } else {
