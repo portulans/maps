@@ -50,11 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to populate map details
     function populateMapDetails(data) {
-        document.getElementById("map-name").textContent = data.Map_name || "Unknown Map";
-        document.getElementById("author").textContent = data.Auteur || "Unknown Author";
-        document.getElementById("siecle").textContent = data.Siècle || "Unknown Siècle";
+        document.getElementById("map-name").textContent = data.Map_name || "Carte sans titre";
+        document.getElementById("author").textContent = data.Auteur || "Auteur inconnu";
+        document.getElementById("date").textContent = data.Date_de_création || "Date inconnue";
         document.getElementById("type").textContent = data.Type || "Unknown Type";
-        document.getElementById("emprise").textContent = data.Emprise || "Unknown Emprise";
+        document.getElementById("institution").textContent = data.Détail_institution || "Source à préciser";
     }
 
     // Function to display the map image
