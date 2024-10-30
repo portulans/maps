@@ -12,40 +12,90 @@ var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
-var etatmajor = L.tileLayer.wms('https://wxs.ign.fr/cartes/geoportail/r/wms?', {
-    layers: 'GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40',
-    attribution:'&copy; IGN',
-    version: '1.3.0',
-    crs: L.CRS.EPSG3857
+var etatmajor = L.tileLayer(
+    "https://data.geopf.fr/wmts?" +
+    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
+    "&STYLE=normal" +
+    "&TILEMATRIXSET=PM" +
+    "&FORMAT=image/jpeg"+
+    "&LAYER=GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40"+
+"&TILEMATRIX={z}" +
+    "&TILEROW={y}" +
+    "&TILECOL={x}",
+{
+    minZoom : 0,
+    maxZoom : 18,
+            attribution : "IGN-F/Geoportail",
+    tileSize : 256 // les tuiles du Géooportail font 256x256px
 });
 
-var ign1950 = L.tileLayer.wms('https://wxs.ign.fr/cartes/geoportail/r/wms?', {
-    layers: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950',
-    attribution:'&copy; IGN',
-    version: '1.3.0',
-    crs: L.CRS.EPSG3857
-});
+var ign1950 = L.tileLayer(
+        "https://data.geopf.fr/wmts?" +
+        "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
+        "&STYLE=normal" +
+        "&TILEMATRIXSET=PM" +
+        "&FORMAT=image/jpeg"+
+        "&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950"+
+        "&TILEMATRIX={z}" +
+        "&TILEROW={y}" +
+        "&TILECOL={x}",
+        {
+            minZoom : 0,
+            maxZoom : 18,
+                    attribution : "IGN-F/Geoportail",
+            tileSize : 256 // les tuiles du Géooportail font 256x256px
+        });
 
-var ign2023 = L.tileLayer.wms('https://wxs.ign.fr/cartes/geoportail/r/wms?', {
-    layers: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.BDUNI.J1',
-    attribution:'&copy; IGN',
-    version: '1.3.0',
-    crs: L.CRS.EPSG3857
-});
+var ign2023 = L.tileLayer(
+    "https://data.geopf.fr/wmts?" +
+    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
+    "&STYLE=normal" +
+    "&TILEMATRIXSET=PM" +
+    "&FORMAT=image/jpeg"+
+    "&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS.BDUNI.J1"+
+    "&TILEMATRIX={z}" +
+    "&TILEROW={y}" +
+    "&TILECOL={x}",
+    {
+        minZoom : 0,
+        maxZoom : 18,
+                attribution : "IGN-F/Geoportail",
+        tileSize : 256 // les tuiles du Géooportail font 256x256px
+    });
 
-var ignaerial1950 = L.tileLayer.wms('https://wxs.ign.fr/orthohisto/geoportail/r/wms?', {
-    layers: 'ORTHOIMAGERY.ORTHOPHOTOS.1950-1965',
-    attribution:'&copy; IGN',
-    version: '1.3.0',
-    crs: L.CRS.EPSG3857
-});
+var ignaerial1950 = L.tileLayer(
+    "https://data.geopf.fr/wmts?" +
+    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
+    "&STYLE=normal" +
+    "&TILEMATRIXSET=PM" +
+    "&FORMAT=image/jpeg"+
+    "&LAYER=ORTHOIMAGERY.ORTHOPHOTOS.1950-1965"+
+    "&TILEMATRIX={z}" +
+    "&TILEROW={y}" +
+    "&TILECOL={x}",
+    {
+        minZoom : 0,
+        maxZoom : 18,
+                attribution : "IGN-F/Geoportail",
+        tileSize : 256 // les tuiles du Géooportail font 256x256px
+    });
 
-var ignaerial2023 = L.tileLayer.wms('https://wxs.ign.fr/ortho/geoportail/r/wms?', {
-    layers: 'ORTHOIMAGERY.ORTHOPHOTOS.BDORTHO',
-    attribution:'&copy; IGN',
-    version: '1.3.0',
-    crs: L.CRS.EPSG3857
-});
+var ignaerial2023 = L.tileLayer(
+    "https://data.geopf.fr/wmts?" +
+    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
+    "&STYLE=normal" +
+    "&TILEMATRIXSET=PM" +
+    "&FORMAT=image/jpeg"+
+    "&LAYER=ORTHOIMAGERY.ORTHOPHOTOS.BDORTHO"+
+    "&TILEMATRIX={z}" +
+    "&TILEROW={y}" +
+    "&TILECOL={x}",
+    {
+        minZoom : 0,
+        maxZoom : 18,
+                attribution : "IGN-F/Geoportail",
+        tileSize : 256 // les tuiles du Géooportail font 256x256px
+    });
 
 /********
  * BASE Layers

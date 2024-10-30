@@ -17,11 +17,36 @@ document.addEventListener("DOMContentLoaded", function () {
             if (mapData) {
                 populateMapDetails(mapData);
                 displayImage(mapData);
+                populateMapTags(mapData)
             } else {
                 console.error("Map data not found for ID:", mapId);
             }
         }
     });
+
+    function populateMapTags(data) {
+        // Add tags and populate allTags
+        const tagsContainer = document.getElementById("map-item-tags")
+
+        const tags = { Type: data.Type, Emprise: data.Emprise, Siècle: data.Siècle };
+        for (const [key, value] of Object.entries(tags)) {
+            if (value) {
+                const tagElement = document.createElement("span");
+                tagElement.className = `tag-item tag-${key.toLowerCase()}`;
+                tagElement.textContent = value;
+                tagElement.addEventListener("click", () => filterByTag(value));
+                tagsContainer.appendChild(tagElement);
+            }
+        }
+
+        // Add special tag if Georeferencing is done
+        if (data.Georeferencing === "done") {
+            const geoTag = document.createElement("span");
+            geoTag.className = "tag tag-georef"; // Custom class for styling
+            geoTag.textContent = "Carte géoréférencée";
+            tagsContainer.appendChild(geoTag);
+        }
+    } 
 
     // Function to populate map details
     function populateMapDetails(data) {
@@ -34,13 +59,98 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to display the map image
     function displayImage(data) {
-        if (data.IIIF_Manifest) {
+        if (data.XYZ_tiles && data.IIIF_Manifest) {
+            let radios = document.getElementsByName('radiobuttonsformaps');
+            // Add two radios buttons in the div
+            let radio1 = document.createElement("input");
+            radio1.type = "radio";
+            radio1.name = "radiobuttonsformaps";
+            radio1.value = "XYZ_tiles";
+            radio1.checked = true;
+            radio1.id = "XYZ_tiles";
+            radio1.onclick = function() {
+                loadXYZImage(url,attribution,attribution_url);
+            }
+            let label1 = document.createElement("label");
+            label1.htmlFor = "XYZ";
+            label1.appendChild(document.createTextNode("XYZ_tiles"));
+            
+            let radio2 = document.createElement("input");
+            radio2.type = "radio";
+            radio2.name = "radiobuttonsformaps";
+            radio2.value = "IIIF";
+            radio2.id = "IIIF";
+            radio2.onclick = function() {
+                loadIIIFImage(url,attribution,attribution_url);
+            }
+            let label2 = document.createElement("label");
+            label2.htmlFor = "IIIF";
+            label2.appendChild(document.createTextNode("IIIF"));
+            let radioDiv = document.getElementById("radiobuttonsformaps");
+            radioDiv.appendChild(radio1);
+            radioDiv.appendChild(label1);
+            radioDiv.appendChild(radio2);
+            radioDiv.appendChild(label2);
+
+            loadXYZImage(data.XYZ_tiles,data.Institution,data.Lien);
+        } else if (data.IIIF_Manifest) {
             loadIIIFImage(data.IIIF_Manifest,data.Institution,data.IIIF_Item);
         } else if (data.Wiki_Commons_Name) {
             loadWikiImage(data.Wiki_Commons_Name, data.Wiki_Commons_Prefix);
         } else {
             console.error("No image source found for this map.");
         }
+    }
+
+    // Function to load IIIF image in Leaflet viewer
+    function loadXYZImage(url,attribution,attribution_url) {
+        const leafletViewer = document.getElementById("leaflet-viewer");
+        leafletViewer.style.display = "block";
+
+        // Initialize Leaflet map with IIIF support
+        const map = L.map('leaflet-viewer',{
+            center: [48.464271, -5.086464],
+            zoom:13
+        });
+
+        // Add an osm layer
+        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+        
+        // Add the georeferenced image
+        var layer = L.tileLayer(url, {
+            attribution: `&copy; <a href="${attribution_url}">${attribution}</a>`
+        });
+
+        // Add a control panel with osm as base layer and layer as overlayer
+        var baseLayers = {
+            "OpenStreetMap": osm
+        };
+        var overlays = {
+            "Carte ancienne": layer
+        };
+        L.control.layers(baseLayers,overlays).addTo(map);
+        osm.addTo(map);
+        layer.addTo(map);
+
+        //Add a scale
+        L.control.scale().addTo(map);
+
+        // Add a fullscreen button
+        map.addControl(new L.Control.Fullscreen());
+
+        // Add an opacity control for the layer
+        var slider = document.createElement("input");
+        slider.type = "range";
+        slider.min = 0;
+        slider.max = 1;
+        slider.step = 0.1;
+        slider.value = 1;
+        slider.oninput = function() {
+            layer.setOpacity(this.value);
+        }
+        map.addControl(slider);
     }
 
     // Function to load IIIF image in Leaflet viewer
@@ -79,8 +189,18 @@ document.addEventListener("DOMContentLoaded", function () {
         img.src = imageUrl;
 
         img.onload = function() {
-            const imageWidth = img.width;
-            const imageHeight = img.height;
+            let imageWidth = img.width;
+            let imageHeight = img.height;
+            let maxLSize = 5000;
+            if (imageWidth > imageHeight && imageWidth > maxLSize) {
+                imageUrl = `https://upload.wikimedia.org/wikipedia/commons/thumb/${prefix}/${fileName}/${maxLSize}px-${fileName}`;
+                imageWidth = maxLSize;
+                imageHeight = imageWidth * img.height / img.width;
+            } else if (imageHeight > imageWidth && imageHeight > maxLSize) {
+                imageUrl = `https://upload.wikimedia.org/wikipedia/commons/thumb/${prefix}/${fileName}/${maxLSize}px-${fileName}`;
+                imageHeight = maxLSize;
+                imageWidth = imageHeight * img.width / img.height;
+            }
 
             // Define image bounds based on its dimensions
             const imageBounds = [[0, 0], [imageHeight, imageWidth]];
