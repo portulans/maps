@@ -1,4 +1,30 @@
+const leafletViewer1 = document.getElementById("leaflet-viewer1");
+const leafletViewer2 = document.getElementById("leaflet-viewer2");
+const leafletViewer3 = document.getElementById("leaflet-viewer3");
+
+function openTab(evt, name) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+  
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(name).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
 document.addEventListener("DOMContentLoaded", function () {
+
     // Function to get URL query parameters
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -16,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const mapData = results.data.find(row => row.ID === mapId);
             if (mapData) {
                 populateMapDetails(mapData);
+                populateMapTags(mapData);
                 displayImage(mapData);
-                populateMapTags(mapData)
             } else {
                 console.error("Map data not found for ID:", mapId);
             }
@@ -52,49 +78,29 @@ document.addEventListener("DOMContentLoaded", function () {
     function populateMapDetails(data) {
         document.getElementById("map-name").textContent = data.Map_name || "Carte sans titre";
         document.getElementById("author").textContent = data.Auteur || "Auteur inconnu";
-        document.getElementById("date").textContent = data.Date_de_création || "Date inconnue";
+        document.getElementById("date").textContent = data.Date_Création || "Date inconnue";
         document.getElementById("type").textContent = data.Type || "Unknown Type";
-        document.getElementById("institution").textContent = data.Détail_institution || "Source à préciser";
+
+        if (data.Lien && data.Détail_institution) {
+            //append child into the institution paragraph
+            document.getElementById("institution").innerHTML += `<a href="${data.Lien}" target="_blank">${data.Détail_institution}</a>`;
+        } else {
+            document.getElementById("institution").textContent = data.Détail_institution || "Source à préciser";
+        }
     }
 
-    // Function to display the map image
+    // Function to display the image based on the selected option
     function displayImage(data) {
         if (data.XYZ_tiles && data.IIIF_Manifest) {
-            let radios = document.getElementsByName('radiobuttonsformaps');
-            // Add two radios buttons in the div
-            let radio1 = document.createElement("input");
-            radio1.type = "radio";
-            radio1.name = "radiobuttonsformaps";
-            radio1.value = "XYZ_tiles";
-            radio1.checked = true;
-            radio1.id = "XYZ_tiles";
-            radio1.onclick = function() {
-                loadXYZImage(url,attribution,attribution_url);
-            }
-            let label1 = document.createElement("label");
-            label1.htmlFor = "XYZ";
-            label1.appendChild(document.createTextNode("XYZ_tiles"));
-            
-            let radio2 = document.createElement("input");
-            radio2.type = "radio";
-            radio2.name = "radiobuttonsformaps";
-            radio2.value = "IIIF";
-            radio2.id = "IIIF";
-            radio2.onclick = function() {
-                loadIIIFImage(url,attribution,attribution_url);
-            }
-            let label2 = document.createElement("label");
-            label2.htmlFor = "IIIF";
-            label2.appendChild(document.createTextNode("IIIF"));
-            let radioDiv = document.getElementById("radiobuttonsformaps");
-            radioDiv.appendChild(radio1);
-            radioDiv.appendChild(label1);
-            radioDiv.appendChild(radio2);
-            radioDiv.appendChild(label2);
-
-            loadXYZImage(data.XYZ_tiles,data.Institution,data.Lien);
+            document.getElementById("leaflet-viewer1-title").innerText = "Carte géoréférencée";
+            document.getElementById("leaflet-viewer1-comment").innerText = "Chaque pixel de l'image a été associé à des coordonnées géographiques afin de superposer l'image à une carte moderne.";
+            loadXYZImage(data.XYZ_tiles, data.Attribution, data.Lien);
+            loadIIIFImage(data.IIIF_Manifest, data.Institution, data.IIIF_Item);
+        } else if (data.XYZ_tiles && data.Wiki_Commons_Name) {
+            loadXYZImage(data.XYZ_tiles, data.Attribution, data.Lien);
+            loadIIIFImage(data.IIIF_Manifest, data.Institution, data.IIIF_Item);
         } else if (data.IIIF_Manifest) {
-            loadIIIFImage(data.IIIF_Manifest,data.Institution,data.IIIF_Item);
+            loadIIIFImage(data.IIIF_Manifest, data.Institution, data.IIIF_Item);
         } else if (data.Wiki_Commons_Name) {
             loadWikiImage(data.Wiki_Commons_Name, data.Wiki_Commons_Prefix);
         } else {
@@ -104,11 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to load IIIF image in Leaflet viewer
     function loadXYZImage(url,attribution,attribution_url) {
-        const leafletViewer = document.getElementById("leaflet-viewer");
-        leafletViewer.style.display = "block";
+
+        leafletViewer1.style.display = "block";
 
         // Initialize Leaflet map with IIIF support
-        const map = L.map('leaflet-viewer',{
+        let map1 = new L.map('leaflet-viewer1',{
             center: [48.464271, -5.086464],
             zoom:13
         });
@@ -117,6 +123,22 @@ document.addEventListener("DOMContentLoaded", function () {
         var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         });
+        var ignaerial2023 = L.tileLayer(
+            "https://data.geopf.fr/wmts?" +
+            "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
+            "&STYLE=normal" +
+            "&TILEMATRIXSET=PM" +
+            "&FORMAT=image/jpeg"+
+            "&LAYER=ORTHOIMAGERY.ORTHOPHOTOS.BDORTHO"+
+            "&TILEMATRIX={z}" +
+            "&TILEROW={y}" +
+            "&TILECOL={x}",
+            {
+                minZoom : 0,
+                maxZoom : 18,
+                attribution : "IGN",
+                tileSize : 256 // les tuiles du Géooportail font 256x256px
+            });
         
         // Add the georeferenced image
         var layer = L.tileLayer(url, {
@@ -125,60 +147,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Add a control panel with osm as base layer and layer as overlayer
         var baseLayers = {
+            "Photographie aérienne" : ignaerial2023,
             "OpenStreetMap": osm
         };
         var overlays = {
             "Carte ancienne": layer
         };
-        L.control.layers(baseLayers,overlays).addTo(map);
-        osm.addTo(map);
-        layer.addTo(map);
+        L.control.layers(baseLayers,overlays,{collapsed:false}).addTo(map1);
+        L.control.opacity(overlays, {label: 'Transparence',}).addTo(map1);
+        osm.addTo(map1);
+        layer.addTo(map1);
 
         //Add a scale
-        L.control.scale().addTo(map);
-
-        // Add a fullscreen button
-        map.addControl(new L.Control.Fullscreen());
-
-        // Add an opacity control for the layer
-        var slider = document.createElement("input");
-        slider.type = "range";
-        slider.min = 0;
-        slider.max = 1;
-        slider.step = 0.1;
-        slider.value = 1;
-        slider.oninput = function() {
-            layer.setOpacity(this.value);
-        }
-        map.addControl(slider);
+        L.control.scale().addTo(map1);
     }
 
     // Function to load IIIF image in Leaflet viewer
     function loadIIIFImage(manifestUrl,institution,item) {
-        const leafletViewer = document.getElementById("leaflet-viewer");
-        leafletViewer.style.display = "block";
+
+        leafletViewer2.style.display = "block";
 
         // Initialize Leaflet map with IIIF support
-        const map = L.map('leaflet-viewer', { 
+
+        let map2 = new L.map('leaflet-viewer2', { 
             center: [0, 0],
             crs: L.CRS.Simple,
-            zoom: 1
+            zoom: 2
           });
         console.log(manifestUrl);
         
-        if (institution == "BNF" || institution == "SHD" || row.Institution == "ENPC") {
+        if (institution == "BNF" || institution == "SHD" || institution == "ENPC") {
             const iiifBaseUrl = manifestUrl.replace("manifest.json", "");
             imageUrl = `${iiifBaseUrl}f${item}/info.json`;
         } else {
             imageUrl = manifestUrl
         }
-        L.tileLayer.iiif(imageUrl).addTo(map);
+        L.tileLayer.iiif(imageUrl).addTo(map2);
     }
     
     // Function to load Wiki Commons image in an iframe
     function loadWikiImage(fileName, prefix) {
-        const leafletImageViewer = document.getElementById("leaflet-image-viewer");
-        leafletImageViewer.style.display = "block";
+
+        leafletViewer3.style.display = "block";
 
         // Encode special characters in the file name;
         fileName = fileName.replace(/[,() ]/g, match => ({',': '%2C', '(': '%28', ')': '%29', ' ': '_',"'":"%27"}[match]));
@@ -206,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const imageBounds = [[0, 0], [imageHeight, imageWidth]];
 
             // Initialize the Leaflet map with a simple CRS (for non-geographic usage)
-            const map = L.map('leaflet-image-viewer', {
+            let map3 = new L.map('leaflet-viewer3', {
                 crs: L.CRS.Simple,
                 center: [imageHeight / 2, imageWidth / 2], // Center on the image
                 zoom: 0,
@@ -214,20 +224,21 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             // Add the image overlay with the calculated bounds
-            const imageOverlay = L.imageOverlay(imageUrl, imageBounds).addTo(map);
+            const imageOverlay = L.imageOverlay(imageUrl, imageBounds).addTo(map3);
 
             // Calculate the default zoom to fit the image
-            const containerSize = map.getSize();
+            const containerSize = map3.getSize();
             const widthScale = containerSize.x / imageWidth;
             const heightScale = containerSize.y / imageHeight;
             const scale = Math.min(widthScale, heightScale);
 
             // Calculate the zoom level based on the scale
-            const defaultZoom = map.getZoom() + Math.log2(scale);
+            const defaultZoom = map3.getZoom() + Math.log2(scale);
 
             // Set the map to the calculated default zoom level and fit the bounds
-            map.setZoom(defaultZoom);
-            map.fitBounds(imageBounds);
+            map3.setZoom(defaultZoom);
+            map3.fitBounds(imageBounds);
         };
     }
+
 });

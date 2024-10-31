@@ -218,8 +218,45 @@ div.map-title {
 }
 
 
+/* Tabber */
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
   /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 450px) {
     .header a {
       float: none;
       display: block;
@@ -231,5 +268,39 @@ div.map-title {
     .filter-section {
       width: 100%;
     }
+
+    article {
+      margin:0;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1px;
+    margin: 0px;
+    padding-right: 2em;
+    padding-left: 2em;
+  }
+  .tag-item {
+    display: inline-block;
+    padding: 3px 3px;
+    margin: 2px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: xx-small;
+  }
+  .filter-section {
+    width: 98%;
+    padding: 2%;
+    background-color: #f4f4f4;
+    margin: 0px 0;
+  }
+  .map-item {
+    width: 45%;
+    border: 1px solid #000;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 2px;
+  }
   }
 

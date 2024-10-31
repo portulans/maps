@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atlas historique d'Ouessant</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="./libs/leaflet.css">
+    <script type="text/javascript" src="./libs/leaflet.js"></script>
+    <link rel="stylesheet" href="./libs/leaflet-panel-layers.css">
+    <script type="text/javascript" src="./libs/leaflet-panel-layers.min.js"></script>
+    <link rel="stylesheet" href="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.css" /> <!--FullScreen-->
+    <script src="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.js"></script>
+    <link rel="stylesheet" href="./libs/Leaflet.Control.Opacity/L.Control.Opacity.css">
+    <script src="./libs/Leaflet.Control.Opacity/L.Control.Opacity.js"></script>
+    <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
     <script src="libs/leaflet-iiif.js"></script>
 </head>
 <body>
@@ -14,7 +21,7 @@
         <a href="#default" class="logo">Atlas historique d'Ouessant</a>
         <div class="header-right">
           <a href="index.html">Accueil</a>
-          <a href="catalogue.html">Cartes anciennes</a>
+          <a class="active" href="catalogue.html">Cartes anciennes</a>
           <a href="cadastrenap.html">Cadastre napoléonien</a>
         </div>
       </div>
@@ -31,14 +38,13 @@
         <p id="map-institution">Source: <span id="institution"></span></p>
     </div>
 
-    <div id="mapcontrols">
-        <div id="radiobuttonsformaps" style="display: none; height: 20px;"></div>
-        <div id="opacityslider" style="display: none; height: 20px;"></div>
-    </div>
-    <div id="image-viewer-container">
-        <div id="leaflet-viewer" style="display: none; height: 600px;"></div>
-        <div id="leaflet-image-viewer" style="display: none; height: 600px;"></div>
-    </div>
+        <div id="leaflet-viewer3" style="display: none; height: 600px;"></div>
+        <div id="leaflet-viewer2" style="display: none; height: 600px;"></div>
+        <div id="map-georef">
+            <h3 id="leaflet-viewer1-title"></h3>
+            <p><small id="leaflet-viewer1-comment"></small></p>
+            <div id="leaflet-viewer1" style="display: none; height: 600px; margin-top: 10px;"></div>
+        </div>
     </article>
     <footer>
         <p>&copy; 2024. Portulans. Licence Create Commons CC.BY.SA</p>
