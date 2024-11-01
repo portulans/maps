@@ -11,10 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
         complete: function(results) {
 
             const data = results.data.filter(row => row.Display_on_catalogue == 'TRUE');
+            const waiting = results.data.filter(row => row.Display_on_catalogue == 'FALSE');
 
             //Count the number of item and display it in a div nae "count-item"
             const countItem = document.getElementById("count-items");
-            countItem.textContent = data.length + " cartes sont listées sur cette page.";
+            countItem.innerHTML = '<b>' + data.length + '</b> cartes sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " cartes appaîtront prochainement.</span>";
 
             // Display maps and collect all unique tags
             data.forEach(row => {

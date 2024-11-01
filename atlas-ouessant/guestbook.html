@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas historique d'Ouessant - Livre d'or</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli|Ovo" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>	
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Atlas historique d'Ouessant</a>
+        <div class="header-right">
+            <a href="index.html">Accueil</a>
+            <a class="active" href="catalogue.html">Cartes anciennes</a>
+            <a href="cadastrenap.html">Cadastre napoléonien</a>
+        </div>
+    </div>
+
+    <div id="GuestBook">
+        <h1 class="main-header">Livre d'or</h1>
+        <h3 id="t">Derniers messages</h3>
+    <!-- Homepage -->
+    <div class="container">
+    
+        <div class="left-block">
+            <div id="json" class="guestbook"></div>
+        </div>
+        
+        <div class="right-block">
+            <div class="links">
+               <a href="#AllEntries">Voir tous les messages</a>
+               <a href="#SignGuestBook">Laisser un message</a>
+            <a onClick="window.location.reload();">Rafaîchir le livre d'or</a>	
+            </div>
+        </div>
+    </div>
+        
+    <div id="SignGuestBook" class="overlay">
+        <div id="SendForm" class="sign-guest-book-popup">
+            <h1>Ecrire un message dans le livre d'or</h1>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+          <label style="display: block;
+        text-align: center;" class="aterisk_before" for="gform">Indique un champ obligatoire</label>
+          <br>
+            
+        <form name="gform" id="gform" enctype="text/plain" action="GOOGLE_FORM_URL" target="hidden_iframe" onsubmit="submitted=true;">
+          
+           <label for="GOOGLE_ENTRY_ID_Name"  class="aterisk_after">Nom</label>
+          
+            <input class="form-element short" type="text" name="GOOGLE_ENTRY_ID_Name" id="GOOGLE_ENTRY_ID_Name" placeholder="Nom" style="background: #ccc;" required>
+          
+            <label for="GOOGLE_ENTRY_ID_Email">Email <small>(optionnel)</small></label>
+          
+       
+            <input class="form-element short" type="text" name="GOOGLE_ENTRY_ID_Email" id="GOOGLE_ENTRY_ID_Email" placeholder="E-Mail" style="background: #ccc;">
+          
+       <label for="GOOGLE_ENTRY_ID_TextArea"  class="max-length">Votre message</label>
+          
+          <textarea class="form-element" name="GOOGLE_ENTRY_ID_TextArea" id="GOOGLE_ENTRY_ID_TextArea" rows="5" cols="30" oninvalid="this.setCustomValidity('Vous devez signer votre message')"
+      oninput="this.setCustomValidity('')"  maxlength="150" placeholder="Entrez votre message ici" required></textarea>
+          
+             <label for="g-recaptcha"  class="aterisk_after">Captcha</label>      
+         <div class="g-recaptcha"
+           data-sitekey="GOOGLE_Captcha_Key"></div>   
+          
+            <input class="form-button" type="submit" value="Valider">
+            <input class="form-button" type="reset" value="Réinitialiser">
+     
+        </form>
+            </div>
+        </div>
+    </div>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>	
+        
+    <div id="AllEntries" class="overlay">
+        <div class="popup">
+            <h2>Tous les messages</h2>
+            <a class="close" href="#">&times;</a>
+            <div id="AllEntries_Content" class="content" style="height: 25em;overflow-y: auto;">
+        
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <p>&copy; 2024. Portulans. Licence Create Commons CC.BY.SA</p>
+    </footer>
+    </body>
+    <script type="text/javascript">
+    
+    // Put your Google Entry Form ID(s) Here
+    var GOOGLE_ENTRY_ID_Name="entry.1146284554";   // Name Entry ID
+            
+    var GOOGLE_ENTRY_ID_Email="entry.220991854";	// Email Entry ID			
+            
+    var GOOGLE_ENTRY_ID_Guestbook="entry.520049083"; // Guestbook Entry ID				
+        
+    // Put your Google Form Link Here  (Make sure to use correct link as documented)
+    var Google_Form_Link="https://docs.google.com/forms/d/e/1FAIpQLSd_RAWRB1xYBK8wknvvHLWArUoxdAVemno2AF4pALcL8oKeLA/formResponse?"  
+            
+    var Google_Form_ID="1veQdf_iy6gkfg0BbpJ21RcRJI_MF57Y7ZFGkXYsb1qo"  
+         
+    var Google_Form_Name="Atlas"  
+      
+      // Google Recaptcha Key 
+        var CaptchaKey = "6LcC6HEqAAAAAB84Qt_v5iTNopZscXhaOg-weAsN" // put your Google Captcha Key here
+
+    </script> 
+    <script src="assets/replace-vars.js"></script>
+    <script></script>
+    <script src="assets/guest-book-WIP.js"></script>

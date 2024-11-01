@@ -3,6 +3,16 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K46RL682GX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-K46RL682GX');
+    </script>
+    <!--Titre-->
     <title>Atlas historique d'Ouessant</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./libs/leaflet.css">
@@ -32,11 +42,17 @@
     <div id="map-details">
         <h1 id="map-name">Map Name</h1>
         <div id="map-item-tags" class="tags"></div>
-        <p id="map-author">Auteur: <span id="author"></span></p>
-        <p id="map-collection">Date de création: <span id="date"></span></p>
-        <p id="map-type">Type: <span id="type"></span></p>
-        <p id="map-institution">Source: <span id="institution"></span></p>
-    </div>
+        <div id="box">
+            <div id="map-box">
+                <p id="map-author">Auteur: <span id="author"></span></p>
+                <p id="map-collection">Date de création: <span id="date"></span></p>
+                <p id="map-type">Type: <span id="type"></span></p>
+                <p id="map-institution">Source: <span id="institution"></span></p>
+            </div>
+            <div id="map-description-box">
+                <p id="map-description"><span id="description"></span></p>
+            </div>
+        </div>
 
         <div id="leaflet-viewer3" style="display: none; height: 600px;"></div>
         <div id="leaflet-viewer2" style="display: none; height: 600px;"></div>
