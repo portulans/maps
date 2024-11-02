@@ -24,7 +24,9 @@
     <link rel="stylesheet" href="./libs/Leaflet.Control.Opacity/L.Control.Opacity.css">
     <script src="./libs/Leaflet.Control.Opacity/L.Control.Opacity.js"></script>
     <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
-    <script src="libs/leaflet-iiif.js"></script>
+    <script src="./libs/leaflet-iiif.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.js"></script>
 </head>
 <body>
     <div class="header">
@@ -33,6 +35,7 @@
           <a href="index.html">Accueil</a>
           <a class="active" href="catalogue.html">Cartes anciennes</a>
           <a href="cadastrenap.html">Cadastre napoléonien</a>
+          <a href="guestbook.html">Livre d'or</a>
         </div>
       </div>
     <article>
@@ -44,16 +47,18 @@
         <div id="map-item-tags" class="tags"></div>
         <div id="box">
             <div id="map-box">
-                <p id="map-author">Auteur: <span id="author"></span></p>
-                <p id="map-collection">Date de création: <span id="date"></span></p>
-                <p id="map-type">Type: <span id="type"></span></p>
-                <p id="map-institution">Source: <span id="institution"></span></p>
+                <p id="map-ouvrage"><span id="ouvrage"></span></p>
+                <p id="map-author"><span id="author"></span></p>
+                <p id="map-date"><span id="date"></span></p>
+                <p id="map-institution"><span id="institution"></span></p>
+                <p id="map-collection"><span id="collection"></span></p>
             </div>
             <div id="map-description-box">
                 <p id="map-description"><span id="description"></span></p>
+                <p id="map-commentaire"><span id="commentaire"></span></p>
             </div>
         </div>
-
+        <div id="related-images"></div>
         <div id="leaflet-viewer3" style="display: none; height: 600px;"></div>
         <div id="leaflet-viewer2" style="display: none; height: 600px;"></div>
         <div id="map-georef">
@@ -63,7 +68,7 @@
         </div>
     </article>
     <footer>
-        <p>&copy; 2024. Portulans. Licence Create Commons CC.BY.SA</p>
+        <p>&copy; 2024. Portulans. Licence Create Commons CC.BY.SA.ND.NC</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="item-details.js"></script>

@@ -2,27 +2,6 @@ const leafletViewer1 = document.getElementById("leaflet-viewer1");
 const leafletViewer2 = document.getElementById("leaflet-viewer2");
 const leafletViewer3 = document.getElementById("leaflet-viewer3");
 
-function openTab(evt, name) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-  
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-  
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-  
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(name).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-
 document.addEventListener("DOMContentLoaded", function () {
 
     // Function to get URL query parameters
@@ -77,17 +56,33 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to populate map details
     function populateMapDetails(data) {
         document.getElementById("map-name").textContent = data.Map_name || "Carte sans titre";
-        document.getElementById("author").textContent = data.Auteur || "Auteur inconnu";
-        document.getElementById("date").textContent = data.Date_Création || "Date inconnue";
-        document.getElementById("type").textContent = data.Type || "Unknown Type";
+        if (data.Titre_de_l_ouvrage) {
+            document.getElementById("ouvrage").innerHTML = "Issu de l'ouvrage <i>" + data.Titre_de_l_ouvrage + "</i>";
+        }
+        if (data.Auteur) {
+            document.getElementById("author").textContent = "Auteur : " + data.Auteur;
+        }
+        if (data.Date_Création) {
+            document.getElementById("date").textContent = "Date : " + data.Date_Création || "Date inconnue";
+        }
 
         if (data.Lien && data.Détail_institution) {
             //append child into the institution paragraph
-            document.getElementById("institution").innerHTML += `<a href="${data.Lien}" target="_blank">${data.Détail_institution}</a>`;
-        } else {
-            document.getElementById("institution").textContent = data.Détail_institution || "Source à préciser";
+            document.getElementById("institution").innerHTML += `Source : <a href="${data.Lien}" target="_blank">${data.Détail_institution}</a>`;
+        } else if (data.Lien && data.Institution && data.Cote) {
+            document.getElementById("institution").textContent = `Source : <a href="${data.Lien}" target="_blank">${data.Institution} (${data.Cote})</a>`;
         }
-    }
+        if (data.Collection) {
+            document.getElementById("collection").textContent = "Collection : " + data.Collection;
+        }
+
+        if (data.Description) {
+            document.getElementById("description").textContent = data.Description;
+        }
+        if (data.Commentaire) {
+            document.getElementById("commentaire").textContent = data.Commentaire;
+        }
+    }   
 
     // Function to display the image based on the selected option
     function displayImage(data) {
@@ -116,8 +111,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // Initialize Leaflet map with IIIF support
         let map1 = new L.map('leaflet-viewer1',{
             center: [48.464271, -5.086464],
-            zoom:13
+            zoom:13,
+            fullscreenControl: true,
+	        fullscreenControlOptions: {
+		    position: 'topleft'}
         });
+        L.control.locate({
+            setViw:true,
+            strings: {
+            title: "Me situer sur la carte !"
+          }}).addTo(map1);
 
         // Add an osm layer
         var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -172,7 +175,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let map2 = new L.map('leaflet-viewer2', { 
             center: [0, 0],
             crs: L.CRS.Simple,
-            zoom: 2
+            zoom: 2,
+            fullscreenControl: true,
+	        fullscreenControlOptions: {
+		    position: 'topleft'}
           });
         console.log(manifestUrl);
         
@@ -221,6 +227,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 center: [imageHeight / 2, imageWidth / 2], // Center on the image
                 zoom: 0,
                 minZoom: -5, // Allow more zooming out
+                fullscreenControl: true,
+                fullscreenControlOptions: {
+                position: 'topleft'}
             });
 
             // Add the image overlay with the calculated bounds
