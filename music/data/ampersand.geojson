@@ -1,0 +1,479 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          4.8059012,
+          43.9492493
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_type": "R",
+        "osm_id": 102478,
+        "extent": [
+          4.7396309,
+          43.9967419,
+          4.9271468,
+          43.8873819
+        ],
+        "country": "France",
+        "osm_key": "place",
+        "countrycode": "FR",
+        "osm_value": "city",
+        "postcode": "84000;84140",
+        "name": "Avignon",
+        "county": "Vaucluse",
+        "state": "Provence-Alpes-Côte d'Azur",
+        "type": "city",
+        "description": "Mademoiselle & The Nunnery Blaze",
+        "city": "Avignon",
+        "id": "12",
+        "lyrics": "https://open.spotify.com/embed/track/49FDINhZBMEOguBHw3niyz",
+        "placed": "yes"
+      },
+      "id": "Q4NzM"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -71.0005203,
+          25.0000146
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_type": "N",
+        "osm_id": 11845908616,
+        "osm_key": "place",
+        "osm_value": "region",
+        "name": "Bermuda Triangle",
+        "type": "other",
+        "description": "Intro & Narrators",
+        "id": "1",
+        "placed": "yes",
+        "lyrics": "https://open.spotify.com/embed/track/7pvRue7idajnqTVn0j66A5"
+      },
+      "id": "IxMTE"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -72.51440369932429,
+          42.37614635
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_id": 217241581,
+        "extent": [
+          -72.5145225,
+          42.3762781,
+          -72.5142849,
+          42.3760663
+        ],
+        "country": "États-Unis d'Amérique",
+        "city": "Amherst",
+        "countrycode": "US",
+        "postcode": "01002",
+        "county": "Hampshire",
+        "type": "house",
+        "osm_type": "W",
+        "osm_key": "tourism",
+        "housenumber": "280",
+        "street": "Main Street",
+        "district": "East Village",
+        "osm_value": "museum",
+        "name": "Emily Dickinson's House",
+        "state": "MA",
+        "description": "Emily & Her Penthouse In The Sky",
+        "id": "3",
+        "lyrics": "https://open.spotify.com/embed/track/7Ec3LPxy4LI4FPIFKu7It4",
+        "placed": "yes"
+      },
+      "id": "M5MTc"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          21.9877132,
+          38.9953683
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_type": "R",
+        "osm_id": 192307,
+        "extent": [
+          19.1127535,
+          41.7488889,
+          29.68381,
+          34.7188863
+        ],
+        "country": "Grèce",
+        "osm_key": "place",
+        "countrycode": "GR",
+        "osm_value": "country",
+        "name": "Greece",
+        "type": "country",
+        "description": "Seasons & Narcissus",
+        "id": "8",
+        "lyrics": "https://open.spotify.com/embed/track/3WWGthsHxl0fULhF9ABDkE",
+        "placed": "yes"
+      },
+      "id": "k2NjI"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -73.9968175,
+          40.7443742
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_id": 2325990473,
+        "country": "États-Unis d'Amérique",
+        "city": "New York",
+        "countrycode": "US",
+        "postcode": "10011",
+        "locality": "Chelsea District",
+        "type": "house",
+        "osm_type": "N",
+        "osm_key": "tourism",
+        "housenumber": "222",
+        "street": "West 23rd Street",
+        "district": "Manhattan",
+        "osm_value": "hotel",
+        "name": "Hotel Chelsea, New York City",
+        "state": "NY",
+        "description": "Leonard & Marianne",
+        "citation": "At the Chelsea Hotel. Wasted in the arms of a stranger",
+        "id": "5",
+        "lyrics": "https://open.spotify.com/embed/track/7tcETyqOfAKR9AWkLmbxuY",
+        "placed": "yes"
+      },
+      "id": "Y3NjQ"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          23.466423663574034,
+          37.33210755
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_id": 543466,
+        "extent": [
+          23.3632773,
+          37.3712307,
+          23.5794446,
+          37.2929724
+        ],
+        "country": "Grèce",
+        "city": "Hydra",
+        "countrycode": "GR",
+        "postcode": "180 40",
+        "county": "Îles",
+        "type": "other",
+        "osm_type": "R",
+        "osm_key": "place",
+        "osm_value": "island",
+        "name": "Hydra",
+        "state": "Attique",
+        "citation": "Back on the island again, I'm laying with you, Marianne",
+        "description": "Leonard & Marianne",
+        "id": "5",
+        "lyrics": "https://open.spotify.com/embed/track/7tcETyqOfAKR9AWkLmbxuY",
+        "placed": "yes"
+      },
+      "id": "Y0MTU"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -0.14405508452768728,
+          51.4893335
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_type": "R",
+        "osm_id": 65606,
+        "extent": [
+          -0.5103751,
+          51.6918741,
+          0.3340155,
+          51.2867601
+        ],
+        "country": "Royaume-Uni",
+        "osm_key": "place",
+        "countrycode": "GB",
+        "osm_value": "city",
+        "name": "Londres",
+        "county": "Grand Londres",
+        "state": "Angleterre",
+        "type": "other",
+        "city": "London",
+        "description": "Red Wine & Wilde",
+        "id": "7",
+        "lyrics": "https://open.spotify.com/embed/track/32M3aV3sNRsNQpzuEhh9T6",
+        "placed": "yes"
+      },
+      "id": "MxNTk"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          10.755155448278213,
+          59.905623899999995
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_id": 545260792,
+        "extent": [
+          10.7545583,
+          59.9061782,
+          10.7559512,
+          59.9052701
+        ],
+        "country": "Norvège",
+        "city": "Oslo",
+        "countrycode": "NO",
+        "postcode": "0194",
+        "locality": "Sørengkaia",
+        "type": "house",
+        "osm_type": "W",
+        "osm_key": "tourism",
+        "street": "Edvard Munchs plass",
+        "district": "Gamle Oslo",
+        "osm_value": "museum",
+        "name": "Oslo",
+        "description": "Blue Sky & The Painter",
+        "lyrics": "https://open.spotify.com/embed/track/2OIq8lnYPf7xBWX4QWtcjm",
+        "id": "4",
+        "placed": "yes"
+      },
+      "id": "QxMTk"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -74.0060152,
+          40.7127281
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_type": "R",
+        "osm_id": 175905,
+        "extent": [
+          -74.258843,
+          40.91763,
+          -73.700233,
+          40.476578
+        ],
+        "country": "États-Unis d'Amérique",
+        "osm_key": "place",
+        "countrycode": "US",
+        "osm_value": "city",
+        "name": "New York",
+        "state": "New York",
+        "type": "city",
+        "description": "Essie & Paul",
+        "city": "New York",
+        "id": "11",
+        "lyrics": "https://open.spotify.com/embed/track/0CjGEiQSSzaewLVuvKTj1d",
+        "placed": "yes"
+      },
+      "id": "czNTc"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          2.356258,
+          48.851077
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_id": 694837263,
+        "country": "France",
+        "city": "Paris",
+        "countrycode": "FR",
+        "postcode": "75004",
+        "locality": "Quartier Les Îles",
+        "type": "house",
+        "osm_type": "N",
+        "osm_key": "place",
+        "housenumber": "36",
+        "street": "Quai de Béthune",
+        "district": "Paris",
+        "osm_value": "house",
+        "state": "Île-de-France",
+        "description": "Marie & Polonium",
+        "citation": "To Paris to face more closed doors, making trouble with your ideas",
+        "id": "6",
+        "name": "Paris",
+        "lyrics": "https://open.spotify.com/embed/track/1waXL9JfOYnNFjlNzHBET8",
+        "placed": "yes"
+      },
+      "id": "A5MDg"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          114.9999999,
+          15.0000001
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_type": "N",
+        "osm_id": 303209363,
+        "osm_key": "place",
+        "osm_value": "sea",
+        "name": "South China Sea",
+        "type": "other",
+        "description": "Zheng Yi Sao & Questions For Her",
+        "id": "13",
+        "lyrics": "https://open.spotify.com/embed/track/6IKCC8E1LWTo10LVr8jDqI",
+        "placed": "yes"
+      },
+      "id": "c2MDg"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -122.4040908,
+          37.800785
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_type": "N",
+        "osm_id": 1680475626,
+        "country": "États-Unis d'Amérique",
+        "osm_key": "place",
+        "city": "San Francisco",
+        "countrycode": "US",
+        "osm_value": "neighbourhood",
+        "postcode": "94113",
+        "name": "San Francisco",
+        "state": "Californie",
+        "type": "locality",
+        "description": "Telegraph Road 1977 & 2024",
+        "id": "14",
+        "lyrics": "https://open.spotify.com/embed/track/3npnABiKh467WfbPYISbT9",
+        "citation": "And I guess that San Francisco's a lonely city And you lost your life somewhere. Maybe on Broadway. Maybe some other street",
+        "placed": "yes"
+      },
+      "id": "UwODc"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          21.0085201,
+          52.2515313
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "osm_id": 338509175,
+        "country": "Pologne",
+        "city": "Varsovie",
+        "countrycode": "PL",
+        "postcode": "00-227",
+        "locality": "Nowe Miasto",
+        "type": "house",
+        "osm_type": "N",
+        "osm_key": "tourism",
+        "housenumber": "16",
+        "street": "Freta",
+        "district": "Śródmieście",
+        "osm_value": "museum",
+        "state": "Voïvodie de Mazovie",
+        "citation": "I picture you, you're leaving the streets of Warsaw",
+        "description": "Marie & Polonium",
+        "id": "6",
+        "name": "Warsow",
+        "lyrics": "https://open.spotify.com/embed/track/1waXL9JfOYnNFjlNzHBET8",
+        "placed": "yes"
+      },
+      "id": "Q4Nzg"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -36.013868,
+          46.575667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "_umap_options": {
+          "color": "Orange"
+        },
+        "description": "Eve & Paradise Lost",
+        "placed": "no",
+        "lyrics": "https://open.spotify.com/embed/track/0c3VjNgGU2wOidmg71UsdC"
+      },
+      "id": "YxMDQ"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -30.563584,
+          38.019324
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "_umap_options": {
+          "color": "Orange"
+        },
+        "description": "Drawbridge & The Baroness",
+        "placed": "no",
+        "lyrics": "https://open.spotify.com/embed/track/36wxxeCHvKWpTYfNQGkiZW?"
+      },
+      "id": "MzODc"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [
+          -43.573938,
+          38.019324
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "_umap_options": {
+          "color": "Orange"
+        },
+        "description": "The Soprano & Midnight Wonderings",
+        "placed": "no",
+        "lyrics": "https://open.spotify.com/embed/track/4HGWnz21Oo0uhd8QCnnKzW"
+      },
+      "id": "U1OTY"
+    }
+  ]
+}

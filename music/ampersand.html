@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>& (Ampersand) - Bastille</title>
+    
+    <link rel="stylesheet" href="ampersand.css">
+    <link rel="stylesheet" href="../../libs/w3.css">
+    <script src="../../libs/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.3.0/maptiler-sdk.umd.js"></script>
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.3.0/maptiler-sdk.css" rel="stylesheet" />
+    <script src="https://cdn.maptiler.com/leaflet-maptilersdk/v2.0.0/leaflet-maptilersdk.js"></script>
+  </head>
+  <body>
+    <!--Corps-->
+    <article>
+        <button class="w3-button w3-black" onclick="window.location.href='../../index.html'">
+            Retour
+          </button>
+        <div class="title"><h2>Places & Histories /// & (Ampersand) album by Bastille</h2></div>
+        <div class="container">
+            <div id="map"></div>
+        </div>
+        
+    </article>
+    <script>
+      const key = 'nOhcU4lt4lAiV3OFhHLW';
+      const map = L.map('map').setView([30, 0], 3); //starting position
+      const mtLayer = L.maptilerLayer({
+        apiKey: key,
+        style: "f50fd9fe-1d65-4947-b919-f1d715145c6b"
+      }).addTo(map);
+
+      function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties) {
+            if (feature.properties.name) {
+                texte = '<h4>'+feature.properties.name+'</h4><p><i>from </i>'+ feature.properties.description + '</p>'}
+            else {
+                texte = '<h4>'+feature.properties.description+'</h4>'}
+                
+            if (feature.properties.lyrics) {
+                texte += '<iframe style="border-radius:12px" src="' + feature.properties.lyrics + '?utm_source=generator" width="300" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
+            }
+            layer.bindPopup(texte,{maxWidth : 300}).bindTooltip(feature.properties.name);
+        }
+    };
+    function getColor(placed) {
+        if (placed == "yes") {
+            return '#E14E3E';
+        } else {
+            return '#0F5589';
+        }
+    }
+
+    function pointToLayer(feature,latlng) {
+        return L.circleMarker(latlng, {
+            radius:6,
+            fillColor: getColor(feature.properties.placed),
+            color: "#ffffff",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 1
+        }
+        );
+    }
+
+    var url = "data/ampersand.geojson";	
+    var landmarks;
+    landmarks = L.geoJson(null, {
+        pointToLayer: pointToLayer,  
+        onEachFeature: onEachFeature,
+    }); 
+        
+    $.getJSON(url, function(data) {
+    landmarks.addData(data);
+    });
+
+    landmarks.addTo(map);
+
+      // Custom control panel
+    const controlPanel = L.Control.extend({
+        onAdd: function(map) {
+        const div = L.DomUtil.create('div', 'control-panel');
+        div.innerHTML = `
+            <div class="legend-round"></div>Located history
+            <div class="legend-round"></div>Non located history
+        `;
+        return div;
+        }
+    });
+    map.addControl(new controlPanel({ position: 'bottomright' }));
+    </script>
+</html>
