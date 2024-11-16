@@ -18,7 +18,7 @@
         <button class="w3-button w3-black" onclick="window.location.href='../../index.html'">
             Retour
           </button>
-        <div class="title"><h2>Places & Histories /// & (Ampersand) album by Bastille</h2></div>
+        <div class="title"><center><h2>Places & Histories /// & (Ampersand) album by Bastille</h2></center></div>
         <div class="container">
             <div id="map"></div>
         </div>
@@ -84,8 +84,8 @@
         onAdd: function(map) {
         const div = L.DomUtil.create('div', 'control-panel');
         div.innerHTML = `
-            <div class="legend-round"></div>Located history
-            <div class="legend-round"></div>Non located history
+            <div><div class="legend-round" style="color:#E14E3E;"></div>Located history</div>
+            <div><div class="legend-round" style="color:#0F5589;"></div>Non located history</div>
         `;
         return div;
         }
