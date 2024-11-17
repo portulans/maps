@@ -199,7 +199,7 @@ article {
 /* Tag colors */
 .tag-type { background-color: #4CAF50; } /* Green */
 .tag-emprise { background-color: #2196F3; } /* Blue */
-.tag-siècle { background-color: #FF9800; } /* Orange */
+.tag-siecle { background-color: #FF9800; } /* Orange */
 .tag-georef { background-color: #dbc93d; } /* Yellow */
 
 /* Filter Section */
@@ -277,6 +277,47 @@ div.map-title {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+/*Drop down checkboxes*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.filter-tag {
+  margin-bottom: 1rem;
+}
+
+.filter-tag-title {
+  font-weight: bold;
+}
+
+.filter-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-tag-item {
+  margin-right: 1rem;
+}
+
+.filter-tag-checkbox {
+  margin-right: 0.5rem;
 }
 
   /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */

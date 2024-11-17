@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add tags and populate allTags
         const tagsContainer = document.getElementById("map-item-tags")
 
-        const tags = { Type: data.Type, Emprise: data.Emprise, Siècle: data.Siècle };
+        const tags = { Type: data.Type, Emprise: data.Emprise, Siecle: data.Siecle };
         for (const [key, value] of Object.entries(tags)) {
             if (value) {
                 const tagElement = document.createElement("span");

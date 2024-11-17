@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let allTags = { Type: new Set(), Emprise: new Set(), Siècle: new Set() };
+    let allTags = { Type: new Set(), Emprise: new Set(), Siecle: new Set() };
     const mapContainer = document.getElementById("mapContainer");
     const filterTagsContainer = document.getElementById("filterTagsContainer");
     const resetFilterButton = document.getElementById("resetFilter");
@@ -17,13 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
             const countItem = document.getElementById("count-items");
             countItem.innerHTML = '<b>' + data.length + '</b> cartes sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " cartes appaîtront prochainement.</span>";
 
+            //
+
             // Display maps and collect all unique tags
             data.forEach(row => {
                 const mapItem = document.createElement("div");
                 mapItem.className = "map-item";
                 mapItem.dataset.type = row.Type;
                 mapItem.dataset.emprise = row.Emprise;
-                mapItem.dataset.siecle = row.Siècle;
+                mapItem.dataset.siecle = row.Siecle;
                 
                 // Create a link for the image and title that redirects to item.html
                 const mapLink = document.createElement("a");
@@ -85,13 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 const tagsContainer = document.createElement("div");
                 tagsContainer.className = "tags";
 
-                const tags = { Type: row.Type, Emprise: row.Emprise, Siècle: row.Siècle };
+                const tags = { Type: row.Type, Emprise: row.Emprise, Siecle: row.Siecle };
                 for (const [key, value] of Object.entries(tags)) {
                     if (value) {
                         const tagElement = document.createElement("span");
                         tagElement.className = `tag tag-${key.toLowerCase()}`;
                         tagElement.textContent = value;
-                        tagElement.addEventListener("click", () => filterByTag(value));
                         tagsContainer.appendChild(tagElement);
                         allTags[key].add(value); // Add to allTags
                     }
@@ -122,29 +123,81 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function populateFilterTags() {
-        for (const [key, tagsSet] of Object.entries(allTags)) {
-            const tagColumn = document.createElement("div");
-            tagColumn.className = "tag-column";
-            tagColumn.innerHTML = `<strong>${key}</strong>`; // Column title
 
-            tagsSet.forEach(tag => {
-                const filterTag = document.createElement("span");
-                filterTag.className = "filter-tag";
-                filterTag.textContent = tag;
-                filterTag.addEventListener("click", () => filterByTag(tag));
-                tagColumn.appendChild(filterTag);
+        /*Create a drop down list for each tag type. Each elem of the list has to have a checkbox to allow multicriteria filtering*/
+        for (const [key, values] of Object.entries(allTags)) {
+            const filterTag = document.createElement("div");
+            filterTag.className = "filter-tag";
+            //Add a second class
+            filterTag.classList.add(`dropdown`);
+
+            const filterTagTitle = document.createElement("div");
+            filterTagTitle.className = "filter-tag-title";
+            if (key === "Siecle") {
+                filterTagTitle.textContent = "Siècle";
+            } else {
+                filterTagTitle.textContent = key;
+            }
+
+            const filterTagList = document.createElement("div");
+            filterTagList.className = "filter-tag-list";
+
+            values.forEach(value => {
+                const filterTagItem = document.createElement("div");
+                filterTagItem.className = "filter-tag-item";
+
+                const filterTagCheckbox = document.createElement("input");
+                filterTagCheckbox.type = "checkbox";
+                filterTagCheckbox.className = "filter-tag-checkbox";
+                filterTagCheckbox.id = `${key}-${value}`;
+                filterTagCheckbox.value = value;
+                filterTagCheckbox.addEventListener("change", () => filterByTag(key, value));
+
+                const filterTagLabel = document.createElement("label");
+                filterTagLabel.htmlFor = `${key}-${value}`;
+                filterTagLabel.textContent = value;
+
+                filterTagItem.appendChild(filterTagCheckbox);
+                filterTagItem.appendChild(filterTagLabel);
+                filterTagList.appendChild(filterTagItem);
             });
 
-            filterTagsContainer.appendChild(tagColumn);
+            filterTag.appendChild(filterTagTitle);
+            filterTag.appendChild(filterTagList);
+            filterTagsContainer.appendChild(filterTag);
         }
+            
     }
 
-    function filterByTag(tag) {
-        currentFilter = tag;
+    
+    function filterByTag(key, value) {
+        // Filter function : on check or unchecked, hide or show the map-item that match the filters. 
+        // Items ckecked in the same category are combined with OR, items checked in different categories are combined with AND
+        // If no item match the filter, display a message
+        const filterItems = document.querySelectorAll(".filter-tag-checkbox:checked");
+        const filterValues = Array.from(filterItems).map(item => item.value);
+        const filterKeys = Array.from(filterItems).map(item => item.id.split("-")[0]);
+
+        // Filter items
         document.querySelectorAll(".map-item").forEach(item => {
-            const matchesTag = item.dataset.type === tag || item.dataset.emprise === tag || item.dataset.siecle === tag;
-            item.style.display = matchesTag ? "block" : "none";
+            const itemTags = {
+                Type: item.dataset.type,
+                Emprise: item.dataset.emprise,
+                Siecle: item.dataset.siecle
+            };
+
+            const match = filterKeys.every(key => filterValues.includes(itemTags[key]));
+            if (match) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
         });
+
+
+
+        // Update the current filter
+        currentFilter = { key, value };
     }
 
     // Reset filter function
@@ -152,6 +205,10 @@ document.addEventListener("DOMContentLoaded", function () {
         currentFilter = null;
         document.querySelectorAll(".map-item").forEach(item => {
             item.style.display = "block"; // Show all items
+        });
+        //Uncheck all checkboxes
+        document.querySelectorAll(".filter-tag-checkbox:checked").forEach(checkbox => {
+            checkbox.checked = false;
         });
     }
 
