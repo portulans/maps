@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Count the number of item and display it in a div nae "count-item"
             const countItem = document.getElementById("count-items");
-            countItem.innerHTML = '<b>' + data.length + '</b> cartes sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " cartes appaîtront prochainement.</span>";
+            countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " images appaîtront prochainement.</span>";
 
             //
 
@@ -151,6 +151,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 filterTagCheckbox.className = "filter-tag-checkbox";
                 filterTagCheckbox.id = `${key}-${value}`;
                 filterTagCheckbox.value = value;
+                /*if (key == "Type" && value != "Plan") {
+                    filterTagCheckbox.checked = true;
+                }*/
                 filterTagCheckbox.addEventListener("change", () => filterByTag(key, value));
 
                 const filterTagLabel = document.createElement("label");
@@ -194,8 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-
-
         // Update the current filter
         currentFilter = { key, value };
     }
@@ -214,4 +215,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add click event listener for the reset button
     resetFilterButton.addEventListener("click", resetFilter);
+
 });
