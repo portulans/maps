@@ -16,7 +16,6 @@
 	width: auto;
 	overflow-x: hidden;
 	overflow-y: auto;
-	background: #888;
 }
 .leaflet-panel-layers.expanded .leaflet-panel-layers-list {
 	display: block;
@@ -104,6 +103,18 @@
 .leaflet-control-layers-selector {
 	float: left;
 }
+
+.leaflet-panel-layers-grouplabel .leaflet-panel-layers-selector {
+	visibility: hidden;
+	position: absolute;
+	top: 1px;
+	right: 7px;
+}
+
+.leaflet-panel-layers-group:hover .leaflet-panel-layers-selector {
+	visibility: visible;
+}
+
 
 
 /* theming style */

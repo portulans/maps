@@ -12,11 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = results.data.filter(row => row.Display_on_catalogue == 'TRUE');
             const waiting = results.data.filter(row => row.Display_on_catalogue == 'FALSE');
+            const ignore = results.data.filter(row => row.Display_on_catalogue == 'IGNORE');
 
             //Count the number of item and display it in a div nae "count-item"
             const countItem = document.getElementById("count-items");
-            countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " images appaîtront prochainement.</span>";
-
+            if (waiting.length == 0) {
+                countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page.';
+            } else if (waiting.length == 1) {
+                countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " image appaîtra prochainement.</span>";
+            } else {
+                countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " images appaîtront prochainement.</span>";
+            }
             //
 
             // Display maps and collect all unique tags
@@ -78,7 +84,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const mapAuthor = document.createElement("div");
                 mapAuthor.className = "map-author";
-                mapAuthor.textContent = `${row.Auteur || ""}`;
+                if (row.Auteur && row.Date_Publication) {
+                    mapAuthor.textContent = `${row.Date_Publication} | ${row.Auteur}`;
+                } else if (row.Auteur && row.Date_Création) {
+                    mapAuthor.textContent = `${row.Date_Création} | ${row.Auteur}`;
+                } else if (row.Auteur && !row.Date_Création && !row.Date_Publication) {
+                    mapAuthor.textContent = `${row.Auteur}`;
+                } else if (!row.Auteur && row.Date_Publication) {
+                    mapAuthor.textContent = `${row.Date_Création}`;
+                } else if (!row.Auteur && row.Date_Création) {
+                    mapAuthor.textContent = `${row.Date_Création}`;
+                }
 
                 mapDetails.appendChild(mapTitle);
                 mapDetails.appendChild(mapAuthor);

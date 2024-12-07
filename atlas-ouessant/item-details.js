@@ -66,11 +66,16 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("date").textContent = "Date : " + data.Date_Création || "Date inconnue";
         }
 
-        if (data.Lien && data.Détail_institution) {
+        if (data.Lien && data.Détail_institution && data.Cote) {
+            document.getElementById("institution").innerHTML = `Source : <a href="${data.Lien}" target="_blank">${data.Détail_institution} (${data.Cote})</a>`;
+        } else if (data.Lien && data.Détail_institution) {
             //append child into the institution paragraph
             document.getElementById("institution").innerHTML += `Source : <a href="${data.Lien}" target="_blank">${data.Détail_institution}</a>`;
-        } else if (data.Lien && data.Institution && data.Cote) {
-            document.getElementById("institution").textContent = `Source : <a href="${data.Lien}" target="_blank">${data.Institution} (${data.Cote})</a>`;
+        } else if (data.Détail_institution && data.Cote) {
+            document.getElementById("institution").innerHTML = `Source : ${data.Détail_institution} (${data.Cote})`;
+        }
+        else if (data.Détail_institution) {
+            document.getElementById("institution").textContent = `Source : ${data.Détail_institution}`;
         }
         if (data.Collection) {
             document.getElementById("collection").textContent = "Collection : " + data.Collection;

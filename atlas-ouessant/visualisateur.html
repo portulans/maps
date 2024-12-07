@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastre napoléonien d'Ouessant</title>
+        
+        <link rel="stylesheet" href="./libs/leaflet.css">
+        <script type="text/javascript" src="./libs/leaflet.js"></script>
+        <link rel="stylesheet" href="./libs/leaflet-panel-layers.css">
+        <script type="text/javascript" src="./libs/leaflet-panel-layers.min.js"></script>
+        <link rel="stylesheet" href="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.css" /> <!--FullScreen-->
+        <script src="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.js"></script>
+        <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="header">
+            <a href="#default" class="logo">Atlas historique d'Ouessant</a>
+            <div class="header-right">
+              <a href="index.html">Accueil</a>
+              <a href="catalogue.html">Cartes anciennes</a>
+              <a class="active" href="visualisateur.html">Visualisateur cartographique</a>
+              <!--<a href="cadastrenap.html">Cadastre napoléonien</a>-->
+              <a href="guestbook.html">Livre d'or</a>
+            </div>
+          </div>
+
+        <article>
+            <h2>Visualisateur cartographique</h2>
+            <div id="maps">
+                <div id="mapviz"></div>
+            </div>
+        </article>
+
+        <footer>
+            <p>&copy; 2024. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
+        </footer>
+    </body>
+    <script src="tiles.js"></script>
+    <script src="visualisateur.js"></script>
+    <script src="pagejs.js"></script>
+</html>

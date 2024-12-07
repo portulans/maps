@@ -5,115 +5,6 @@ var map = L.map('map',{
     },
 }).setView([48.46, -5.08], 13);
 
-/**
- * BASELAYERS
- */
-var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-
-var cassini = L.tileLayer(
-    "https://data.geopf.fr/wmts?" +
-    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
-    "&STYLE=normal" +
-    "&TILEMATRIXSET=PM_6_14" +
-    "&FORMAT=image/jpeg"+
-    "&LAYER=BNF-IGNF_GEOGRAPHICALGRIDSYSTEMS.CASSINI"+
-    "&TILEMATRIX={z}" +
-    "&TILEROW={y}" +
-    "&TILECOL={x}",
-{
-    minZoom : 6,
-    maxZoom : 14,
-    attribution : "IGN/BNF",
-    tileSize : 256 // les tuiles du Géooportail font 256x256px
-});
-
-
-var etatmajor = L.tileLayer(
-    "https://data.geopf.fr/wmts?" +
-    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
-    "&STYLE=normal" +
-    "&TILEMATRIXSET=PM" +
-    "&FORMAT=image/jpeg"+
-    "&LAYER=GEOGRAPHICALGRIDSYSTEMS.ETATMAJOR40"+
-"&TILEMATRIX={z}" +
-    "&TILEROW={y}" +
-    "&TILECOL={x}",
-{
-    minZoom : 0,
-    maxZoom : 18,
-            attribution : "IGN-F/Geoportail",
-    tileSize : 256 // les tuiles du Géooportail font 256x256px
-});
-
-var ign1950 = L.tileLayer(
-        "https://data.geopf.fr/wmts?" +
-        "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
-        "&STYLE=normal" +
-        "&TILEMATRIXSET=PM" +
-        "&FORMAT=image/jpeg"+
-        "&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950"+
-        "&TILEMATRIX={z}" +
-        "&TILEROW={y}" +
-        "&TILECOL={x}",
-        {
-            minZoom : 0,
-            maxZoom : 18,
-            attribution : "IGN-F/Geoportail",
-            tileSize : 256 // les tuiles du Géooportail font 256x256px
-        });
-
-var ign2023 = L.tileLayer(
-    "https://data.geopf.fr/wmts?" +
-    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
-    "&STYLE=normal" +
-    "&TILEMATRIXSET=PM_0_19" +
-    "&FORMAT=image/png"+
-    "&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"+
-    "&TILEMATRIX={z}" +
-    "&TILEROW={y}" +
-    "&TILECOL={x}",
-    {
-        minZoom : 0,
-        maxZoom : 19,
-        attribution : "IGN",
-        tileSize : 256 // les tuiles du Géooportail font 256x256px
-    });
-
-var ignaerial1950 = L.tileLayer(
-    "https://data.geopf.fr/wmts?" +
-    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
-    "&STYLE=normal" +
-    "&TILEMATRIXSET=PM_0_18" +
-    "&FORMAT=image/png"+
-    "&LAYER=ORTHOIMAGERY.ORTHOPHOTOS.1950-1965"+
-    "&TILEMATRIX={z}" +
-    "&TILEROW={y}" +
-    "&TILECOL={x}",
-    {
-        minZoom : 0,
-        maxZoom : 18,
-        attribution : "IGN",
-        tileSize : 256 // les tuiles du Géooportail font 256x256px
-    });
-
-var ignaerial2023 = L.tileLayer(
-    "https://data.geopf.fr/wmts?" +
-    "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
-    "&STYLE=normal" +
-    "&TILEMATRIXSET=PM" +
-    "&FORMAT=image/jpeg"+
-    "&LAYER=ORTHOIMAGERY.ORTHOPHOTOS.BDORTHO"+
-    "&TILEMATRIX={z}" +
-    "&TILEROW={y}" +
-    "&TILECOL={x}",
-    {
-        minZoom : 0,
-        attribution : "IGN",
-        tileSize : 256 // les tuiles du Géooportail font 256x256px
-    });
-
 /********
  * BASE Layers
  */
@@ -147,13 +38,6 @@ function onEachFeature(feature,layer){
    })
 }
 
-var assemblage = L.tileLayer('https://www.laurentgontier.com/OuessantLayers/PlanAssemblageCadastre/{z}/{x}/{y}.png', {
-  minZoom: 9,
-  maxZoom: 20,
-  tms: false,
-  attribution: '&copy; L. Gontier - @AD29'
-});
-
 var sections;
 var url = "data/sections_v2.geojson";	
 
@@ -176,13 +60,6 @@ var url = "data-old/feuilles_nap_ouessant.geojson";
         $.getJSON(url, function(data) {
         feuilles.addData(data);
     });
-
-var planparcellaire = L.tileLayer('https://www.laurentgontier.com/CadasOuessant/{z}/{x}/{y}.png', {
-  minZoom: 9,
-  maxZoom: 20,
-  tms: false,
-  attribution: '&copy; L. Gontier - @AD29'
-});
 
 var parcellaireExpress = L.tileLayer.wms('https://wxs.ign.fr/parcellaire/geoportail/r/wms?', {
     layers: 'CADASTRALPARCELS.PARCELLAIRE_EXPRESS',
