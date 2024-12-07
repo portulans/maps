@@ -1,41 +1,8 @@
-body {
-	 background: #cddbe2;
-	 font-family: 'Muli', sans-serif;
-}
- .container {
-	 width: 60%;
-	 margin: 3% auto 10rem auto;
-}
 .main-header {
 	 text-align: center;
 	margin-top: 1.5em;
 }
 
- h1 {
-	 text-align: center;
-	margin-top: 0em;
-}
- h3 {
-	 position: relative;
-	 top: 2em;
-	 left: 23%;
-}
- p {
-	 line-height: 150%;
-}
- a {
-	 text-decoration: none;
-	 color: #cddbe2;
-	 background: #a51c3c;
-	 transition: all 0.25s ease;
-}
- a:hover {
-	 background: #ed1b51;
-	 color: #fff;
-}
- h1 {
-	 font-family: 'Ovo', serif;
-}
  .left-block, .right-block {
 	 float: left;
 	 padding: 1.5em;
@@ -143,7 +110,7 @@ body {
 	 padding: 0.5em;
 	 border: none;
 	 resize: none;
-	 background: #5ec6c8;
+	 background: #ccc;
 	 color: #000;
 }
  .form-element::placeholder {
@@ -407,6 +374,6 @@ body {
 
 .max-length:after {
     color: #e32;
-    content: "  *" " Max Length (50 Characters)";
+    content: "  *" " Longueur maximal : 150 caractères";
     display:inline;
 }
