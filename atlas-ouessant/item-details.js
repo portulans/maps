@@ -59,13 +59,63 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data.Titre_de_l_ouvrage) {
             document.getElementById("ouvrage").innerHTML = "Issu de l'ouvrage <i>" + data.Titre_de_l_ouvrage + "</i>";
         }
-        if (data.Auteur) {
+        // Crédits
+        
+        //If data.Auteur is a list (separated by commas), split it and display each author on a new list item
+        if (data.Auteur && data.Auteur.includes(",")) {
+            const author_item = document.getElementById("author").innerHTML = 'Auteurs : <ul id="authors"></ul>';
+            let authors = data.Auteur.split(",");
+
+            let authorList = document.getElementById("authors");
+            authors.forEach(author => {
+                let authorItem = document.createElement("li");
+                authorItem.textContent = author;
+                authorList.appendChild(authorItem);
+            });
+        } else if (data.Auteur && data.d_apres) {
+            document.getElementById("author").textContent = "Auteur : " + data.Auteur + " d'après " + data.d_apres;
+        } else if (data.Auteur) {
             document.getElementById("author").textContent = "Auteur : " + data.Auteur;
         }
-        if (data.Date_Création) {
-            document.getElementById("date").textContent = "Date : " + data.Date_Création || "Date inconnue";
+        if (data.Graveur) {
+            document.getElementById("graveur").textContent = "Gravure : " + data.Graveur;
+        }
+        if (data.Imprimeur) {
+            document.getElementById("imprimeur").textContent = "Impression : " + data.Imprimeur
+        }
+        if (data.Editeur) {
+            document.getElementById("editeur").textContent = "Editeur : " + data.Editeur 
+        }
+        if (data.Commanditaire) {
+            document.getElementById("commanditaire").textContent =  "Commanditaire : " + data.Commanditaire
         }
 
+        // Numérotation
+        if (data.Numérotation && data.Edition) {
+            let ed = ""
+            //check last digit of the edition number
+            if (data.Edition.slice(-1) == 1) {
+                ed = "ère"
+            } else {
+                ed = "ème"
+            }
+            document.getElementById("numerotation").innerHTML = "Numéro de la carte : " + data.Numérotation + " (" + data.Edition + ed + " édition)";
+        } else if (data.Numérotation) {
+            document.getElementById("numerotation").textContent = "Numéro de la carte : " + data.Numérotation;
+        }
+
+        //Dates
+        if (data.Date_Création && data.Date_Levés && data.Date_Publication && data.Date_MAJ && data.Date_Révision) {
+            document.getElementById("date").innerHTML = "Dates :<ul><li>Publication : " + data.Date_Publication + "</li><li>Première publication : " + data.Date_Création + "</li><li>Levés : " + data.Date_Levés + "</li><li>Mise à jour : " + data.Date_MAJ + "</li><li>Révision : " + data.Date_Révision + "</ul>";
+        } else if (data.Date_Création && data.Date_Levés && data.Date_Publication) {
+            document.getElementById("date").innerHTML = "Dates :<ul><li>Publication : " + data.Date_Publication + "</li><li>Première publication : " + data.Date_Création + "</li><li>Levés : " + data.Date_Levés + "</li></ul>";
+        } else if (data.Date_Création && data.Date_Levés) {
+            document.getElementById("date").innerHTML = "Dates :<ul><li>Publication : " + data.Date_Création + "</li><li>Levés : " + data.Date_Levés + "</li></ul>";
+        } else if (data.Date_Création) {
+            document.getElementById("date").textContent = "Date : " + data.Date_Création;
+        }
+
+        // Sources
         if (data.Lien && data.Détail_institution && data.Cote) {
             document.getElementById("institution").innerHTML = `Source : <a href="${data.Lien}" target="_blank">${data.Détail_institution} (${data.Cote})</a>`;
         } else if (data.Lien && data.Détail_institution) {
@@ -82,10 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (data.Description) {
-            document.getElementById("description").textContent = data.Description;
+            document.getElementById("description").innerHTML = data.Description;
         }
         if (data.Commentaire) {
-            document.getElementById("commentaire").textContent = data.Commentaire;
+            document.getElementById("commentaire").innerHTML = data.Commentaire;
         }
     }   
 

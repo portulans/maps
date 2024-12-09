@@ -130,5 +130,16 @@ var overLayers = [
  * ADD TO MAP
  */
 map.addControl(
-    new L.Control.PanelLayers(baseLayers,overLayers,{collapsibleGroups: true})
+    new L.Control.PanelLayers(baseLayers,overLayers, {
+        collapsibleGroups: true,
+        collapsed: false
+        })
 );
+
+L.control.scale().addTo(map);
+
+L.control.locate({
+    setViw:true,
+    strings: {
+    title: "Me situer sur la carte !"
+  }}).addTo(map);
