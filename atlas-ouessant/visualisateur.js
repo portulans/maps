@@ -15,13 +15,13 @@ var baseLayers = [
         group: "Cartes actuelles",
         layers: [
         {
-            active: false,
-            name: "Plan IGN (2024)",
+            active: true,
+            name: "Plan IGN",
             layer: ign2023
         },
         {
-            active: true,
-            name: "Open Street Map (2024)",
+            active: false,
+            name: "Open Street Map",
             layer: osm
         }
     ]},
