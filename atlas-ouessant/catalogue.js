@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Count the number of item and display it in a div nae "count-item"
             const countItem = document.getElementById("count-items");
+            //add class "paragraph" to element "count-items"
+            countItem.className = "paragraph";
             if (waiting.length == 0) {
                 countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page.';
             } else if (waiting.length == 1) {
@@ -144,8 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
         for (const [key, values] of Object.entries(allTags)) {
             const filterTag = document.createElement("div");
             filterTag.className = "filter-tag";
-            //Add a second class
-            filterTag.classList.add(`dropdown`);
 
             const filterTagTitle = document.createElement("div");
             filterTagTitle.className = "filter-tag-title";

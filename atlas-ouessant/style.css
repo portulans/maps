@@ -147,27 +147,27 @@ article {
 }
 #box{
   display:flex;
-  flex-flow: row wrap;
+  grid-template-columns: [map-box map-description-box] 1fr 1fr;
 }
 #map-box{
-  width: 48%;
+  width: 50%;
   background-color: #eee;
-  padding-left: 10px;
   border-radius: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  padding-right: 10px;
-  padding-bottom: 1px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 #map-description-box{
-  width: 48%;
-  padding-left: 10px;
+  width: 50%;
   border-radius: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-right: 10px;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: justify;
 }
 .map-title {
   font-weight: bold;
@@ -335,8 +335,8 @@ div.map-author {
   margin-right: 0.5rem;
 }
 
-  /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-  @media screen and (max-width: 450px) {
+  
+  @media screen and (max-width: 600px) {
     .header a {
       float: none;
       display: block;
@@ -348,7 +348,6 @@ div.map-author {
     .filter-section {
       width: 100%;
     }
-
     article {
       margin:0;
   }
@@ -361,26 +360,84 @@ div.map-author {
     padding-right: 2em;
     padding-left: 2em;
   }
+  .page-title{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+  .paragraph {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    text-align: justify;
+  }
+  .illustration {
+    width: 95%;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+  /* Catalogue page */
+  .filter-section {
+    width: 94%;
+    background-color: #f4f4f4;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  /* Item page */
+  .retour {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
   .tag-item {
     display: inline-block;
     padding: 3px 3px;
     margin: 2px;
     border-radius: 5px;
     color: #fff;
-    font-size: xx-small;
-  }
-  .filter-section {
-    width: 98%;
-    padding: 2%;
-    background-color: #f4f4f4;
-    margin: 0px 0;
+    font-size: small;
   }
   .map-item {
-    width: 45%;
+    width: 100%;
     border: 1px solid #000;
     text-align: center;
     font-family: Arial, sans-serif;
     margin: 2px;
   }
+  #map-item-tags{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+  #box{
+    display:flex;
+    flex-flow: row wrap;
+  }
+  #map-box{
+    width: 100%;
+    background-color: #eee;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+  #map-description-box{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  /*Guestbook*/
+  #HCB_comment_box{
+    margin-left: 0.5em;
+    margin-right: 0.5em;}
   }
 

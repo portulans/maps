@@ -3,6 +3,10 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon//favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K46RL682GX"></script>
     <script>
@@ -41,10 +45,10 @@
       </div>
     <article>
     <div id="retour-catalogue">
-        <a href="catalogue.html">⬅ Retour au catalogue</a>
+        <a class="retour" href="catalogue.html">⬅ Retour au catalogue</a>
     </div>
     <div id="map-details">
-        <h1 id="map-name">Map Name</h1>
+        <h1 id="map-name" class="page-title">Map Name</h1>
         <div id="map-item-tags" class="tags"></div>
         <div id="box">
             <div id="map-box">
@@ -68,8 +72,8 @@
         <div id="leaflet-viewer3" style="display: none; height: 600px;"></div>
         <div id="leaflet-viewer2" style="display: none; height: 600px;"></div>
         <div id="map-georef">
-            <h3 id="leaflet-viewer1-title"></h3>
-            <p><small id="leaflet-viewer1-comment"></small></p>
+            <h3 id="leaflet-viewer1-title" class="page-title"></h3>
+            <p class="paragraph"><small id="leaflet-viewer1-comment"></small></p>
             <div id="leaflet-viewer1" style="display: none; height: 600px; margin-top: 10px;"></div>
         </div>
     </article>

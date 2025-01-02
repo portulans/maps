@@ -5,7 +5,11 @@ var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
-var cassini = L.tileLayer(
+var cassini = L.tileLayer('https://warper.wmflabs.org/maps/tile/7943/{z}/{x}/{y}.png', {
+    attribution: '&copy; Bibliothèque Nationale de France'
+});
+
+var cassiniIGN = L.tileLayer(
     "https://data.geopf.fr/wmts?" +
     "&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
     "&STYLE=normal" +
@@ -22,9 +26,12 @@ var cassini = L.tileLayer(
     tileSize : 256 // les tuiles du Géooportail font 256x256px
 });
 
-var depotmarine1780 = L.tileLayer('https://warper.wmflabs.org/maps/tile/6787/{z}/{x}/{y}.png', {"attribution": "Dépôt des cartes et plans de la Marine"});
+var depotmarine1780 = L.tileLayer('https://warper.wmflabs.org/maps/tile/6787/{z}/{x}/{y}.png', {
+ attribution: "Bibliothèque Nationale de France"});
 
-var pilotefrancais = L.tileLayer('https://allmaps.xyz/maps/6acb1e0c67682a55/{z}/{x}/{y}.png', {"attribution": "Bibliothèque Nationale de France"});
+var minuteouessantshom = L.tileLayer('https://warper.wmflabs.org/maps/tile/7144/{z}/{x}/{y}.png', {attribution: "Shom"});
+
+var pilotefrancais = L.tileLayer('https://allmaps.xyz/maps/6acb1e0c67682a55/{z}/{x}/{y}.png', {attribution: "Bibliothèque Nationale de France"});
 
 var etatmajor = L.tileLayer(
     "https://data.geopf.fr/wmts?" +
@@ -39,12 +46,12 @@ var etatmajor = L.tileLayer(
 {
     minZoom : 0,
     maxZoom : 18,
-            attribution : "IGN-F/Geoportail",
+    attribution : "IGN-F/Geoportail",
     tileSize : 256 // les tuiles du Géooportail font 256x256px
 });
 
 var  cartetouristique1929 = L.tileLayer('https://warper.wmflabs.org/maps/tile/7143/{z}/{x}/{y}.png', {
-    "attribution": "Carte touristique de l'île d'Ouessant (1929) - Région Bretagne",
+    attribution: "Carte touristique de l'île d'Ouessant (1929) - Région Bretagne",
 })
 
 var ign1950 = L.tileLayer(
@@ -219,16 +226,22 @@ var assemblage = L.tileLayer('https://www.laurentgontier.com/OuessantLayers/Plan
     minZoom: 9,
     maxZoom: 20,
     tms: false,
-    attribution: '&copy; L. Gontier - @AD29'
+    attribution: '&copy; Laurent Gontier - @AD29'
   });
 
 var assemblageAD29 = L.tileLayer('https://warper.wmflabs.org/maps/tile/7077/{z}/{x}/{y}.png', {
-    attribution: '&copy; AD29'
+    attribution: '&copy; Portulans - AD29'
   });
 
 var planparcellaire = L.tileLayer('https://www.laurentgontier.com/CadasOuessant/{z}/{x}/{y}.png', {
   minZoom: 9,
   maxZoom: 20,
   tms: false,
-  attribution: '&copy; L. Gontier - @AD29'
+  attribution: '&copy; Laurent Gontier - @AD29'
 });
+
+
+/******************************** OVERLAYERS VECTORIELLES */
+
+var seamarks = L.tileLayer('https://t1.openseamap.org/seamark/{z}/{x}/{y}.png', 
+    {attribution: '&copy; <a href="https://map.openseamap.org/?zoom=12.6&lon=-5.02170&lat=48.45083&layers=TFTFFFTFFTFFFFFFTFFFFF&mlat=48.46017&mlon=-5.08331">OpenSeaMap</a>'});

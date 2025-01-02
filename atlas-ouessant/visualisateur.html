@@ -3,8 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon//favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon//favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
         <title>Visualisateur cartographique | Atlas d'Ouessant</title>
-        
         <link rel="stylesheet" href="./libs/leaflet.css">
         <script type="text/javascript" src="./libs/leaflet.js"></script>
         <link rel="stylesheet" href="./libs/leaflet-panel-layers.css">
@@ -14,7 +17,8 @@
         <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.css" />
         <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.js"></script>
-
+        <script src="./libs/advanced-layers-control/advanced-layers-control.js"></script>
+        <link rel="stylesheet" href="./libs/advanced-layers-control/advanced-layers-control.css"></script>
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
@@ -30,8 +34,9 @@
           </div>
 
         <article>
-            <h2>Visualisateur cartographique</h2>
-            <p>Cette page vous permet de superposer des cartes et images aériennes d'Ouessant de différents dates et époques.</p>
+            <h2 class="page-title">Visualisateur cartographique</h2>
+            <p class="paragraph">Cette page vous permet de superposer des cartes et images aériennes d'Ouessant de différentes dates et époques.</p>
+            <p class="paragraph"><i>Remarque : Le géoréférencement des cartes anciennes numérisées peut provoquer des déformations importantes des images. Pour voir les cartes numérisées non-géoréférencées (donc sans déformation), consultez la rubrique "<a href="./catalogue.html">Cartes et plans</a>" du site.</i></p>
             <div id="maps">
                 <div id="mapviz"></div>
             </div>

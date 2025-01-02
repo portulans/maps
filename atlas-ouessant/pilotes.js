@@ -1,26 +1,31 @@
 const map = L.map('map').setView([48.396288,-4.944447], 10)
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 18,
-  attribution: '&copy; <a href=https://www.openstreetmap.org/copyright>OpenStreetMap</a> contributors'
-}).addTo(map)
+const layers = [
+    {
+        name: 'Cartes actuelles',
+        collapsed: false,
+        layers: [
+            { name: "IGN", layer: ign2023, active: true},
+            { name: "OSM", layer: osm, active: false}
+        ],
+    },
+    {
+        name: 'Images aériennes',
+        collapsed: false,
+        layers: [
+            { name: "1952", layer: ignaerial1950, active: false, opacityControl: true},
+            { name: "1965", layer: ignaerial1965, active: false, opacityControl: true},
+            {
+                name: 'Images aériennes TEST',
+                collapsed: true,
+                layers: [
+                    { name: "1952", layer: ignaerial1950, active: false, opacityControl: true},
+                    { name: "1965", layer: ignaerial1965, active: false, opacityControl: true},
+                ],
+            },
+        ],
+    },
+];
 
-const warpedMapLayer = new Allmaps.WarpedMapLayer(  
-  'https://annotations.allmaps.org/manifests/9f443bcef0ec92ac'
-).addTo(map)
-
-  // I don't remember how Observable works...
-  // Is this the best way to do it?
-  function updateRenderOptions() {
-    warpedMapLayer.setOpacity(opacity.value);
-    warpedMapLayer.setRemoveColor({
-      hexColor: backgroundColor.value,
-      threshold: removeBackgroundColorThreshold.value
-    });
-  }
-
-opacity.addEventListener("input", () => updateRenderOptions());
-removeBackgroundColorThreshold.addEventListener("input", () =>
-    updateRenderOptions()
-  );
-backgroundColor.addEventListener("input", () => updateRenderOptions());
+L.control.advancedLayers(layers, {
+    collapsible: true}).addTo(map);
