@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         console.log(manifestUrl);
         
-        if (institution == "BNF" || institution == "SHD" || institution == "ENPC") {
+        if (institution == "BNF" || institution == "SHD") {
             const iiifBaseUrl = manifestUrl.replace("manifest.json", "");
             imageUrl = `${iiifBaseUrl}f${item}/info.json`;
         } else {

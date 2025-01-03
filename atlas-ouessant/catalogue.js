@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const mapImageContainer = document.createElement("div");
                 mapImageContainer.className = "map-image-container";
                 let imageUrl;
-                if (row.IIIF_Manifest && (row.Institution == "BNF" || row.Institution == "SHD" || row.Institution == "ENPC")) {
+                if (row.IIIF_Manifest && (row.Institution == "BNF" || row.Institution == "SHD")) {
                     const iiifBaseUrl = row.IIIF_Manifest.replace("manifest.json", "");
                     if (row.IIIF_region || row.IIIF_size) {
                         imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/${row.IIIF_region}/!400,/${row.IIIF_rotation}/native.jpg`;
