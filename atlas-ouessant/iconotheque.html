@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./libs/leaflet.js"></script>
+    <link rel="stylesheet" href="./libs/leaflet.css">
+    <script type="text/javascript" src="./libs/markercluster/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.css">
+    <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.Default.css">
+    <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <title>Iconothèque | Atlas historique d'Ouessant</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        #map { height: 600px; }
+        .legend {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin-top: -10px;
+        }
+        .legend img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .legend span {
+            vertical-align: middle;
+        }
+        .legend input {
+            margin-right: 5px;
+        }
+        #sidebar {
+            background-color: white;
+            padding: 10px;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            display: none;
+        }
+
+        /* Wide Screens: Sidebar on the right */
+        @media (min-width: 768px) {
+            #sidebar {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 300px;
+                height: 550px;
+            }
+        }
+
+        /* Mobile Screens: Sidebar below the map */
+        @media (max-width: 767px) {
+            #sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                margin-top: 10px;
+            }
+        }
+
+        #sidebar button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        #sidebar h4 {
+            margin-top: 40px;  /* Give room for the button */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#default" class="logo">Atlas historique d'Ouessant</a>
+        <div class="header-right">
+          <a href="index.html">Accueil</a>
+          <a href="catalogue.html">Cartes et plans</a>
+          <a href="visualisateur.html">Visualisateur cartographique</a>
+          <a class="active" href="iconotheque.html">Iconothèque</a>
+          <!--<div class="dropdown">
+            <a href="#" class="dropbtn">Dossiers</a>
+              <div class="dropdown-content">
+                <a href="cadastrenap.html">Cadastre Napoléonien</a>
+                <a href="pilotes.html">Pilotes</a>
+              </div>
+          </div>-->
+          <a href="guestbook.html">Livre d'or</a>
+        </div>
+      </div>
+    <article>
+        <h1 class="page-title">Iconothèque</h1>
+        <p class="paragraph">Inventaires de photographies et autres documents iconographiques localisables. Les images sont issues des archives départementales du Finistère, des archives municipales de Brest, de la bibliothèque nationale de France et des archives de l'école des Ponts et Chaussées.</p>
+        <h4>Aide</h4>
+        <ul>
+            <li><strong>Carte: </strong><i>Cliquer sur les symboles pour afficher les images et leur description. Les flèches indiquent la direction des prises de vues.</i></li>
+            <li><strong>Notices des images: </strong><i>Cliquer sur l'image pour agrandir.</i></li>
+        </ul>
+        <div id="map">
+            <!-- Sidebar for displaying data -->
+            <div id="sidebar">
+                <button onclick="closeSidebar()">Fermer</button>
+                <h4 id="sidebar-title"></h4>
+                <div id="sidebar-content"></div>
+            </div>
+        </div>
+        <div id="imageModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center;">
+            <span class="close" style="position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+            <img class="modal-content" id="modalImg" style="max-width: 90%; max-height: 80%; border-radius: 10px;">
+        </div>
+        <h4>Contribuer</h4>
+        <p class="paragraph">Pour partager une image, vous pouvez écrire à : <a href="atlasouessant@duck.com">atlasouessant<!--TETS-->@<!--TEST-->duck.com</a> en indiquant la source de l'image et toutes les informations disponibles la concernant. Vous apparaîtrez comme contributeur dans l'application (sous le nom ou pseudonyme de votre choix).<br>
+        Il ne peut s'agir que de documents dont les droits sont libres : par exemple issus de sites d'archives ou de votre collection personnelle.</p>
+    </article>
+    <footer>
+        <p>&copy; 2024-2025. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
+    </footer>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([48.46, -5.08], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        // Function to handle image modal
+        function setupImageModal() {
+            const contentDiv = document.getElementById("sidebar-content");
+            const images = contentDiv.getElementsByTagName("img");
+
+            if (images.length === 1) {
+                images[0].style.cursor = "pointer"; // Make it look clickable
+                images[0].addEventListener("click", function () {
+                    const modal = document.getElementById("imageModal");
+                    const modalImg = document.getElementById("modalImg");
+                    
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                });
+            }
+        }
+
+        // Function to close modal
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("imageModal");
+            const closeBtn = document.querySelector(".close");
+
+            if (!modal || !closeBtn) {
+                console.error("Modal elements not found!");
+                return;
+            }
+
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+
+        // Modify displaySidebar to call setupImageModal
+        function displaySidebar(data) {
+            var sidebar = document.getElementById('sidebar');
+            var contentDiv = document.getElementById('sidebar-content');
+
+            if (!sidebar || !contentDiv) {
+                console.error("Sidebar or content div not found!");
+                return;
+            }
+
+            contentDiv.innerHTML = ''; // Clear previous content
+            if (data.Auteur) {
+                contentDiv.innerHTML += `<p><strong>Auteur:</strong> ${data.Auteur}</p>`;
+            }
+            if (data.Type && data.Nature) {
+                contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${data.Type}, ${data.Nature}</p>`;
+            } else if (data.Type) {
+                contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${data.Type}</p>`;
+            } else if (data.Nature) {
+                contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${data.Nature}</p>`;
+            }
+
+            if (data.Image) {
+                contentDiv.innerHTML += `<img src="img/library/${data.Institution}/${data.Image}" alt="${data.Cote}" style="max-width: 100%; height: auto; margin-top: 10px;">`;
+            }
+
+            if (data.Description) {
+                contentDiv.innerHTML += `<p><strong>Description:</strong> ${data.Description}</p>`;
+            }
+            if (data.Legende) {
+                contentDiv.innerHTML += `<p><strong>Légende:</strong> ${data.Legende}</p>`;
+            }
+            if (data.Date && data.Siecle) {
+                contentDiv.innerHTML += `<p><strong>Date:</strong> ${data.Date}, ${data.Siecle}</p>`;
+            } else if (data.Date) {
+                contentDiv.innerHTML += `<p><strong>Date:</strong> ${data.Date}</p>`;
+            } else if (data.Siecle) {
+                contentDiv.innerHTML += `<p><strong>Date:</strong> ${data.Siecle}</p>`;
+            }
+            if (data.Ouvrage) {
+                contentDiv.innerHTML += `<p><strong>Issu de :</strong> ${data.Ouvrage}</p>`;
+            }
+            if (data.Cote && data.Collection && data.Detail_institution) {
+                contentDiv.innerHTML += `<p><strong>Source: </strong> ${data.Cote} - ${data.Collection} - ${data.Detail_institution}</p>`;
+            } else if (data.Cote && data.Detail_institution) {
+                contentDiv.innerHTML += `<p><strong>Source: </strong> ${data.Cote} - ${data.Detail_institution}</p>`;
+            } else if (data.Detail_institution) {
+                contentDiv.innerHTML += `<p><strong>Source: </strong> ${data.Detail_institution}</p>`;
+            }
+
+            if (data.Lien_fiche) {
+                contentDiv.innerHTML += `<a href='${data.Lien_fiche}' target='_blank'>Voir sur le site source</a>`;
+            }
+            
+            sidebar.style.display = 'block'; // Show the sidebar
+
+            setupImageModal(); // Check and setup image modal if needed
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').style.display = 'none';
+        }
+
+
+        // Function to create a custom rotated icon based on azimuth
+        function createRotatedIcon(orientation, type) {
+            var angle = orientation;  // Orientation angle from GeoJSON (in degrees)
+            var t = type
+            // Create a custom divIcon using the arrow image (JPEG of an arrow)
+            var iconUrl = ''
+            if (t === 'mer') {
+                iconUrl = './img/fleche-mer.png';  // Replace with the path to your arrow image
+            } else if (t === 'oblique') {
+                iconUrl = './img/fleche-oblique.png';
+            } else {
+                iconUrl = './img/fleche-sol2.png';  // Default icon for other types
+            }
+
+
+            // Create a custom divIcon and apply the rotation
+            var icon = L.divIcon({
+                className: 'rotated-icon',
+                /*html: '<img src="' + iconUrl + '" style="transform: rotate(' + angle + 'deg); width: 32px; height: 32px;" />',*/
+                html: `<div style="width: 15px; height: 15px; 
+                                    background-color: white; 
+                                    border-radius: 50%; 
+                                    display: flex; 
+                                    justify-content: center; 
+                                    align-items: center; 
+                                    transform: rotate(${angle}deg);">
+                         <img src="${iconUrl}" style="width: 12px; height: 12px;" />
+                      </div>`,
+                iconSize: [12, 12],  // Adjust the size as necessary
+            });
+
+            return icon;
+        }
+
+        // Load CSV using PapaParse
+        var csvData = {}; // Object to store the parsed CSV data
+        Papa.parse('data/iconographie.csv', {
+            download: true,
+            header: true, // Treat the first row as header
+            dynamicTyping: true,
+            complete: function(results) {
+                // Populate csvData with parsed data using the ID as the key
+                results.data.forEach(function(row) {
+                    var id = row.ID;  // Assuming your CSV has a column 'id'
+                    if (id) {
+                        csvData[id] = row;  // Store each row in the object by ID
+                    }
+                });
+                console.log("CSV Data Loaded: ", csvData);  // Log the loaded data for debugging
+            },
+            error: function(error) {
+                console.error("Error loading CSV: ", error);
+            }
+        });
+        
+        // Load GeoJSON data
+        var url = 'data/loc-images.geojson';	
+
+        var solMarkers = new L.FeatureGroup();
+        var merMarkers = new L.FeatureGroup();
+        var obliqueMarkers = new L.FeatureGroup();
+
+        var points = L.geoJSON(null, {
+        onEachFeature: function (feature, layer) {
+            var orientation = feature.properties.orientatio;
+            console.log(feature.properties.type); // Log the orientation value for debugging
+            var latlng = layer.getLatLng();
+            // Create and add a marker using the rotated icon
+            var marker = L.marker(latlng, { icon: createRotatedIcon(orientation,feature.properties.type) })
+            // Add the marker to the appropriate feature group based on type
+
+            if (feature.properties.type === 'sol') {
+                solMarkers.addLayer(marker);
+            } else if (feature.properties.type === 'mer') {
+                merMarkers.addLayer(marker);
+            } else if (feature.properties.type === 'oblique') {
+                obliqueMarkers.addLayer(marker);
+            }
+
+            // Add a click event to the marker
+            marker.on('click', function () {
+            var featureId = feature.properties.ID;  // Assuming 'id' is the ID field in GeoJSON
+            if (csvData && csvData[featureId]) {  // Check if csvData has the featureId
+                var additionalData = csvData[featureId]; // Retrieve the corresponding row from the CSV
+                displaySidebar(additionalData);  // Display the data in the sidebar
+            } else {
+                console.error("No additional data found for feature ID: " + featureId);
+            }
+        });
+        }
+    });
+
+    var clustersOptions = {showCoverageOnHover: false,
+                zoomToBoundsOnClick: true,
+                spiderfyOnMaxZoom: true,
+                //disableClusteringAtZoom: 16,
+                maxClusterRadius:10}
+    var markersClusterSol = L.markerClusterGroup(clustersOptions);
+    var markersClusterMer = L.markerClusterGroup(clustersOptions);
+    var markersClusterOblique = L.markerClusterGroup(clustersOptions);
+    // Create a marker cluster group
+    $.getJSON(url, function(data) {
+            points.addData(data);
+            markersClusterSol.addLayer(solMarkers);
+            markersClusterMer.addLayer(merMarkers);
+            markersClusterOblique.addLayer(obliqueMarkers);
+            map.addLayer(markersClusterSol);  // Add the cluster group to the map
+            map.addLayer(markersClusterMer);  // Add the cluster group to the map
+            map.addLayer(markersClusterOblique);  // Add the cluster group to the map
+        });
+
+    // Create a custom legend
+    var legend = L.control({ position: 'bottomleft' });
+
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'legend');  // Create the legend container
+        div.innerHTML = '<h4>Type de prise de vue</h4>'
+                        + '<div><input type="checkbox" id="solCheckbox" checked /> <img src="./img/fleche-sol2.png" /> <span>Sol</span></div>'
+                        + '<div><input type="checkbox" id="merCheckbox" checked /> <img src="./img/fleche-mer.png" /> <span>Vu de la mer</span></div>'
+                        + '<div><input type="checkbox" id="obliqueCheckbox" checked /> <img src="./img/fleche-oblique.png" /> <span>Oblique aérienne</span></div>';
+        
+        // Return the div container
+        return div;
+    };
+
+    legend.addTo(map);  // Add the legend control to the map
+
+    // Event listeners for toggling visibility of marker groups based on checkbox status
+    document.getElementById("solCheckbox").addEventListener("change", function(e) {
+        if (e.target.checked) {
+            map.addLayer(markersClusterSol);
+        } else {
+            map.removeLayer(markersClusterSol);
+        }
+    });
+
+    document.getElementById("merCheckbox").addEventListener("change", function(e) {
+        if (e.target.checked) {
+            map.addLayer(markersClusterMer);
+        } else {
+            map.removeLayer(markersClusterMer);
+        }
+    });
+
+    document.getElementById("obliqueCheckbox").addEventListener("change", function(e) {
+        if (e.target.checked) {
+            map.addLayer(markersClusterOblique);
+        } else {
+            map.removeLayer(markersClusterOblique);
+        }
+    });
+    </script>
+</body>
+</html>
