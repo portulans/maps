@@ -6,18 +6,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon//favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon//favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K46RL682GX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'G-K46RL682GX');
-    </script>
     <script type="text/javascript" src="./libs/leaflet.js"></script>
     <link rel="stylesheet" href="./libs/leaflet.css">
+    <script src="./libs/advanced-layers-control/advanced-layers-control.js"></script>
+    <link rel="stylesheet" href="./libs/advanced-layers-control/advanced-layers-control.css"></script>
     <script type="text/javascript" src="./libs/markercluster/leaflet.markercluster.js"></script>
     <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.css">
     <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.Default.css">
@@ -142,21 +135,60 @@
     <footer>
         <p>&copy; 2024-2025. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
     </footer>
+    <script src="tiles.js"></script>
     <script>
-        // Initialize the map
+        /*************** MAP ***************/
         var map = L.map('map'
         ).setView([48.46, -5.08], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-        }).addTo(map);
+
+        /*************** CONTROLS ***************/
         // Add scale
         L.control.scale().addTo(map);
         //Locate control
         L.control.locate({
-            setViw:true,
+            setView:true,
             strings: {
             title: "Me situer sur la carte !"
         }}).addTo(map);
+
+        // Layers
+        const layers = [
+            {
+                name: 'Cartes actuelles',
+                collapsed: false,
+                layers: [
+                    { name: "Plan IGN", layer: ign2023, active: false},
+                    { name: "OpenStreetMap", layer: osm, active: true},
+                    { name: "OpenSeaMap", layer: seamarks, active: false},
+                ],
+            },
+            {
+                name: 'Images aériennes',
+                collapsed: true,
+                layers: [
+                    { name: "1952", layer: ignaerial1950, active: false},
+                    { name: "1975", layer: ignaerial1965, active: false},
+                    { name: "2000", layer: ignaerial2000, active: false},
+                    { name: "2005", layer: ignaerial2005, active: false},
+                    { name: "2009", layer: ignaerial2009, active: false},
+                    { name: "2015", layer: ignaerial2015, active: false},
+                    { name: "2018", layer: ignaerial2018, active: false},
+                    { name: "2021", layer: ignaerial2023, active: false},
+                ],
+            },
+            {
+                name: 'Cartes anciennes',
+                collapsed: true,
+                layers: [
+                    { name: "Carte touristique (1929)", layer: cartetouristique1929, active: false, opacityControl: true},
+                    { name: "Scan historique IGN (1950)", layer: ign1950, active: false, opacityControl: true},
+                ],
+            }
+
+        ];
+        L.control.advancedLayers(layers, {
+            position:'bottomleft'}).addTo(map);
+        /******************* FUNCTIONS *************/
         // Function to handle image modal
         function setupImageModal() {
             const contentDiv = document.getElementById("sidebar-content");
@@ -311,7 +343,7 @@
                         csvData[id] = row;  // Store each row in the object by ID
                     }
                 });
-                console.log("CSV Data Loaded: ", csvData);  // Log the loaded data for debugging
+                //console.log("CSV Data Loaded: ", csvData);  // Log the loaded data for debugging
             },
             error: function(error) {
                 console.error("Error loading CSV: ", error);
@@ -328,7 +360,7 @@
         var points = L.geoJSON(null, {
         onEachFeature: function (feature, layer) {
             var orientation = feature.properties.orientatio;
-            console.log(feature.properties.type); // Log the orientation value for debugging
+            
             var latlng = layer.getLatLng();
             // Create and add a marker using the rotated icon
             var marker = L.marker(latlng, { icon: createRotatedIcon(orientation,feature.properties.type) })
