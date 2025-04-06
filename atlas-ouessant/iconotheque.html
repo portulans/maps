@@ -9,12 +9,12 @@
 
     <script type="text/javascript" src="./libs/leaflet.js"></script>
     <link rel="stylesheet" href="./libs/leaflet.css">
+    <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
     <script src="./libs/advanced-layers-control/advanced-layers-control.js"></script>
     <link rel="stylesheet" href="./libs/advanced-layers-control/advanced-layers-control.css"></script>
     <script type="text/javascript" src="./libs/markercluster/leaflet.markercluster.js"></script>
     <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.css">
     <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.Default.css">
-    <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
@@ -110,7 +110,8 @@
       </div>
     <article>
         <h1 class="page-title">Iconothèque</h1>
-        <p class="paragraph">Inventaires de photographies et autres documents iconographiques localisables. Les images sont issues des archives départementales du Finistère, des archives municipales de Brest, de la bibliothèque nationale de France et des archives de l'école des Ponts et Chaussées.</p>
+        <p class="paragraph">Inventaires de photographies et autres documents iconographiques localisables. 
+            Les images sont issues des archives départementales du Finistère, de la bibliothèque nationale de France et des archives de l'école des Ponts et Chaussées.</p>
         <h4 class="page-title">Aide</h4>
         <ul>
             <li><strong>Carte: </strong><i>Cliquer sur les symboles pour afficher les images et leur description. Les flèches indiquent la direction des prises de vues.</i></li>
@@ -129,13 +130,16 @@
             <img class="modal-content" id="modalImg" style="max-width: 90%; max-height: 80%; border-radius: 10px;">
         </div>
         <h4 class="page-title">Contribuer</h4>
-        <p class="paragraph">Pour partager une image, vous pouvez écrire à : <a href="atlasouessant@duck.com">atlasouessant<!--TETS-->@<!--TEST-->duck.com</a> en indiquant la source de l'image et toutes les informations disponibles la concernant. Vous apparaîtrez comme contributeur dans l'application (sous le nom ou pseudonyme de votre choix).<br>
+        <p class="paragraph"><b>De nombreuses images doivent encore être géolocalisées. Toutes les images inventoriées pour le site se trouvent <a href="./iconotheque-gallery.html">dans cette galerie d'images</a></b>.</p>
+        <p class="paragraph">Pour partager une information ou une image, vous pouvez écrire à : <a href="atlasouessant@duck.com">atlasouessant<!--TETS-->@<!--TEST-->duck.com</a> en indiquant la source de l'image et toutes les informations disponibles la concernant. Vous apparaîtrez comme contributeur dans l'application (sous le nom ou pseudonyme de votre choix).<br>
         Il ne peut s'agir que de documents dont les droits sont libres : par exemple issus de sites d'archives ou de votre collection personnelle.</p>
+        <div w3-include-html="iconotheque-gallery.html"></div>
     </article>
     <footer>
         <p>&copy; 2024-2025. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
     </footer>
     <script src="tiles.js"></script>
+    <script src="iconotheque.js"></script>
     <script>
         /*************** MAP ***************/
         var map = L.map('map'
@@ -294,41 +298,6 @@
             document.getElementById('sidebar').style.display = 'none';
         }
 
-
-        // Function to create a custom rotated icon based on azimuth
-        function createRotatedIcon(orientation, type) {
-            var angle = orientation;  // Orientation angle from GeoJSON (in degrees)
-            var t = type
-            // Create a custom divIcon using the arrow image (JPEG of an arrow)
-            var iconUrl = ''
-            if (t === 'mer') {
-                iconUrl = './img/fleche-mer.png';  // Replace with the path to your arrow image
-            } else if (t === 'oblique') {
-                iconUrl = './img/fleche-oblique.png';
-            } else {
-                iconUrl = './img/fleche-sol2.png';  // Default icon for other types
-            }
-
-
-            // Create a custom divIcon and apply the rotation
-            var icon = L.divIcon({
-                className: 'rotated-icon',
-                /*html: '<img src="' + iconUrl + '" style="transform: rotate(' + angle + 'deg); width: 32px; height: 32px;" />',*/
-                html: `<div style="width: 15px; height: 15px; 
-                                    background-color: white; 
-                                    border-radius: 50%; 
-                                    display: flex; 
-                                    justify-content: center; 
-                                    align-items: center; 
-                                    transform: rotate(${angle}deg);">
-                         <img src="${iconUrl}" style="width: 12px; height: 12px;" />
-                      </div>`,
-                iconSize: [12, 12],  // Adjust the size as necessary
-            });
-
-            return icon;
-        }
-
         // Load CSV using PapaParse
         var csvData = {}; // Object to store the parsed CSV data
         Papa.parse('data/iconographie.csv', {
@@ -446,6 +415,7 @@
             map.removeLayer(markersClusterOblique);
         }
     });
+
     </script>
 </body>
 </html>

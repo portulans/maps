@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon//favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon//favicon-16x16.png">
+  <title>Galerie de photographies anciennes</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    .dropdownGal {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .dropdownGal-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px;
+      z-index: 1;
+      max-height: 200px;
+      max-width: 150px;
+      overflow-y: auto;
+    }
+    .dropdownGal:hover .dropdownGal-content {
+      display: block;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .gallery img {
+      height: 180px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 1200px;
+      display: flex;
+      gap: 20px;
+    }
+    .modal-image {
+      flex: 2;
+    }
+    .modal-image img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    .modal-info {
+      flex: 1;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="#default" class="logo">Atlas historique d'Ouessant</a>
+    <div class="header-right">
+      <a href="index.html">Accueil</a>
+      <a href="catalogue.html">Cartes et plans</a>
+      <a href="visualisateur.html">Visualisateur cartographique</a>
+      <a href="iconotheque.html">Iconothèque</a>
+      <div class="dropdown">
+        <a href="#" class="dropbtn">Dossiers</a>
+          <div class="dropdown-content">
+            <!--<a href="cadastrenap.html">Cadastre Napoléonien</a>
+            <a href="pilotes.html">Pilotes</a>-->
+            <a class="active" href="iconotheque-gallery.html">Photographies anciennes</a>
+          </div>
+      </div>
+      <a href="guestbook.html">Livre d'or</a>
+    </div>
+  </div>
+  <article>
+    <h1 class="page-title">Photographies anciennes</h1>
+    <div class="dropdownGal">
+      <p>Parcourir l'ensemble des images disponibles, localisées ou non.</p>
+      <button>Choisir une collection</button>
+      <div class="dropdownGal-content" id="groupSelector"></div>
+    </div>
+    <div class="gallery" id="gallery"></div>
+
+    <div class="modal" id="imageModal">
+      <span class="close" onclick="document.getElementById('imageModal').style.display='none'">&times;</span>
+      <div class="modal-content">
+        <div class="modal-info">
+        </div>
+        <div class="modal-image">
+          <img id="modalImage" src="" alt="">
+        </div>
+      </div>
+    </div>
+  </article>
+  <footer>
+    <p>&copy; 2024-2025. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
+  </footer>
+  </body>
+  <script>
+    const CSV_PATH = './data/iconographie.csv'; // Replace with actual CSV file path
+
+    let allData = [];
+    let selectedGroups = new Set();
+
+    Papa.parse(CSV_PATH, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results) {
+        allData = results.data;
+        renderGroupSelector();
+        selectFirstGroup();
+        renderGallery();
+      }
+    });
+
+    function renderGroupSelector() {
+      const groupSelector = document.getElementById('groupSelector');
+      groupSelector.innerHTML = '';
+      const groups = [...new Set(allData.map(row => row.Groupe))].sort();
+
+      groups.forEach((group, index) => {
+        const label = document.createElement('label');
+        const checkedAttr = index === 0 ? 'checked' : '';
+        label.innerHTML = `<input type="checkbox" value="${group}" onchange="toggleGroup(this)" ${checkedAttr}> ${group}<br>`;
+        groupSelector.appendChild(label);
+        if (index === 0) {
+          selectedGroups.add(group);
+        }
+      });
+    }
+
+    function selectFirstGroup() {
+      const firstCheckbox = document.querySelector('#groupSelector input[type="checkbox"]');
+      if (firstCheckbox) {
+        firstCheckbox.checked = true;
+        selectedGroups.add(firstCheckbox.value);
+      }
+    }
+
+    function toggleGroup(checkbox) {
+      if (checkbox.checked) {
+        selectedGroups.add(checkbox.value);
+      } else {
+        selectedGroups.delete(checkbox.value);
+      }
+      renderGallery();
+    }
+
+    function renderGallery() {
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = '';
+      const filtered = allData.filter(row => selectedGroups.size === 0 || selectedGroups.has(row.Groupe));
+
+      filtered.forEach(item => {
+        if (item.Image) {
+        const img = document.createElement('img');
+        img.src = './img/library/' + item.Institution + '/' + item.Image;
+        img.alt = item.Legende;
+        img.onclick = () => showModal(item);
+        gallery.appendChild(img);
+       } else if (!item.Image && item.NUM === "OUI") {
+        // If no image is available, use a default image
+          const img = document.createElement('img');
+          img.src = './img/default.jpg';
+          img.alt = item.Legende;
+          img.onclick = () => showModal(item);
+          gallery.appendChild(img);
+        }
+      });
+    }
+
+    function showModal(item) {
+      document.getElementById('modalImage').src = './img/library/' + item.Institution + '/' + item.Image;;
+      var contentDiv = document.getElementsByClassName('modal-info')[0];
+        contentDiv.innerHTML = ''; // Clear previous content
+        if (item.Auteur) {
+            contentDiv.innerHTML += `<p><strong>Auteur:</strong> ${item.Auteur}</p>`;
+        }
+        if (item.Type && item.Nature) {
+            contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Type}, ${item.Nature}</p>`;
+        } else if (item.Type) {
+            contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Type}</p>`;
+        } else if (item.Nature) {
+            contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Nature}</p>`;
+        }
+
+        if (item.Description) {
+            contentDiv.innerHTML += `<p><strong>Description:</strong> ${item.Description}</p>`;
+        }
+        if (item.Legende) {
+            contentDiv.innerHTML += `<p><strong>Légende:</strong> ${item.Legende}</p>`;
+        }
+        if (item.Date && item.Siecle) {
+            contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Date}, ${item.Siecle}</p>`;
+        } else if (item.Date) {
+            contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Date}</p>`;
+        } else if (item.Siecle) {
+            contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Siecle}</p>`;
+        }
+        if (item.Ouvrage) {
+            contentDiv.innerHTML += `<p><strong>Issu de :</strong> ${item.Ouvrage}</p>`;
+        }
+        if (item.Cote && item.Collection && item.Detail_institution) {
+            contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Cote} - ${item.Collection} - ${item.Detail_institution}</p>`;
+        } else if (item.Cote && item.Detail_institution) {
+            contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Cote} - ${item.Detail_institution}</p>`;
+        } else if (item.Detail_institution) {
+            contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Detail_institution}</p>`;
+        }
+
+        if (item.Lien_fiche) {
+            contentDiv.innerHTML += `<a href='${item.Lien_fiche}' target='_blank'>Voir sur le site source</a>`;
+        }
+
+        if (item.Commentaire) {
+            contentDiv.innerHTML += `<p><strong>Remarques:</strong> ${item.Commentaire}</p>`;
+        }
+      document.getElementById('imageModal').style.display = 'block';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('imageModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
