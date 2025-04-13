@@ -6,12 +6,11 @@
         <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="img/favicon//favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon//favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
         <title>Visualisateur cartographique | Atlas d'Ouessant</title>
         <link rel="stylesheet" href="./libs/leaflet.css">
         <script type="text/javascript" src="./libs/leaflet.js"></script>
-        <link rel="stylesheet" href="./libs/leaflet-panel-layers.css">
-        <script type="text/javascript" src="./libs/leaflet-panel-layers.min.js"></script>
+        <link rel="stylesheet" href="./libs/leaflet-search.css">
+        <script type="text/javascript" src="./libs/leaflet-search.js"></script>
         <link rel="stylesheet" href="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.css" /> <!--FullScreen-->
         <script src="./libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.js"></script>
         <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
@@ -29,14 +28,14 @@
               <a href="catalogue.html">Cartes et plans</a>
               <a class="active" href="visualisateur.html">Visualisateur cartographique</a>
               <a href="iconotheque.html">Iconothèque</a>
-              <!--<div class="dropdown">
+              <div class="dropdown">
                     <a href="#" class="dropbtn">Dossiers</a>
                     <div class="dropdown-content">
                         <a href="cadastrenap.html">Cadastre Napoléonien</a>
-                        <a href="pilotes.html">Pilotes</a>
+                        <!--<a href="pilotes.html">Pilotes</a>-->
                     </div>
-              </div>-->
-              <a href="guestbook.html">Livre d'or</a>
+              </div>
+              <a href="guestbook.html">Contact</a>
             </div>
           </div>
 
@@ -47,6 +46,12 @@
             <div id="maps">
                 <div id="mapviz"></div>
             </div>
+            <h4 class="page-title">Sources</h4>
+            <p class="paragraph">
+                <ul><li>Moulins : Solenn Tual, d'après le cadastre napoléonien (1842 et registres ultérieurs) et le plan du Ministère de l'équipement (1910). <strong>En cours de validation sur le terrain.</strong></li>
+                <li>Lavoirs et fontaines : Solenn Tual (géolocalisations précises) d'après la carte de l'association Poull Ha Feunten numérisée par le PNRA en 2013. <strong>En cours de validation sur le terrain.</strong></li></ul>
+                <li>Lieux-dits : données produites à partir du cadastre moderne</li>
+            </p>
         </article>
 
         <footer>
