@@ -7,6 +7,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon//favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon//favicon-16x16.png">
   <title>Galerie de photographies anciennes</title>
+  <script type="text/javascript" src="./libs/leaflet.js"></script>
+  <link rel="stylesheet" href="./libs/leaflet.css">
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <link rel="stylesheet" href="./style.css">
   <style>
@@ -122,135 +124,8 @@
     <p>&copy; 2024-2025. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
   </footer>
   </body>
-  <script>
-    const CSV_PATH = './data/iconographie.csv'; // Replace with actual CSV file path
-
-    let allData = [];
-    let selectedGroups = new Set();
-
-    Papa.parse(CSV_PATH, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: function(results) {
-        allData = results.data;
-        renderGroupSelector();
-        selectFirstGroup();
-        renderGallery();
-      }
-    });
-
-    function renderGroupSelector() {
-      const groupSelector = document.getElementById('groupSelector');
-      groupSelector.innerHTML = '';
-      const groups = [...new Set(allData.map(row => row.Groupe))].sort();
-
-      groups.forEach((group, index) => {
-        const label = document.createElement('label');
-        const checkedAttr = index === 0 ? 'checked' : '';
-        label.innerHTML = `<input type="checkbox" value="${group}" onchange="toggleGroup(this)" ${checkedAttr}> ${group}<br>`;
-        groupSelector.appendChild(label);
-        if (index === 0) {
-          selectedGroups.add(group);
-        }
-      });
-    }
-
-    function selectFirstGroup() {
-      const firstCheckbox = document.querySelector('#groupSelector input[type="checkbox"]');
-      if (firstCheckbox) {
-        firstCheckbox.checked = true;
-        selectedGroups.add(firstCheckbox.value);
-      }
-    }
-
-    function toggleGroup(checkbox) {
-      if (checkbox.checked) {
-        selectedGroups.add(checkbox.value);
-      } else {
-        selectedGroups.delete(checkbox.value);
-      }
-      renderGallery();
-    }
-
-    function renderGallery() {
-      const gallery = document.getElementById('gallery');
-      gallery.innerHTML = '';
-      const filtered = allData.filter(row => selectedGroups.size === 0 || selectedGroups.has(row.Groupe));
-
-      filtered.forEach(item => {
-        if (item.Image) {
-        const img = document.createElement('img');
-        img.src = './img/library/' + item.Institution + '/' + item.Image;
-        img.alt = item.Legende;
-        img.onclick = () => showModal(item);
-        gallery.appendChild(img);
-       } else if (!item.Image && item.NUM === "OUI") {
-        // If no image is available, use a default image
-          const img = document.createElement('img');
-          img.src = './img/default.jpg';
-          img.alt = item.Legende;
-          img.onclick = () => showModal(item);
-          gallery.appendChild(img);
-        }
-      });
-    }
-
-    function showModal(item) {
-      document.getElementById('modalImage').src = './img/library/' + item.Institution + '/' + item.Image;;
-      var contentDiv = document.getElementsByClassName('modal-info')[0];
-        contentDiv.innerHTML = ''; // Clear previous content
-        if (item.Auteur) {
-            contentDiv.innerHTML += `<p><strong>Auteur:</strong> ${item.Auteur}</p>`;
-        }
-        if (item.Type && item.Nature) {
-            contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Type}, ${item.Nature}</p>`;
-        } else if (item.Type) {
-            contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Type}</p>`;
-        } else if (item.Nature) {
-            contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Nature}</p>`;
-        }
-
-        if (item.Description) {
-            contentDiv.innerHTML += `<p><strong>Description:</strong> ${item.Description}</p>`;
-        }
-        if (item.Legende) {
-            contentDiv.innerHTML += `<p><strong>Légende:</strong> ${item.Legende}</p>`;
-        }
-        if (item.Date && item.Siecle) {
-            contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Date}, ${item.Siecle}</p>`;
-        } else if (item.Date) {
-            contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Date}</p>`;
-        } else if (item.Siecle) {
-            contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Siecle}</p>`;
-        }
-        if (item.Ouvrage) {
-            contentDiv.innerHTML += `<p><strong>Issu de :</strong> ${item.Ouvrage}</p>`;
-        }
-        if (item.Cote && item.Collection && item.Detail_institution) {
-            contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Cote} - ${item.Collection} - ${item.Detail_institution}</p>`;
-        } else if (item.Cote && item.Detail_institution) {
-            contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Cote} - ${item.Detail_institution}</p>`;
-        } else if (item.Detail_institution) {
-            contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Detail_institution}</p>`;
-        }
-
-        if (item.Lien_fiche) {
-            contentDiv.innerHTML += `<a href='${item.Lien_fiche}' target='_blank'>Voir sur le site source</a>`;
-        }
-
-        if (item.Commentaire) {
-            contentDiv.innerHTML += `<p><strong>Remarques:</strong> ${item.Commentaire}</p>`;
-        }
-      document.getElementById('imageModal').style.display = 'block';
-    }
-
-    window.onclick = function(event) {
-      const modal = document.getElementById('imageModal');
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
+  <script src="tiles.js"></script>
+  <script src="iconotheque.js"></script>
+  <script src="iconotheque-gallery.js"></script>
 </body>
 </html>
