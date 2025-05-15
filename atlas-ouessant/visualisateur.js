@@ -77,7 +77,10 @@ var moulins = L.geoJson(null, {
     pointToLayer: function (feature, latlng) {
         return L.marker(latlng, moulinsStyle(feature));
     },
-    onEachFeature:onEachFeatureMoulins
+    onEachFeature:onEachFeatureMoulins,
+    filter: function (feature, layer) {
+        return feature.properties.cad1842 == 1 || feature.properties.ign1910 == 1;
+    }
 }); 
     
  $.getJSON(url_moulins, function(data) {
@@ -253,7 +256,7 @@ searchControl.on('search:locationfound', function(e) {
 		
     //console.log('search:locationfound', );
 
-    //map.removeLayer(this._markerSearch)
+    //ssssmap.removeLayer(this._markerSearch)
 
     e.layer.setStyle({fillColor: '#3f0', color: '#0f0', fillOpacity:0.8});
     if(e.layer._popup)

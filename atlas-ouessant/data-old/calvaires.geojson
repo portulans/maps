@@ -1,0 +1,30 @@
+{
+"type": "FeatureCollection",
+"name": "calvaires",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": null, "app1842": 1, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.056719085095406, 48.461689568337754 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Saint Michel", "app1842": 1, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.080243813528572, 48.465172982008596 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": null, "app1842": 1, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.098423275490438, 48.457491994476847 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix du bas du bourg", "app1842": 1, "src_geom": null, "saf_num": 810.0, "saf_dateCo": "XIXème siècle" }, "geometry": { "type": "Point", "coordinates": [ -5.094859277227624, 48.456362133730877 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Parlu’chen", "app1842": 1, "src_geom": null, "saf_num": 812.0, "saf_dateCo": "1852" }, "geometry": { "type": "Point", "coordinates": [ -5.115762472013165, 48.456017711383879 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": null, "app1842": 1, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.095894779343263, 48.446541893207588 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": null, "app1842": 1, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.069969534227527, 48.456046602306735 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Groas St. Paul", "app1842": 1, "src_geom": null, "saf_num": 811.0, "saf_dateCo": "1702" }, "geometry": { "type": "Point", "coordinates": [ -5.040110911173313, 48.459166810944133 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": null, "app1842": 1, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.106690405614033, 48.457759095751634 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croas Rus", "app1842": 1, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.098068640647435, 48.45902621944866 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": null, "app1842": 1, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.0659765587774, 48.459078207088332 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "pierre gravée à fonction de croix", "nom": "Croix Roch'Hir", "app1842": 0, "src_geom": null, "saf_num": 818.0, "saf_dateCo": "1915" }, "geometry": { "type": "Point", "coordinates": [ -5.10031626, 48.43947712 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Saint-Nicolas", "app1842": 0, "src_geom": "IGN BDTOPO", "saf_num": 817.0, "saf_dateCo": "XXème siècle" }, "geometry": { "type": "Point", "coordinates": [ -5.09483648, 48.45366038 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Mission", "app1842": 0, "src_geom": "IGN BDTOPO", "saf_num": 804.0, "saf_dateCo": "1884" }, "geometry": { "type": "Point", "coordinates": [ -5.09549108, 48.45749714 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Kermorvan", "app1842": 1, "src_geom": "IGN BDTOPO", "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.08813064, 48.46322961 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": null, "app1842": 1, "src_geom": "IGN BDTOPO", "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.09343415, 48.460760659999984 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Kernigou", "app1842": 1, "src_geom": "IGN BDTOPO", "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.08893007, 48.46036963 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Porz Gwenn", "app1842": 0, "src_geom": "IGN BDTOPO", "saf_num": 816.0, "saf_dateCo": "vers 1950" }, "geometry": { "type": "Point", "coordinates": [ -5.08323388, 48.452154 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Kervasdoué", "app1842": 1, "src_geom": "IGN BDTOPO", "saf_num": 803.0, "saf_dateCo": "XVIIIème siècle" }, "geometry": { "type": "Point", "coordinates": [ -5.07393298, 48.45969479 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "autre", "nom": "Croix - Ecole Sainte-Anne", "app1842": 0, "src_geom": null, "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.09889029, 48.45788397 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "calvaire", "nom": "Croix de Porz Ligoudou", "app1842": 0, "src_geom": "IGN BDTOPO", "saf_num": null, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.05793261, 48.4664874 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "autre", "nom": null, "app1842": null, "src_geom": null, "saf_num": -9.2233720368547758e+18, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.099565306096341, 48.458682454887452 ] } },
+{ "type": "Feature", "properties": { "id": null, "type": "pierre gravée à fonction de croix", "nom": "Pierre gravée de Pern", "app1842": 0, "src_geom": null, "saf_num": -9.2233720368547758e+18, "saf_dateCo": null }, "geometry": { "type": "Point", "coordinates": [ -5.136176864537187, 48.4509158587393 ] } }
+]
+}
