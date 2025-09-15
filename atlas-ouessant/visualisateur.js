@@ -9,7 +9,6 @@ var map = L.map('mapviz',{
 
 var url_moulins = 'data/moulins.geojson';
 var url_lavoirs = 'data/lavoirs_fontaines.geojson';
-var url_lieux_dits = 'data/lieux_dits.geojson';
 
 function moulinsStyle(feature) {
     // Create a custom icon
@@ -142,12 +141,33 @@ var lavoirs_fontaines = L.geoJson(null, {
     lavoirs_fontaines.addData(data);
 });
 
-var lieux_dits = L.geoJson(null, {
+
+////////////////////////////////
+var lieux_dits;
+var lastClickedElement;
+function highlightFeature(e) {
+    if(lastClickedElement){
+        lieux_dits.resetStyle(lastClickedElement)
+    }
+
+    var layer = e.target;
+    layer.setStyle({
+        weight: 5,
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.7
+    });
+    lastClickedElement= layer;
+}
+
+
+var url_lieux_dits = './data/lieux_dits.geojson';
+lieux_dits = L.geoJson(null, {
     style: {
         color: 'grey',
         weight: 0.2,
-        fillOpacity: 0,
-        fillColor: '#000000',
+        fillOpacity: 0.1,
+        fillColor: '#fff',
     },
     onEachFeature:function(feature,layer){
         var tooltip = feature.properties["lieu-dit"]
@@ -155,11 +175,29 @@ var lieux_dits = L.geoJson(null, {
              permanent: false,
              direction: "center",
         })
+
+        layer.on({
+            click: highlightFeature
+        });
+
+        var popupcontent = "<h4>"+feature.properties["lieu-dit"]+"</h4>";
+        if (feature.properties["commentaire"]){
+            popupcontent += "<p>Commentaire : "+feature.properties["commentaire"]+"</p>";
+        }
+        layer.bindPopup(popupcontent)
     }
-}); 
+});
     
  $.getJSON(url_lieux_dits, function(data) {
     lieux_dits.addData(data);
+});
+
+map.on('click', function(e) {
+    // If a polygon was previously highlighted, reset its style
+    if (lastClickedElement) {
+        lieux_dits.resetStyle(lastClickedElement);
+        lastClickedElement = null;
+    }
 });
 
 /**
@@ -213,10 +251,16 @@ const layers = [
         ],
     },
     {
-        name: 'Patrimoine culturel',
+        name:"Toponymie <i>(en cours)</i>",
         collapsed: true,
         layers: [
-            { name: "Lieux-dits", layer: lieux_dits, active: false, opacityControl: false},
+            { name: "Lieux-dits (Cadastre 1842)", layer: lieux_dits, active: false, opacityControl: false},
+        ],
+    },
+    {
+        name: 'Patrimoine culturel <i>(en cours)</i>',
+        collapsed: true,
+        layers: [
             { name: "Lavoirs et fontaines", layer: lavoirs_fontaines, active: false, opacityControl: false},
             { name: "Moulins", layer: moulins, active: false, opacityControl: false}
         ],
@@ -234,40 +278,3 @@ L.control.locate({
     strings: {
     title: "Me situer sur la carte !"
   }}).addTo(map);
-
-// Create a search control
-var searchControl = new L.Control.Search({
-    layer: lieux_dits, // Use the GeoJSON layer directly
-    propertyName: 'lieu-dit', // The property to search on
-    marker:false,
-    moveToLocation: function(latlng, title, map) {
-        // Add the lieux_dits layer to the map when a search is performed
-        if (!map.hasLayer(lieux_dits)) {
-            map.addLayer(lieux_dits);
-        }
-        map.setView(latlng, 16); // Adjust the zoom level as needed
-        // Optionally, you can also add a marker or popup here
-    },
-    autoType: false,
-    minLength: 2
-});
-
-searchControl.on('search:locationfound', function(e) {
-		
-    //console.log('search:locationfound', );
-
-    //ssssmap.removeLayer(this._markerSearch)
-
-    e.layer.setStyle({fillColor: '#3f0', color: '#0f0', fillOpacity:0.8});
-    if(e.layer._popup)
-        e.layer.openPopup();
-
-}).on('search:collapsed', function(e) {
-
-    lieux_dits.eachLayer(function(layer) {	//restore feature color
-        lieux_dits.resetStyle(layer);
-    });	
-});
-
-// Add the search control to the map
-map.addControl(searchControl);

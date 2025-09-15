@@ -123,6 +123,28 @@ var url = "data/mires_1842.geojson";
         mires.addData(data);
     });
 
+var url_lieux_dits = './data/lieux_dits.geojson';
+var lieux_dits = L.geoJson(null, {
+    style: {
+        color: 'grey',
+        weight: 0.2,
+        fillOpacity: 0.1,
+        fillColor: '#fff',
+    },
+    onEachFeature:function(feature,layer){
+        var tooltip = feature.properties["lieu-dit"]
+        layer.bindTooltip(tooltip,{
+             permanent: false,
+             direction: "center",
+        })
+    }
+}); 
+    
+ $.getJSON(url_lieux_dits, function(data) {
+    lieux_dits.addData(data);
+});
+
+
 var parcellaireExpress = L.tileLayer.wms('https://wxs.ign.fr/parcellaire/geoportail/r/wms?', {
     layers: 'CADASTRALPARCELS.PARCELLAIRE_EXPRESS',
     format: 'image/png',
@@ -174,7 +196,8 @@ const layers = [
             { name: "Plan parcellaire", layer: planparcellaire, active: true, opacityControl: true},
             { name: "Sections", layer: sections, active: false, opacityControl: false},
             { name: "Feuilles", layer: feuilles, active: false, opacityControl: false},
-            { name: "Repères de triangulation", layer: mires, active: false, opacityControl: false}
+            { name: "Repères de triangulation", layer: mires, active: false, opacityControl: false},
+            { name: "Lieux-dits", layer: lieux_dits, active: false, opacityControl: false}
         ],
     }
 ];
