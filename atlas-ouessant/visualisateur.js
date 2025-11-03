@@ -86,9 +86,29 @@ var moulins = L.geoJson(null, {
     moulins.addData(data);
 });
 
-function createCircleMarker(feature, latlng) {
+function createPrecisionCircleMarker(feature, latlng) {
     let markerOptions = {
-        radius: 8, // Default radius
+        radius: 8,
+        fillOpacity: 0.8,
+        color: 'black',
+        fillColor: 'red',
+        weight: 1,
+    };
+
+    //Adjust color based on precision
+    if (feature.properties.modif_geom === 'exacte') {
+        markerOptions.fillColor = 'green';
+    } else if (feature.properties.modif_geom === 'affinée') {
+        markerOptions.fillColor = 'orange';
+    } else {
+        markerOptions.fillColor = 'red';
+    }
+    return L.circleMarker(latlng, markerOptions);
+}
+
+function createLavoirCircleMarker(feature, latlng) {
+    let markerOptions = {
+        radius: 6, // Default radius
         fillOpacity: 0.8,
         color: 'black',
         fillColor: 'blue', // Default fill color
@@ -125,16 +145,29 @@ function onEachFeatureLavoirs(feature,layer){
          permanent: false,
          direction: "center",
     })
+
+    var popupContent = "<h4>"+tooltip+"</h4>";
+    popupContent += "<ul><li>Type : "+feature.properties.type+"</li>";
+    popupContent += "<li>Statut: "+feature.properties.statut+"</li>";
+    popupContent += "<li>Géométrie : "+feature.properties.modif_geom+"</li>";
+    popupContent += "<li>FID : "+feature.properties.fid+"</li>";
+    popupContent += "</ul>";
+    layer.bindPopup(popupContent, {
+        minWidth: 200,
+        maxWidth: 300,
+        className: 'popup-lavoirs'
+    });
  }
 
 var lavoirs_fontaines = L.geoJson(null, {
     pointToLayer: function (feature, latlng) {
-        return createCircleMarker(feature, latlng);
+        //return createLavoirCircleMarker(feature, latlng);
+        return createPrecisionCircleMarker(feature, latlng);
     },
     onEachFeature:onEachFeatureLavoirs,
-    filter: function (feature, layer) {
-        return feature.properties.modif_geom != null;
-    }
+    //filter: function (feature, layer) {
+    //    return feature.properties.modif_geom != null;
+    //}
 }); 
     
  $.getJSON(url_lavoirs, function(data) {

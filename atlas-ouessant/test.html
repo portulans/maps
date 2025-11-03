@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSV Filter</title>
+  <script type="text/javascript" src="./libs/leaflet.js"></script>
+  <link rel="stylesheet" href="./libs/leaflet.css">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Select CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+
+  <style>
+    body {
+      padding: 2rem;
+      background-color: #f8f9fa;
+    }
+    .filter-section {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">Détails de l'image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="Image" class="img-fluid mb-3" />
+        <div class="modal-info"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<body>
+
+<div class="container">
+  <h1 class="mb-4">CSV Filters</h1>
+
+  <div class="row filter-section">
+    <div class="col-md-3">
+      <label>Groupe</label>
+      <select id="filter-groupe" class="selectpicker form-control" multiple data-live-search="true"></select>
+    </div>
+    <div class="col-md-3">
+      <label>Date</label>
+      <select id="filter-date" class="selectpicker form-control" multiple data-live-search="true"></select>
+    </div>
+    <div class="col-md-3">
+      <label>Auteur</label>
+      <select id="filter-auteur" class="selectpicker form-control" multiple data-live-search="true"></select>
+    </div>
+    <div class="col-md-3">
+      <label>Éditeur</label>
+      <select id="filter-editeur" class="selectpicker form-control" multiple data-live-search="true"></select>
+    </div>
+  </div>
+
+  <div id="gallery" class="row">
+    <!-- Filtered items will go here -->
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootstrap Select -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+
+<!-- PapaParse -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="iconotheque.js"></script>
+<script>
+const CSV_PATH = './data/iconographie.csv'; // Replace with actual CSV file path
+let allData = [];
+
+function populateFilters(data, column, selectorId) {
+  const values = [...new Set(data.map(row => row[column]).filter(Boolean))].sort();
+  const select = document.getElementById(selectorId);
+  select.innerHTML = '';
+
+  values.forEach(value => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = value;
+    select.appendChild(option);
+  });
+
+  $(select).selectpicker('refresh');
+}
+
+function renderGallery() {
+  const selectedGroupe = $('#filter-groupe').val() || [];
+  const selectedDate = $('#filter-date').val() || [];
+  const selectedAuteur = $('#filter-auteur').val() || [];
+  const selectedEditeur = $('#filter-editeur').val() || [];
+  const card = document.createElement('div');
+  const modal = document.createElement('div');
+
+  const filtered = allData.filter(row => {
+    return (
+      (selectedGroupe.length === 0 || selectedGroupe.includes(row.Groupe)) &&
+      (selectedDate.length === 0 || selectedDate.includes(row.Date)) &&
+      (selectedAuteur.length === 0 || selectedAuteur.includes(row.Auteur)) &&
+      (selectedEditeur.length === 0 || selectedEditeur.includes(row.Editeur))
+    );
+  });
+
+  const gallery = document.getElementById('gallery');
+  gallery.innerHTML = '';
+
+  if (filtered.length === 0) {
+    gallery.innerHTML = '<div class="col-12"><p>No matching results.</p></div>';
+    return;
+  }
+
+  filtered.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'col-md-4 mb-3';
+    card.innerHTML = `
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${item.Titre || 'Untitled'}</h5>
+          <p class="card-text"><strong>Auteur:</strong> ${item.Auteur || 'N/A'}<br>
+          <strong>Groupe:</strong> ${item.Groupe || 'N/A'}<br>
+          <strong>Date:</strong> ${item.Date || 'N/A'}<br>
+          <strong>Éditeur:</strong> ${item.Editeur || 'N/A'}</p>
+        </div>
+      </div>
+    `;
+
+    card.onclick = () => showModal(item);
+    gallery.appendChild(card);
+  });
+}
+
+function setupEventListeners() {
+  ['filter-groupe', 'filter-date', 'filter-auteur', 'filter-editeur'].forEach(id => {
+    $(`#${id}`).on('changed.bs.select', renderGallery);
+  });
+}
+
+function showModal(item) {
+  document.getElementById('modalImage').src = './img/library/' + item.Institution + '/' + item.Image;
+  var contentDiv = document.getElementsByClassName('modal-info')[0];
+    contentDiv.innerHTML = ''; // Clear previous content
+    if (item.ID) {
+        contentDiv.innerHTML += `<p><strong>Identifiant dans l'atlas:</strong> ${item.ID}</p>`;
+    }
+    if (item.Auteur) {
+        contentDiv.innerHTML += `<p><strong>Auteur:</strong> ${item.Auteur}</p>`;
+    }
+    if (item.Type && item.Nature) {
+        contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Type}, ${item.Nature}</p>`;
+    } else if (item.Type) {
+        contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Type}</p>`;
+    } else if (item.Nature) {
+        contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Nature}</p>`;
+    }
+    if (item.Legende) {
+        contentDiv.innerHTML += `<p><strong>Légende:</strong> ${item.Legende}</p>`;
+    }
+    if (item.Description) {
+      contentDiv.innerHTML += `<p><strong>Description:</strong> ${item.Description}</p>`;
+    }
+    if (item.Date && item.Siecle) {
+        contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Date}, ${item.Siecle}</p>`;
+    } else if (item.Date) {
+        contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Date}</p>`;
+    } else if (item.Siecle) {
+        contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Siecle}</p>`;
+    }
+    if (item.Ouvrage) {
+        contentDiv.innerHTML += `<p><strong>Issu de :</strong> ${item.Ouvrage}</p>`;
+    }
+    if (item.Cote && item.Collection && item.Detail_institution) {
+        contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Cote} - ${item.Collection} - ${item.Detail_institution}</p>`;
+    } else if (item.Cote && item.Detail_institution) {
+        contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Cote} - ${item.Detail_institution}</p>`;
+    } else if (item.Detail_institution) {
+        contentDiv.innerHTML += `<p><strong>Source: </strong> ${item.Detail_institution}</p>`;
+    }
+
+    if (item.Lien_fiche) {
+        contentDiv.innerHTML += `<a href='${item.Lien_fiche}' target='_blank'>Voir sur le site source</a>`;
+    }
+
+    if (item.Licence) {
+        contentDiv.innerHTML += `<p><strong>Licence: </strong>${item.Licence}</p>`;
+    }
+
+    if (item.Commentaire) {
+        contentDiv.innerHTML += `<p><strong>Remarques:</strong> ${item.Commentaire}</p>`;
+    }
+
+  //Serach in geojson if item.ID exists
+  const geojsonPath = './data/loc-images.geojson';
+  fetch(geojsonPath)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log(item.ID);
+      // Find the feature with the matching ID cast them as integers
+      let feature = data.features.find(feature => parseInt(feature.properties.ID) === parseInt(item.ID));
+      if (feature) {
+        let coordinates = feature.geometry.coordinates;
+        let lat = coordinates[1];
+        let lon = coordinates[0];
+        contentDiv.innerHTML += `<p><strong>Localisation:</strong></p>`;
+        let mapDiv = document.createElement('div');
+        mapDiv.id = 'image-map';
+        mapDiv.style.width = '100%';
+        mapDiv.style.height = '200px';
+        contentDiv.appendChild(mapDiv);
+        let map = L.map('image-map').setView([lat, lon], 16);
+        // Add createDivIcon
+        var icon = createRotatedIcon(feature.properties.orientatio, feature.properties.type);
+        L.marker([lat, lon], { icon: icon }).addTo(map);
+        // Add tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '© OpenStreetMap'
+        }).addTo(map);
+      } else {
+        contentDiv.innerHTML += `<p><strong>Localisation:</strong> Non renseignée</p>`;
+      }
+    });
+
+  const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+  modal.show();
+}
+
+Papa.parse(CSV_PATH, {
+  download: true,
+  header: true,
+  complete: function(results) {
+    allData = results.data.filter(row => row.Groupe || row.Date || row.Auteur || row.Editeur); // Remove empty rows
+    populateFilters(allData, 'Groupe', 'filter-groupe');
+    populateFilters(allData, 'Date', 'filter-date');
+    populateFilters(allData, 'Auteur', 'filter-auteur');
+    populateFilters(allData, 'Editeur', 'filter-editeur');
+    setupEventListeners();
+    renderGallery();
+  }
+});
+</script>
+</body>
+</html>

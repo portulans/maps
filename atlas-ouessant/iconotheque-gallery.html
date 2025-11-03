@@ -9,9 +9,83 @@
   <title>Galerie de photographies anciennes</title>
   <script type="text/javascript" src="./libs/leaflet.js"></script>
   <link rel="stylesheet" href="./libs/leaflet.css">
+  <script src="./libs/advanced-layers-control/advanced-layers-control.js"></script>
+  <link rel="stylesheet" href="./libs/advanced-layers-control/advanced-layers-control.css"></script>
+  <script type="text/javascript" src="./libs/markercluster/leaflet.markercluster.js"></script>
+  <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.css">
+  <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <link rel="stylesheet" href="./style.css">
   <style>
+        #map { height: 600px; }
+        .legend {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin-top: -10px;
+        }
+        .legend img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .legend span {
+            vertical-align: middle;
+        }
+        .legend input {
+            margin-right: 5px;
+        }
+        #sidebar {
+            background-color: white;
+            padding: 10px;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            display: none;
+        }
+
+        /* Wide Screens: Sidebar on the right */
+        @media (min-width: 768px) {
+            #sidebar {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                width: 300px;
+                height: 550px;
+            }
+        }
+
+        /* Mobile Screens: Sidebar below the map */
+        @media (max-width: 767px) {
+            #sidebar {
+                position: relative;
+                width: 95%;
+                height: 550px;
+                margin-top: 10px;
+                z-index: 2000;
+                overflow-y: auto;
+            }
+        }
+
+        #sidebar button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        #sidebar h4 {
+            margin-top: 40px;  /* Give room for the button */
+        }
+    /*Other*/
     .dropdownGal {
       position: relative;
       display: inline-block;
@@ -23,9 +97,9 @@
       background-color: #f9f9f9;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       padding: 12px;
-      z-index: 1;
+      z-index: 5000;
       max-height: 200px;
-      max-width: 150px;
+      max-width: 500px;
       overflow-y: auto;
     }
     .dropdownGal:hover .dropdownGal-content {
@@ -107,8 +181,16 @@
       <button>Choisir une collection</button>
       <div class="dropdownGal-content" id="groupSelector"></div>
     </div>
+    <div id="map">
+      <!-- Sidebar for displaying data -->
+      <div id="sidebar">
+          <button onclick="closeSidebar()">Fermer</button>
+          <h4 id="sidebar-title"></h4>
+          <div id="sidebar-content"></div>
+      </div>
+    </div>
     <div class="gallery" id="gallery"></div>
-
+    
     <div class="modal" id="imageModal">
       <span class="close" onclick="document.getElementById('imageModal').style.display='none'">&times;</span>
       <div class="modal-content">
@@ -125,7 +207,7 @@
   </footer>
   </body>
   <script src="tiles.js"></script>
-  <script src="iconotheque.js"></script>
   <script src="iconotheque-gallery.js"></script>
+  <script src="iconotheque.js"></script>
 </body>
 </html>

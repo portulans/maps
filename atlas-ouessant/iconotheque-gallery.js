@@ -69,6 +69,28 @@ function renderGallery() {
       gallery.appendChild(img);
     }
   });
+
+  const geojsonPath = './data/loc-images.geojson';
+  let filteredGeojson = {
+    type: 'FeatureCollection',
+    features: []
+  };
+  fetch(geojsonPath)
+
+    .then(response => response.json())
+    .then(geojsonData => {
+      const filteredFeatures = geojsonData.features.filter(feature => {
+        const featureId = parseInt(feature.properties.ID);
+        return filtered.some(item => parseInt(item.ID) === featureId);
+      });
+      filteredGeojson.features = filteredFeatures;
+      console.log('Filtered GeoJSON:', filteredGeojson);
+    });
+
+}
+
+function closeSidebar() {
+    document.getElementById('sidebar').style.display = 'none';
 }
 
 function showModal(item) {
@@ -88,12 +110,11 @@ function showModal(item) {
     } else if (item.Nature) {
         contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${item.Nature}</p>`;
     }
-
-    if (item.Description) {
-        contentDiv.innerHTML += `<p><strong>Description:</strong> ${item.Description}</p>`;
-    }
     if (item.Legende) {
         contentDiv.innerHTML += `<p><strong>Légende:</strong> ${item.Legende}</p>`;
+    }
+    if (item.Description) {
+      contentDiv.innerHTML += `<p><strong>Description:</strong> ${item.Description}</p>`;
     }
     if (item.Date && item.Siecle) {
         contentDiv.innerHTML += `<p><strong>Date:</strong> ${item.Date}, ${item.Siecle}</p>`;
@@ -117,6 +138,10 @@ function showModal(item) {
         contentDiv.innerHTML += `<a href='${item.Lien_fiche}' target='_blank'>Voir sur le site source</a>`;
     }
 
+    if (item.Licence) {
+        contentDiv.innerHTML += `<p><strong>Licence: </strong>${item.Licence}</p>`;
+    }
+
     if (item.Commentaire) {
         contentDiv.innerHTML += `<p><strong>Remarques:</strong> ${item.Commentaire}</p>`;
     }
@@ -127,7 +152,6 @@ function showModal(item) {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      console.log(item.ID);
       // Find the feature with the matching ID cast them as integers
       let feature = data.features.find(feature => parseInt(feature.properties.ID) === parseInt(item.ID));
       if (feature) {
@@ -140,15 +164,15 @@ function showModal(item) {
         mapDiv.style.width = '100%';
         mapDiv.style.height = '200px';
         contentDiv.appendChild(mapDiv);
-        let map = L.map('image-map').setView([lat, lon], 14);
+        let mapImg = L.map('image-map').setView([lat, lon], 16);
         // Add createDivIcon
         var icon = createRotatedIcon(feature.properties.orientatio, feature.properties.type);
-        L.marker([lat, lon], { icon: icon }).addTo(map);
+        L.marker([lat, lon], { icon: icon }).addTo(mapImg);
         // Add tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
           attribution: '© OpenStreetMap'
-        }).addTo(map);
+        }).addTo(mapImg);
       } else {
         contentDiv.innerHTML += `<p><strong>Localisation:</strong> Non renseignée</p>`;
       }
