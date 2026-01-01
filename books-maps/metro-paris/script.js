@@ -254,9 +254,9 @@ legend.onAdd = function (map) {
 
     // Lines section
     div.innerHTML += '<div style="font-weight:600;margin-bottom:6px">Lignes</div>';
-    div.innerHTML += '<div style="margin-bottom:5px"><span style="display:inline-block;width:30px;height:4px;background:#000000;margin-right:8px;vertical-align:middle;"></span> Ligne standard</div>';
+    div.innerHTML += '<div style="margin-bottom:5px"><span style="display:inline-block;width:30px;height:4px;background:#000000;margin-right:8px;vertical-align:middle;"></span> Couloir</div>';
     // red dashed line for "Route des animaux"
-    div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #ff0000;margin-right:8px;vertical-align:middle;"></span> Couloir</div>';
+    div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #ff0000;margin-right:8px;vertical-align:middle;"></span> Route des animaux</div>';
         div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #000000;margin-right:8px;vertical-align:middle;"></span> Autre passage</div>';
     return div;
 };
