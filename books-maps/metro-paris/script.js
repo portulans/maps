@@ -166,6 +166,16 @@ var lines;
                     opacity: 1,
                     weight: 2
                 };
+            } else if (feature.properties.type == "passage") {
+                return {
+                    dashColor: '#000000',
+                    dashWeight: 2,
+                    dashOffset: 30,
+                    dashArray: [10, 10],
+                    color: '#000000',
+                    opacity: 1,
+                    weight: 2
+                };
             } else {
                 return {
                     color: '#000000',
@@ -246,7 +256,8 @@ legend.onAdd = function (map) {
     div.innerHTML += '<div style="font-weight:600;margin-bottom:6px">Lignes</div>';
     div.innerHTML += '<div style="margin-bottom:5px"><span style="display:inline-block;width:30px;height:4px;background:#000000;margin-right:8px;vertical-align:middle;"></span> Ligne standard</div>';
     // red dashed line for "Route des animaux"
-    div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #ff0000;margin-right:8px;vertical-align:middle;"></span> Route des animaux</div>';
+    div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #ff0000;margin-right:8px;vertical-align:middle;"></span> Couloir</div>';
+        div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #000000;margin-right:8px;vertical-align:middle;"></span> Autre passage</div>';
     return div;
 };
 legend.addTo(map);
