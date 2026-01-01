@@ -253,11 +253,10 @@ legend.onAdd = function (map) {
     div.innerHTML += '<hr style="margin:8px 0;border:none;border-top:1px solid #ddd">';
 
     // Lines section
-    div.innerHTML += '<div style="font-weight:600;margin-bottom:6px">Lignes</div>';
-    div.innerHTML += '<div style="margin-bottom:5px"><span style="display:inline-block;width:30px;height:4px;background:#000000;margin-right:8px;vertical-align:middle;"></span> Couloir</div>';
-    // red dashed line for "Route des animaux"
+    div.innerHTML += '<div style="font-weight:600;margin-bottom:6px">Voies</div>';
+    div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px solid #000000;margin-right:8px;vertical-align:middle;"></span> Galerie impruntable</div>';
     div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #ff0000;margin-right:8px;vertical-align:middle;"></span> Route des animaux</div>';
-        div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #000000;margin-right:8px;vertical-align:middle;"></span> Autre passage</div>';
+    div.innerHTML += '<div><span style="display:inline-block;width:30px;height:4px;border-top:4px dashed #000000;margin-right:8px;vertical-align:middle;"></span> Autre passage</div>';
     return div;
 };
 legend.addTo(map);
