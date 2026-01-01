@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métro Paris 2033</title>
+    <link rel="stylesheet" href="../../libs/w3.css">
+    <link rel="stylesheet" href="style.css">
+        <!--Leaflet-->
+    <link rel="stylesheet" href="../../libs/leaflet/dist/leaflet.css" />
+    <script src="../../libs/leaflet/dist/leaflet.js"></script>
+    <script src="../../libs/advanced-layers-control/advanced-layers-control.js"></script>
+    <link rel="stylesheet" href="../../libs/advanced-layers-control/advanced-layers-control.css"></script>
+    <!--Leaflet Compléments-->
+    <link rel="stylesheet" href="../../libs/leaflet-panel-layers.css"/>
+    <script src="../../libs/leaflet-panel-layers.min.js"></script> <!--Controls-->
+    <script src="../../libs/leaflet.ajax.min.js"></script> <!--AJAX-->
+    <link rel="stylesheet" href="../../libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.css" /> <!--FullScreen-->
+    <script src="../../libs/brunob-leaflet.fullscreen-a58c636/Control.FullScreen.js"></script>
+    <!--Style du site-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap" rel="stylesheet">	
+    <!--Jquery-->
+    <script src="../../libs/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    <article>
+        <button class="w3-button w3-black" onclick="window.location.href='../../index.html'">
+        Retour
+      </button>
+        <div class="container">
+        <div class="title"><h2>Métro Paris 2033</h2></div>
+        <p>"Métro Paris 2033" est une trilogie de romans de science-fiction écrite par Pierre Bordage, dans l'univers de "Métro 2033" initié par Dmitri Gloukhovski. <p>
+        </p>Les trois romans - <i>Rive gauche</i> (T1), <i>Rive droite</i> (T2) et <i>Cité</i> (T3) - ont été publiés aux Editions L'Atalante en 2020, 2021 et 2022</p>
+        <div class="synopsis">
+        <p><i>En 2033, les humains ont été chassés de la surface, désormais inhabitable. À Paris, les survivants se sont réfugiés dans les profondeurs du métropolitain. Des communautés sont installées au niveau de certaines stations de Rive Gauche, plus ou moins en contact, souvent en conflit ; la surface est crainte parce qu’irradiée ; Rive Droite est un lieu maudit. Dans les méandres des boyaux de Paris, à défaut de lumière, les émotions sont plus vives, les rancœurs plus tenaces, les haines plus exacerbées. Une œuvre sombre et baroque, en trois volumes : Rive Gauche, Rive Droite, Cité.</i></p>
+        <p>- Synopsis de <i>Rive Gauche</i>, éditions l'Atalante</p>
+        </div>
+        <!--START : Map div-->
+        <div id="map"></div>
+        <!--END : Map div-->
+        <div id="description">
+            <h3>Création de la carte</h3>
+            <p>Cette carte a été créée à partir des plans du métro conservées par Roy dans l'histoire. Elles ont été créées par <a href="https://www.louisegobinet.fr/portfolios/plans-du-metro-de-paris/">Louise Gobinet</a> et sont proposées au début des romans (seule la carte de Rive Gauche est disponible dans le T1). </p>
+            <p>J'ai notamment conservé les couleurs des statiopées et la symbologie (cercles pour les stations de Rive Gauche, carrés pour celles de Rive Droite). Les emplacements des stations et les tracés des lignes sont issus d'OSM (avec quelques ajustements de positions). Le tracé de la Seine est issu de la BDTOPO IGN et a été modifié pour correspondre aux cartes des romans.</div>
+            </p>
+        </div>
+      </div>
+    </article>
+    <script src="script.js"></script>
+</body>
+</html>

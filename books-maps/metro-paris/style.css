@@ -1,0 +1,13 @@
+.leaflet-container {
+    background: #0C5176;
+    outline: 0;
+}
+
+.title{
+    text-align: center;
+}
+
+#map {
+    width: auto;
+    height: 80vh;
+  }
