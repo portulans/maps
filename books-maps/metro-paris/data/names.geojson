@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"name": "names",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "label": "Seine", "type": "hydro" }, "geometry": { "type": "Point", "coordinates": [ 2.379529671910579, 48.826971085720771 ] } },
+{ "type": "Feature", "properties": { "label": "Grande Mer de l'Est", "type": "hydro" }, "geometry": { "type": "Point", "coordinates": [ 2.362407522793916, 48.858558734908527 ] } },
+{ "type": "Feature", "properties": { "label": "Grande Barrière d'Eau", "type": "hydro" }, "geometry": { "type": "Point", "coordinates": [ 2.368895025617916, 48.878830995192004 ] } },
+{ "type": "Feature", "properties": { "label": "Rive Gauche", "type": "area" }, "geometry": { "type": "Point", "coordinates": [ 2.327717172903528, 48.814769669763969 ] } },
+{ "type": "Feature", "properties": { "label": "Rive Droite", "type": "area" }, "geometry": { "type": "Point", "coordinates": [ 2.315635174324758, 48.890868264652831 ] } },
+{ "type": "Feature", "properties": { "label": "époque indéterminée", "type": "note" }, "geometry": { "type": "Point", "coordinates": [ 2.438331860015801, 48.803335276538114 ] } },
+{ "type": "Feature", "properties": { "label": "Roy", "type": "signature" }, "geometry": { "type": "Point", "coordinates": [ 2.441046984546205, 48.798299931006198 ] } },
+{ "type": "Feature", "properties": { "label": "Cité", "type": "place" }, "geometry": { "type": "Point", "coordinates": [ 2.348021600743952, 48.854383430266672 ] } },
+{ "type": "Feature", "properties": { "label": "L'Inconnu", "type": "place" }, "geometry": { "type": "Point", "coordinates": [ 2.377771664067736, 48.887516780487488 ] } }
+]
+}

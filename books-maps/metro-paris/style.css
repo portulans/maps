@@ -3,11 +3,6 @@ article {
     padding: 10px;
 }
 
-.leaflet-container {
-    background: #0C5176;
-    outline: 0;
-}
-
 .title{
     text-align: center;
 }
@@ -16,3 +11,100 @@ article {
     width: auto;
     height: 80vh;
   }
+
+.label-area {
+position: absolute;
+background-color: transparent;
+border: 0px solid #000;
+box-shadow: none;
+color: #000;
+font-size: larger;
+font-weight: bold;
+font-family: "Edu QLD Hand", cursive;
+font-optical-sizing: auto;
+font-style: normal;
+text-transform: uppercase;
+white-space: nowrap;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+pointer-events: none;
+}
+
+.label-place {
+position: absolute;
+background-color: transparent;
+border: 0px solid #000;
+box-shadow: none;
+color: #000;
+font-size: 7.5px;
+font-weight: bold;
+font-family: "Edu QLD Hand", cursive;
+font-optical-sizing: auto;
+font-style: normal;
+text-transform: uppercase;
+white-space: nowrap;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+pointer-events: none;
+}
+
+.label-hydro {
+position: absolute;
+background-color: transparent;
+border: 0px solid #000;
+box-shadow: none;
+color: blue;
+font-family: "Edu QLD Hand", cursive;
+font-optical-sizing: auto;
+font-style: italic;
+font-weight: 500;
+font-size: 8.5px;
+white-space: normal;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+pointer-events: none;
+}
+
+.label-note {
+position: absolute;
+background-color: transparent;
+border: 0px solid #000;
+box-shadow: none;
+color: #000;
+font-size: 8px;
+font-weight: 600;
+font-family: "Edu QLD Hand", cursive;
+font-optical-sizing: auto;
+font-style: normal;
+white-space: nowrap;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+pointer-events: none;
+}
+
+.label-signature {
+position: absolute;
+background-color: transparent;
+border: 0px solid #000;
+box-shadow: none;
+color: #000;
+font-size: 11px;
+font-weight: 700;
+font-family: "Edu QLD Hand", cursive;
+font-optical-sizing: auto;
+font-style: normal;
+white-space: nowrap;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+pointer-events: none;
+}

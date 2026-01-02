@@ -104,6 +104,9 @@ map.getPane("lines").style.zIndex = "598";
 map.createPane("poi");
 map.getPane("poi").style.zIndex = "600";
 
+map.createPane("labels");
+map.getPane("labels").style.zIndex = "602";
+
 var url = "./data/poi.geojson";	
 var poi;
     poi = L.geoJson(null, {
@@ -123,12 +126,12 @@ var poi;
                         var size = circleRadius(feature.properties["taille-statiopee"]) * 2;
                         var squareDiv = L.divIcon({
                             className: 'square-marker',
-                            html: '<div style="width: ' + size + 'px; height: ' + size + 'px; background-color: #fff; border: 0.5px solid; border-color: #000;"></div>',
+                            html: '<div style="width: ' + size + 'px; height: ' + size + 'px; background-color: #fff; border: 0.5px solid; border-color: #000; border-radius: 1px;"></div>',
                             iconSize: [size, size],
                             iconAnchor: [Math.round(size/2), Math.round(size/2)]
                         });
                         return L.marker(latlng, { icon: squareDiv, pane: 'poi' });
-                } else if (feature.properties.zone == "cité" || feature.properties.zone == "inconnu") {
+                } /*else if (feature.properties.zone == "cité" || feature.properties.zone == "inconnu") {
                     // I would like to draw a div Icon with a ?
                         var size = circleRadius(feature.properties["taille-statiopee"]);
                         var questionDiv = L.divIcon({
@@ -138,7 +141,7 @@ var poi;
                             iconAnchor: [10, 10]
                         });
                         return L.marker(latlng, { icon: questionDiv, pane: 'poi' });
-                } 
+                } */
         },
         filter : function(feature, layer) {
             return feature.properties.zone != null;
@@ -160,7 +163,7 @@ var lines;
                 return {
                     dashColor: '#000000',
                     dashWeight: 2,
-                    dashOffset: 30,
+                    dashOffset: 20,
                     dashArray: [10, 10],
                     color: '#ff0000',
                     opacity: 1,
@@ -170,7 +173,7 @@ var lines;
                 return {
                     dashColor: '#000000',
                     dashWeight: 2,
-                    dashOffset: 30,
+                    dashOffset: 20,
                     dashArray: [10, 10],
                     color: '#000000',
                     opacity: 1,
@@ -206,6 +209,55 @@ var water;
      $.getJSON(url, function(data) {
         water.addData(data);
     });
+
+    
+var url = "./data/names.geojson";	
+var names;
+    names = L.geoJson(null, {
+        pointToLayer: function (feature, latlng) {
+            if (feature.properties) {
+            return L.circleMarker(latlng, {
+                pane: 'labels',
+                opacity: 0,
+                fillOpacity: 0,
+                radius: 0.01})
+            }},
+        onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+                if (feature.properties.type == "area") {;
+                    layer.bindTooltip(feature.properties.label || '', {
+                        permanent: true,
+                        direction: 'center',
+                        className: 'label-area'
+                    })} else if (feature.properties.type == "hydro") {
+                        layer.bindTooltip(feature.properties.label || '', {
+                            permanent: true,
+                            direction: 'center',
+                            className: 'label-hydro'
+                })} else if (feature.properties.type == "place") {
+                        layer.bindTooltip(feature.properties.label || '', {
+                            permanent: true,
+                            direction: 'center',
+                            className: 'label-place'
+                })} else if (feature.properties.type == "note") {
+                        layer.bindTooltip(feature.properties.label || '', {
+                            permanent: true,
+                            direction: 'center',
+                            className: 'label-note'
+                })} else if (feature.properties.type == "signature") {
+                        layer.bindTooltip(feature.properties.label || '', {
+                            permanent: true,
+                            direction: 'center',
+                            className: 'label-signature'
+                }
+        
+        )}
+
+    }}});
+     $.getJSON(url, function(data) {
+        names.addData(data);
+    });
+names.addTo(map);
 
 L.control.scale().addTo(map);
 //map.attributionControl.addAttribution('Map of Panem (Hunger Games world, created by Suzanne Collins) produced using Lionsgate map from The Hunger Games Exhibition (Las Vegas)');
