@@ -169,6 +169,9 @@ function displaySidebar(data) {
     } else if (data.Detail_institution) {
         contentDiv.innerHTML += `<p><strong>Source: </strong> ${data.Detail_institution}</p>`;
     }
+    if (data.Licence) {
+        contentDiv.innerHTML += `<p><strong>Licence:</strong> ${data.Licence}</p>`;
+    }
 
     if (data.Lien_fiche) {
         contentDiv.innerHTML += `<a href='${data.Lien_fiche}' target='_blank'>Voir sur le site source</a>`;
