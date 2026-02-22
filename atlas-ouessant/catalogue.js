@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let allTags = { Type: new Set(), Emprise: new Set(), Siecle: new Set() };
     const mapContainer = document.getElementById("mapContainer");
-    const filterTagsContainer = document.getElementById("filterTagsContainer");
-    const resetFilterButton = document.getElementById("resetFilter");
-    let currentFilter = null; // Track current active filter
 
     Papa.parse("maps.csv", {
         download: true,
@@ -112,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         tagElement.className = `tag tag-${key.toLowerCase()}`;
                         tagElement.textContent = value;
                         tagsContainer.appendChild(tagElement);
-                        allTags[key].add(value); // Add to allTags
                     }
                 }
 
@@ -134,102 +129,169 @@ document.addEventListener("DOMContentLoaded", function () {
                 mapItem.appendChild(mapDetails);
                 mapContainer.appendChild(mapItem);
             });
-
-            // Populate the global filter section
-            populateFilterTags();
         }
     });
+});
 
-    function populateFilterTags() {
+document.addEventListener("DOMContentLoaded", function () {
+    const v2FilterTargets = {
+        Auteur: document.getElementById("author-filters"),
+        Siecle: document.getElementById("periode-filters"),
+        Type: document.getElementById("type-filters"),
+        Emprise: document.getElementById("emprise-filters"),
+        Georeferencing: document.getElementById("georef-filters")
+    };
+    const resetFilterV2Button = document.getElementById("resetFilterV2");
 
-        /*Create a drop down list for each tag type. Each elem of the list has to have a checkbox to allow multicriteria filtering*/
-        for (const [key, values] of Object.entries(allTags)) {
-            const filterTag = document.createElement("div");
-            filterTag.className = "filter-tag";
+    const hasV2Containers = Object.values(v2FilterTargets).every(Boolean);
+    if (!hasV2Containers) {
+        return;
+    }
 
-            const filterTagTitle = document.createElement("div");
-            filterTagTitle.className = "filter-tag-title";
-            if (key === "Siecle") {
-                filterTagTitle.textContent = "Siècle";
-            } else {
-                filterTagTitle.textContent = key;
+    const selectedValuesByField = {
+        Auteur: new Set(),
+        Siecle: new Set(),
+        Type: new Set(),
+        Emprise: new Set(),
+        Georeferencing: new Set()
+    };
+
+    const rowsById = new Map();
+
+    function normalizeValue(value) {
+        return (value || "").toString().trim();
+    }
+
+    function mapGeoreferencingValue(value) {
+        return normalizeValue(value).toLowerCase() === "done" ? "Oui" : "Non";
+    }
+
+    function getItemId(mapItem) {
+        const link = mapItem.querySelector("a.map-link");
+        if (!link) {
+            return "";
+        }
+        const href = link.getAttribute("href") || "";
+        const match = href.match(/[?&]id=([^&]+)/);
+        return match ? decodeURIComponent(match[1]) : "";
+    }
+
+    function applyV2Filters() {
+        const mapItems = document.querySelectorAll(".map-item");
+
+        mapItems.forEach((mapItem) => {
+            const itemId = getItemId(mapItem);
+            const row = rowsById.get(itemId);
+
+            if (!row) {
+                mapItem.style.display = "none";
+                return;
             }
 
-            const filterTagList = document.createElement("div");
-            filterTagList.className = "filter-tag-list";
-
-            values.forEach(value => {
-                const filterTagItem = document.createElement("div");
-                filterTagItem.className = "filter-tag-item";
-
-                const filterTagCheckbox = document.createElement("input");
-                filterTagCheckbox.type = "checkbox";
-                filterTagCheckbox.className = "filter-tag-checkbox";
-                filterTagCheckbox.id = `${key}-${value}`;
-                filterTagCheckbox.value = value;
-                /*if (key == "Type" && value != "Plan") {
-                    filterTagCheckbox.checked = true;
-                }*/
-                filterTagCheckbox.addEventListener("change", () => filterByTag(key, value));
-
-                const filterTagLabel = document.createElement("label");
-                filterTagLabel.htmlFor = `${key}-${value}`;
-                filterTagLabel.textContent = value;
-
-                filterTagItem.appendChild(filterTagCheckbox);
-                filterTagItem.appendChild(filterTagLabel);
-                filterTagList.appendChild(filterTagItem);
+            const matchesAllFields = Object.entries(selectedValuesByField).every(([field, selectedSet]) => {
+                if (selectedSet.size === 0) {
+                    return true;
+                }
+                const itemValue = normalizeValue(row[field]);
+                return selectedSet.has(itemValue);
             });
 
-            filterTag.appendChild(filterTagTitle);
-            filterTag.appendChild(filterTagList);
-            filterTagsContainer.appendChild(filterTag);
-        }
-            
+            mapItem.style.display = matchesAllFields ? "block" : "none";
+        });
     }
 
-    
-    function filterByTag(key, value) {
-        // Filter function : on check or unchecked, hide or show the map-item that match the filters. 
-        // Items ckecked in the same category are combined with OR, items checked in different categories are combined with AND
-        // If no item match the filter, display a message
-        const filterItems = document.querySelectorAll(".filter-tag-checkbox:checked");
-        const filterValues = Array.from(filterItems).map(item => item.value);
-        const filterKeys = Array.from(filterItems).map(item => item.id.split("-")[0]);
+    function createCheckboxOption(field, value) {
+        const wrapper = document.createElement("label");
+        wrapper.style.display = "block";
+        wrapper.style.padding = "3px 0";
 
-        // Filter items
-        document.querySelectorAll(".map-item").forEach(item => {
-            const itemTags = {
-                Type: item.dataset.type,
-                Emprise: item.dataset.emprise,
-                Siecle: item.dataset.siecle
-            };
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.className = "filter-v2-checkbox";
+        checkbox.dataset.field = field;
+        checkbox.value = value;
+        checkbox.style.marginRight = "6px";
 
-            const match = filterKeys.every(key => filterValues.includes(itemTags[key]));
-            if (match) {
-                item.style.display = "block";
+        checkbox.addEventListener("change", function () {
+            const targetSet = selectedValuesByField[field];
+            if (checkbox.checked) {
+                targetSet.add(value);
             } else {
-                item.style.display = "none";
+                targetSet.delete(value);
             }
+            applyV2Filters();
         });
 
-        // Update the current filter
-        currentFilter = { key, value };
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(document.createTextNode(value));
+        return wrapper;
     }
 
-    // Reset filter function
-    function resetFilter() {
-        currentFilter = null;
-        document.querySelectorAll(".map-item").forEach(item => {
-            item.style.display = "block"; // Show all items
+    function fillDropdown(field, values) {
+        const container = v2FilterTargets[field];
+        if (!container) {
+            return;
+        }
+
+        container.innerHTML = "";
+        values.forEach((value) => {
+            container.appendChild(createCheckboxOption(field, value));
         });
-        //Uncheck all checkboxes
-        document.querySelectorAll(".filter-tag-checkbox:checked").forEach(checkbox => {
+    }
+
+    function resetV2Filters() {
+        Object.values(selectedValuesByField).forEach((selectedSet) => selectedSet.clear());
+        document.querySelectorAll(".filter-v2-checkbox:checked").forEach((checkbox) => {
             checkbox.checked = false;
         });
+        applyV2Filters();
     }
 
-    // Add click event listener for the reset button
-    resetFilterButton.addEventListener("click", resetFilter);
+    if (resetFilterV2Button) {
+        resetFilterV2Button.addEventListener("click", resetV2Filters);
+    }
 
+    Papa.parse("maps.csv", {
+        download: true,
+        header: true,
+        complete: function (results) {
+            const catalogueRows = (results.data || []).filter((row) => row.Display_on_catalogue === "TRUE");
+
+            const uniqueValues = {
+                Auteur: new Set(),
+                Siecle: new Set(),
+                Type: new Set(),
+                Emprise: new Set(),
+                Georeferencing: new Set()
+            };
+
+            catalogueRows.forEach((row) => {
+                const id = normalizeValue(row.ID);
+                if (!id) {
+                    return;
+                }
+
+                const normalizedRow = {
+                    Auteur: normalizeValue(row.Auteur),
+                    Siecle: normalizeValue(row.Siecle),
+                    Type: normalizeValue(row.Type),
+                    Emprise: normalizeValue(row.Emprise),
+                    Georeferencing: mapGeoreferencingValue(row.Georeferencing)
+                };
+
+                rowsById.set(id, normalizedRow);
+
+                Object.entries(normalizedRow).forEach(([field, value]) => {
+                    if (value) {
+                        uniqueValues[field].add(value);
+                    }
+                });
+            });
+
+            Object.entries(uniqueValues).forEach(([field, values]) => {
+                const sortedValues = Array.from(values).sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base" }));
+                fillDropdown(field, sortedValues);
+            });
+        }
+    });
 });

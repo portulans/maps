@@ -31,7 +31,9 @@ function createRotatedIcon(orientation, type) {
     return icon;
 }
 
-var map = L.map('map'
+var map = L.map('map', {
+    minZoom: 0,
+}
 ).setView([48.46, -5.08], 13);
 
 /*************** CONTROLS ***************/
@@ -48,7 +50,7 @@ L.control.locate({
 const layers = [
     {
         name: 'Cartes actuelles',
-        collapsed: false,
+        collapsed: true,
         layers: [
             { name: "Plan IGN", layer: ign2023, active: false},
             { name: "OpenStreetMap", layer: osm, active: true},

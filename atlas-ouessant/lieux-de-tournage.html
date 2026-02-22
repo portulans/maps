@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon//favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon//favicon-16x16.png">
-
+    <!--Leaflet-->
     <script type="text/javascript" src="./libs/leaflet.js"></script>
     <link rel="stylesheet" href="./libs/leaflet.css">
     <script type="text/javascript" src="./libs/jquery/dist/jquery.min.js"></script>
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <title>Iconothèque | Atlas historique d'Ouessant</title>
+    <title>Lieux de tournage | Atlas historique d'Ouessant</title>
     <link rel="stylesheet" href="./style.css">
     <style>
         #map { height: 600px; }
@@ -97,12 +97,12 @@
           <a href="index.html">Accueil</a>
           <a href="catalogue.html">Cartes et plans</a>
           <a href="visualisateur.html">Visualisateur cartographique</a>
-          <a class="active" href="iconotheque.html">Iconothèque</a>
+          <a href="iconotheque.html">Iconothèque</a>
           <div class="dropdown">
             <a href="#" class="dropbtn">Dossiers</a>
               <div class="dropdown-content">
                 <a href="cadastrenap.html">Cadastre Napoléonien</a>
-                <a href="lieux-de-tournage.html">Lieux de tournage</a>
+                <a class="active" href="lieux-de-tournage.html">Lieux de tournage</a>
                 <!--<a href="pilotes.html">Pilotes</a>-->
                 <a class="active" href="iconotheque-gallery.html">Photographies anciennes</a>
               </div>
@@ -111,14 +111,30 @@
         </div>
       </div>
     <article>
-        <h1 class="page-title">Iconothèque</h1>
-        <p class="paragraph">Inventaires de photographies et autres documents iconographiques localisables. 
-            Les images sont issues des archives départementales du Finistère, de la bibliothèque nationale de France, des archives de l'école des Ponts et Chaussées, du Mucem, de la médiathèque du patrimoine et de la photographie et du musée de Bretagne.</p>
-        <h4 class="page-title">Aide</h4>
-        <ul>
-            <li><strong>Carte: </strong><i>Cliquer sur les symboles pour afficher les images et leur description. Les flèches indiquent la direction des prises de vues.</i></li>
-            <li><strong>Notices des images: </strong><i>Cliquer sur l'image pour agrandir.</i></li>
-        </ul>
+        <h1 class="page-title">Lieux de tournage à Ouessant</h1>
+        <p class="paragraph">Plusieurs films, téléfilms et séries ont été tournés à Ouessant depuis les années 1920. Seules les oeuvres de fiction sont listées ici.</p>
+        <div id="oeuvres">
+        <!-- Liste des oeuvres et description (à compléter au clic sur une oeuvre) mises en forme deux colonnes -->
+          <div id="listesOeuvres">
+            <p><i>Cliquez-sur le nom de l'oeuvre pour en savoir plus.</i></p>
+            <h3>Cinéma</h3>
+            <ul id="cinemaList">
+              <li id="finis-terrae">Finis Terrae (1929)</li>
+              <li id="femme-bout-monde">La femme du bout du monde (1938)</li>
+              <li id="amour-femme">L'amour d'une femme (1953)</li>
+              <li id="les-iles">Les îles (1983)</li>
+              <li id="voleur-de-vie">Voleur de vie (1998)</li>
+              <li id="l-equipier">L'équipier (2004)</li>
+              <li id="l-ile-de-la-demoiselle">L'île de la Demoiselle (2026)</li>
+            </ul>
+            <h3>Télévision</h3>
+            <ul id="televisionList">
+              <li id="l-ile-aux-femmes">L'île aux femmes (2016)</li>
+              <li id="l-ile-aux-trente-cercueils">L'île aux trente cercueils (2022)</li>
+            </ul>
+          </div>
+          <div id="description"></div>
+        </div>
         <div id="map">
             <!-- Sidebar for displaying data -->
             <div id="sidebar">
@@ -131,15 +147,11 @@
             <span class="close" style="position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
             <img class="modal-content" id="modalImg" style="max-width: 90%; max-height: 80%; border-radius: 10px;">
         </div>
-        <h4 class="page-title">Contribuer</h4>
-        <p class="paragraph"><b>De nombreuses images doivent encore être géolocalisées. Les images inventoriées pour le site se trouvent <a href="./iconotheque-gallery.html">dans cette galerie d'images</a></b>.</p>
-        <p class="paragraph">Pour partager une information ou une image, vous pouvez écrire à : <a href="atlasouessant@duck.com">atlasouessant<!--TETS-->@<!--TEST-->duck.com</a> en indiquant la source de l'image et toutes les informations disponibles la concernant. Vous apparaîtrez comme contributeur dans l'application (sous le nom ou pseudonyme de votre choix).</p>
-        <div w3-include-html="iconotheque-gallery.html"></div>
     </article>
     <footer>
         <p>&copy; 2024-2026. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
     </footer>
     <script src="tiles.js"></script>
-    <script src="iconotheque.js"></script>
+    <script src="lieux-de-tournage.js"></script>
 </body>
 </html>

@@ -31,7 +31,8 @@
       <div class="dropdown">
         <a href="#" class="dropbtn">Dossiers</a>
           <div class="dropdown-content">
-            <a href="cadastrenap.html">Cadastre Napoléonien</a>
+            <a class="active" href="cadastrenap.html">Cadastre Napoléonien</a>
+            <a href="lieux-de-tournage.html">Lieux de tournage</a>
             <!--<a href="pilotes.html">Pilotes</a>-->
           </div>
       </div>
@@ -45,10 +46,35 @@
       <div class="filter-section">
         <span><b>Filtres</b></span>
         <p><small>Dans une même catégorie, les éléments cochés s'additionnent. Entre catégories, les éléments cochés sont exclusifs.</small></p>
-        <div id="filterTagsContainer">
+        <!--OLD<div id="filterTagsContainer"></div>-->
+        <!-- Filters V2 -->
+        <div class="filters-dropdowns">
+          <div class="dropdown">
+            <button>Auteurs ▼</button>
+            <div class="dropdown-content" id="author-filters"></div>
+          </div>
+          <div class="dropdown">
+            <button>Période ▼</button>
+            <div class="dropdown-content" id="periode-filters"></div>
+          </div>
+          <div class="dropdown">
+            <button>Type ▼</button>
+            <div class="dropdown-content" id="type-filters"></div>
+          </div>
+          <div class="dropdown">
+            <button>Emprise ▼</button>
+            <div class="dropdown-content" id="emprise-filters"></div>
+          </div>
+          <div class="dropdown">
+            <button>Carte géolocalisée ▼</button>
+            <div class="dropdown-content" id="georef-filters"></div>
+          </div>
+          <span class="reset-filter" id="resetFilterV2">Réinitialiser les filtres</span>
         </div>
-        <span class="reset-filter" id="resetFilter">Réinitialiser</span>
+        <div id="search-bar"></div>
+        <!-- Filters V2 END -->
       </div>
+
       <!-- Catalogue Section -->
       <div class="container" id="mapContainer"></div>
   </article>

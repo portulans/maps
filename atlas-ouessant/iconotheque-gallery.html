@@ -86,25 +86,6 @@
             margin-top: 40px;  /* Give room for the button */
         }
     /*Other*/
-    .dropdownGal {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    .dropdownGal-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      padding: 12px;
-      z-index: 5000;
-      max-height: 200px;
-      max-width: 500px;
-      overflow-y: auto;
-    }
-    .dropdownGal:hover .dropdownGal-content {
-      display: block;
-    }
     .gallery {
       display: flex;
       flex-wrap: wrap;
@@ -166,8 +147,9 @@
       <div class="dropdown">
         <a href="#" class="dropbtn">Dossiers</a>
           <div class="dropdown-content">
-            <!--<a href="cadastrenap.html">Cadastre Napoléonien</a>
-            <a href="pilotes.html">Pilotes</a>-->
+            <a href="cadastrenap.html">Cadastre Napoléonien</a>
+            <a href="lieux-de-tournage.html">Lieux de tournage</a>
+            <!--<a href="pilotes.html">Pilotes</a>-->
             <a class="active" href="iconotheque-gallery.html">Photographies anciennes</a>
           </div>
       </div>
@@ -176,17 +158,17 @@
   </div>
   <article>
     <h1 class="page-title">Photographies anciennes</h1>
-    <div class="dropdownGal">
+    <div class="filter-section">
       <p>Parcourir l'ensemble des images disponibles, localisées ou non.</p>
-      <button>Choisir une collection</button>
-      <div class="dropdownGal-content" id="groupSelector"></div>
-    </div>
-    <div id="map">
-      <!-- Sidebar for displaying data -->
-      <div id="sidebar">
-          <button onclick="closeSidebar()">Fermer</button>
-          <h4 id="sidebar-title"></h4>
-          <div id="sidebar-content"></div>
+      <div class="filters-dropdowns">
+        <div class="dropdown">
+          <button>Collection ▼</button>
+          <div class="dropdown-content" id="groupSelector"></div>
+        </div>
+        <div class="dropdown">
+          <button>Type d'image ▼</button>
+          <div class="dropdown-content" id="typeSelector"></div>
+        </div>
       </div>
     </div>
     <div class="gallery" id="gallery"></div>

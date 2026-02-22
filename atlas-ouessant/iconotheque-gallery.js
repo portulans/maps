@@ -2,6 +2,7 @@ const CSV_PATH = './data/iconographie.csv'; // Replace with actual CSV file path
 
 let allData = [];
 let selectedGroups = new Set();
+let selectedTypes = new Set();
 
 Papa.parse(CSV_PATH, {
   download: true,
@@ -10,6 +11,7 @@ Papa.parse(CSV_PATH, {
   complete: function(results) {
     allData = results.data;
     renderGroupSelector();
+    renderTypeSelector();
     selectFirstGroup();
     renderGallery();
   }
@@ -22,8 +24,13 @@ function renderGroupSelector() {
 
   groups.forEach((group, index) => {
     const label = document.createElement('label');
-    const checkedAttr = index === 0 ? 'checked' : '';
-    label.innerHTML = `<input type="checkbox" value="${group}" onchange="toggleGroup(this)" ${checkedAttr}> ${group}<br>`;
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = group;
+    checkbox.checked = index === 0;
+    checkbox.onchange = () => toggleGroup(checkbox);
+    label.appendChild(checkbox);
+    label.append(document.createTextNode(group));
     groupSelector.appendChild(label);
     if (index === 0) {
       selectedGroups.add(group);
@@ -48,10 +55,41 @@ function toggleGroup(checkbox) {
   renderGallery();
 }
 
+function renderTypeSelector() {
+  const typeSelector = document.getElementById('typeSelector');
+  typeSelector.innerHTML = '';
+  const types = [...new Set(allData.map(row => (row.Type || '').trim()).filter(Boolean))].sort();
+
+  types.forEach((type) => {
+    const label = document.createElement('label');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = type;
+    checkbox.onchange = () => toggleType(checkbox);
+    label.appendChild(checkbox);
+    label.append(document.createTextNode(type));
+    typeSelector.appendChild(label);
+  });
+}
+
+function toggleType(checkbox) {
+  if (checkbox.checked) {
+    selectedTypes.add(checkbox.value);
+  } else {
+    selectedTypes.delete(checkbox.value);
+  }
+  renderGallery();
+}
+
 function renderGallery() {
   const gallery = document.getElementById('gallery');
   gallery.innerHTML = '';
-  const filtered = allData.filter(row => selectedGroups.size === 0 || selectedGroups.has(row.Groupe));
+  const filtered = allData.filter(row => {
+    const groupMatch = selectedGroups.size === 0 || selectedGroups.has(row.Groupe);
+    const typeValue = (row.Type || '').trim();
+    const typeMatch = selectedTypes.size === 0 || selectedTypes.has(typeValue);
+    return groupMatch && typeMatch;
+  });
 
   filtered.forEach(item => {
     if (item.Image) {

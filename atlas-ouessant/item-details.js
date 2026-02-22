@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 populateMapDetails(mapData);
                 populateMapTags(mapData);
                 displayImage(mapData);
+                retrieveRelatedImages(mapData);
             } else {
                 console.error("Map data not found for ID:", mapId);
             }
@@ -304,5 +305,92 @@ document.addEventListener("DOMContentLoaded", function () {
             map3.fitBounds(imageBounds);
         };
     }
+
+    
+    function displayThumbnail(row) {
+
+        let imageUrl;
+        if (row.IIIF_Manifest && (row.Institution == "BNF" || row.Institution == "SHD")) {
+            const iiifBaseUrl = row.IIIF_Manifest.replace("manifest.json", "");
+            if (row.IIIF_region || row.IIIF_size) {
+                imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/${row.IIIF_region}/!400,/${row.IIIF_rotation}/native.jpg`;
+            } else {
+                imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/full/!400,/0/native.jpg`;
+            }
+        } else if (row.IIIF_Manifest) {
+            const iiifBaseUrl = row.IIIF_Manifest.replace("info.json", "");
+            if (row.IIIF_region || row.IIIF_size) {
+                imageUrl = `${iiifBaseUrl}${row.IIIF_region}/${row.IIIF_size}/${row.IIIF_rotation}/default.jpg`;
+            } else {
+                imageUrl = `${iiifBaseUrl}full/!400,/0/default.jpg`;
+            }
+        } else if (row.Wiki_Commons_Name) {
+            let wikiImage = row.Wiki_Commons_Name;
+            wikiImage = wikiImage.replace(/[,() ]/g, match => ({',': '%2C', '(': '%28', ')': '%29', ' ': '_',"'":"%27"}[match]));
+            imageUrl = `https://upload.wikimedia.org/wikipedia/commons/thumb/${row.Wiki_Commons_Prefix}/${wikiImage}/400px-${wikiImage}`;
+        } else {
+            imageUrl = ""; // Placeholder or no image
+        }
+        return imageUrl;
+        
+    }
+
+    function retrieveRelatedImages(data) {
+        // This function is used to retrieve and display related images based on Collection_ID property.
+        // The result is a gallery of thumbnails that link to the corresponding item page.
+        // SOurce gallery code : https://www.w3schools.com/Css/css_image_gallery.asp
+
+        if (data.Collection_ID) { 
+            console.log("Retrieving related images for collection ID:", data.Collection_ID);
+            Papa.parse("maps.csv", {
+                download: true,
+                header: true,  
+                complete: function (results) {
+                    const relatedItems = results.data.filter(row => row.Collection_ID === data.Collection_ID);
+                    const galleryContainer = document.getElementById("related-images-gallery");
+
+                    if (relatedItems.length > 0) {
+                        const gallerytitle = document.getElementById("gallery-title");
+                        gallerytitle.style.display = "block";
+                        gallerytitle.textContent = "Ressources connexes";
+                    }
+
+                    relatedItems.forEach(item => {
+                        const thumbnailUrl = displayThumbnail(item);
+                        console.log("Related item:", item.ID, "Thumbnail URL:", thumbnailUrl);
+                        if (thumbnailUrl) {
+                            const galleryitem = document.createElement("div");
+                            galleryitem.className = "gallery-item";
+                            const link = document.createElement("a");
+                            link.href = `item.html?id=${item.ID}`;
+                            const img = document.createElement("img");
+                            img.src = thumbnailUrl;
+                            img.alt = item.Map_name || "Carte sans titre";
+                            img.height = "150px";
+                            link.appendChild(img);
+                            const description = document.createElement("div");
+                            description.className = "desc";
+                            if (item.Date_Création && item.Date_MAJ) {
+                                description.textContent = item.Date_Création + " (MAJ " + item.Date_MAJ + ")" || "N.D.";
+                            } else if (item.Date_Création) {
+                                description.textContent = item.Date_Création || "N.D.";
+                            } else {
+                                description.textContent = "N.D.";
+                            }
+                            galleryitem.appendChild(link);
+                            galleryitem.appendChild(description);
+                            galleryContainer.appendChild(galleryitem);
+
+                            if (item.ID == data.ID) {
+                                galleryitem.style.border = "4px solid #938d8d";
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+    }
+
 
 });
