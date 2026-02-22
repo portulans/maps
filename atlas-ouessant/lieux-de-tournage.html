@@ -88,6 +88,18 @@
             margin-top: 40px;  /* Give room for the button */
         }
 
+        #oeuvresColumns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        @media (max-width: 767px) {
+            #oeuvresColumns {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -104,7 +116,7 @@
                 <a href="cadastrenap.html">Cadastre Napoléonien</a>
                 <a class="active" href="lieux-de-tournage.html">Lieux de tournage</a>
                 <!--<a href="pilotes.html">Pilotes</a>-->
-                <a class="active" href="iconotheque-gallery.html">Photographies anciennes</a>
+                <a href="iconotheque-gallery.html">Photographies anciennes</a>
               </div>
           </div>
           <a href="guestbook.html">Contact</a>
@@ -116,24 +128,29 @@
         <div id="oeuvres">
         <!-- Liste des oeuvres et description (à compléter au clic sur une oeuvre) mises en forme deux colonnes -->
           <div id="listesOeuvres">
-            <p><i>Cliquez-sur le nom de l'oeuvre pour en savoir plus.</i></p>
-            <h3>Cinéma</h3>
-            <ul id="cinemaList">
-              <li id="finis-terrae">Finis Terrae (1929)</li>
-              <li id="femme-bout-monde">La femme du bout du monde (1938)</li>
-              <li id="amour-femme">L'amour d'une femme (1953)</li>
-              <li id="les-iles">Les îles (1983)</li>
-              <li id="voleur-de-vie">Voleur de vie (1998)</li>
-              <li id="l-equipier">L'équipier (2004)</li>
-              <li id="l-ile-de-la-demoiselle">L'île de la Demoiselle (2026)</li>
-            </ul>
-            <h3>Télévision</h3>
-            <ul id="televisionList">
-              <li id="l-ile-aux-femmes">L'île aux femmes (2016)</li>
-              <li id="l-ile-aux-trente-cercueils">L'île aux trente cercueils (2022)</li>
-            </ul>
+            <p><i>Cette page est en cours de développement.</i></p> <!--Cliquez-sur le nom de l'oeuvre pour en savoir plus.-->
+            <div id="oeuvresColumns">
+                <div>
+                    <h3>Cinéma</h3>
+                    <ul id="cinemaList">
+                        <li id="finis-terrae">Finis Terrae (1929)</li>
+                        <li id="femme-bout-monde">La femme du bout du monde (1938)</li>
+                        <li id="amour-femme">L'amour d'une femme (1953)</li>
+                        <li id="les-iles">Les îles (1983)</li>
+                        <li id="voleur-de-vie">Voleur de vie (1998)</li>
+                        <li id="l-equipier">L'équipier (2004)</li>
+                        <li id="l-ile-de-la-demoiselle">L'île de la Demoiselle (2026)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Télévision</h3>
+                    <ul id="televisionList">
+                        <li id="l-ile-aux-femmes">L'île aux femmes (2016)</li>
+                        <li id="l-ile-aux-trente-cercueils">L'île aux trente cercueils (2022)</li>
+                    </ul>
+                </div>
+            </div>
           </div>
-          <div id="description"></div>
         </div>
         <div id="map">
             <!-- Sidebar for displaying data -->
