@@ -56,8 +56,7 @@
 { "type": "Feature", "properties": { "fid": 51, "orientatio": 62, "type": "sol", "ID": 82 }, "geometry": { "type": "Point", "coordinates": [ -5.096627504102933, 48.457302529590194 ] } },
 { "type": "Feature", "properties": { "fid": 52, "orientatio": 28, "type": "sol", "ID": 81 }, "geometry": { "type": "Point", "coordinates": [ -5.096432767669057, 48.457248283567594 ] } },
 { "type": "Feature", "properties": { "fid": 53, "orientatio": 0, "type": "sol", "ID": 83 }, "geometry": { "type": "Point", "coordinates": [ -5.096500103490593, 48.455044151157182 ] } },
-{ "type": "Feature", "properties": { "fid": 54, "orientatio": 219, "type": "sol", "ID": 373 }, "geometry": { "type": "Point", "coordinates": [ -5.096885729244105, 48.454357040646684 ] } },
-{ "type": "Feature", "properties": { "fid": 55, "orientatio": 219, "type": "sol", "ID": 373 }, "geometry": { "type": "Point", "coordinates": [ -5.096885729244105, 48.454357040646684 ] } },
+{ "type": "Feature", "properties": { "fid": 55, "orientatio": 219, "type": "sol", "ID": 86 }, "geometry": { "type": "Point", "coordinates": [ -5.096885729244105, 48.454357040646684 ] } },
 { "type": "Feature", "properties": { "fid": 56, "orientatio": 200, "type": "oblique", "ID": 88 }, "geometry": { "type": "Point", "coordinates": [ -5.095146166503961, 48.458122771059678 ] } },
 { "type": "Feature", "properties": { "fid": 57, "orientatio": 287, "type": "sol", "ID": 89 }, "geometry": { "type": "Point", "coordinates": [ -5.095960740144887, 48.454922108591269 ] } },
 { "type": "Feature", "properties": { "fid": 58, "orientatio": 315, "type": "sol", "ID": 90 }, "geometry": { "type": "Point", "coordinates": [ -5.095032077582467, 48.455668168464179 ] } },
@@ -168,6 +167,14 @@
 { "type": "Feature", "properties": { "fid": 164, "orientatio": 190, "type": "sol", "ID": 203 }, "geometry": { "type": "Point", "coordinates": [ -5.097310886827048, 48.45399910831248 ] } },
 { "type": "Feature", "properties": { "fid": 165, "orientatio": 340, "type": "sol", "ID": 397 }, "geometry": { "type": "Point", "coordinates": [ -5.095573083105346, 48.456556220781202 ] } },
 { "type": "Feature", "properties": { "fid": 166, "orientatio": 340, "type": "sol", "ID": 398 }, "geometry": { "type": "Point", "coordinates": [ -5.095573083105346, 48.456556220781202 ] } },
-{ "type": "Feature", "properties": { "fid": 167, "orientatio": 35, "type": "sol", "ID": 290 }, "geometry": { "type": "Point", "coordinates": [ -5.107702946038664, 48.455119708272797 ] } }
+{ "type": "Feature", "properties": { "fid": 167, "orientatio": 35, "type": "sol", "ID": 290 }, "geometry": { "type": "Point", "coordinates": [ -5.107702946038664, 48.455119708272797 ] } },
+{ "type": "Feature", "properties": { "fid": 168, "orientatio": 219, "type": "sol", "ID": 373 }, "geometry": { "type": "Point", "coordinates": [ -5.096885729244105, 48.454357040646684 ] } },
+{ "type": "Feature", "properties": { "fid": 169, "orientatio": 219, "type": "sol", "ID": 85 }, "geometry": { "type": "Point", "coordinates": [ -5.096885729244105, 48.454357040646684 ] } },
+{ "type": "Feature", "properties": { "fid": 170, "orientatio": 350, "type": "sol", "ID": 55 }, "geometry": { "type": "Point", "coordinates": [ -5.136912021796151, 48.454434364967817 ] } },
+{ "type": "Feature", "properties": { "fid": 171, "orientatio": 350, "type": "sol", "ID": 59 }, "geometry": { "type": "Point", "coordinates": [ -5.136912021796151, 48.454434364967817 ] } },
+{ "type": "Feature", "properties": { "fid": 172, "orientatio": 270, "type": "oblique", "ID": 426 }, "geometry": { "type": "Point", "coordinates": [ -5.038227275958801, 48.450814192217791 ] } },
+{ "type": "Feature", "properties": { "fid": 173, "orientatio": 60, "type": "oblique", "ID": 423 }, "geometry": { "type": "Point", "coordinates": [ -5.136450166835576, 48.430263964936891 ] } },
+{ "type": "Feature", "properties": { "fid": 174, "orientatio": 70, "type": "oblique", "ID": 424 }, "geometry": { "type": "Point", "coordinates": [ -5.142293096599421, 48.435448353272385 ] } },
+{ "type": "Feature", "properties": { "fid": 175, "orientatio": 240, "type": "oblique", "ID": 425 }, "geometry": { "type": "Point", "coordinates": [ -5.029273453934893, 48.47579647714818 ] } }
 ]
 }

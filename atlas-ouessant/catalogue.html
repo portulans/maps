@@ -17,12 +17,12 @@
             gtag('config', 'G-K46RL682GX');
         </script>
         <!--Titre-->
-        <title>Atlas historique d'Ouessant</title>
+        <title>Atlas d'Ouessant</title>
         <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div class="header">
-    <a href="#default" class="logo">Atlas historique d'Ouessant</a>
+    <a href="#default" class="logo">Atlas d'Ouessant</a>
     <div class="header-right">
       <a href="index.html">Accueil</a>
       <a class="active" href="catalogue.html">Cartes et plans</a>
@@ -31,7 +31,7 @@
       <div class="dropdown">
         <a href="#" class="dropbtn">Dossiers</a>
           <div class="dropdown-content">
-            <a class="active" href="cadastrenap.html">Cadastre Napoléonien</a>
+            <a href="cadastrenap.html">Cadastre napoléonien</a>
             <a href="lieux-de-tournage.html">Lieux de tournage</a>
             <!--<a href="pilotes.html">Pilotes</a>-->
             <a href="iconotheque-gallery.html">Photographies anciennes</a>
@@ -70,6 +70,10 @@
             <button>Carte géolocalisée ▼</button>
             <div class="dropdown-content" id="georef-filters"></div>
           </div>
+          <label class="collection-group-toggle" for="toggleCollectionGrouping">
+            <input type="checkbox" id="toggleCollectionGrouping" checked>
+            Grouper les collections
+          </label>
           <span class="reset-filter" id="resetFilterV2">Réinitialiser les filtres</span>
         </div>
         <div id="search-bar"></div>
@@ -82,6 +86,7 @@
   <footer>
     <p>&copy; 2024-2026. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
   </footer>
+  <script src="pagejs.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
   <script src="catalogue.js"></script>
 </body>

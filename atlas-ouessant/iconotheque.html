@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <title>Iconothèque | Atlas historique d'Ouessant</title>
+    <title>Iconothèque | Atlas d'Ouessant</title>
     <link rel="stylesheet" href="./style.css">
     <style>
         #map { height: 600px; }
@@ -40,59 +40,11 @@
         .legend input {
             margin-right: 5px;
         }
-        #sidebar {
-            background-color: white;
-            padding: 10px;
-            overflow-y: auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            z-index: 999;
-            display: none;
-        }
-
-        /* Wide Screens: Sidebar on the right */
-        @media (min-width: 768px) {
-            #sidebar {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                width: 300px;
-                height: 550px;
-            }
-        }
-
-        /* Mobile Screens: Sidebar below the map */
-        @media (max-width: 767px) {
-            #sidebar {
-                position: relative;
-                width: 95%;
-                height: 550px;
-                margin-top: 10px;
-                z-index: 2000;
-                overflow-y: auto;
-            }
-        }
-
-        #sidebar button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 5px 10px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            cursor: pointer;
-            font-size: 14px;
-            border-radius: 4px;
-        }
-
-        #sidebar h4 {
-            margin-top: 40px;  /* Give room for the button */
-        }
-
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="#default" class="logo">Atlas historique d'Ouessant</a>
+        <a href="#default" class="logo">Atlas d'Ouessant</a>
         <div class="header-right">
           <a href="index.html">Accueil</a>
           <a href="catalogue.html">Cartes et plans</a>
@@ -119,12 +71,16 @@
             <li><strong>Carte: </strong><i>Cliquer sur les symboles pour afficher les images et leur description. Les flèches indiquent la direction des prises de vues.</i></li>
             <li><strong>Notices des images: </strong><i>Cliquer sur l'image pour agrandir.</i></li>
         </ul>
-        <div id="map">
-            <!-- Sidebar for displaying data -->
-            <div id="sidebar">
-                <button onclick="closeSidebar()">Fermer</button>
-                <h4 id="sidebar-title"></h4>
-                <div id="sidebar-content"></div>
+        <div id="maps">
+            <div id="map"></div>
+            <div class="panel-column">
+                <div id="icono-map-legend" class="map-legend"></div>
+                <aside id="feature-panel" aria-live="polite">
+                    <h3>Détails</h3>
+                    <div id="feature-panel-content">
+                        <p>Cliquez sur un symbole de la carte pour afficher les informations ici.</p>
+                    </div>
+                </aside>
             </div>
         </div>
         <div id="imageModal" class="modal" style="display: none; position: fixed; z-index: 2001; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center;">
@@ -133,12 +89,13 @@
         </div>
         <h4 class="page-title">Contribuer</h4>
         <p class="paragraph"><b>De nombreuses images doivent encore être géolocalisées. Les images inventoriées pour le site se trouvent <a href="./iconotheque-gallery.html">dans cette galerie d'images</a></b>.</p>
-        <p class="paragraph">Pour partager une information ou une image, vous pouvez écrire à : <a href="atlasouessant@duck.com">atlasouessant<!--TETS-->@<!--TEST-->duck.com</a> en indiquant la source de l'image et toutes les informations disponibles la concernant. Vous apparaîtrez comme contributeur dans l'application (sous le nom ou pseudonyme de votre choix).</p>
+        <p class="paragraph">Pour partager une information ou une image, vous pouvez écrire à : <a href="solenntual.pro@gmail.com">solenntual.pro@gmail.com</a> en indiquant la source de l'image et toutes les informations disponibles la concernant. Vous apparaîtrez comme contributeur dans l'application (sous le nom ou pseudonyme de votre choix).</p>
         <div w3-include-html="iconotheque-gallery.html"></div>
     </article>
     <footer>
         <p>&copy; 2024-2026. Portulans. Licence Creative Commons BY.SA.ND.NC</p>
     </footer>
+    <script src="pagejs.js"></script>
     <script src="tiles.js"></script>
     <script src="iconotheque.js"></script>
 </body>

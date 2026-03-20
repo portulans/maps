@@ -353,11 +353,15 @@ document.addEventListener("DOMContentLoaded", function () {
                         const gallerytitle = document.getElementById("gallery-title");
                         gallerytitle.style.display = "block";
                         gallerytitle.textContent = "Ressources connexes";
+
+                        const gallerydesc = document.getElementById("gallery-description");
+                        gallerydesc.style.display = "block";
+                        gallerydesc.innerHTML = "<p>" + (data.Titre || "Autres cartes de la même collection") + "</p>";
                     }
 
                     relatedItems.forEach(item => {
                         const thumbnailUrl = displayThumbnail(item);
-                        console.log("Related item:", item.ID, "Thumbnail URL:", thumbnailUrl);
+                        //console.log("Related item:", item.ID, "Thumbnail URL:", thumbnailUrl);
                         if (thumbnailUrl) {
                             const galleryitem = document.createElement("div");
                             galleryitem.className = "gallery-item";

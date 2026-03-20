@@ -3,6 +3,8 @@ const CSV_PATH = './data/iconographie.csv'; // Replace with actual CSV file path
 let allData = [];
 let selectedGroups = new Set();
 let selectedTypes = new Set();
+let selectedGeoloc = new Set();
+let geolocatedIds = new Set();
 
 Papa.parse(CSV_PATH, {
   download: true,
@@ -10,10 +12,25 @@ Papa.parse(CSV_PATH, {
   skipEmptyLines: true,
   complete: function(results) {
     allData = results.data;
-    renderGroupSelector();
-    renderTypeSelector();
-    selectFirstGroup();
-    renderGallery();
+
+    fetch('./data/loc-images.geojson')
+      .then(response => response.json())
+      .then(data => {
+        const ids = (data.features || [])
+          .map(feature => parseInt(feature.properties.ID, 10))
+          .filter(id => Number.isFinite(id));
+        geolocatedIds = new Set(ids);
+      })
+      .catch(() => {
+        geolocatedIds = new Set();
+      })
+      .finally(() => {
+        renderGroupSelector();
+        renderTypeSelector();
+        renderGeolocSelector();
+        selectFirstGroup();
+        renderGallery();
+      });
   }
 });
 
@@ -81,6 +98,40 @@ function toggleType(checkbox) {
   renderGallery();
 }
 
+function renderGeolocSelector() {
+  const geolocSelector = document.getElementById('geolocSelector');
+  if (!geolocSelector) {
+    return;
+  }
+
+  geolocSelector.innerHTML = '';
+
+  const options = [
+    { value: 'geolocated', label: 'Géolocalisées' },
+    { value: 'not_geolocated', label: 'Non géolocalisées' }
+  ];
+
+  options.forEach((option) => {
+    const label = document.createElement('label');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = option.value;
+    checkbox.onchange = () => toggleGeoloc(checkbox);
+    label.appendChild(checkbox);
+    label.append(document.createTextNode(option.label));
+    geolocSelector.appendChild(label);
+  });
+}
+
+function toggleGeoloc(checkbox) {
+  if (checkbox.checked) {
+    selectedGeoloc.add(checkbox.value);
+  } else {
+    selectedGeoloc.delete(checkbox.value);
+  }
+  renderGallery();
+}
+
 function renderGallery() {
   const gallery = document.getElementById('gallery');
   gallery.innerHTML = '';
@@ -88,7 +139,22 @@ function renderGallery() {
     const groupMatch = selectedGroups.size === 0 || selectedGroups.has(row.Groupe);
     const typeValue = (row.Type || '').trim();
     const typeMatch = selectedTypes.size === 0 || selectedTypes.has(typeValue);
-    return groupMatch && typeMatch;
+
+    const rowId = parseInt(row.ID, 10);
+    const hasGeolocation = Number.isFinite(rowId) && geolocatedIds.has(rowId);
+    let geolocMatch = true;
+
+    if (selectedGeoloc.size > 0) {
+      geolocMatch = false;
+      if (selectedGeoloc.has('geolocated') && hasGeolocation) {
+        geolocMatch = true;
+      }
+      if (selectedGeoloc.has('not_geolocated') && !hasGeolocation) {
+        geolocMatch = true;
+      }
+    }
+
+    return groupMatch && typeMatch && geolocMatch;
   });
 
   filtered.forEach(item => {
@@ -107,23 +173,6 @@ function renderGallery() {
       gallery.appendChild(img);
     }
   });
-
-  const geojsonPath = './data/loc-images.geojson';
-  let filteredGeojson = {
-    type: 'FeatureCollection',
-    features: []
-  };
-  fetch(geojsonPath)
-
-    .then(response => response.json())
-    .then(geojsonData => {
-      const filteredFeatures = geojsonData.features.filter(feature => {
-        const featureId = parseInt(feature.properties.ID);
-        return filtered.some(item => parseInt(item.ID) === featureId);
-      });
-      filteredGeojson.features = filteredFeatures;
-      console.log('Filtered GeoJSON:', filteredGeojson);
-    });
 
 }
 

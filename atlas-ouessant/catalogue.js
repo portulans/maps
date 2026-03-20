@@ -1,5 +1,99 @@
 document.addEventListener("DOMContentLoaded", function () {
     const mapContainer = document.getElementById("mapContainer");
+    const groupToggle = document.getElementById("toggleCollectionGrouping");
+    const itemElementsById = new Map();
+    const collectionItemsById = new Map();
+    const coverItemByCollectionId = new Map();
+    const collectionTitlesById = new Map();
+
+    function normalizeValue(value) {
+        return (value || "").toString().trim();
+    }
+
+    function isTrue(value) {
+        return normalizeValue(value).toUpperCase() === "TRUE";
+    }
+
+    function registerCollectionItem(collectionId, mapItem, isCover) {
+        if (!collectionId) {
+            return;
+        }
+
+        if (!collectionItemsById.has(collectionId)) {
+            collectionItemsById.set(collectionId, []);
+        }
+
+        const collectionItems = collectionItemsById.get(collectionId);
+        collectionItems.push(mapItem);
+
+        if (isCover || !coverItemByCollectionId.has(collectionId)) {
+            coverItemByCollectionId.set(collectionId, mapItem);
+        }
+    }
+
+    function renderMapTitle(mapItem) {
+        if (!mapItem) {
+            return;
+        }
+
+        const titleElement = mapItem.querySelector(".map-title");
+        if (!titleElement) {
+            return;
+        }
+
+        const mapName = normalizeValue(mapItem.dataset.mapName);
+        const collectionId = normalizeValue(mapItem.dataset.collectionId);
+        const collectionTitle = normalizeValue(mapItem.dataset.collectionTitle);
+        const useCollectionTitle = Boolean(groupToggle && groupToggle.checked && collectionId && collectionTitle);
+        const showCollectionLogo = Boolean(groupToggle && groupToggle.checked && collectionId);
+        const displayedTitle = useCollectionTitle ? collectionTitle : mapName;
+
+        titleElement.textContent = "";
+
+        if (showCollectionLogo) {
+            const collectionLogo = document.createElement("span");
+            collectionLogo.className = "collection-logo";
+            collectionLogo.textContent = "🗂️";
+            collectionLogo.title = collectionTitle ? `Collection : ${collectionTitle}` : "Carte d'une collection";
+            titleElement.appendChild(collectionLogo);
+        }
+
+        const titleText = document.createElement("span");
+        titleText.className = "map-title-text";
+        titleText.textContent = displayedTitle;
+        titleElement.appendChild(titleText);
+    }
+
+    function refreshAllMapTitles() {
+        itemElementsById.forEach((mapItem) => {
+            renderMapTitle(mapItem);
+        });
+    }
+
+    function applyCollectionGrouping() {
+        if (!groupToggle || !groupToggle.checked) {
+            return;
+        }
+
+        collectionItemsById.forEach((collectionItems, collectionId) => {
+            const coverItem = coverItemByCollectionId.get(collectionId);
+            if (!coverItem) {
+                return;
+            }
+
+            const hasVisibleItem = collectionItems.some((collectionItem) => collectionItem.style.display !== "none");
+
+            collectionItems.forEach((collectionItem) => {
+                collectionItem.style.display = "none";
+            });
+
+            if (hasVisibleItem) {
+                coverItem.style.display = "block";
+            }
+        });
+    }
+
+    window.applyCollectionGrouping = applyCollectionGrouping;
 
     Papa.parse("maps.csv", {
         download: true,
@@ -15,21 +109,28 @@ document.addEventListener("DOMContentLoaded", function () {
             //add class "paragraph" to element "count-items"
             countItem.className = "paragraph";
             if (waiting.length == 0) {
-                countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page.';
+                countItem.innerHTML = 'Le catalogue contient actuellement <b>' + data.length + ' cartes</b>.';
             } else if (waiting.length == 1) {
-                countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " image appaîtra prochainement.</span>";
+                countItem.innerHTML = 'Le catalogue contient actuellement <b>' + data.length + ' cartes</b>. <span style="color:#2e7a99;">' + waiting.length + " carte est en cours de traitement.</span>";
             } else {
-                countItem.innerHTML = '<b>' + data.length + '</b> images sont listées sur cette page. <span style="color:#2e7a99;">' + waiting.length + " images appaîtront prochainement.</span>";
+                countItem.innerHTML = 'Le catalogue contient actuellement <b>' + data.length + ' cartes</b>. <span style="color:#2e7a99;">' + waiting.length + " cartes sont en cours de traitement.</span>";
             }
             //
 
             // Display maps and collect all unique tags
             data.forEach(row => {
+                const itemId = normalizeValue(row.ID);
+                const collectionId = normalizeValue(row.Collection_ID);
+                const isCover = isTrue(row.Couv);
                 const mapItem = document.createElement("div");
                 mapItem.className = "map-item";
                 mapItem.dataset.type = row.Type;
                 mapItem.dataset.emprise = row.Emprise;
                 mapItem.dataset.siecle = row.Siecle;
+                mapItem.dataset.collectionId = collectionId;
+                mapItem.dataset.mapName = normalizeValue(row.Map_name);
+                mapItem.dataset.collectionTitle = "";
+                mapItem.dataset.isCover = isCover ? "true" : "false";
                 
                 // Create a link for the image and title that redirects to item.html
                 const mapLink = document.createElement("a");
@@ -128,7 +229,68 @@ document.addEventListener("DOMContentLoaded", function () {
                 mapItem.appendChild(mapLink);
                 mapItem.appendChild(mapDetails);
                 mapContainer.appendChild(mapItem);
+
+                if (itemId) {
+                    itemElementsById.set(itemId, mapItem);
+                }
+
+                registerCollectionItem(collectionId, mapItem, isCover);
+                renderMapTitle(mapItem);
             });
+
+            Papa.parse("collections.csv", {
+                download: true,
+                header: true,
+                complete: function (collectionResults) {
+                    const collectionRows = (collectionResults.data || []).filter((row) => normalizeValue(row.ID));
+
+                    collectionRows.forEach((row) => {
+                        const collectionId = normalizeValue(row.ID);
+                        const collectionTitle = normalizeValue(row.Titre);
+                        if (collectionId) {
+                            collectionTitlesById.set(collectionId, collectionTitle);
+                        }
+                    });
+
+                    data.forEach((row) => {
+                        const itemId = normalizeValue(row.ID);
+                        const collectionId = normalizeValue(row.Collection_ID);
+
+                        if (!itemId || !collectionId) {
+                            return;
+                        }
+
+                        const mapItem = itemElementsById.get(itemId);
+                        if (!mapItem) {
+                            return;
+                        }
+
+                        mapItem.dataset.collectionTitle = collectionTitlesById.get(collectionId) || "";
+                        renderMapTitle(mapItem);
+                    });
+                }
+            });
+
+            if (groupToggle) {
+                groupToggle.addEventListener("change", function () {
+                    if (typeof window.applyCatalogueFilters === "function") {
+                        window.applyCatalogueFilters();
+                    } else {
+                        applyCollectionGrouping();
+                    }
+                    refreshAllMapTitles();
+                });
+
+                // Apply grouping immediately on first render when the toggle is checked by default.
+                if (groupToggle.checked) {
+                    if (typeof window.applyCatalogueFilters === "function") {
+                        window.applyCatalogueFilters();
+                    } else {
+                        applyCollectionGrouping();
+                    }
+                    refreshAllMapTitles();
+                }
+            }
         }
     });
 });
@@ -177,6 +339,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function applyV2Filters() {
+        if (rowsById.size === 0) {
+            return;
+        }
+
         const mapItems = document.querySelectorAll(".map-item");
 
         mapItems.forEach((mapItem) => {
@@ -198,7 +364,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             mapItem.style.display = matchesAllFields ? "block" : "none";
         });
+
+        if (typeof window.applyCollectionGrouping === "function") {
+            window.applyCollectionGrouping();
+        }
     }
+
+    window.applyCatalogueFilters = applyV2Filters;
 
     function createCheckboxOption(field, value) {
         const wrapper = document.createElement("label");

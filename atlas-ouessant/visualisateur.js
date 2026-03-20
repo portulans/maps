@@ -9,6 +9,29 @@ var map = L.map('mapviz',{
 
 var url_moulins = 'data/moulins.geojson';
 var url_lavoirs = 'data/lavoirs_fontaines.geojson';
+var featurePanelContent = document.getElementById('feature-panel-content');
+var suppressNextMapReset = false;
+
+function updateFeaturePanel(content) {
+    if (featurePanelContent) {
+        featurePanelContent.innerHTML = content;
+    }
+}
+
+function resetFeaturePanel() {
+    updateFeaturePanel('<p>Cliquez sur un élément de la carte pour afficher ses informations ici.</p>');
+}
+
+function handleFeatureClick(e, content) {
+    suppressNextMapReset = true;
+    if (e && e.originalEvent) {
+        L.DomEvent.stopPropagation(e.originalEvent);
+        if (e.originalEvent.preventDefault) {
+            e.originalEvent.preventDefault();
+        }
+    }
+    updateFeaturePanel(content);
+}
 
 function moulinsStyle(feature) {
     // Create a custom icon
@@ -61,10 +84,8 @@ function onEachFeatureMoulins(feature,layer){
         popupContent += "<li>Existant : Vérification terrain nécessaire</li>";
     }
     popupContent += "</ul>";
-    layer.bindPopup(popupContent, {
-        minWidth: 200,
-        maxWidth: 300,
-        className: 'popup-moulins'
+    layer.on('click', function (e) {
+        handleFeatureClick(e, popupContent);
     });
     layer.bindTooltip(tooltip,{
          permanent: false,
@@ -137,7 +158,7 @@ function createLavoirCircleMarker(feature, latlng) {
 
 function onEachFeatureLavoirs(feature,layer){
     if (feature.properties.nom == null){
-        var tooltip = feature.properties.type
+        var tooltip = "Nom non renseigné (" + feature.properties.type + ")";
     } else {
         var tooltip = feature.properties.nom
     }
@@ -147,15 +168,20 @@ function onEachFeatureLavoirs(feature,layer){
     })
 
     var popupContent = "<h4>"+tooltip+"</h4>";
-    popupContent += "<ul><li>Type : "+feature.properties.type+"</li>";
+    popupContent += "<ul>"
+    popupContent += "<li>ID : "+feature.properties.Id+"</li>";
+    popupContent += "<li>Type : "+feature.properties.type+"</li>";
     popupContent += "<li>Statut: "+feature.properties.statut+"</li>";
-    popupContent += "<li>Géométrie : "+feature.properties.modif_geom+"</li>";
-    popupContent += "<li>FID : "+feature.properties.fid+"</li>";
+    popupContent += "<li>Précision de la localisation: "+feature.properties.modif_geom+"</li>";
     popupContent += "</ul>";
-    layer.bindPopup(popupContent, {
-        minWidth: 200,
-        maxWidth: 300,
-        className: 'popup-lavoirs'
+    if (feature.properties.description){
+        popupContent += "<p>Description :" + feature.properties.description + "</p>";
+    }
+    if (feature.properties.commentaire_st){
+        popupContent += "<p>Commentaire :" + feature.properties.commentaire_st + "</p>";
+    }
+    layer.on('click', function (e) {
+        handleFeatureClick(e, popupContent);
     });
  }
 
@@ -165,9 +191,9 @@ var lavoirs_fontaines = L.geoJson(null, {
         return createPrecisionCircleMarker(feature, latlng);
     },
     onEachFeature:onEachFeatureLavoirs,
-    //filter: function (feature, layer) {
-    //    return feature.properties.modif_geom != null;
-    //}
+    filter: function (feature, layer) {
+        return feature.properties.type != "inconnu";
+    }
 }); 
     
  $.getJSON(url_lavoirs, function(data) {
@@ -209,15 +235,17 @@ lieux_dits = L.geoJson(null, {
              direction: "center",
         })
 
-        layer.on({
-            click: highlightFeature
-        });
-
         var popupcontent = "<h4>"+feature.properties["lieu-dit"]+"</h4>";
         if (feature.properties["commentaire"]){
             popupcontent += "<p>Commentaire : "+feature.properties["commentaire"]+"</p>";
         }
-        layer.bindPopup(popupcontent)
+
+        layer.on({
+            click: function (e) {
+                highlightFeature(e);
+                handleFeatureClick(e, popupcontent);
+            }
+        });
     }
 });
     
@@ -226,11 +254,17 @@ lieux_dits = L.geoJson(null, {
 });
 
 map.on('click', function(e) {
+    if (suppressNextMapReset) {
+        suppressNextMapReset = false;
+        return;
+    }
+
     // If a polygon was previously highlighted, reset its style
     if (lastClickedElement) {
         lieux_dits.resetStyle(lastClickedElement);
         lastClickedElement = null;
     }
+    resetFeaturePanel();
 });
 
 /**

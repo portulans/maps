@@ -50,7 +50,7 @@ var etatmajor = L.tileLayer(
     tileSize : 256 // les tuiles du Géooportail font 256x256px
 });
 
-var  cartetouristique1929 = L.tileLayer('https://warper.wmflabs.org/maps/tile/7143/{z}/{x}/{y}.png', {
+var cartetouristique1929 = L.tileLayer('https://warper.wmflabs.org/maps/tile/7143/{z}/{x}/{y}.png', {
     attribution: "Carte touristique de l'île d'Ouessant (1929) - Région Bretagne",
 })
 

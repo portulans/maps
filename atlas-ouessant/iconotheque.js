@@ -82,114 +82,120 @@ const layers = [
 
 ];
 L.control.advancedLayers(layers, {
-    position:'bottomleft'}).addTo(map);
+    position:'topright',
+    collapsed: true
+}).addTo(map);
 /******************* FUNCTIONS *************/
-// Function to handle image modal
-function setupImageModal() {
-    const contentDiv = document.getElementById("sidebar-content");
-    const images = contentDiv.getElementsByTagName("img");
+var featurePanelContent = document.getElementById('feature-panel-content');
 
-    if (images.length === 1) {
-        images[0].style.cursor = "pointer"; // Make it look clickable
-        images[0].addEventListener("click", function () {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImg");
-            
-            modal.style.display = "flex";
+// Function to handle image modal from images rendered in the feature panel
+function setupImageModal() {
+    var contentDiv = document.getElementById('feature-panel-content');
+    if (!contentDiv) {
+        return;
+    }
+
+    var images = contentDiv.getElementsByTagName('img');
+    for (var j = 0; j < images.length; j++) {
+        images[j].style.cursor = 'pointer';
+        images[j].addEventListener('click', function () {
+            var modal = document.getElementById('imageModal');
+            var modalImg = document.getElementById('modalImg');
+
+            if (!modal || !modalImg) {
+                return;
+            }
+
+            modal.style.display = 'flex';
             modalImg.src = this.src;
+            modalImg.alt = this.alt || 'Image';
         });
     }
 }
 
 // Function to close modal
-document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("imageModal");
-    const closeBtn = document.querySelector(".close");
+document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById('imageModal');
+    var closeBtn = document.querySelector('.close');
 
     if (!modal || !closeBtn) {
-        console.error("Modal elements not found!");
         return;
     }
 
-    closeBtn.addEventListener("click", function () {
-        modal.style.display = "none";
+    closeBtn.addEventListener('click', function () {
+        modal.style.display = 'none';
     });
 
-    modal.addEventListener("click", function (event) {
+    modal.addEventListener('click', function (event) {
         if (event.target === modal) {
-            modal.style.display = "none";
+            modal.style.display = 'none';
         }
     });
 });
 
-// Modify displaySidebar to call setupImageModal
-function displaySidebar(data) {
-    var sidebar = document.getElementById('sidebar');
-    var contentDiv = document.getElementById('sidebar-content');
-
-    if (!sidebar || !contentDiv) {
-        console.error("Sidebar or content div not found!");
+function displayFeaturePanel(data) {
+    if (!featurePanelContent) {
         return;
     }
 
-    contentDiv.innerHTML = ''; // Clear previous content
+    var content = '';
+
     if (data.Auteur) {
-        contentDiv.innerHTML += `<p><strong>Auteur:</strong> ${data.Auteur}</p>`;
+        content += `<p><strong>Auteur:</strong> ${data.Auteur}</p>`;
     }
     if (data.Type && data.Nature) {
-        contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${data.Type}, ${data.Nature}</p>`;
+        content += `<p><strong>Type de document:</strong> ${data.Type}, ${data.Nature}</p>`;
     } else if (data.Type) {
-        contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${data.Type}</p>`;
+        content += `<p><strong>Type de document:</strong> ${data.Type}</p>`;
     } else if (data.Nature) {
-        contentDiv.innerHTML += `<p><strong>Type de document:</strong> ${data.Nature}</p>`;
+        content += `<p><strong>Type de document:</strong> ${data.Nature}</p>`;
     }
 
     if (data.Image) {
-        contentDiv.innerHTML += `<img src="img/library/${data.Institution}/${data.Image}" alt="${data.Cote}" style="max-width: 100%; height: auto; margin-top: 10px;">`;
+        content += `<img src="img/library/${data.Institution}/${data.Image}" alt="${data.Cote || ''}" style="max-width: 100%; height: auto; margin-top: 10px; border-radius: 10px;">`;
     }
 
     if (data.Description) {
-        contentDiv.innerHTML += `<p><strong>Description:</strong> ${data.Description}</p>`;
+        content += `<p><strong>Description:</strong> ${data.Description}</p>`;
     }
     if (data.Legende) {
-        contentDiv.innerHTML += `<p><strong>Légende:</strong> ${data.Legende}</p>`;
+        content += `<p><strong>Légende:</strong> ${data.Legende}</p>`;
     }
     if (data.Date && data.Siecle) {
-        contentDiv.innerHTML += `<p><strong>Date:</strong> ${data.Date}, ${data.Siecle}</p>`;
+        content += `<p><strong>Date:</strong> ${data.Date}, ${data.Siecle}</p>`;
     } else if (data.Date) {
-        contentDiv.innerHTML += `<p><strong>Date:</strong> ${data.Date}</p>`;
+        content += `<p><strong>Date:</strong> ${data.Date}</p>`;
     } else if (data.Siecle) {
-        contentDiv.innerHTML += `<p><strong>Date:</strong> ${data.Siecle}</p>`;
+        content += `<p><strong>Date:</strong> ${data.Siecle}</p>`;
     }
     if (data.Ouvrage) {
-        contentDiv.innerHTML += `<p><strong>Issu de :</strong> ${data.Ouvrage}</p>`;
+        content += `<p><strong>Issu de :</strong> ${data.Ouvrage}</p>`;
     }
     if (data.Cote && data.Collection && data.Detail_institution) {
-        contentDiv.innerHTML += `<p><strong>Source: </strong> ${data.Cote} - ${data.Collection} - ${data.Detail_institution}</p>`;
+        content += `<p><strong>Source: </strong> ${data.Cote} - ${data.Collection} - ${data.Detail_institution}</p>`;
     } else if (data.Cote && data.Detail_institution) {
-        contentDiv.innerHTML += `<p><strong>Source: </strong> ${data.Cote} - ${data.Detail_institution}</p>`;
+        content += `<p><strong>Source: </strong> ${data.Cote} - ${data.Detail_institution}</p>`;
     } else if (data.Detail_institution) {
-        contentDiv.innerHTML += `<p><strong>Source: </strong> ${data.Detail_institution}</p>`;
+        content += `<p><strong>Source: </strong> ${data.Detail_institution}</p>`;
     }
     if (data.Licence) {
-        contentDiv.innerHTML += `<p><strong>Licence:</strong> ${data.Licence}</p>`;
+        content += `<p><strong>Licence:</strong> ${data.Licence}</p>`;
     }
 
     if (data.Lien_fiche) {
-        contentDiv.innerHTML += `<a href='${data.Lien_fiche}' target='_blank'>Voir sur le site source</a>`;
+        content += `<p><a href='${data.Lien_fiche}' target='_blank' rel='noopener noreferrer'>Voir sur le site source</a></p>`;
     }
 
     if (data.Commentaire) {
-        contentDiv.innerHTML += `<p><strong>Remarques:</strong> ${data.Commentaire}</p>`;
+        content += `<p><strong>Remarques:</strong> ${data.Commentaire}</p>`;
     }
-    
-    sidebar.style.display = 'block'; // Show the sidebar
 
-    setupImageModal(); // Check and setup image modal if needed
-}
+    if (!content) {
+        content = '<p>Aucune information disponible pour ce point.</p>';
+    }
 
-function closeSidebar() {
-    document.getElementById('sidebar').style.display = 'none';
+    featurePanelContent.innerHTML = content;
+    setupImageModal();
 }
 
 // Load CSV using PapaParse
@@ -242,7 +248,7 @@ onEachFeature: function (feature, layer) {
     var featureId = feature.properties.ID;  // Assuming 'id' is the ID field in GeoJSON
     if (csvData && csvData[featureId]) {  // Check if csvData has the featureId
         var additionalData = csvData[featureId]; // Retrieve the corresponding row from the CSV
-        displaySidebar(additionalData);  // Display the data in the sidebar
+        displayFeaturePanel(additionalData);  // Display the data in the feature panel
     } else {
         console.error("No additional data found for feature ID: " + featureId);
     }
@@ -271,43 +277,64 @@ $.getJSON(url, function(data) {
 
 
 
-// Create a custom legend
-var legend = L.control({ position: 'bottomleft' });
+function renderLegendPanel() {
+    var legendContainer = document.getElementById('icono-map-legend');
+    if (!legendContainer) {
+        return;
+    }
 
-legend.onAdd = function (map) {
-var div = L.DomUtil.create('div', 'legend');  // Create the legend container
-div.innerHTML = '<h4>Type de prise de vue</h4>'
-                + '<div><input type="checkbox" id="solCheckbox" checked /> <img src="./img/fleche-sol2.png" /> <span>Sol</span></div>'
-                + '<div><input type="checkbox" id="merCheckbox" checked /> <img src="./img/fleche-mer.png" /> <span>Vu de la mer</span></div>'
-                + '<div><input type="checkbox" id="obliqueCheckbox" checked /> <img src="./img/fleche-oblique.png" /> <span>Oblique aérienne</span></div>';
+    legendContainer.classList.add('is-collapsed');
+    legendContainer.innerHTML =
+        '<button type="button" id="icono-legend-toggle" class="legend-toggle" aria-expanded="false">' +
+        '<span>Type de prise de vue</span><span class="legend-toggle__icon" aria-hidden="true">▾</span>' +
+        '</button>' +
+        '<div id="icono-legend-content" class="legend-content">' +
+        '<label class="legend-row"><input type="checkbox" id="solCheckbox" checked> <img src="./img/fleche-sol2.png" alt=""> <span>Sol</span></label>' +
+        '<label class="legend-row"><input type="checkbox" id="merCheckbox" checked> <img src="./img/fleche-mer.png" alt=""> <span>Vu de la mer</span></label>' +
+        '<label class="legend-row"><input type="checkbox" id="obliqueCheckbox" checked> <img src="./img/fleche-oblique.png" alt=""> <span>Oblique aérienne</span></label>' +
+        '</div>';
 
-// Return the div container
-return div;
-};
+    var legendToggle = document.getElementById('icono-legend-toggle');
+    if (legendToggle) {
+        legendToggle.addEventListener('click', function () {
+            var isCollapsed = legendContainer.classList.toggle('is-collapsed');
+            legendToggle.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+        });
+    }
 
-legend.addTo(map);  // Add the legend control to the map
+    var solCheckbox = document.getElementById('solCheckbox');
+    var merCheckbox = document.getElementById('merCheckbox');
+    var obliqueCheckbox = document.getElementById('obliqueCheckbox');
 
-// Event listeners for toggling visibility of marker groups based on checkbox status
-document.getElementById("solCheckbox").addEventListener("change", function(e) {
-if (e.target.checked) {
-    map.addLayer(markersClusterSol);
-} else {
-    map.removeLayer(markersClusterSol);
+    if (solCheckbox) {
+        solCheckbox.addEventListener('change', function(e) {
+            if (e.target.checked) {
+                map.addLayer(markersClusterSol);
+            } else {
+                map.removeLayer(markersClusterSol);
+            }
+        });
+    }
+
+    if (merCheckbox) {
+        merCheckbox.addEventListener('change', function(e) {
+            if (e.target.checked) {
+                map.addLayer(markersClusterMer);
+            } else {
+                map.removeLayer(markersClusterMer);
+            }
+        });
+    }
+
+    if (obliqueCheckbox) {
+        obliqueCheckbox.addEventListener('change', function(e) {
+            if (e.target.checked) {
+                map.addLayer(markersClusterOblique);
+            } else {
+                map.removeLayer(markersClusterOblique);
+            }
+        });
+    }
 }
-});
 
-document.getElementById("merCheckbox").addEventListener("change", function(e) {
-if (e.target.checked) {
-    map.addLayer(markersClusterMer);
-} else {
-    map.removeLayer(markersClusterMer);
-}
-});
-
-document.getElementById("obliqueCheckbox").addEventListener("change", function(e) {
-if (e.target.checked) {
-    map.addLayer(markersClusterOblique);
-} else {
-    map.removeLayer(markersClusterOblique);
-}
-});
+renderLegendPanel();
