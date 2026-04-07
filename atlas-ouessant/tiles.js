@@ -221,6 +221,41 @@ var ignaerial2023 = L.tileLayer(
         tileSize : 256 // les tuiles du Géooportail font 256x256px
     });
 
+/********* Relief *************/
+
+var lidarhd = L.tileLayer(
+	"https://data.geopf.fr/wmts?" +
+	"&REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0" +
+	"&STYLE=normal" +
+	"&FORMAT=image/png" +
+	"&TILEMATRIXSET=PM_0_18" +
+	"&LAYER=IGNF_LIDAR-HD_MNT_ELEVATION.ELEVATIONGRIDCOVERAGE.SHADOW" +
+	"&TILEMATRIX={z}" +
+	"&TILEROW={y}" +
+	"&TILECOL={x}",
+	
+	{
+		minZoom : 0,
+		maxZoom : 18,
+		attribution : "IGN",
+	}
+);
+
+var litto3D = L.tileLayer(
+    "https://services.data.shom.fr/INSPIRE/wms/r?" +
+    "VERSION=1.3.0" +
+    "&dpiMode=7" +
+    "&FORMAT=image/png" +
+    "&LAYER=LITTO3D_FINISTR_2014_PYR_3857_WMSR" +
+    "&styles" +
+    "&tilePixelRatio=0",
+    {
+        minZoom : 0,
+        maxZoom : 18,
+        attribution : "Shom, Litto3D®",
+    }
+);
+
 /****** Cadastre ******/
 var assemblage = L.tileLayer('https://www.laurentgontier.com/OuessantLayers/PlanAssemblageCadastre/{z}/{x}/{y}.png', {
     minZoom: 9,

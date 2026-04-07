@@ -18,6 +18,9 @@
         <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.82.0/dist/L.Control.Locate.min.js"></script>
         <script src="./libs/advanced-layers-control/advanced-layers-control.js"></script>
         <link rel="stylesheet" href="./libs/advanced-layers-control/advanced-layers-control.css"></script>
+        <script type="text/javascript" src="./libs/markercluster/leaflet.markercluster.js"></script>
+        <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.css">
+        <link rel="stylesheet" href="./libs/markercluster/MarkerCluster.Default.css">
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
@@ -25,8 +28,8 @@
             <a href="#default" class="logo">Atlas d'Ouessant</a>
             <div class="header-right">
               <a href="index.html">Accueil</a>
-              <a href="catalogue.html">Cartes et plans</a>
-              <a class="active" href="visualisateur.html">Visualisateur cartographique</a>
+              <a href="catalogue.html">Cartes et plans anciens</a>
+              <a class="active" href="visualisateur.html">Carte interactive</a>
               <a href="iconotheque.html">Iconothèque</a>
               <div class="dropdown">
                     <a href="#" class="dropbtn">Dossiers</a>
@@ -42,18 +45,21 @@
           </div>
 
         <article>
-            <h1 class="page-title">Visualisateur cartographique</h1>
-            <p class="paragraph">Cette page vous permet de superposer des cartes et images aériennes d'Ouessant de différentes dates et époques.</p>
-            <p class="paragraph"><i>Remarque : Le géoréférencement des cartes anciennes numérisées peut provoquer des déformations importantes des images. Pour voir les cartes numérisées non-géoréférencées (donc sans déformation), consultez la rubrique "<a href="./catalogue.html">Cartes et plans</a>" du site.</i></p>
+            <h1 class="page-title">Carte interactive</h1>
+            <p class="paragraph">Cette page vous permet de superposer des cartes et images aériennes d'Ouessant de différentes dates et époques ainsi que des données de diverses natures sur le patrimoine ouessantin (moulins, lavoirs, toponymie, etc.).</p>
+            <div id="lavoirs-map-legend" class="map-legend"></div>
             <div id="maps">
                 <div id="mapviz"></div>
-                <aside id="feature-panel" aria-live="polite">
-                    <h3>Détails</h3>
-                    <div id="feature-panel-content">
-                        <p>Cliquez sur un élément de la carte pour afficher ses informations ici.</p>
-                    </div>
-                </aside>
+                <div class="panel-column">
+                    <aside id="feature-panel" aria-live="polite">
+                        <h3>Détails</h3>
+                        <div id="feature-panel-content">
+                            <p>Cliquez sur un élément de la carte pour afficher ses informations ici.</p>
+                        </div>
+                    </aside>
+                </div>
             </div>
+            <p class="paragraph"><i>Remarque : Le géoréférencement des cartes anciennes numérisées peut provoquer des déformations importantes des images. Pour voir les cartes numérisées non-géoréférencées (donc sans déformation), consultez la rubrique "<a href="./catalogue.html">Cartes et plans</a>" du site.</i></p>
             <h4 class="page-title">Sources</h4>
             <p class="paragraph">
                 <ul><li>Moulins : Solenn Tual, d'après le cadastre napoléonien (1842 et registres ultérieurs) et le plan du Ministère de l'équipement (1910). <strong>En cours de validation sur le terrain.</strong></li>
@@ -67,6 +73,15 @@
         </footer>
     </body>
     <script src="tiles.js"></script>
-    <script src="visualisateur.js"></script>
+    
+    <!-- Application modules (clean architecture) -->
+    <script src="js/utils.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/image-manager.js"></script>
+    <script src="js/panel-manager.js"></script>
+    <script src="js/layer-manager.js"></script>
+    <script src="js/legend-manager.js"></script>
+    <script src="js/app.js"></script>
+    
     <script src="pagejs.js"></script>
 </html>

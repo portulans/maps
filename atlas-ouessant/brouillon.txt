@@ -1,0 +1,32 @@
+        /*if (item.Statut == "VALIDE"){
+            contentDiv.innerHTML += `<div id="map"><div>`;
+            var mapDiv = document.getElementById('map');
+            var map = L.map(mapDiv);
+
+            var url = 'data/loc-images.geojson';	
+            var markers = new L.FeatureGroup();
+
+            var points = L.geoJSON(null, {
+              onEachFeature: function (feature, layer) {
+                  var orientation = feature.properties.orientatio;
+                  
+                  var latlng = layer.getLatLng();
+                  // Create and add a marker using the rotated icon
+                  var marker = L.marker(latlng, { icon: createRotatedIcon(orientation,feature.properties.type) })
+                  // Add the marker to the appropriate feature group based on type
+                  markers.addLayer(marker);
+              },
+              filter: function (feature) {
+                  console.log(feature.properties.ID, item.ID);
+                  return feature.properties.ID.toString() === item.ID.toString();
+              }
+            });
+
+          // Create a marker cluster group
+          $.getJSON(url, function(data) {
+                map.addLayer(markers);
+          });
+
+        } else {
+            contentDiv.innerHTML += `<p><strong>Localisation inconnue</p>`;
+        }*/

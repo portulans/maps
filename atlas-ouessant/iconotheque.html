@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="./style.css">
     <style>
         #map { height: 600px; }
+        
+        @media (max-width: 1024px) {
+            #map { height: 500px; }
+        }
+        
+        @media (max-width: 600px) {
+            #map { height: 400px; }
+        }
+        
         .legend {
             background: white;
             padding: 10px;
@@ -47,8 +56,8 @@
         <a href="#default" class="logo">Atlas d'Ouessant</a>
         <div class="header-right">
           <a href="index.html">Accueil</a>
-          <a href="catalogue.html">Cartes et plans</a>
-          <a href="visualisateur.html">Visualisateur cartographique</a>
+          <a href="catalogue.html">Cartes et plans anciens</a>
+          <a href="visualisateur.html">Carte interactive</a>
           <a class="active" href="iconotheque.html">Iconothèque</a>
           <div class="dropdown">
             <a href="#" class="dropbtn">Dossiers</a>

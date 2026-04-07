@@ -464,6 +464,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const sortedValues = Array.from(values).sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base" }));
                 fillDropdown(field, sortedValues);
             });
+
+            // Ensure the initial render applies grouping even when map cards were created earlier.
+            applyV2Filters();
         }
     });
 });

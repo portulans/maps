@@ -131,6 +131,11 @@ a {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--ink);
+}
+
 .header a.logo {
   font-family: "Fraunces", Georgia, serif;
   font-size: 24px;
@@ -534,6 +539,140 @@ div.map-author {
   accent-color: var(--accent);
 }
 
+#lavoirs-map-legend {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#lavoirs-map-legend h4 {
+  margin: 0 0 8px;
+}
+
+#lavoirs-map-legend .legend-empty {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+#lavoirs-map-legend .legend-content {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#lavoirs-map-legend .legend-layer-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-size: 0.9rem;
+}
+
+#lavoirs-map-legend .legend-layer-title {
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+#lavoirs-map-legend .legend-layer-symbols {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+#lavoirs-map-legend .legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+#lavoirs-map-legend .legend-style-inline-label {
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+#lavoirs-map-legend .legend-style-select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  color: var(--ink);
+  font: inherit;
+  padding: 6px 9px;
+}
+
+#lavoirs-map-legend .legend-style-select--inline {
+  width: auto;
+  min-width: 160px;
+}
+
+#lavoirs-map-legend .legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(23, 35, 40, 0.35);
+  flex: 0 0 14px;
+}
+
+#lavoirs-map-legend .legend-swatch--square {
+  border-radius: 2px;
+}
+
+#lavoirs-map-legend .legend-icon {
+  width: 14px;
+  height: 14px;
+}
+
+#lavoirs-map-legend .legend-polygon-swatch {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #666;
+  background: rgba(160, 160, 160, 0.2);
+  border-radius: 2px;
+  flex: 0 0 14px;
+}
+
+#lavoirs-map-legend .legend-group-details {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  padding: 4px 8px;
+}
+
+#lavoirs-map-legend .legend-group-details summary {
+  cursor: pointer;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+#lavoirs-map-legend .legend-group-option {
+  display: block;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.moulin-square-icon-wrapper {
+  background: transparent;
+  border: none;
+}
+
+.moulin-square-icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(23, 35, 40, 0.5);
+  box-sizing: border-box;
+}
+
 #feature-panel h3 {
   margin-top: 0;
   margin-bottom: 0.5em;
@@ -548,6 +687,143 @@ div.map-author {
   padding-left: 1.2em;
 }
 
+#feature-panel-content .panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#feature-panel-content .panel-header h2 {
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+#feature-panel-content .feature-type {
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+#feature-panel-content .feature-title {
+  margin: 4px 0 2px;
+  font-size: 1.25rem;
+}
+
+#feature-panel-content .feature-subtitle {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+#feature-panel-content .feature-meta {
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(110px, 0.95fr) 1.3fr;
+  row-gap: 8px;
+  column-gap: 10px;
+}
+
+#feature-panel-content .feature-meta dt {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+#feature-panel-content .feature-meta dd {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#feature-panel-content .feature-description,
+#feature-panel-content .feature-comment {
+  margin: 8px 0 0;
+  background: var(--surface-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 11px;
+  line-height: 1.45;
+}
+
+#feature-panel-content .feature-comment {
+  border-left-color: var(--accent-2);
+}
+
+#feature-panel .feature-images {
+  display: none;
+  margin-top: 4px;
+}
+
+#feature-panel .feature-images.is-visible {
+  display: grid;
+  gap: 10px;
+}
+
+#feature-panel .feature-images.is-loading {
+  gap: 8px;
+}
+
+#feature-panel .feature-images__title {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+#feature-panel .feature-images__loading {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+
+#feature-panel .feature-images__spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 127, 115, 0.2);
+  border-top-color: var(--accent);
+  animation: feature-image-spin 0.75s linear infinite;
+}
+
+#feature-panel .feature-images__item {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #f6f1e7;
+}
+
+#feature-panel .feature-images__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#feature-panel .feature-images__caption {
+  margin: 0;
+  padding: 8px 10px;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  background: rgba(243, 238, 226, 0.85);
+  border-top: 1px solid var(--line);
+}
+
+@keyframes feature-image-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 1024px) {
   #maps {
     flex-direction: column;
@@ -560,6 +836,11 @@ div.map-author {
   #feature-panel {
     width: 100%;
     max-height: 360px;
+  }
+
+  #maps #mapviz,
+  #maps #map {
+    min-height: 400px;
   }
 }
 
@@ -1016,6 +1297,14 @@ div.gallery-item div.desc {
     margin-right: 0.5em;
     padding-top: 1px;
     padding-bottom: 1px;
+  }
+
+  #maps #map {
+    height: 400px;
+  }
+
+  #maps #mapviz {
+    height: 400px;
   }
 
   #HCB_comment_box {
