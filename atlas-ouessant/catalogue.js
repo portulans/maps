@@ -150,10 +150,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 } else if (row.IIIF_Manifest) {
                     const iiifBaseUrl = row.IIIF_Manifest.replace("info.json", "");
-                    if (row.IIIF_region || row.IIIF_size) {
-                        imageUrl = `${iiifBaseUrl}${row.IIIF_region}/${row.IIIF_size}/${row.IIIF_rotation}/default.jpg`;
+                    if (row.Institution == "AD29" && row.IIIF_Manifest.includes("FOND")) {
+                        suffixe = "native.jpg";
                     } else {
-                        imageUrl = `${iiifBaseUrl}full/!400,/0/default.jpg`;
+                        suffixe = "default.jpg";
+                    }
+                    if (row.IIIF_region || row.IIIF_size) {
+                        imageUrl = `${iiifBaseUrl}${row.IIIF_region}/${row.IIIF_size}/${row.IIIF_rotation}/${suffixe}`;
+                    } else {
+                        imageUrl = `${iiifBaseUrl}full/!400,/0/native.jpg`;
                     }
                 } else if (row.Wiki_Commons_Name) {
                     let wikiImage = row.Wiki_Commons_Name;
