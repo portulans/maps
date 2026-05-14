@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         console.log(manifestUrl);
         
-        if (institution == "BNF" || institution == "SHD") {
+        if (institution == "BNF") {
             const iiifBaseUrl = manifestUrl.replace("manifest.json", "");
             imageUrl = `${iiifBaseUrl}f${item}/info.json`;
         } else {
@@ -310,13 +310,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function displayThumbnail(row) {
 
         let imageUrl;
-        if (row.IIIF_Manifest && (row.Institution == "BNF" || row.Institution == "SHD")) {
-            const iiifBaseUrl = row.IIIF_Manifest.replace("manifest.json", "");
-            if (row.IIIF_region || row.IIIF_size) {
-                imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/${row.IIIF_region}/!400,/${row.IIIF_rotation}/native.jpg`;
-            } else {
-                imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/full/!400,/0/native.jpg`;
-            }
+        if (row.IIIF_Manifest && (row.IIIF_Manifest.includes("gallica"))) {
+            imageUrl = `./img/thumbnail_bnf/${row.ID}.jpg`;
         } else if (row.IIIF_Manifest) {
             const iiifBaseUrl = row.IIIF_Manifest.replace("info.json", "");
             if (row.IIIF_region || row.IIIF_size) {
@@ -370,8 +365,13 @@ document.addEventListener("DOMContentLoaded", function () {
                             const img = document.createElement("img");
                             img.src = thumbnailUrl;
                             img.alt = item.Map_name || "Carte sans titre";
-                            img.height = "150px";
-                            link.appendChild(img);
+                            img.className = "map-image";
+
+                            const mapImageContainer = document.createElement("div");
+                            mapImageContainer.className = "map-image-container";
+                            mapImageContainer.appendChild(img);
+                            
+                            link.appendChild(mapImageContainer);
                             const description = document.createElement("div");
                             description.className = "desc";
                             if (item.Date_Création && item.Date_MAJ) {

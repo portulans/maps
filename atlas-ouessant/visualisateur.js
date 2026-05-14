@@ -1004,6 +1004,57 @@ map.on('click', function(e) {
     resetFeaturePanel();
 });
 
+/// Toponymes maritimes (points)
+var url_toponymes_maritimes_points = './data/toponymes_maritimes_points.geojson';
+var toponymes_maritimes_points = L.geoJson(null, {
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, {
+            radius: 1,
+            fillColor: "black",
+            color: "black",
+            weight: 1,
+            opacity: 0,
+            fillOpacity: 0.2
+        });
+    },
+    onEachFeature:function(feature,layer){
+        var tooltip = feature.properties["Toponyme-bzh"]
+        layer.bindTooltip(tooltip,{
+             permanent: false,
+             direction: "center",
+        })
+    }
+});
+
+
+/// Toponymes maritimes (lignes)
+var url_toponymes_maritimes_lignes = './data/toponymes_maritimes_lignes.geojson';
+var toponymes_maritimes_lignes = L.geoJson(null, {
+    style: {
+            color: "black",
+            weight: 1,
+            opacity: 0.1
+    },
+    onEachFeature:function(feature,layer){
+        var tooltip = feature.properties["Toponyme-bzh"]
+        layer.bindTooltip(tooltip,{
+             permanent: false,
+             direction: "center",
+        })
+    }
+});
+
+/// Toponyme maritime (feature group)
+var toponymes_maritimes = L.featureGroup();
+$.getJSON(url_toponymes_maritimes_points, function(data) {
+    toponymes_maritimes_points.addData(data);
+    toponymes_maritimes.addLayer(toponymes_maritimes_points);
+});
+$.getJSON(url_toponymes_maritimes_lignes, function(data) {
+    toponymes_maritimes_lignes.addData(data);
+    toponymes_maritimes.addLayer(toponymes_maritimes_lignes);
+});
+
 /**
  * CONTROLS
  */
@@ -1033,6 +1084,14 @@ const layers = [
         ],
     },
     {
+        name: 'Relief et bathymétrie',
+        collapsed: true,
+        layers: [
+            { name: "MNT 1m Lidar HD", layer: lidarhd, active: false},
+            { name: "Bathymétrie (Litto 3D, SHOM)", layer: litto3D, active: false},
+        ],
+    },
+    {
         name: 'Cartes anciennes',
         collapsed: true,
         layers: [
@@ -1041,8 +1100,9 @@ const layers = [
             { name: "Minute hydrographique (1816)", layer:minuteouessantshom, active: false, opacityControl: true},
             { name: "Pilote français (1822)", layer: pilotefrancais, active: false, opacityControl: true},
             { name: "Etat-Major (1866)", layer: etatmajor, active: false, opacityControl: true},
+            { name: "Plan d'ensemble (1910)", layer: planensemble1910, active: false, opacityControl: true},
             { name: "Carte touristique (1929)", layer: cartetouristique1929, active: false, opacityControl: true},
-            { name: "Scan historique IGN (1950)", layer: ign1950, active: false, opacityControl: true},
+            { name: "Scan historique IGN (1950)", layer: ign1952, active: false, opacityControl: true},
         ],
     },
     {
@@ -1059,6 +1119,7 @@ const layers = [
         collapsed: true,
         layers: [
             { name: "Lieux-dits (Cadastre 1842)", layer: lieux_dits, active: false, opacityControl: false},
+            { name: "Toponymes maritimes", layer: toponymes_maritimes, active: false, opacityControl: false},
         ],
     },
     {

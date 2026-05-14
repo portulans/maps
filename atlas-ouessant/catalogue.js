@@ -141,16 +141,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 const mapImageContainer = document.createElement("div");
                 mapImageContainer.className = "map-image-container";
                 let imageUrl;
-                if (row.IIIF_Manifest && (row.Institution == "BNF" || row.Institution == "SHD")) {
+                /*if (row.IIIF_Manifest && (row.IIIF_Manifest.includes("gallica"))) {
                     const iiifBaseUrl = row.IIIF_Manifest.replace("manifest.json", "");
                     if (row.IIIF_region || row.IIIF_size) {
                         imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/${row.IIIF_region}/!400,/${row.IIIF_rotation}/native.jpg`;
                     } else {
                         imageUrl = `${iiifBaseUrl}f${row.IIIF_Item}/full/!400,/0/native.jpg`;
-                    }
+                    }*/
+                if (row.IIIF_Manifest && row.IIIF_Manifest.includes("gallica")) {
+                    imageUrl = `./img/thumbnail_bnf/${row.ID}.jpg`;
                 } else if (row.IIIF_Manifest) {
                     const iiifBaseUrl = row.IIIF_Manifest.replace("info.json", "");
-                    if (row.Institution == "AD29" && row.IIIF_Manifest.includes("FOND")) {
+                    if (row.Institution == "AD29" && row.IIIF_Manifest.includes("recherche")) {
                         suffixe = "native.jpg";
                     } else {
                         suffixe = "default.jpg";

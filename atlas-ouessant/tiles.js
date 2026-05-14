@@ -26,7 +26,7 @@ var cassiniIGN = L.tileLayer(
     tileSize : 256 // les tuiles du Géooportail font 256x256px
 });
 
-var depotmarine1780 = L.tileLayer('https://warper.wmflabs.org/maps/tile/6787/{z}/{x}/{y}.png', {
+var depotmarine1780 = L.tileLayer('https://allmaps.xyz/images/16ae37fac34d4352/{z}/{x}/{y}.png', {
  attribution: "Bibliothèque Nationale de France"});
 
 var minuteouessantshom = L.tileLayer('https://warper.wmflabs.org/maps/tile/7144/{z}/{x}/{y}.png', {attribution: "Shom"});
@@ -50,6 +50,13 @@ var etatmajor = L.tileLayer(
     tileSize : 256 // les tuiles du Géooportail font 256x256px
 });
 
+var planensemble1910 = L.tileLayer(
+    'https://allmaps.xyz/images/73863b1029748ee5/{z}/{x}/{y}.png',
+    {
+        attribution: "DR"
+    }
+);
+
 var cartetouristique1929 = L.tileLayer('https://warper.wmflabs.org/maps/tile/7143/{z}/{x}/{y}.png', {
     attribution: "Carte touristique de l'île d'Ouessant (1929) - Région Bretagne",
 })
@@ -71,6 +78,15 @@ var ign1950 = L.tileLayer(
             transparent: 'true',
             tileSize : 256 // les tuiles du Géooportail font 256x256px
         });
+
+// Replace ign1950 (no missing part of Ouessant)
+var ign1952 = L.tileLayer(
+    "https://allmaps.xyz/images/a4712b842a82ca05/{z}/{x}/{y}.png",
+    {
+        attribution : "Remonter le temps / IGN",
+        transparent: 'true',
+        tileSize : 1024}
+);
 
 var ign2023 = L.tileLayer(
     "https://data.geopf.fr/wmts?" +
@@ -241,20 +257,14 @@ var lidarhd = L.tileLayer(
 	}
 );
 
-var litto3D = L.tileLayer(
-    "https://services.data.shom.fr/INSPIRE/wms/r?" +
-    "VERSION=1.3.0" +
-    "&dpiMode=7" +
-    "&FORMAT=image/png" +
-    "&LAYER=LITTO3D_FINISTR_2014_PYR_3857_WMSR" +
-    "&styles" +
-    "&tilePixelRatio=0",
-    {
-        minZoom : 0,
-        maxZoom : 18,
-        attribution : "Shom, Litto3D®",
-    }
-);
+var litto3D = L.tileLayer.wms(
+    'https://services.data.shom.fr/INSPIRE/wms/r', {
+    layers: 'LITTO3D_FINISTR_2014_PYR_3857_WMSR',
+    format: 'image/png',
+    transparent: true,
+    version: '1.3.0',
+    attribution: 'Litto3D®, Shom/IGN'
+});
 
 /****** Cadastre ******/
 var assemblage = L.tileLayer('https://www.laurentgontier.com/OuessantLayers/PlanAssemblageCadastre/{z}/{x}/{y}.png', {
